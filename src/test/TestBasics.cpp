@@ -27,14 +27,14 @@
 // -------------------------------------------------------------------------------------
 
 class BasicKeyboard : public AkelaKeyboard {
-protected:
-  virtual void cycle () {
+public:
+  void test () {
     for (int i = 0; i < LAYOUT_SIZE; i++) {
       press (i);
+      loop ();
     }
-  };
+  }
 
-public:
   BasicKeyboard (AkelaKeyEventHandler *eh, AkelaKeyMap *keymap) : AkelaKeyboard (eh, keymap) {
   };
 };
@@ -49,7 +49,7 @@ TestBasics () {
   BasicKeyboard keyboard = BasicKeyboard (&EH, &keymap);
 
   keyboard.setup ();
-  keyboard.loop ();
+  keyboard.test ();
 
   return 0;
 }
