@@ -19,3 +19,4 @@
 #pragma once
 
 int TestBasics ();
+int TestMods ();

@@ -18,12 +18,26 @@
 
 #include "Akela.h"
 
-#include "Tests.h"
+#include "TestCommon.h"
+
+#include "PrinterKeymap.h"
+#include "PrinterHID.h"
+#include "TestKeymaps.h"
+#include "PressReleaseKb.h"
+
+// -------------------------------------------------------------------------------------
 
 int
-main (void) {
-  TestBasics ();
-  TestMods ();
+TestMods () {
+  PrinterHID hid = PrinterHID ();
+  AkelaKeyEventHandler EH = AkelaKeyEventHandler (&hid);
+  PrinterKeyMap keymap = PrinterKeyMap ((uint16_t *)modful_keymap);
+  PressReleaseKeyboard keyboard = PressReleaseKeyboard (&EH, &keymap);
+
+  std::cout << __func__ << std::endl;
+
+  keyboard.setup ();
+  keyboard.test ();
 
   return 0;
 }

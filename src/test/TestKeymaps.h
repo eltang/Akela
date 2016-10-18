@@ -36,3 +36,22 @@ static uint16_t empty_keymap[] = {
                                             ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO
                                                           ,KC_NO
 };
+
+static uint16_t modful_keymap[] = {
+   LCTL(KC_1) ,LSFT(KC_2) ,LALT(KC_3) ,LGUI(KC_4) ,RCTL(KC_5) ,RSFT(KC_6) ,RALT(KC_7)
+  ,LCTL(RCTL(LSFT(RSFT(LALT(RALT(LGUI(KC_A)))))))   ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO
+  ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO
+  ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO
+
+                                            ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO
+                                                          ,KC_NO
+
+
+                                                    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO
+                                                              ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO
+                                                    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO
+                                                    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO
+
+                                            ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO
+                                                          ,KC_NO
+};
