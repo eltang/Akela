@@ -78,3 +78,7 @@ AkelaKeyEventHandler::release (uint8_t, uint16_t key) {
 
   return true;
 }
+
+void
+AkelaKeyEventHandler::loop () {
+}

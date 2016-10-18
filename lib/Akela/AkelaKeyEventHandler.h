@@ -30,4 +30,5 @@ class AkelaKeyEventHandler {
 
   virtual bool press (uint8_t index, uint16_t key);
   virtual bool release (uint8_t index, uint16_t key);
+  virtual void loop ();
 };

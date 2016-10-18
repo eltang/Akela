@@ -34,6 +34,7 @@ AkelaKeyboard::setup () {
 void
 AkelaKeyboard::loop () {
   cycle ();
+  keyEvent->loop ();
 }
 
 void
