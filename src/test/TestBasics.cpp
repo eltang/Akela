@@ -29,7 +29,9 @@
 class BasicKeyboard : public AkelaKeyboard {
 protected:
   virtual void cycle () {
-    press (19);
+    for (int i = 0; i < LAYOUT_SIZE; i++) {
+      press (i);
+    }
   };
 
 public:

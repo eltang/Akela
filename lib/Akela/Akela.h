@@ -24,6 +24,8 @@
 # include <stdint.h>
 #endif
 
+#define LAYOUT_SIZE 64
+
 #include "AkelaAbstractHID.h"
 #include "AkelaKeyMap.h"
 #include "AkelaKeyCodes.h"
