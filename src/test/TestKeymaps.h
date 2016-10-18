@@ -55,3 +55,22 @@ static uint16_t modful_keymap[] = {
                                             ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO
                                                           ,KC_NO
 };
+
+static uint16_t fn_keymap[] = {
+  FN(0x4000),KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO
+  ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO
+  ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO
+  ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO
+
+                                            ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO
+                                                          ,KC_NO
+
+
+                                                    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO
+                                                              ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO
+                                                    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO
+                                                    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO
+
+                                            ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO
+                                                          ,KC_NO
+};

@@ -21,7 +21,7 @@ AKELA_HEADERS = \
 	../../lib/Akela/AkelaAbstractHID.h \
 	../../lib/Akela/AkelaKeyCodes.h
 
-TEST_SOURCES = AkelaTest.cpp TestBasics.cpp TestMods.cpp
+TEST_SOURCES = AkelaTest.cpp TestBasics.cpp TestMods.cpp TestFn.cpp
 
 TEST_HEADERS = Tests.h TestCommon.h PrinterHID.h PrinterKeymap.h \
 	TestKeymaps.h PressReleaseKb.h

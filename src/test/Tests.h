@@ -20,3 +20,4 @@
 
 int TestBasics ();
 int TestMods ();
+int TestFn ();
