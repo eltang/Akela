@@ -1,8 +1,14 @@
 CXXFLAGS = -I../../lib/Akela -I. -O0 -ggdb3 -Wall
 
+ifeq (${VERBOSE},1)
+_r =
+else
+_r = >/dev/null
+endif
+
 all: AkelaTest
 check: all
-	./AkelaTest | tee test.out
+	./AkelaTest | tee test.out ${_r}
 	diff -u test.out test.expected
 
 AKELA_SOURCES = \
