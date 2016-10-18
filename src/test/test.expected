@@ -1,128 +1,256 @@
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 0) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 0) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 1) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 1) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 2) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 2) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 3) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 3) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 4) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 4) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 5) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 5) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 6) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 6) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 7) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 7) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 8) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 8) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 9) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 9) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, a) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, a) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, b) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, b) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, c) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, c) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, d) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, d) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, e) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, e) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, f) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, f) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 10) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 10) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 11) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 11) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 12) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 12) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 13) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 13) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 14) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 14) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 15) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 15) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 16) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 16) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 17) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 17) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 18) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 18) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 19) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 19) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 1a) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 1a) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 1b) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 1b) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 1c) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 1c) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 1d) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 1d) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 1e) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 1e) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 1f) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 1f) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 20) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 20) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 21) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 21) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 22) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 22) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 23) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 23) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 24) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 24) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 25) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 25) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 26) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 26) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 27) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 27) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 28) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 28) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 29) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 29) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 2a) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 2a) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 2b) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 2b) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 2c) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 2c) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 2d) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 2d) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 2e) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 2e) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 2f) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 2f) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 30) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 30) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 31) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 31) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 32) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 32) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 33) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 33) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 34) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 34) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 35) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 35) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 36) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 36) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 37) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 37) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 38) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 38) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 39) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 39) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 3a) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 3a) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 3b) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 3b) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 3c) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 3c) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 3d) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 3d) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 3e) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 3e) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 3f) = 0
 virtual void PrinterHID::press(uint8_t)(0x0)
+virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 3f) = 0
+virtual void PrinterHID::release(uint8_t)(0x0)

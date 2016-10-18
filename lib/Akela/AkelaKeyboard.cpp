@@ -51,5 +51,5 @@ bool
 AkelaKeyboard::release (uint8_t index) {
   uint16_t key = keymap->lookup (index);
 
-  return keyEvent->press (index, key);
+  return keyEvent->release (index, key);
 }

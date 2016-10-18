@@ -32,6 +32,8 @@ public:
     for (int i = 0; i < LAYOUT_SIZE; i++) {
       press (i);
       loop ();
+      release (i);
+      loop ();
     }
   }
 
