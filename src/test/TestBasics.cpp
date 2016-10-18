@@ -34,6 +34,8 @@ TestBasics () {
   PrinterKeyMap keymap = PrinterKeyMap ((uint16_t *)empty_keymap);
   PressReleaseKeyboard keyboard = PressReleaseKeyboard (&EH, &keymap);
 
+  std::cout << __func__ << std::endl;
+
   keyboard.setup ();
   keyboard.test ();
 
