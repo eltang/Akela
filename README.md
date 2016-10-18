@@ -1,6 +1,9 @@
 A.K.E.L.A.
 ==========
-**A**nimated **K**eyboard **E**xtension **L**ibrary for **A**rduino
+<p align="right">
+<strong>A</strong>nimated <strong>K</strong>eyboard <strong>E</strong>xtension
+<strong>L</strong>ibrary for <strong>A</strong>rduino
+</p>
 
 [![Build Status](https://travis-ci.org/algernon/Akela.svg?branch=master)](https://travis-ci.org/algernon/Akela)
 
