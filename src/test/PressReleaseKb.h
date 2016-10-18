@@ -16,26 +16,19 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "Akela.h"
+#pragma once
 
-#include "TestCommon.h"
+class PressReleaseKeyboard : public AkelaKeyboard {
+ public:
+  void test () {
+    for (int i = 0; i < LAYOUT_SIZE; i++) {
+      press (i);
+      loop ();
+      release (i);
+      loop ();
+    }
+  }
 
-#include "PrinterKeymap.h"
-#include "PrinterHID.h"
-#include "TestKeymaps.h"
-#include "PressReleaseKb.h"
-
-// -------------------------------------------------------------------------------------
-
-int
-TestBasics () {
-  PrinterHID hid = PrinterHID ();
-  AkelaKeyEventHandler EH = AkelaKeyEventHandler (&hid);
-  PrinterKeyMap keymap = PrinterKeyMap ((uint16_t *)empty_keymap);
-  PressReleaseKeyboard keyboard = PressReleaseKeyboard (&EH, &keymap);
-
-  keyboard.setup ();
-  keyboard.test ();
-
-  return 0;
-}
+  PressReleaseKeyboard (AkelaKeyEventHandler *eh, AkelaKeyMap *keymap) : AkelaKeyboard (eh, keymap) {
+  };
+};

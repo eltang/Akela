@@ -23,7 +23,8 @@ AKELA_HEADERS = \
 
 TEST_SOURCES = AkelaTest.cpp TestBasics.cpp
 
-TEST_HEADERS = Tests.h TestCommon.h PrinterHID.h PrinterKeymap.h TestKeymaps.h
+TEST_HEADERS = Tests.h TestCommon.h PrinterHID.h PrinterKeymap.h \
+	TestKeymaps.h PressReleaseKb.h
 
 AkelaTest: ${TEST_SOURCES} ${AKELA_SOURCES} ${AKELA_HEADERS} ${TEST_HEADERS}
 	${CXX} ${CXXFLAGS} ${AKELA_SOURCES} ${TEST_SOURCES} -o $@
