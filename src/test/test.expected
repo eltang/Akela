@@ -1,0 +1,3 @@
+virtual uint16_t TestKeyMap::lookup(uint8_t)(0, 19) = 226
+virtual void TestHID::press(uint8_t)(0xe1)
+virtual void TestHID::press(uint8_t)(0x24)

@@ -1,0 +1,6 @@
+.#*
+*~
+core
+/src/test/AkelaTest
+/src/test/test.out
+/src/arduino/out/
