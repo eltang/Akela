@@ -16,11 +16,16 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "Akela.h"
+#pragma once
 
-#include "Tests.h"
+class PrinterKeyMap : public AkelaKeyMap {
+ public:
+  PrinterKeyMap (uint16_t *keymap) : AkelaKeyMap (keymap) {};
 
-int
-main (void) {
-  return TestBasics ();
-}
+  virtual uint16_t lookup (uint8_t index) {
+    uint16_t k = AkelaKeyMap::lookup (index);
+    std::cout << __PRETTY_FUNCTION__ << "(" << (int)0 << ", "
+              << (int)index << ") = " << std::hex << (int)k << std::endl;
+    return k;
+  }
+};

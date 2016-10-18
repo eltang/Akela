@@ -16,11 +16,17 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "Akela.h"
+#pragma once
 
-#include "Tests.h"
+class PrinterHID : public virtual AkelaAbstractHID {
+ public:
+  virtual void press (uint8_t code) {
+    std::cout << __PRETTY_FUNCTION__ << "(0x" << std::hex << (int)code << ")" << std::endl;
+  };
 
-int
-main (void) {
-  return TestBasics ();
-}
+  virtual void release (uint8_t code) {
+    std::cout << __PRETTY_FUNCTION__ << "(0x" << std::hex << (int)code << ")" << std::endl;
+  };
+
+  PrinterHID () : AkelaAbstractHID () {};
+};

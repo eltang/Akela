@@ -16,11 +16,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#pragma once
+
 #include "Akela.h"
 
-#include "Tests.h"
-
-int
-main (void) {
-  return TestBasics ();
-}
+#include <iostream>
+#include <iomanip>

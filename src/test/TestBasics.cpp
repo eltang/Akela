@@ -18,9 +18,36 @@
 
 #include "Akela.h"
 
-#include "Tests.h"
+#include "TestCommon.h"
+
+#include "PrinterKeymap.h"
+#include "PrinterHID.h"
+#include "TestKeymaps.h"
+
+// -------------------------------------------------------------------------------------
+
+class BasicKeyboard : public AkelaKeyboard {
+protected:
+  virtual void cycle () {
+    press (19);
+  };
+
+public:
+  BasicKeyboard (AkelaKeyEventHandler *eh, AkelaKeyMap *keymap) : AkelaKeyboard (eh, keymap) {
+  };
+};
+
+// -------------------------------------------------------------------------------------
 
 int
-main (void) {
-  return TestBasics ();
+TestBasics () {
+  PrinterHID hid = PrinterHID ();
+  AkelaKeyEventHandler EH = AkelaKeyEventHandler (&hid);
+  PrinterKeyMap keymap = PrinterKeyMap ((uint16_t *)empty_keymap);
+  BasicKeyboard keyboard = BasicKeyboard (&EH, &keymap);
+
+  keyboard.setup ();
+  keyboard.loop ();
+
+  return 0;
 }
