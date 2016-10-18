@@ -25,6 +25,7 @@ main (void) {
   TestBasics ();
   TestMods ();
   TestFn ();
+  TestFnHandler ();
 
   return 0;
 }

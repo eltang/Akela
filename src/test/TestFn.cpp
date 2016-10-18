@@ -24,6 +24,7 @@
 #include "PrinterHID.h"
 #include "TestKeymaps.h"
 #include "PressReleaseKb.h"
+#include "PrinterFnHandler.h"
 
 // -------------------------------------------------------------------------------------
 
@@ -31,6 +32,21 @@ int
 TestFn () {
   PrinterHID hid = PrinterHID ();
   AkelaKeyEventHandler EH = AkelaKeyEventHandler (&hid);
+  PrinterKeyMap keymap = PrinterKeyMap ((uint16_t *)fn_keymap);
+  PressReleaseKeyboard keyboard = PressReleaseKeyboard (&EH, &keymap);
+
+  std::cout << __func__ << std::endl;
+
+  keyboard.setup ();
+  keyboard.test ();
+
+  return 0;
+}
+
+int
+TestFnHandler () {
+  PrinterHID hid = PrinterHID ();
+  PrinterFnHandler EH = PrinterFnHandler (&hid);
   PrinterKeyMap keymap = PrinterKeyMap ((uint16_t *)fn_keymap);
   PressReleaseKeyboard keyboard = PressReleaseKeyboard (&EH, &keymap);
 
