@@ -21,10 +21,14 @@
 class PrinterHID : public virtual AkelaAbstractHID {
  public:
   virtual void press (uint8_t code) {
+    if (code == 0)
+      return;
     std::cout << __PRETTY_FUNCTION__ << "(0x" << std::hex << (int)code << ")" << std::endl;
   };
 
   virtual void release (uint8_t code) {
+    if (code == 0)
+      return;
     std::cout << __PRETTY_FUNCTION__ << "(0x" << std::hex << (int)code << ")" << std::endl;
   };
 

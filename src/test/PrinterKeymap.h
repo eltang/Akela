@@ -24,8 +24,10 @@ class PrinterKeyMap : public AkelaKeyMap {
 
   virtual uint16_t lookup (uint8_t index) {
     uint16_t k = AkelaKeyMap::lookup (index);
-    std::cout << __PRETTY_FUNCTION__ << "(" << (int)0 << ", "
-              << (int)index << ") = " << std::hex << (int)k << std::endl;
+
+    if (k != 0)
+      std::cout << __PRETTY_FUNCTION__ << "(" << (int)0 << ", "
+                << (int)index << ") = " << std::hex << (int)k << std::endl;
     return k;
   }
 };
