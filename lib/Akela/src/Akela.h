@@ -26,8 +26,8 @@
 
 #define LAYOUT_SIZE 64
 
-#include "AkelaAbstractHID.h"
-#include "AkelaKeyMap.h"
-#include "AkelaKeyCodes.h"
-#include "AkelaKeyEventHandler.h"
-#include "AkelaKeyboard.h"
+#include "Akela/AbstractHID.h"
+#include "Akela/KeyMap.h"
+#include "Akela/KeyCodes.h"
+#include "Akela/KeyEventHandler.h"
+#include "Akela/Keyboard.h"

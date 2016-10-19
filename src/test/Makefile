@@ -1,4 +1,4 @@
-CXXFLAGS = -I../../lib/Akela -I. -O0 -ggdb3 -Wall -Wno-unused-variable
+CXXFLAGS = -I../../lib/Akela/src -I. -O0 -ggdb3 -Wall -Wno-unused-variable
 
 ifeq (${VERBOSE},1)
 _r =
@@ -12,14 +12,14 @@ check: all
 	diff -u test.out test.expected
 
 AKELA_SOURCES = \
-	../../lib/Akela/AkelaKeyboard.cpp \
-	../../lib/Akela/AkelaKeyMap.cpp \
-	../../lib/Akela/AkelaKeyEventHandler.cpp
+	../../lib/Akela/src/Akela/Keyboard.cpp \
+	../../lib/Akela/src/Akela/KeyMap.cpp \
+	../../lib/Akela/src/Akela/KeyEventHandler.cpp
 AKELA_HEADERS = \
 	${AKELA_SOURCES:.cpp=.h} \
-	../../lib/Akela/Akela.h \
-	../../lib/Akela/AkelaAbstractHID.h \
-	../../lib/Akela/AkelaKeyCodes.h
+	../../lib/Akela/src/Akela.h \
+	../../lib/Akela/src/Akela/AbstractHID.h \
+	../../lib/Akela/src/Akela/KeyCodes.h
 
 TEST_SOURCES = AkelaTest.cpp TestBasics.cpp TestMods.cpp TestFn.cpp
 
