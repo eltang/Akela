@@ -20,5 +20,7 @@
 
 #include "Akela.h"
 
+#define LAYOUT_SIZE 64
+
 #include <iostream>
 #include <iomanip>
