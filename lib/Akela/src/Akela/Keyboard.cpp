@@ -29,6 +29,7 @@ AkelaKeyboard::~AkelaKeyboard () {
 
 void
 AkelaKeyboard::setup () {
+  keyEvent->setup ();
 }
 
 void
