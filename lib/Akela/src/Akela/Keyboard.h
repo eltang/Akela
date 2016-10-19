@@ -28,8 +28,6 @@ class AkelaKeyboard {
 
   virtual bool press (uint8_t index);
   virtual bool release (uint8_t index);
-
-  virtual void cycle ();
  public:
   AkelaKeyboard (AkelaAbstractScanner *scanner,
                  AkelaKeyEventHandler *eventHandler,
