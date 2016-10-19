@@ -24,13 +24,16 @@ class AkelaKeyboard {
  protected:
   AkelaKeyMap *keymap;
   AkelaKeyEventHandler *keyEvent;
+  AkelaAbstractScanner *scanner;
 
   virtual bool press (uint8_t index);
   virtual bool release (uint8_t index);
 
   virtual void cycle ();
  public:
-  AkelaKeyboard (AkelaKeyEventHandler *eventHandler, AkelaKeyMap *keymap);
+  AkelaKeyboard (AkelaAbstractScanner *scanner,
+                 AkelaKeyEventHandler *eventHandler,
+                 AkelaKeyMap *keymap);
   virtual ~AkelaKeyboard ();
 
   void setup ();

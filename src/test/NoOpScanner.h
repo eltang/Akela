@@ -16,30 +16,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "Akela.h"
+#pragma once
 
-#include "TestCommon.h"
+class NoOpScanner : public AkelaAbstractScanner {
+ public:
+  NoOpScanner () {};
 
-#include "PrinterKeymap.h"
-#include "PrinterHID.h"
-#include "TestKeymaps.h"
-#include "PressReleaseKb.h"
-#include "NoOpScanner.h"
-
-// -------------------------------------------------------------------------------------
-
-int
-TestMods () {
-  PrinterHID hid = PrinterHID ();
-  AkelaKeyEventHandler EH = AkelaKeyEventHandler (&hid);
-  PrinterKeyMap keymap = PrinterKeyMap ((uint16_t *)modful_keymap);
-  NoOpScanner scanner = NoOpScanner ();
-  PressReleaseKeyboard keyboard = PressReleaseKeyboard (&scanner, &EH, &keymap);
-
-  std::cout << __func__ << std::endl;
-
-  keyboard.setup ();
-  keyboard.test ();
-
-  return 0;
-}
+  virtual const void *scan () { return NULL; };
+  virtual void setup () {};
+};

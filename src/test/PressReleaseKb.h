@@ -29,6 +29,9 @@ class PressReleaseKeyboard : public AkelaKeyboard {
     }
   }
 
-  PressReleaseKeyboard (AkelaKeyEventHandler *eh, AkelaKeyMap *keymap) : AkelaKeyboard (eh, keymap) {
+  PressReleaseKeyboard (AkelaAbstractScanner *s,
+                        AkelaKeyEventHandler *eh,
+                        AkelaKeyMap *keymap)
+    : AkelaKeyboard (s, eh, keymap) {
   };
 };

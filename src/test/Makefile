@@ -19,7 +19,8 @@ AKELA_HEADERS = \
 	${AKELA_SOURCES:.cpp=.h} \
 	../../lib/Akela/src/Akela.h \
 	../../lib/Akela/src/Akela/AbstractHID.h \
-	../../lib/Akela/src/Akela/KeyCodes.h
+	../../lib/Akela/src/Akela/KeyCodes.h \
+	../../lib/Akela/src/Akela/AbstractScanner.h
 
 TEST_SOURCES = AkelaTest.cpp TestBasics.cpp TestMods.cpp TestFn.cpp
 

@@ -18,8 +18,10 @@
 
 #include "Akela.h"
 
-AkelaKeyboard::AkelaKeyboard (AkelaKeyEventHandler *eventHandler,
+AkelaKeyboard::AkelaKeyboard (AkelaAbstractScanner *scanner,
+                              AkelaKeyEventHandler *eventHandler,
                               AkelaKeyMap *keymap) {
+  this->scanner = scanner;
   this->keyEvent = eventHandler;
   this->keymap = keymap;
 }
@@ -29,6 +31,7 @@ AkelaKeyboard::~AkelaKeyboard () {
 
 void
 AkelaKeyboard::setup () {
+  scanner->setup ();
   keyEvent->setup ();
 }
 

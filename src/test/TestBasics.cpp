@@ -24,6 +24,7 @@
 #include "PrinterHID.h"
 #include "TestKeymaps.h"
 #include "PressReleaseKb.h"
+#include "NoOpScanner.h"
 
 // -------------------------------------------------------------------------------------
 
@@ -32,7 +33,8 @@ TestBasics () {
   PrinterHID hid = PrinterHID ();
   AkelaKeyEventHandler EH = AkelaKeyEventHandler (&hid);
   PrinterKeyMap keymap = PrinterKeyMap ((uint16_t *)empty_keymap);
-  PressReleaseKeyboard keyboard = PressReleaseKeyboard (&EH, &keymap);
+  NoOpScanner scanner = NoOpScanner ();
+  PressReleaseKeyboard keyboard = PressReleaseKeyboard (&scanner, &EH, &keymap);
 
   std::cout << __func__ << std::endl;
 
