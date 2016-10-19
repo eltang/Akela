@@ -22,7 +22,6 @@
 
 class AkelaKeyboard {
  protected:
-  AkelaKeyMap *keymap;
   AkelaKeyEventHandler *keyEvent;
   AkelaAbstractScanner *scanner;
 
@@ -30,8 +29,7 @@ class AkelaKeyboard {
   virtual bool release (uint8_t index);
  public:
   AkelaKeyboard (AkelaAbstractScanner *scanner,
-                 AkelaKeyEventHandler *eventHandler,
-                 AkelaKeyMap *keymap);
+                 AkelaKeyEventHandler *eventHandler);
   virtual ~AkelaKeyboard ();
 
   void setup ();

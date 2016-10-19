@@ -18,15 +18,19 @@
 
 #include "Akela.h"
 
-AkelaKeyEventHandler::AkelaKeyEventHandler (AkelaAbstractHID *HID) {
+AkelaKeyEventHandler::AkelaKeyEventHandler (AkelaAbstractHID *HID,
+                                            AkelaKeyMap *keymap) {
   this->HID = HID;
+  this->keymap = keymap;
 }
 
 AkelaKeyEventHandler::~AkelaKeyEventHandler () {
 }
 
 bool
-AkelaKeyEventHandler::press (uint8_t, uint16_t key) {
+AkelaKeyEventHandler::press (uint8_t index) {
+  uint16_t key = keymap->lookup (index);
+
   if (IS_FN (key))
     return false;
 
@@ -51,7 +55,9 @@ AkelaKeyEventHandler::press (uint8_t, uint16_t key) {
 }
 
 bool
-AkelaKeyEventHandler::release (uint8_t, uint16_t key) {
+AkelaKeyEventHandler::release (uint8_t index) {
+  uint16_t key = keymap->lookup (index);
+
   if (IS_FN (key))
     return false;
 

@@ -19,10 +19,10 @@
 int
 TestBasics () {
   PrinterHID hid = PrinterHID ();
-  AkelaKeyEventHandler EH = AkelaKeyEventHandler (&hid);
   PrinterKeyMap keymap = PrinterKeyMap ((uint16_t *)empty_keymap);
+  AkelaKeyEventHandler EH = AkelaKeyEventHandler (&hid, &keymap);
   NoOpScanner scanner = NoOpScanner ();
-  PressReleaseKeyboard keyboard = PressReleaseKeyboard (&scanner, &EH, &keymap);
+  PressReleaseKeyboard keyboard = PressReleaseKeyboard (&scanner, &EH);
 
   std::cout << __func__ << std::endl;
 

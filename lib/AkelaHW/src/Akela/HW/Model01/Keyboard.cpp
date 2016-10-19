@@ -20,9 +20,9 @@
 
 #include "Akela/HW/Model01.h"
 
-M01::M01 (AkelaKeyEventHandler *eh, AkelaKeyMap *km,
+M01::M01 (AkelaKeyEventHandler *eh,
           AkelaAbstractScanner *scanner)
-  : AkelaKeyboard (scanner, eh, km) {
+  : AkelaKeyboard (scanner, eh) {
   prevState.left.all = prevState.right.all = 0;
   currState.left.all = currState.right.all = 0;
 }

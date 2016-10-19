@@ -20,13 +20,15 @@
 
 class PrinterFnHandler : public AkelaKeyEventHandler {
  public:
-  PrinterFnHandler (AkelaAbstractHID *HID) : AkelaKeyEventHandler (HID) {};
+  PrinterFnHandler (AkelaAbstractHID *HID, AkelaKeyMap *keymap)
+    : AkelaKeyEventHandler (HID, keymap) {};
 
-  virtual bool press (uint8_t index, uint16_t key) {
+  virtual bool press (uint8_t index) {
     bool k;
+    uint16_t key = keymap->lookup (index);
 
     if (!IS_FN (key))
-      return AkelaKeyEventHandler::press (index, key);
+      return AkelaKeyEventHandler::press (index);
 
     k = !!CHECK_FN (key, SYS);
     std::cout << __PRETTY_FUNCTION__ << "(" << (int)index
@@ -35,11 +37,12 @@ class PrinterFnHandler : public AkelaKeyEventHandler {
     return false;
   };
 
-  virtual bool release (uint8_t index, uint16_t key) {
+  virtual bool release (uint8_t index) {
     bool k;
+    uint16_t key = keymap->lookup (index);
 
     if (!IS_FN (key))
-      return AkelaKeyEventHandler::release (index, key);
+      return AkelaKeyEventHandler::release (index);
 
     k = !!(CHECK_FN (key, SYS));
     std::cout << __PRETTY_FUNCTION__ << "(" << (int)index

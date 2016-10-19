@@ -67,10 +67,10 @@ virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 1) = 8000
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 1) = 8000
 TestFnHandler
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 0) = c001
-virtual bool PrinterFnHandler::press(uint8_t, uint16_t)(0c001) = 1
+virtual bool PrinterFnHandler::press(uint8_t)(0c001) = 1
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 0) = c001
-virtual bool PrinterFnHandler::release(uint8_t, uint16_t)(0c001) = 1
+virtual bool PrinterFnHandler::release(uint8_t)(0c001) = 1
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 1) = 8000
-virtual bool PrinterFnHandler::press(uint8_t, uint16_t)(18000) = 0
+virtual bool PrinterFnHandler::press(uint8_t)(18000) = 0
 virtual uint16_t PrinterKeyMap::lookup(uint8_t)(0, 1) = 8000
-virtual bool PrinterFnHandler::release(uint8_t, uint16_t)(18000) = 0
+virtual bool PrinterFnHandler::release(uint8_t)(18000) = 0

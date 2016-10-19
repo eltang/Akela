@@ -28,7 +28,7 @@ protected:
   void handleKey (byte side, byte row, byte col);
 
 public:
-  M01 (AkelaKeyEventHandler *eh, AkelaKeyMap *km, AkelaAbstractScanner *scanner);
+  M01 (AkelaKeyEventHandler *eh, AkelaAbstractScanner *scanner);
 
   virtual void setup ();
   virtual void loop ();

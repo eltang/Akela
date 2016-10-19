@@ -19,11 +19,9 @@
 #include "Akela.h"
 
 AkelaKeyboard::AkelaKeyboard (AkelaAbstractScanner *scanner,
-                              AkelaKeyEventHandler *eventHandler,
-                              AkelaKeyMap *keymap) {
+                              AkelaKeyEventHandler *eventHandler) {
   this->scanner = scanner;
   this->keyEvent = eventHandler;
-  this->keymap = keymap;
 }
 
 AkelaKeyboard::~AkelaKeyboard () {
@@ -42,14 +40,10 @@ AkelaKeyboard::loop () {
 
 bool
 AkelaKeyboard::press (uint8_t index) {
-  uint16_t key = keymap->lookup (index);
-
-  return keyEvent->press (index, key);
+  return keyEvent->press (index);
 }
 
 bool
 AkelaKeyboard::release (uint8_t index) {
-  uint16_t key = keymap->lookup (index);
-
-  return keyEvent->release (index, key);
+  return keyEvent->release (index);
 }

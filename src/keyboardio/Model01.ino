@@ -43,10 +43,10 @@ static uint16_t keymap[] = KEYMAP
   );
 
 static M01HID hid = M01HID ();
-static AkelaKeyEventHandler eventHandler = AkelaKeyEventHandler (&hid);
 static AkelaKeyMap keyMap = AkelaKeyMap ((uint16_t *)keymap);
+static AkelaKeyEventHandler eventHandler = AkelaKeyEventHandler (&hid, &keyMap);
 static M01Scanner scanner = M01Scanner ();
-static M01 keyboard = M01 (&eventHandler, &keyMap, &scanner);
+static M01 keyboard = M01 (&eventHandler, &scanner);
 
 void setup () {
   keyboard.setup ();
