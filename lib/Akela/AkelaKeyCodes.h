@@ -113,4 +113,12 @@ enum {
 #define FN(kc)   (kc | (MOD_FN   << 8))
 
 #define KEYCODE(kc) (kc & ~0xff00)
-#define MODS(kc) (kc >> 8)
+
+#define IS_LCTL(kc) (kc & (MOD_LCTL << 8))
+#define IS_LSFT(kc) (kc & (MOD_LSFT << 8))
+#define IS_LALT(kc) (kc & (MOD_LALT << 8))
+#define IS_LGUI(kc) (kc & (MOD_LGUI << 8))
+#define IS_RCTL(kc) (kc & (MOD_RCTL << 8))
+#define IS_RSFT(kc) (kc & (MOD_RSFT << 8))
+#define IS_RALT(kc) (kc & (MOD_RALT << 8))
+#define IS_FN(kc)   (kc & (MOD_FN   << 8))

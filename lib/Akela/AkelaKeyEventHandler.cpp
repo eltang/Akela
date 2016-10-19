@@ -27,24 +27,22 @@ AkelaKeyEventHandler::~AkelaKeyEventHandler () {
 
 bool
 AkelaKeyEventHandler::press (uint8_t, uint16_t key) {
-  uint8_t mods = MODS (key);
-
-  if (mods & MOD_FN)
+  if (IS_FN (key))
     return false;
 
-  if (mods & MOD_LCTL)
+  if (IS_LCTL (key))
     HID->press (KC_LCTL);
-  if (mods & MOD_LSFT)
+  if (IS_LSFT (key))
     HID->press (KC_LSFT);
-  if (mods & MOD_LALT)
+  if (IS_LALT (key))
     HID->press (KC_LALT);
-  if (mods & MOD_LGUI)
+  if (IS_LGUI (key))
     HID->press (KC_LGUI);
-  if (mods & MOD_RCTL)
+  if (IS_RCTL (key))
     HID->press (KC_RCTL);
-  if (mods & MOD_RSFT)
+  if (IS_RSFT (key))
     HID->press (KC_RSFT);
-  if (mods & MOD_RALT)
+  if (IS_RALT (key))
     HID->press (KC_RALT);
 
   HID->press (KEYCODE(key));
@@ -54,26 +52,24 @@ AkelaKeyEventHandler::press (uint8_t, uint16_t key) {
 
 bool
 AkelaKeyEventHandler::release (uint8_t, uint16_t key) {
-  uint8_t mods = MODS (key);
-
-  if (mods & MOD_FN)
+  if (IS_FN (key))
     return false;
 
   HID->release (KEYCODE (key));
 
-  if (mods & MOD_LCTL)
+  if (IS_LCTL (key))
     HID->release (KC_LCTL);
-  if (mods & MOD_LSFT)
+ if (IS_LSFT (key))
     HID->release (KC_LSFT);
-  if (mods & MOD_LALT)
+  if (IS_LALT (key))
     HID->release (KC_LALT);
-  if (mods & MOD_LGUI)
+  if (IS_LGUI (key))
     HID->release (KC_LGUI);
-  if (mods & MOD_RCTL)
+  if (IS_RCTL (key))
     HID->release (KC_RCTL);
-  if (mods & MOD_RSFT)
+  if (IS_RSFT (key))
     HID->release (KC_RSFT);
-  if (mods & MOD_RALT)
+  if (IS_RALT (key))
     HID->release (KC_RALT);
 
   return true;
