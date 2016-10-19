@@ -18,8 +18,6 @@
 
 #pragma once
 
-#define MOD_FN_USER 0x4000
-
 class PrinterFnHandler : public AkelaKeyEventHandler {
  public:
   PrinterFnHandler (AkelaAbstractHID *HID) : AkelaKeyEventHandler (HID) {};
@@ -30,7 +28,7 @@ class PrinterFnHandler : public AkelaKeyEventHandler {
     if (!IS_FN (key))
       return AkelaKeyEventHandler::press (index, key);
 
-    k = !!(key & MOD_FN_USER);
+    k = !!CHECK_FN (key, SYS);
     std::cout << __PRETTY_FUNCTION__ << "(" << (int)index
               << std::hex << key << ") = " << (bool)k << std::endl;
 
@@ -43,7 +41,7 @@ class PrinterFnHandler : public AkelaKeyEventHandler {
     if (!IS_FN (key))
       return AkelaKeyEventHandler::release (index, key);
 
-    k = !!(key & MOD_FN_USER);
+    k = !!(CHECK_FN (key, SYS));
     std::cout << __PRETTY_FUNCTION__ << "(" << (int)index
               << std::hex << key << ") = " << (bool)k << std::endl;
 

@@ -103,6 +103,10 @@ enum {
   MOD_FN   = 0x8000
 };
 
+enum {
+  MOD_FN_SYS = 0x4000,
+};
+
 #define LCTL(kc) (kc | MOD_LCTL)
 #define LSFT(kc) (kc | MOD_LSFT)
 #define LALT(kc) (kc | MOD_LALT)
@@ -122,3 +126,5 @@ enum {
 #define IS_RSFT(kc) (kc & MOD_RSFT)
 #define IS_RALT(kc) (kc & MOD_RALT)
 #define IS_FN(kc)   (kc & MOD_FN)
+
+#define CHECK_FN(kc,fn) ((kc & MOD_FN) && (kc & MOD_FN_ ## fn))
