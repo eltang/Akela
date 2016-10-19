@@ -22,9 +22,6 @@ AkelaKeyMap::AkelaKeyMap (uint16_t *keymap) {
   this->keymap = keymap;
 }
 
-AkelaKeyMap::~AkelaKeyMap () {
-}
-
 uint16_t
 AkelaKeyMap::lookup (uint8_t index) {
   return this->keymap[index];

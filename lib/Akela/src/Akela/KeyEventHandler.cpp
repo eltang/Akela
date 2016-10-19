@@ -24,9 +24,6 @@ AkelaKeyEventHandler::AkelaKeyEventHandler (AkelaAbstractHID *HID,
   this->keymap = keymap;
 }
 
-AkelaKeyEventHandler::~AkelaKeyEventHandler () {
-}
-
 bool
 AkelaKeyEventHandler::press (uint8_t index) {
   uint16_t key = keymap->lookup (index);
