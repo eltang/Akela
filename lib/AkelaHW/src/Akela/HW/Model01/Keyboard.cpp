@@ -68,4 +68,6 @@ M01::loop ()
       handleKey (1, row, col);
     }
   }
+
+  AkelaKeyboard::loop ();
 }
