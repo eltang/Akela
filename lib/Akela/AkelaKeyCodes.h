@@ -111,3 +111,6 @@ enum {
 #define RSFT(kc) (kc | (MOD_RSFT << 8))
 #define RALT(kc) (kc | (MOD_RALT << 8))
 #define FN(kc)   (kc | (MOD_FN   << 8))
+
+#define KEYCODE(kc) (kc & ~0xff00)
+#define MODS(kc) (kc >> 8)

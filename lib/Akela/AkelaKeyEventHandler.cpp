@@ -27,7 +27,7 @@ AkelaKeyEventHandler::~AkelaKeyEventHandler () {
 
 bool
 AkelaKeyEventHandler::press (uint8_t, uint16_t key) {
-  uint8_t mods = key >> 8;
+  uint8_t mods = MODS (key);
 
   if (mods & MOD_FN)
     return false;
@@ -47,19 +47,19 @@ AkelaKeyEventHandler::press (uint8_t, uint16_t key) {
   if (mods & MOD_RALT)
     HID->press (KC_RALT);
 
-  HID->press (key & ~0xff00);
+  HID->press (KEYCODE(key));
 
   return true;
 }
 
 bool
 AkelaKeyEventHandler::release (uint8_t, uint16_t key) {
-  uint8_t mods = key >> 8;
+  uint8_t mods = MODS (key);
 
   if (mods & MOD_FN)
     return false;
 
-  HID->release (key & ~0xff00);
+  HID->release (KEYCODE (key));
 
   if (mods & MOD_LCTL)
     HID->release (KC_LCTL);
