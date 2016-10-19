@@ -22,9 +22,6 @@
 #include "KeyboardioHID.h"
 
 class M01HID : public AkelaAbstractHID {
- protected:
-  Keyboard_ kb;
-
  public:
   M01HID ();
 

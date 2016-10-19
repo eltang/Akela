@@ -23,20 +23,20 @@ M01HID::M01HID () {
 
 void
 M01HID::press (uint8_t code) {
-  kb.press (code);
+  Keyboard.press (code);
 }
 
 void
 M01HID::release (uint8_t code) {
-  kb.release (code);
+  Keyboard.release (code);
 }
 
 void
 M01HID::setup () {
-  kb.begin ();
+  Keyboard.begin ();
 }
 
 void
 M01HID::loop () {
-  kb.sendReport ();
+  Keyboard.sendReport ();
 }
