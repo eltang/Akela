@@ -8,7 +8,7 @@ FQBN								= keyboardio:avr:model01
 BUILD_PATH				 := $(shell mktemp -d 2>/dev/null || mktemp -d -t 'build')
 OUTPUT_PATH					= ./out
 ARDUINO_IDE_VERSION	= 100607
-SKETCH							= AkelaTest
+SKETCH							= Model01
 
 AVR_SIZE						= $(ARDUINO_TOOLS_PATH)/avr/bin/avr-size
 
@@ -32,6 +32,7 @@ compile: ${OUTPUT_PATH}
 		-tools $(ARDUINO_PATH)/tools-builder  \
 		-fqbn $(FQBN) \
     -libraries ../../lib \
+		-libraries ${KBDIO_PATH} \
     ${VERBOSE} \
 		-build-path $(BUILD_PATH) \
 		-ide-version $(ARDUINO_IDE_VERSION) \
