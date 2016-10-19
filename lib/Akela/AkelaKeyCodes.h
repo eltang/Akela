@@ -91,34 +91,34 @@ enum {
 };
 
 enum {
-  MOD_LCTL = 0x01,
-  MOD_LSFT = 0x02,
-  MOD_LALT = 0x04,
-  MOD_LGUI = 0x08,
+  MOD_LCTL = 0x0100,
+  MOD_LSFT = 0x0200,
+  MOD_LALT = 0x0400,
+  MOD_LGUI = 0x0800,
 
-  MOD_RCTL = 0x10,
-  MOD_RSFT = 0x20,
-  MOD_RALT = 0x40,
+  MOD_RCTL = 0x1000,
+  MOD_RSFT = 0x2000,
+  MOD_RALT = 0x4000,
 
-  MOD_FN   = 0x80
+  MOD_FN   = 0x8000
 };
 
-#define LCTL(kc) (kc | (MOD_LCTL << 8))
-#define LSFT(kc) (kc | (MOD_LSFT << 8))
-#define LALT(kc) (kc | (MOD_LALT << 8))
-#define LGUI(kc) (kc | (MOD_LGUI << 8))
-#define RCTL(kc) (kc | (MOD_RCTL << 8))
-#define RSFT(kc) (kc | (MOD_RSFT << 8))
-#define RALT(kc) (kc | (MOD_RALT << 8))
-#define FN(kc)   (kc | (MOD_FN   << 8))
+#define LCTL(kc) (kc | MOD_LCTL)
+#define LSFT(kc) (kc | MOD_LSFT)
+#define LALT(kc) (kc | MOD_LALT)
+#define LGUI(kc) (kc | MOD_LGUI)
+#define RCTL(kc) (kc | MOD_RCTL)
+#define RSFT(kc) (kc | MOD_RSFT)
+#define RALT(kc) (kc | MOD_RALT)
+#define FN(kc)   (kc | MOD_FN)
 
 #define KEYCODE(kc) (kc & ~0xff00)
 
-#define IS_LCTL(kc) (kc & (MOD_LCTL << 8))
-#define IS_LSFT(kc) (kc & (MOD_LSFT << 8))
-#define IS_LALT(kc) (kc & (MOD_LALT << 8))
-#define IS_LGUI(kc) (kc & (MOD_LGUI << 8))
-#define IS_RCTL(kc) (kc & (MOD_RCTL << 8))
-#define IS_RSFT(kc) (kc & (MOD_RSFT << 8))
-#define IS_RALT(kc) (kc & (MOD_RALT << 8))
-#define IS_FN(kc)   (kc & (MOD_FN   << 8))
+#define IS_LCTL(kc) (kc & MOD_LCTL)
+#define IS_LSFT(kc) (kc & MOD_LSFT)
+#define IS_LALT(kc) (kc & MOD_LALT)
+#define IS_LGUI(kc) (kc & MOD_LGUI)
+#define IS_RCTL(kc) (kc & MOD_RCTL)
+#define IS_RSFT(kc) (kc & MOD_RSFT)
+#define IS_RALT(kc) (kc & MOD_RALT)
+#define IS_FN(kc)   (kc & MOD_FN)
