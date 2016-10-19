@@ -16,8 +16,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <avr/wdt.h>
-
 #include "Akela.h"
 #include "AkelaHW.h"
 
@@ -51,7 +49,6 @@ static M01Scanner scanner = M01Scanner ();
 static M01 keyboard = M01 (&eventHandler, &keyMap, &scanner);
 
 void setup () {
-  wdt_disable ();
   keyboard.setup ();
 }
 

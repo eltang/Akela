@@ -16,6 +16,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <avr/wdt.h>
+
 #include "Akela/HW/Model01.h"
 
 M01::M01 (AkelaKeyEventHandler *eh, AkelaKeyMap *km,
@@ -28,6 +30,7 @@ M01::M01 (AkelaKeyEventHandler *eh, AkelaKeyMap *km,
 void
 M01::setup ()
 {
+  wdt_disable ();
   AkelaKeyboard::setup ();
 }
 
