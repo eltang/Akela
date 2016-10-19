@@ -16,18 +16,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "Akela.h"
-
-#include "TestCommon.h"
-
-#include "PrinterKeymap.h"
-#include "PrinterHID.h"
-#include "TestKeymaps.h"
-#include "PressReleaseKb.h"
-#include "NoOpScanner.h"
-
-// -------------------------------------------------------------------------------------
-
 int
 TestMods () {
   PrinterHID hid = PrinterHID ();

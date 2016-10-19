@@ -16,40 +16,11 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "Akela.h"
-
-#include "TestCommon.h"
-
-#include "PrinterKeymap.h"
-#include "PrinterHID.h"
-#include "TestKeymaps.h"
-#include "PressReleaseKb.h"
-#include "PrinterFnHandler.h"
-#include "NoOpScanner.h"
-
-// -------------------------------------------------------------------------------------
-
 int
-TestFn () {
+TestBasics () {
   PrinterHID hid = PrinterHID ();
   AkelaKeyEventHandler EH = AkelaKeyEventHandler (&hid);
-  PrinterKeyMap keymap = PrinterKeyMap ((uint16_t *)fn_keymap);
-  NoOpScanner scanner = NoOpScanner ();
-  PressReleaseKeyboard keyboard = PressReleaseKeyboard (&scanner, &EH, &keymap);
-
-  std::cout << __func__ << std::endl;
-
-  keyboard.setup ();
-  keyboard.test ();
-
-  return 0;
-}
-
-int
-TestFnHandler () {
-  PrinterHID hid = PrinterHID ();
-  PrinterFnHandler EH = PrinterFnHandler (&hid);
-  PrinterKeyMap keymap = PrinterKeyMap ((uint16_t *)fn_keymap);
+  PrinterKeyMap keymap = PrinterKeyMap ((uint16_t *)empty_keymap);
   NoOpScanner scanner = NoOpScanner ();
   PressReleaseKeyboard keyboard = PressReleaseKeyboard (&scanner, &EH, &keymap);
 

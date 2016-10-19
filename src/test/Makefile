@@ -22,13 +22,23 @@ AKELA_HEADERS = \
 	../../lib/Akela/src/Akela/KeyCodes.h \
 	../../lib/Akela/src/Akela/AbstractScanner.h
 
-TEST_SOURCES = AkelaTest.cpp TestBasics.cpp TestMods.cpp TestFn.cpp
+TEST_SOURCES = \
+	AkelaTest.cpp \
+	TestCase/Basics.cpp \
+	TestCase/Mods.cpp \
+	TestCase/Fn.cpp
 
-TEST_HEADERS = Tests.h TestCommon.h PrinterHID.h PrinterKeymap.h \
-	TestKeymaps.h PressReleaseKb.h PrinterFnHandler.h
+TEST_HEADERS = \
+	Tests.h \
+	stubs/HID/Printer.h \
+	stubs/KeyMap/Printer.h \
+	stubs/keymaps.h \
+	stubs/Keyboard/PressRelease.h \
+	stubs/EventHandler/FnPrinter.h \
+  stubs/Scanner/NoOp.h
 
 AkelaTest: ${TEST_SOURCES} ${AKELA_SOURCES} ${AKELA_HEADERS} ${TEST_HEADERS}
-	${CXX} ${CXXFLAGS} ${AKELA_SOURCES} ${TEST_SOURCES} -o $@
+	${CXX} ${CXXFLAGS} ${AKELA_SOURCES} AkelaTest.cpp -o $@
 
 clean:
 	rm -f AkelaTest test.out

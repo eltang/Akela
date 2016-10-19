@@ -18,7 +18,21 @@
 
 #include "Akela.h"
 
-#include "Tests.h"
+#define LAYOUT_SIZE 64
+
+#include <iostream>
+#include <iomanip>
+
+#include "stubs/HID/Printer.h"
+#include "stubs/KeyMap/Printer.h"
+#include "stubs/keymaps.h"
+#include "stubs/Keyboard/PressRelease.h"
+#include "stubs/EventHandler/FnPrinter.h"
+#include "stubs/Scanner/NoOp.h"
+
+#include "TestCase/Basics.cpp"
+#include "TestCase/Mods.cpp"
+#include "TestCase/Fn.cpp"
 
 int
 main (void) {

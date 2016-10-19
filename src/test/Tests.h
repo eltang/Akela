@@ -18,6 +18,19 @@
 
 #pragma once
 
+#include "Akela.h"
+
+#define LAYOUT_SIZE 64
+
+#include <iostream>
+#include <iomanip>
+
+#include "stubs/HID/HID.h"
+#include "stubs/KeyMap/Printer.h"
+#include "stubs/keymaps.h"
+#include "stubs/Keyboard/PressRelease.h"
+#include "stubs/EventHandler/FnPrinter.h"
+
 int TestBasics ();
 int TestMods ();
 int TestFn ();
