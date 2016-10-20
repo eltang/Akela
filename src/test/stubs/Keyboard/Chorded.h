@@ -40,6 +40,36 @@ class ChordedKeyboard : public Akela::Keyboard {
       release (i);
       loop ();
     }
+
+    std::cout << "Tapping the momentary switcher..." << std::endl;
+    press (1);
+    loop ();
+    release (1);
+    loop ();
+
+    std::cout << "Tapping the 0th key" << std::endl;
+    press (0);
+    loop ();
+    release (0);
+    loop ();
+
+    std::cout << "Tapping the toggler" << std::endl;
+    press (31);
+    loop ();
+    release (31);
+    loop ();
+
+    std::cout << "Tapping the 0th key" << std::endl;
+    press (0);
+    loop ();
+    release (0);
+    loop ();
+
+    std::cout << "Tapping the previous toggler..." << std::endl;
+    press (31);
+    loop ();
+    release (31);
+    loop ();
   }
 
   ChordedKeyboard (Akela::AbstractScanner *s,

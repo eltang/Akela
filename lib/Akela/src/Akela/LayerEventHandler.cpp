@@ -21,6 +21,7 @@
 Akela::LayerEventHandler::LayerEventHandler (Akela::AbstractHID *HID,
                                              Akela::LayeredKeyMap *keymap)
   : Akela::KeyEventHandler (HID, keymap) {
+  lastMoveIndex = 0xff;
 }
 
 bool
@@ -31,7 +32,13 @@ Akela::LayerEventHandler::press (uint8_t index) {
     return Akela::KeyEventHandler::press (index);
 
   Akela::LayeredKeyMap *km = (Akela::LayeredKeyMap *)keymap;
+  bool move = !!(key & 0x0010);
   uint8_t layer = key & ~0xfffc;
+
+  if (move)
+    lastMoveIndex = index;
+  else
+    lastMoveIndex = 0xff;
 
   km->layer_move (layer);
 
@@ -41,6 +48,11 @@ Akela::LayerEventHandler::press (uint8_t index) {
 bool
 Akela::LayerEventHandler::release (uint8_t index) {
   uint16_t key = keymap->lookup (index);
+
+  if (lastMoveIndex == index) {
+    lastMoveIndex = 0xff;
+    return false;
+  }
 
   if (!CHECK_FN (key, LAYER))
     return Akela::KeyEventHandler::release (index);

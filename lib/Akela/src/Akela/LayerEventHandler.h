@@ -21,11 +21,16 @@
 #include "Akela.h"
 
 #define MOD_FN_LAYER 0x2000
+#define MOD_FN_LAYER_MOMENTARY 0x0000
+#define MOD_FN_LAYER_MOVE 0x0010
 
-#define L(n) FN(n | MOD_FN_LAYER)
+#define ML(n) FN(n | MOD_FN_LAYER | MOD_FN_LAYER_MOMENTARY)
+#define L(n)  FN(n | MOD_FN_LAYER | MOD_FN_LAYER_MOVE)
 
 namespace Akela {
   class LayerEventHandler : public Akela::KeyEventHandler {
+  protected:
+    uint8_t lastMoveIndex;
   public:
     LayerEventHandler (Akela::AbstractHID *HID, Akela::LayeredKeyMap *keymap);
 

@@ -388,3 +388,30 @@ virtual void PrinterHID::press(uint8_t)(0x27)
 virtual uint16_t LayerPrinterKeyMap::lookup(uint8_t)(0, 5) = 27
 virtual uint16_t LayerPrinterKeyMap::lookup(uint8_t)(0, 5) = 27
 virtual void PrinterHID::release(uint8_t)(0x27)
+Tapping the momentary switcher...
+virtual uint16_t LayerPrinterKeyMap::lookup(uint8_t)(0, 1) = a001
+virtual uint16_t LayerPrinterKeyMap::lookup(uint8_t)(1, 1) = a000
+Tapping the 0th key
+virtual uint16_t LayerPrinterKeyMap::lookup(uint8_t)(0, 0) = 27
+virtual uint16_t LayerPrinterKeyMap::lookup(uint8_t)(0, 0) = 27
+virtual void PrinterHID::press(uint8_t)(0x27)
+virtual uint16_t LayerPrinterKeyMap::lookup(uint8_t)(0, 0) = 27
+virtual uint16_t LayerPrinterKeyMap::lookup(uint8_t)(0, 0) = 27
+virtual void PrinterHID::release(uint8_t)(0x27)
+Tapping the toggler
+virtual uint16_t LayerPrinterKeyMap::lookup(uint8_t)(0, 1f) = a011
+virtual uint16_t LayerPrinterKeyMap::lookup(uint8_t)(1, 1f) = 1e
+Tapping the 0th key
+virtual uint16_t LayerPrinterKeyMap::lookup(uint8_t)(1, 0) = 1e
+virtual uint16_t LayerPrinterKeyMap::lookup(uint8_t)(1, 0) = 1e
+virtual void PrinterHID::press(uint8_t)(0x1e)
+virtual uint16_t LayerPrinterKeyMap::lookup(uint8_t)(1, 0) = 1e
+virtual uint16_t LayerPrinterKeyMap::lookup(uint8_t)(1, 0) = 1e
+virtual void PrinterHID::release(uint8_t)(0x1e)
+Tapping the previous toggler...
+virtual uint16_t LayerPrinterKeyMap::lookup(uint8_t)(1, 1f) = 1e
+virtual uint16_t LayerPrinterKeyMap::lookup(uint8_t)(1, 1f) = 1e
+virtual void PrinterHID::press(uint8_t)(0x1e)
+virtual uint16_t LayerPrinterKeyMap::lookup(uint8_t)(1, 1f) = 1e
+virtual uint16_t LayerPrinterKeyMap::lookup(uint8_t)(1, 1f) = 1e
+virtual void PrinterHID::release(uint8_t)(0x1e)

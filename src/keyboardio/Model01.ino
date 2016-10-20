@@ -35,7 +35,7 @@ static uint16_t keymap[][64] = {
   ,KC_PGDN    ,KC_Z       ,KC_X       ,KC_C       ,KC_V       ,KC_B       ,KC_ESC
 
                    ,KC_LCTL    ,KC_BSPC    ,KC_LGUI    ,KC_LSFT
-                               ,L(1)
+                               ,ML(1)
 
    // right hand
 
@@ -45,7 +45,7 @@ static uint16_t keymap[][64] = {
    ,KC_NO      ,KC_N       ,KC_M       ,KC_COMM    ,KC_DOT     ,KC_SLSH    ,KC_MINS
 
                    ,KC_RSFT    ,KC_RALT    ,KC_SPC     ,KC_RCTL
-                               ,L(1)
+                               ,ML(1)
   ),
   [FN] = KEYMAP (
    KC_NO      ,KC_F1      ,KC_F2      ,KC_F3      ,KC_F4      ,KC_F5      ,KC_NO
