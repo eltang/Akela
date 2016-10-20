@@ -25,7 +25,8 @@ class M01HID : public AkelaAbstractHID {
  public:
   enum Page {
     KEYBOARD,
-    CONSUMER
+    CONSUMER,
+    SYSTEM
   };
   M01HID ();
 

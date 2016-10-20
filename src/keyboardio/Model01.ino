@@ -57,7 +57,7 @@ static uint16_t keymap[][64] = {
   ,L(0)
 
   ,KC_NO      ,KC_F6      ,KC_F7      ,KC_F8      ,KC_F9      ,L(0)     ,KC_NO
-              ,CC_PLPS    ,KC_LCBRC   ,KC_RCBRC   ,KC_LBRC    ,KC_RBRC    ,KC_NO
+              ,CC_PLPS    ,KC_LCBRC   ,KC_RCBRC   ,KC_LBRC    ,KC_RBRC    ,SC_SLP
   ,KC_DEL     ,KC_LEFT    ,KC_DOWN    ,KC_UP      ,KC_RGHT    ,KC_F11     ,KC_F12
   ,KC_NO      ,CC_VDN     ,CC_VUP     ,KC_NO      ,KC_NO      ,KC_BSLS    ,KC_PIPE
 

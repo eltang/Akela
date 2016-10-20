@@ -21,8 +21,10 @@
 #include "Akela.h"
 
 #define MOD_FN_USER_CC 0x2000
+#define MOD_FN_USER_SC 0x1000
 
 #define CC(n) FN(n | MOD_FN_USER | MOD_FN_USER_CC)
+#define SC(n) FN(n | MOD_FN_USER | MOD_FN_USER_SC)
 
 #define CHECK_USER(kc,u) (CHECK_FN (kc, USER) && (kc & MOD_FN_USER_ ## u))
 
@@ -34,7 +36,9 @@ enum {
   CC_STOP = CC(HID_CONSUMER_STOP),
   CC_PRV  = CC(HID_CONSUMER_SCAN_PREVIOUS_TRACK),
   CC_NXT  = CC(HID_CONSUMER_SCAN_NEXT_TRACK),
-  CC_EJT  = CC(HID_CONSUMER_EJECT)
+  CC_EJT  = CC(HID_CONSUMER_EJECT),
+
+  SC_SLP  = SC(HID_SYSTEM_SLEEP)
 };
 
 class M01EventHandler : public AkelaLayerEventHandler {

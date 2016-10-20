@@ -30,6 +30,9 @@ M01HID::press (M01HID::Page page, uint8_t code) {
   case CONSUMER:
     ConsumerControl.press (code);
     break;
+  case SYSTEM:
+    SystemControl.press (code);
+    break;
   }
 }
 
@@ -41,6 +44,9 @@ M01HID::release (M01HID::Page page, uint8_t code) {
     break;
   case CONSUMER:
     ConsumerControl.release (code);
+    break;
+  case SYSTEM:
+    SystemControl.release ();
     break;
   }
 }

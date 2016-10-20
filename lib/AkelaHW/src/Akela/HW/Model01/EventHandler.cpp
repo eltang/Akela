@@ -26,21 +26,33 @@ M01EventHandler::M01EventHandler (AkelaAbstractHID *HID,
 bool
 M01EventHandler::press (uint8_t index) {
   uint16_t key = keymap->lookup (index);
+  M01HID::Page page;
 
-  if (!CHECK_USER (key, CC))
+  if (!CHECK_USER (key, CC) && !CHECK_USER (key, SC))
     return AkelaLayerEventHandler::press (index);
 
-  ((M01HID *)HID)->press (M01HID::CONSUMER, KEYCODE (key));
+  if (CHECK_USER (key, CC))
+    page = M01HID::CONSUMER;
+  else
+    page = M01HID::SYSTEM;
+
+  ((M01HID *)HID)->press (page, KEYCODE (key));
   return true;
 }
 
 bool
 M01EventHandler::release (uint8_t index) {
   uint16_t key = keymap->lookup (index);
+  M01HID::Page page;
 
   if (!CHECK_USER (key, CC))
     return AkelaLayerEventHandler::release (index);
 
-  ((M01HID *)HID)->release (M01HID::CONSUMER, KEYCODE (key));
+  if (CHECK_USER (key, CC))
+    page = M01HID::CONSUMER;
+  else
+    page = M01HID::SYSTEM;
+
+  ((M01HID *)HID)->release (page, KEYCODE (key));
   return true;
 }
