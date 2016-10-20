@@ -19,28 +19,23 @@
 #pragma once
 
 #include "Akela.h"
-#include "KeyboardioScanner.h"
+
+#define LED_COUNT 64
 
 namespace M01 {
-  class Scanner : public Akela::AbstractScanner {
-  private:
-    void enable_power ();
+  class LedControl {
+  protected:
+    Scanner *scanner;
 
+    void enable_high_power ();
+    void boot_animation ();
   public:
-    typedef struct {
-      keydata_t left;
-      keydata_t right;
-    } MatrixState;
+    LedControl (Scanner *scanner);
 
-    Scanner ();
-
-    virtual const void *scan ();
     virtual void setup ();
 
-    static KeyboardioScanner leftHand;
-    static KeyboardioScanner rightHand;
-
-  protected:
-    MatrixState matrixState;
+    void set_color(uint8_t i, cRGB crgb);
+    void set_color(cRGB crgb);
+    void sync ();
   };
 };

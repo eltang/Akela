@@ -42,11 +42,14 @@ enum {
 };
 
 namespace M01 {
-  class EventHandler : public Akela::LayerEventHandler {
+  class EventHandler : public Akela::LayerEventHandler, public LedControl {
   public:
-    EventHandler (Akela::AbstractHID *HID, Akela::LayeredKeyMap *keymap);
+    EventHandler (Akela::AbstractHID *HID, Akela::LayeredKeyMap *keymap,
+                  Scanner *scanner);
 
     virtual bool press (uint8_t index);
     virtual bool release (uint8_t index);
+
+    virtual void setup ();
   };
 };

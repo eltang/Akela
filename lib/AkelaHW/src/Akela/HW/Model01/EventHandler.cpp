@@ -19,8 +19,9 @@
 #include "Akela/HW/Model01.h"
 
 M01::EventHandler::EventHandler (Akela::AbstractHID *HID,
-                                 Akela::LayeredKeyMap *keymap)
-  : Akela::LayerEventHandler (HID, keymap) {
+                                 Akela::LayeredKeyMap *keymap,
+                                 M01::Scanner *scanner)
+  : Akela::LayerEventHandler (HID, keymap), M01::LedControl (scanner) {
 }
 
 bool
@@ -55,4 +56,10 @@ M01::EventHandler::release (uint8_t index) {
 
   ((::M01::HID *)HID)->release (page, KEYCODE (key));
   return true;
+}
+
+void
+M01::EventHandler::setup () {
+  Akela::LayerEventHandler::setup ();
+  M01::LedControl::setup ();
 }
