@@ -27,6 +27,7 @@ class AkelaKeyEventHandler {
 
  public:
   AkelaKeyEventHandler (AkelaAbstractHID *HID, AkelaKeyMap *keymap);
+  virtual ~AkelaKeyEventHandler ();
 
   virtual bool press (uint8_t index);
   virtual bool release (uint8_t index);

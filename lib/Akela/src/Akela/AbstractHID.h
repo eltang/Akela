@@ -20,6 +20,8 @@
 
 class AkelaAbstractHID {
  public:
+  virtual ~AkelaAbstractHID () {};
+
   virtual void press (uint8_t code) = 0;
   virtual void release (uint8_t code) = 0;
 

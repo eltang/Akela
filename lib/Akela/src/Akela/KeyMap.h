@@ -24,6 +24,7 @@ class AkelaKeyMap {
 
  public:
   AkelaKeyMap (uint16_t *keymap);
+  virtual ~AkelaKeyMap ();
 
   virtual uint16_t lookup (uint8_t index);
 };
