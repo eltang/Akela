@@ -1,4 +1,4 @@
-/* -*- mode: c++ -*-
+/*
  * Akela -- Animated Keyboard Extension Library for Arduino
  * Copyright (C) 2016  Gergely Nagy
  *
@@ -16,36 +16,18 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#pragma once
+
 #include "Akela.h"
 
-#define LAYOUT_SIZE 64
+#define MOD_FN_LAYER 0x2000
 
-#include <iostream>
-#include <iomanip>
+#define L(n) FN(n | MOD_FN_LAYER)
 
-#include "stubs/HID/Printer.h"
-#include "stubs/KeyMap/Printer.h"
-#include "stubs/KeyMap/LayerPrinter.h"
-#include "stubs/keymaps.h"
-#include "stubs/Keyboard/PressRelease.h"
-#include "stubs/Keyboard/PressReleaseLayered.h"
-#include "stubs/Keyboard/Chorded.h"
-#include "stubs/EventHandler/FnPrinter.h"
-#include "stubs/Scanner/NoOp.h"
+class AkelaLayerEventHandler : public AkelaKeyEventHandler {
+ public:
+  AkelaLayerEventHandler (AkelaAbstractHID *HID, AkelaLayeredKeyMap *keymap);
 
-#include "TestCase/Basics.cpp"
-#include "TestCase/Mods.cpp"
-#include "TestCase/Fn.cpp"
-#include "TestCase/Layers.cpp"
-
-int
-main (void) {
-  TestBasics ();
-  TestMods ();
-  TestFn ();
-  TestFnHandler ();
-  TestLayers ();
-  TestLayerKeys ();
-
-  return 0;
-}
+  virtual bool press (uint8_t index);
+  virtual bool release (uint8_t index);
+};

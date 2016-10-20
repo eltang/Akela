@@ -15,7 +15,8 @@ AKELA_SOURCES = \
 	../../lib/Akela/src/Akela/Keyboard.cpp \
 	../../lib/Akela/src/Akela/KeyMap.cpp \
 	../../lib/Akela/src/Akela/LayeredKeyMap.cpp \
-	../../lib/Akela/src/Akela/KeyEventHandler.cpp
+	../../lib/Akela/src/Akela/KeyEventHandler.cpp \
+	../../lib/Akela/src/Akela/LayerEventHandler.cpp
 AKELA_HEADERS = \
 	${AKELA_SOURCES:.cpp=.h} \
 	../../lib/Akela/src/Akela.h \
@@ -36,6 +37,7 @@ TEST_HEADERS = \
 	stubs/KeyMap/Printer.h \
   stubs/KeyMap/LayerPrinter.h \
 	stubs/keymaps.h \
+	stubs/Keyboard/Chorded.h \
 	stubs/Keyboard/PressRelease.h \
 	stubs/Keyboard/PressReleaseLayered.h \
 	stubs/EventHandler/FnPrinter.h \

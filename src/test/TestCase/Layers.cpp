@@ -31,3 +31,19 @@ TestLayers () {
 
   return 0;
 }
+
+int
+TestLayerKeys () {
+  PrinterHID hid = PrinterHID ();
+  LayerPrinterKeyMap keymap = LayerPrinterKeyMap ((uint16_t **)layer_key_keymap, 64);
+  AkelaLayerEventHandler EH = AkelaLayerEventHandler (&hid, &keymap);
+  NoOpScanner scanner = NoOpScanner ();
+  ChordedKeyboard keyboard = ChordedKeyboard (&scanner, &EH);
+
+  std::cout << __func__ << std::endl;
+
+  keyboard.setup ();
+  keyboard.test ();
+
+  return 0;
+}

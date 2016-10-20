@@ -16,36 +16,34 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "Akela.h"
+#pragma once
 
-#define LAYOUT_SIZE 64
+class ChordedKeyboard : public AkelaKeyboard {
+ public:
+  void test () {
+    press (0);
+    loop ();
+    release (0);
+    loop ();
 
-#include <iostream>
-#include <iomanip>
+    press (1);
+    for (int i = 2; i < 6; i++) {
+      press (i);
+      loop ();
+      release (i);
+      loop ();
+    }
+    release (1);
+    for (int i = 2; i < 6; i++) {
+      press (i);
+      loop ();
+      release (i);
+      loop ();
+    }
+  }
 
-#include "stubs/HID/Printer.h"
-#include "stubs/KeyMap/Printer.h"
-#include "stubs/KeyMap/LayerPrinter.h"
-#include "stubs/keymaps.h"
-#include "stubs/Keyboard/PressRelease.h"
-#include "stubs/Keyboard/PressReleaseLayered.h"
-#include "stubs/Keyboard/Chorded.h"
-#include "stubs/EventHandler/FnPrinter.h"
-#include "stubs/Scanner/NoOp.h"
-
-#include "TestCase/Basics.cpp"
-#include "TestCase/Mods.cpp"
-#include "TestCase/Fn.cpp"
-#include "TestCase/Layers.cpp"
-
-int
-main (void) {
-  TestBasics ();
-  TestMods ();
-  TestFn ();
-  TestFnHandler ();
-  TestLayers ();
-  TestLayerKeys ();
-
-  return 0;
-}
+  ChordedKeyboard (AkelaAbstractScanner *s,
+                   AkelaKeyEventHandler *eh)
+    : AkelaKeyboard (s, eh) {
+  };
+};
