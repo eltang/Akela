@@ -69,4 +69,5 @@ M01::HID::setup () {
 void
 M01::HID::loop () {
   Keyboard.sendReport ();
+  Keyboard.releaseAll ();
 }
