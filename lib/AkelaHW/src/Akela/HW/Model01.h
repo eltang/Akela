@@ -22,5 +22,6 @@
 
 #include "Model01/HID.h"
 #include "Model01/Scanner.h"
+#include "Model01/EventHandler.h"
 #include "Model01/Keyboard.h"
 #include "Model01/Utils.h"

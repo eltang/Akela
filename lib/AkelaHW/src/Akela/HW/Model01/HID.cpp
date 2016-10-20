@@ -22,13 +22,37 @@ M01HID::M01HID () {
 }
 
 void
+M01HID::press (M01HID::Page page, uint8_t code) {
+  switch (page) {
+  case KEYBOARD:
+    Keyboard.press (code);
+    break;
+  case CONSUMER:
+    ConsumerControl.press (code);
+    break;
+  }
+}
+
+void
+M01HID::release (M01HID::Page page, uint8_t code) {
+  switch (page) {
+  case KEYBOARD:
+    Keyboard.release (code);
+    break;
+  case CONSUMER:
+    ConsumerControl.release (code);
+    break;
+  }
+}
+
+void
 M01HID::press (uint8_t code) {
-  Keyboard.press (code);
+  press (KEYBOARD, code);
 }
 
 void
 M01HID::release (uint8_t code) {
-  Keyboard.release (code);
+  release (KEYBOARD, code);
 }
 
 void

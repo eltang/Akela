@@ -1,4 +1,4 @@
-/* -*- mode: c++ -*-
+/*
  * Akela -- Animated Keyboard Extension Library for Arduino
  * Copyright (C) 2016  Gergely Nagy
  *
@@ -16,24 +16,31 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#pragma once
+#include "Akela/HW/Model01.h"
 
-#include "Akela.h"
-#include "KeyboardioHID.h"
+M01EventHandler::M01EventHandler (AkelaAbstractHID *HID,
+                                  AkelaLayeredKeyMap *keymap)
+  : AkelaLayerEventHandler (HID, keymap) {
+}
 
-class M01HID : public AkelaAbstractHID {
- public:
-  enum Page {
-    KEYBOARD,
-    CONSUMER
-  };
-  M01HID ();
+bool
+M01EventHandler::press (uint8_t index) {
+  uint16_t key = keymap->lookup (index);
 
-  virtual void press (uint8_t code);
-  virtual void release (uint8_t code);
-  virtual void press (Page page, uint8_t code);
-  virtual void release (Page page, uint8_t code);
+  if (!CHECK_USER (key, CC))
+    return AkelaLayerEventHandler::press (index);
 
-  virtual void setup ();
-  virtual void loop ();
-};
+  ((M01HID *)HID)->press (M01HID::CONSUMER, KEYCODE (key));
+  return true;
+}
+
+bool
+M01EventHandler::release (uint8_t index) {
+  uint16_t key = keymap->lookup (index);
+
+  if (!CHECK_USER (key, CC))
+    return AkelaLayerEventHandler::release (index);
+
+  ((M01HID *)HID)->release (M01HID::CONSUMER, KEYCODE (key));
+  return true;
+}

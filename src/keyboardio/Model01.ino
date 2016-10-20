@@ -86,7 +86,7 @@ static uint16_t keymap[][64] = {
 
 static M01HID hid = M01HID ();
 static AkelaLayeredKeyMap keyMap = AkelaLayeredKeyMap ((uint16_t **)keymap, 64);
-static AkelaLayerEventHandler eventHandler = AkelaLayerEventHandler (&hid, &keyMap);
+static M01EventHandler eventHandler = M01EventHandler (&hid, &keyMap);
 static M01Scanner scanner = M01Scanner ();
 static M01 keyboard = M01 (&eventHandler, &scanner);
 
