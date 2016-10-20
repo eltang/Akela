@@ -156,3 +156,8 @@ enum {
 #define IS_FN(kc)   (kc & MOD_FN)
 
 #define CHECK_FN(kc,fn) ((kc & MOD_FN) && (kc & MOD_FN_ ## fn))
+
+// ---------------
+#define KC_PIPE  LSFT(KC_BSLS)
+#define KC_LCBRC LSFT(KC_LBRC)
+#define KC_RCBRC LSFT(KC_RBRC)
