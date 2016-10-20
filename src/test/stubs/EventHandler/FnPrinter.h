@@ -30,7 +30,7 @@ class PrinterFnHandler : public AkelaKeyEventHandler {
     if (!IS_FN (key))
       return AkelaKeyEventHandler::press (index);
 
-    k = !!CHECK_FN (key, SYS);
+    k = !!CHECK_FN (key, USER);
     std::cout << __PRETTY_FUNCTION__ << "(" << (int)index
               << std::hex << key << ") = " << (bool)k << std::endl;
 
@@ -44,7 +44,7 @@ class PrinterFnHandler : public AkelaKeyEventHandler {
     if (!IS_FN (key))
       return AkelaKeyEventHandler::release (index);
 
-    k = !!(CHECK_FN (key, SYS));
+    k = !!(CHECK_FN (key, USER));
     std::cout << __PRETTY_FUNCTION__ << "(" << (int)index
               << std::hex << key << ") = " << (bool)k << std::endl;
 

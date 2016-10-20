@@ -132,7 +132,7 @@ enum {
 };
 
 enum {
-  MOD_FN_SYS = 0x4000,
+  MOD_FN_USER = 0x4000,
 };
 
 #define LCTL(kc) (kc | MOD_LCTL)
