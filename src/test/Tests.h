@@ -27,6 +27,7 @@
 
 #include "stubs/HID/HID.h"
 #include "stubs/KeyMap/Printer.h"
+#include "stubs/KeyMap/LayerPrinter.h"
 #include "stubs/keymaps.h"
 #include "stubs/Keyboard/PressRelease.h"
 #include "stubs/EventHandler/FnPrinter.h"

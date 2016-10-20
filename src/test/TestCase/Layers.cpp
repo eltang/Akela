@@ -1,4 +1,4 @@
-/*
+/* -*- mode: c++ -*-
  * Akela -- Animated Keyboard Extension Library for Arduino
  * Copyright (C) 2016  Gergely Nagy
  *
@@ -16,18 +16,18 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#pragma once
+int
+TestLayers () {
+  PrinterHID hid = PrinterHID ();
+  LayerPrinterKeyMap keymap = LayerPrinterKeyMap ((uint16_t **)layered_keymap, 64);
+  AkelaKeyEventHandler EH = AkelaKeyEventHandler (&hid, &keymap);
+  NoOpScanner scanner = NoOpScanner ();
+  PressReleaseLayeredKeyboard keyboard = PressReleaseLayeredKeyboard (&scanner, &EH, &keymap);
 
-#ifdef ARDUINO
-# include <Arduino.h>
-#else
-# include <stdint.h>
-#endif
+  std::cout << __func__ << std::endl;
 
-#include "Akela/AbstractHID.h"
-#include "Akela/AbstractScanner.h"
-#include "Akela/KeyMap.h"
-#include "Akela/LayeredKeyMap.h"
-#include "Akela/KeyCodes.h"
-#include "Akela/KeyEventHandler.h"
-#include "Akela/Keyboard.h"
+  keyboard.setup ();
+  keyboard.test ();
+
+  return 0;
+}

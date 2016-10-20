@@ -74,3 +74,43 @@ static uint16_t fn_keymap[] = {
                                             ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO
                                                           ,KC_NO
 };
+
+static uint16_t layered_keymap[][64] = {
+ [0] = {
+   KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO
+  ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO
+  ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO
+  ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO
+
+                                            ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO
+                                                          ,KC_NO
+
+
+                                                    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO
+                                                              ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO
+                                                    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO
+                                                    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO
+
+                                            ,KC_NO    ,KC_NO    ,KC_NO    ,KC_NO
+                                                          ,KC_NO
+ },
+ [1] = {
+   KC_1     ,KC_1     ,KC_1     ,KC_1     ,KC_1     ,KC_1     ,KC_1
+  ,KC_1     ,KC_1     ,KC_1     ,KC_1     ,KC_1     ,KC_1
+  ,KC_1     ,KC_1     ,KC_1     ,KC_1     ,KC_1     ,KC_1     ,KC_1
+  ,KC_1     ,KC_1     ,KC_1     ,KC_1     ,KC_1     ,KC_1     ,KC_1
+
+                                            ,KC_1     ,KC_1     ,KC_1     ,KC_1
+                                                          ,KC_1
+
+
+                                                    ,KC_1     ,KC_1     ,KC_1     ,KC_1     ,KC_1     ,KC_1     ,KC_1
+                                                              ,KC_1     ,KC_1     ,KC_1     ,KC_1     ,KC_1     ,KC_1
+                                                    ,KC_1     ,KC_1     ,KC_1     ,KC_1     ,KC_1     ,KC_1     ,KC_1
+                                                    ,KC_1     ,KC_1     ,KC_1     ,KC_1     ,KC_1     ,KC_1     ,KC_1
+
+                                            ,KC_1     ,KC_1     ,KC_1     ,KC_1
+                                                          ,KC_1
+ },
+
+};

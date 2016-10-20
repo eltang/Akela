@@ -14,6 +14,7 @@ check: all
 AKELA_SOURCES = \
 	../../lib/Akela/src/Akela/Keyboard.cpp \
 	../../lib/Akela/src/Akela/KeyMap.cpp \
+	../../lib/Akela/src/Akela/LayeredKeyMap.cpp \
 	../../lib/Akela/src/Akela/KeyEventHandler.cpp
 AKELA_HEADERS = \
 	${AKELA_SOURCES:.cpp=.h} \
@@ -26,14 +27,17 @@ TEST_SOURCES = \
 	AkelaTest.cpp \
 	TestCase/Basics.cpp \
 	TestCase/Mods.cpp \
-	TestCase/Fn.cpp
+	TestCase/Fn.cpp \
+	TestCase/Layers.cpp
 
 TEST_HEADERS = \
 	Tests.h \
 	stubs/HID/Printer.h \
 	stubs/KeyMap/Printer.h \
+  stubs/KeyMap/LayerPrinter.h \
 	stubs/keymaps.h \
 	stubs/Keyboard/PressRelease.h \
+	stubs/Keyboard/PressReleaseLayered.h \
 	stubs/EventHandler/FnPrinter.h \
   stubs/Scanner/NoOp.h
 

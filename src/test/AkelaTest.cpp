@@ -25,14 +25,17 @@
 
 #include "stubs/HID/Printer.h"
 #include "stubs/KeyMap/Printer.h"
+#include "stubs/KeyMap/LayerPrinter.h"
 #include "stubs/keymaps.h"
 #include "stubs/Keyboard/PressRelease.h"
+#include "stubs/Keyboard/PressReleaseLayered.h"
 #include "stubs/EventHandler/FnPrinter.h"
 #include "stubs/Scanner/NoOp.h"
 
 #include "TestCase/Basics.cpp"
 #include "TestCase/Mods.cpp"
 #include "TestCase/Fn.cpp"
+#include "TestCase/Layers.cpp"
 
 int
 main (void) {
@@ -40,6 +43,7 @@ main (void) {
   TestMods ();
   TestFn ();
   TestFnHandler ();
+  TestLayers ();
 
   return 0;
 }

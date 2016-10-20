@@ -18,16 +18,15 @@
 
 #pragma once
 
-#ifdef ARDUINO
-# include <Arduino.h>
-#else
-# include <stdint.h>
-#endif
+class AkelaLayeredKeyMap : public AkelaKeyMap {
+ protected:
+  uint8_t Layer, LayerSize;
 
-#include "Akela/AbstractHID.h"
-#include "Akela/AbstractScanner.h"
-#include "Akela/KeyMap.h"
-#include "Akela/LayeredKeyMap.h"
-#include "Akela/KeyCodes.h"
-#include "Akela/KeyEventHandler.h"
-#include "Akela/Keyboard.h"
+ public:
+  AkelaLayeredKeyMap (uint16_t **keymap, uint8_t layerSize);
+
+  virtual uint16_t lookup (uint8_t index);
+
+  virtual void layer_move (uint8_t index);
+  virtual uint8_t layer ();
+};

@@ -16,18 +16,25 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#pragma once
+#include "Akela.h"
 
-#ifdef ARDUINO
-# include <Arduino.h>
-#else
-# include <stdint.h>
-#endif
+AkelaLayeredKeyMap::AkelaLayeredKeyMap (uint16_t **keymap, uint8_t layerSize)
+  : AkelaKeyMap ((uint16_t *)keymap) {
+  Layer = 0;
+  LayerSize = layerSize;
+}
 
-#include "Akela/AbstractHID.h"
-#include "Akela/AbstractScanner.h"
-#include "Akela/KeyMap.h"
-#include "Akela/LayeredKeyMap.h"
-#include "Akela/KeyCodes.h"
-#include "Akela/KeyEventHandler.h"
-#include "Akela/Keyboard.h"
+uint16_t
+AkelaLayeredKeyMap::lookup (uint8_t index) {
+  return AkelaKeyMap::lookup (index + (LayerSize * Layer));
+}
+
+void
+AkelaLayeredKeyMap::layer_move (uint8_t index) {
+  Layer = index;
+}
+
+uint8_t
+AkelaLayeredKeyMap::layer () {
+  return Layer;
+}
