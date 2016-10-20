@@ -52,7 +52,9 @@ M01::LedControl::set_color (cRGB color) {
 
 void
 M01::LedControl::boot_animation () {
-  static uint8_t idxs[] = {};
+  // keyboardio 0.9
+  static uint8_t idxs[] = {49, 13, 42, 23, 53, 6, 18, 14, 50, 53,
+                           34, 59, 55, 52};
 
   set_color ({0, 0, 0});
 
