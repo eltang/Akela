@@ -39,6 +39,7 @@ compile: ${OUTPUT_PATH}
 		$(SKETCH).ino
 	@cp $(BUILD_PATH)/$(SKETCH).ino.hex $(HEX_FILE_PATH)
 	@cp $(BUILD_PATH)/$(SKETCH).ino.elf $(ELF_FILE_PATH)
+	@rm -rf "${BUILD_PATH}"
 
 size: compile
 	$(AVR_SIZE) -C --mcu=$(MCU) $(ELF_FILE_PATH)
