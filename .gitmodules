@@ -1,0 +1,3 @@
+[submodule "hardware/keyboardio/avr"]
+	path = hardware/keyboardio/avr
+	url = https://github.com/keyboardio/Arduino-Boards

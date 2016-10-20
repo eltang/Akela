@@ -1,7 +1,6 @@
 BOARD    						= model01
 MCU									= atmega32u4
 
-KBDIO_PATH					= ${HOME}/src/ext/keyboardio-hw
 ARDUINO_PATH				= ${HOME}/install/arduino
 ARDUINO_TOOLS_PATH	= $(ARDUINO_PATH)/hardware/tools
 FQBN								= keyboardio:avr:model01
@@ -27,12 +26,12 @@ ${OUTPUT_PATH}:
 compile: ${OUTPUT_PATH}
 	$(ARDUINO_PATH)/arduino-builder \
 		-hardware $(ARDUINO_PATH)/hardware \
-    -hardware ${KBDIO_PATH}/hardware \
+    -hardware ../../hardware \
 		-tools $(ARDUINO_TOOLS_PATH) \
 		-tools $(ARDUINO_PATH)/tools-builder  \
 		-fqbn $(FQBN) \
     -libraries ../../lib \
-		-libraries ${KBDIO_PATH} \
+		-libraries ../../hardware \
     ${VERBOSE} \
 		-build-path $(BUILD_PATH) \
 		-ide-version $(ARDUINO_IDE_VERSION) \
