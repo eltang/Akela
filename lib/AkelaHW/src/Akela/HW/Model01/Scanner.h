@@ -21,24 +21,26 @@
 #include "Akela.h"
 #include "KeyboardioScanner.h"
 
-class M01Scanner : public AkelaAbstractScanner {
- private:
-  static KeyboardioScanner leftHand;
-  static KeyboardioScanner rightHand;
+namespace M01 {
+  class Scanner : public Akela::AbstractScanner {
+  private:
+    static KeyboardioScanner leftHand;
+    static KeyboardioScanner rightHand;
 
-  void enable_power ();
+    void enable_power ();
 
- public:
-  typedef struct {
-    keydata_t left;
-    keydata_t right;
-  } MatrixState;
+  public:
+    typedef struct {
+      keydata_t left;
+      keydata_t right;
+    } MatrixState;
 
-  M01Scanner ();
+    Scanner ();
 
-  virtual const void *scan ();
-  virtual void setup ();
+    virtual const void *scan ();
+    virtual void setup ();
 
- protected:
-  MatrixState matrixState;
+  protected:
+    MatrixState matrixState;
+  };
 };

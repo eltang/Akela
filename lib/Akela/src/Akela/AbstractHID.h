@@ -18,13 +18,15 @@
 
 #pragma once
 
-class AkelaAbstractHID {
- public:
-  virtual ~AkelaAbstractHID () {};
+namespace Akela {
+  class AbstractHID {
+  public:
+    virtual ~AbstractHID () {};
 
-  virtual void press (uint8_t code) = 0;
-  virtual void release (uint8_t code) = 0;
+    virtual void press (uint8_t code) = 0;
+    virtual void release (uint8_t code) = 0;
 
-  virtual void setup () {};
-  virtual void loop () {};
+    virtual void setup () {};
+    virtual void loop () {};
+  };
 };

@@ -18,14 +18,14 @@
 
 #include "Akela.h"
 
-AkelaKeyMap::AkelaKeyMap (uint16_t *keymap) {
+Akela::KeyMap::KeyMap (uint16_t *keymap) {
   this->keymap = keymap;
 }
 
-AkelaKeyMap::~AkelaKeyMap () {
+Akela::KeyMap::~KeyMap () {
 }
 
 uint16_t
-AkelaKeyMap::lookup (uint8_t index) {
+Akela::KeyMap::lookup (uint8_t index) {
   return this->keymap[index];
 }

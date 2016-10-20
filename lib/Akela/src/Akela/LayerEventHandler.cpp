@@ -18,19 +18,19 @@
 
 #include "Akela.h"
 
-AkelaLayerEventHandler::AkelaLayerEventHandler (AkelaAbstractHID *HID,
-                                                AkelaLayeredKeyMap *keymap)
-  : AkelaKeyEventHandler (HID, keymap) {
+Akela::LayerEventHandler::LayerEventHandler (Akela::AbstractHID *HID,
+                                             Akela::LayeredKeyMap *keymap)
+  : Akela::KeyEventHandler (HID, keymap) {
 }
 
 bool
-AkelaLayerEventHandler::press (uint8_t index) {
+Akela::LayerEventHandler::press (uint8_t index) {
   uint16_t key = keymap->lookup (index);
 
   if (!CHECK_FN (key, LAYER))
-    return AkelaKeyEventHandler::press (index);
+    return Akela::KeyEventHandler::press (index);
 
-  AkelaLayeredKeyMap *km = (AkelaLayeredKeyMap *)keymap;
+  Akela::LayeredKeyMap *km = (Akela::LayeredKeyMap *)keymap;
   uint8_t layer = key & ~0xfffc;
 
   km->layer_move (layer);
@@ -39,13 +39,13 @@ AkelaLayerEventHandler::press (uint8_t index) {
 }
 
 bool
-AkelaLayerEventHandler::release (uint8_t index) {
+Akela::LayerEventHandler::release (uint8_t index) {
   uint16_t key = keymap->lookup (index);
 
   if (!CHECK_FN (key, LAYER))
-    return AkelaKeyEventHandler::release (index);
+    return Akela::KeyEventHandler::release (index);
 
-  AkelaLayeredKeyMap *km = (AkelaLayeredKeyMap *)keymap;
+  Akela::LayeredKeyMap *km = (Akela::LayeredKeyMap *)keymap;
   uint8_t layer = key & ~0xfffc;
   km->layer_move (layer);
 

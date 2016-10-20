@@ -20,20 +20,20 @@
 
 #include "Akela/HW/Model01.h"
 
-KeyboardioScanner M01Scanner::leftHand(0);
-KeyboardioScanner M01Scanner::rightHand(3);
+KeyboardioScanner M01::Scanner::leftHand(0);
+KeyboardioScanner M01::Scanner::rightHand(3);
 
-M01Scanner::M01Scanner () {
+M01::Scanner::Scanner () {
 }
 
 void
-M01Scanner::enable_power () {
+M01::Scanner::enable_power () {
   pinMode (13, OUTPUT);
   digitalWrite (13, HIGH);
 }
 
 void
-M01Scanner::setup () {
+M01::Scanner::setup () {
   enable_power ();
 
   matrixState.left.all = 0;
@@ -44,7 +44,7 @@ M01Scanner::setup () {
 }
 
 const void *
-M01Scanner::scan () {
+M01::Scanner::scan () {
   matrixState.left = leftHand.getKeyData ();
   matrixState.right = rightHand.getKeyData ();
 

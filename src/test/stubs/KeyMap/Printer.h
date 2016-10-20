@@ -18,12 +18,12 @@
 
 #pragma once
 
-class PrinterKeyMap : public AkelaKeyMap {
+class PrinterKeyMap : public Akela::KeyMap {
  public:
-  PrinterKeyMap (uint16_t *keymap) : AkelaKeyMap (keymap) {};
+  PrinterKeyMap (uint16_t *keymap) : Akela::KeyMap (keymap) {};
 
   virtual uint16_t lookup (uint8_t index) {
-    uint16_t k = AkelaKeyMap::lookup (index);
+    uint16_t k = Akela::KeyMap::lookup (index);
 
     if (k != 0)
       std::cout << __PRETTY_FUNCTION__ << "(" << (int)0 << ", "

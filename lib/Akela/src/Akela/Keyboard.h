@@ -20,18 +20,20 @@
 
 #include "Akela.h"
 
-class AkelaKeyboard {
- protected:
-  AkelaKeyEventHandler *keyEvent;
-  AkelaAbstractScanner *scanner;
+namespace Akela {
+  class Keyboard {
+  protected:
+    Akela::KeyEventHandler *keyEvent;
+    Akela::AbstractScanner *scanner;
 
-  virtual bool press (uint8_t index);
-  virtual bool release (uint8_t index);
- public:
-  AkelaKeyboard (AkelaAbstractScanner *scanner,
-                 AkelaKeyEventHandler *eventHandler);
-  virtual ~AkelaKeyboard ();
+    virtual bool press (uint8_t index);
+    virtual bool release (uint8_t index);
+  public:
+    Keyboard (Akela::AbstractScanner *scanner,
+              Akela::KeyEventHandler *eventHandler);
+    virtual ~Keyboard ();
 
-  void setup ();
-  void loop ();
+    void setup ();
+    void loop ();
+  };
 };

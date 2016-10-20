@@ -18,15 +18,17 @@
 
 #pragma once
 
-class AkelaLayeredKeyMap : public AkelaKeyMap {
- protected:
-  uint8_t Layer, LayerSize;
+namespace Akela {
+  class LayeredKeyMap : public Akela::KeyMap {
+  protected:
+    uint8_t Layer, LayerSize;
 
- public:
-  AkelaLayeredKeyMap (uint16_t **keymap, uint8_t layerSize);
+  public:
+    LayeredKeyMap (uint16_t **keymap, uint8_t layerSize);
 
-  virtual uint16_t lookup (uint8_t index);
+    virtual uint16_t lookup (uint8_t index);
 
-  virtual void layer_move (uint8_t index);
-  virtual uint8_t layer ();
+    virtual void layer_move (uint8_t index);
+    virtual uint8_t layer ();
+  };
 };

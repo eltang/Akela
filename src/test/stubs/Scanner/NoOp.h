@@ -18,7 +18,7 @@
 
 #pragma once
 
-class NoOpScanner : public AkelaAbstractScanner {
+class NoOpScanner : public Akela::AbstractScanner {
  public:
   NoOpScanner () {};
 

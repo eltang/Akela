@@ -18,7 +18,7 @@
 
 #pragma once
 
-class PressReleaseKeyboard : public AkelaKeyboard {
+class PressReleaseKeyboard : public Akela::Keyboard {
  public:
   void test () {
     for (int i = 0; i < LAYOUT_SIZE; i++) {
@@ -29,8 +29,8 @@ class PressReleaseKeyboard : public AkelaKeyboard {
     }
   }
 
-  PressReleaseKeyboard (AkelaAbstractScanner *s,
-                        AkelaKeyEventHandler *eh)
-    : AkelaKeyboard (s, eh) {
+  PressReleaseKeyboard (Akela::AbstractScanner *s,
+                        Akela::KeyEventHandler *eh)
+    : Akela::Keyboard (s, eh) {
   };
 };

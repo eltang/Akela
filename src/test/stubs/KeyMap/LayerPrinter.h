@@ -18,13 +18,13 @@
 
 #pragma once
 
-class LayerPrinterKeyMap : public AkelaLayeredKeyMap {
+class LayerPrinterKeyMap : public Akela::LayeredKeyMap {
  public:
   LayerPrinterKeyMap (uint16_t **keymap, uint8_t layoutSize)
-    : AkelaLayeredKeyMap (keymap, layoutSize) {};
+    : Akela::LayeredKeyMap (keymap, layoutSize) {};
 
   virtual uint16_t lookup (uint8_t index) {
-    uint16_t k = AkelaLayeredKeyMap::lookup (index);
+    uint16_t k = Akela::LayeredKeyMap::lookup (index);
 
     if (k != 0)
       std::cout << __PRETTY_FUNCTION__ << "(" << (int)Layer << ", "

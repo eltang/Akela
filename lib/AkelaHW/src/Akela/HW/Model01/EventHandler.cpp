@@ -18,41 +18,41 @@
 
 #include "Akela/HW/Model01.h"
 
-M01EventHandler::M01EventHandler (AkelaAbstractHID *HID,
-                                  AkelaLayeredKeyMap *keymap)
-  : AkelaLayerEventHandler (HID, keymap) {
+M01::EventHandler::EventHandler (Akela::AbstractHID *HID,
+                                 Akela::LayeredKeyMap *keymap)
+  : Akela::LayerEventHandler (HID, keymap) {
 }
 
 bool
-M01EventHandler::press (uint8_t index) {
+M01::EventHandler::press (uint8_t index) {
   uint16_t key = keymap->lookup (index);
-  M01HID::Page page;
+  HID::Page page;
 
   if (!CHECK_USER (key, CC) && !CHECK_USER (key, SC))
-    return AkelaLayerEventHandler::press (index);
+    return Akela::LayerEventHandler::press (index);
 
   if (CHECK_USER (key, CC))
-    page = M01HID::CONSUMER;
+    page = HID::CONSUMER;
   else
-    page = M01HID::SYSTEM;
+    page = HID::SYSTEM;
 
-  ((M01HID *)HID)->press (page, KEYCODE (key));
+  ((::M01::HID *)HID)->press (page, KEYCODE (key));
   return true;
 }
 
 bool
-M01EventHandler::release (uint8_t index) {
+M01::EventHandler::release (uint8_t index) {
   uint16_t key = keymap->lookup (index);
-  M01HID::Page page;
+  HID::Page page;
 
   if (!CHECK_USER (key, CC))
-    return AkelaLayerEventHandler::release (index);
+    return Akela::LayerEventHandler::release (index);
 
   if (CHECK_USER (key, CC))
-    page = M01HID::CONSUMER;
+    page = HID::CONSUMER;
   else
-    page = M01HID::SYSTEM;
+    page = HID::SYSTEM;
 
-  ((M01HID *)HID)->release (page, KEYCODE (key));
+  ((::M01::HID *)HID)->release (page, KEYCODE (key));
   return true;
 }

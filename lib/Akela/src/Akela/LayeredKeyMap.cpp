@@ -18,23 +18,23 @@
 
 #include "Akela.h"
 
-AkelaLayeredKeyMap::AkelaLayeredKeyMap (uint16_t **keymap, uint8_t layerSize)
-  : AkelaKeyMap ((uint16_t *)keymap) {
+Akela::LayeredKeyMap::LayeredKeyMap (uint16_t **keymap, uint8_t layerSize)
+  : Akela::KeyMap ((uint16_t *)keymap) {
   Layer = 0;
   LayerSize = layerSize;
 }
 
 uint16_t
-AkelaLayeredKeyMap::lookup (uint8_t index) {
-  return AkelaKeyMap::lookup (index + (LayerSize * Layer));
+Akela::LayeredKeyMap::lookup (uint8_t index) {
+  return Akela::KeyMap::lookup (index + (LayerSize * Layer));
 }
 
 void
-AkelaLayeredKeyMap::layer_move (uint8_t index) {
+Akela::LayeredKeyMap::layer_move (uint8_t index) {
   Layer = index;
 }
 
 uint8_t
-AkelaLayeredKeyMap::layer () {
+Akela::LayeredKeyMap::layer () {
   return Layer;
 }

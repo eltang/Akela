@@ -18,10 +18,10 @@
 
 #pragma once
 
-class PressReleaseLayeredKeyboard : public AkelaKeyboard {
+class PressReleaseLayeredKeyboard : public Akela::Keyboard {
 private:
-  AkelaLayeredKeyMap *keymap;
- public:
+  Akela::LayeredKeyMap *keymap;
+public:
   void test () {
     for (int i = 0; i < LAYOUT_SIZE; i++) {
       for (int j = 0; j < 2; j++) {
@@ -35,10 +35,10 @@ private:
     }
   }
 
-  PressReleaseLayeredKeyboard (AkelaAbstractScanner *s,
-                               AkelaKeyEventHandler *eh,
-                               AkelaLayeredKeyMap *km)
-    : AkelaKeyboard (s, eh) {
+  PressReleaseLayeredKeyboard (Akela::AbstractScanner *s,
+                               Akela::KeyEventHandler *eh,
+                               Akela::LayeredKeyMap *km)
+    : Akela::Keyboard (s, eh) {
     keymap = km;
   };
 };

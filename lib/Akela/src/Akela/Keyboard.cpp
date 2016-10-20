@@ -18,32 +18,32 @@
 
 #include "Akela.h"
 
-AkelaKeyboard::AkelaKeyboard (AkelaAbstractScanner *scanner,
-                              AkelaKeyEventHandler *eventHandler) {
+Akela::Keyboard::Keyboard (Akela::AbstractScanner *scanner,
+                           Akela::KeyEventHandler *eventHandler) {
   this->scanner = scanner;
   this->keyEvent = eventHandler;
 }
 
-AkelaKeyboard::~AkelaKeyboard () {
+Akela::Keyboard::~Keyboard () {
 }
 
 void
-AkelaKeyboard::setup () {
+Akela::Keyboard::setup () {
   scanner->setup ();
   keyEvent->setup ();
 }
 
 void
-AkelaKeyboard::loop () {
+Akela::Keyboard::loop () {
   keyEvent->loop ();
 }
 
 bool
-AkelaKeyboard::press (uint8_t index) {
+Akela::Keyboard::press (uint8_t index) {
   return keyEvent->press (index);
 }
 
 bool
-AkelaKeyboard::release (uint8_t index) {
+Akela::Keyboard::release (uint8_t index) {
   return keyEvent->release (index);
 }

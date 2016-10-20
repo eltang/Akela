@@ -41,10 +41,12 @@ enum {
   SC_SLP  = SC(HID_SYSTEM_SLEEP)
 };
 
-class M01EventHandler : public AkelaLayerEventHandler {
- public:
-  M01EventHandler (AkelaAbstractHID *HID, AkelaLayeredKeyMap *keymap);
+namespace M01 {
+  class EventHandler : public Akela::LayerEventHandler {
+  public:
+    EventHandler (Akela::AbstractHID *HID, Akela::LayeredKeyMap *keymap);
 
-  virtual bool press (uint8_t index);
-  virtual bool release (uint8_t index);
+    virtual bool press (uint8_t index);
+    virtual bool release (uint8_t index);
+  };
 };

@@ -18,7 +18,7 @@
 
 #pragma once
 
-class PrinterHID : public virtual AkelaAbstractHID {
+class PrinterHID : public virtual Akela::AbstractHID {
  public:
   virtual void press (uint8_t code) {
     if (code == 0)
@@ -32,5 +32,5 @@ class PrinterHID : public virtual AkelaAbstractHID {
     std::cout << __PRETTY_FUNCTION__ << "(0x" << std::hex << (int)code << ")" << std::endl;
   };
 
-  PrinterHID () : AkelaAbstractHID () {};
+  PrinterHID () : Akela::AbstractHID () {};
 };

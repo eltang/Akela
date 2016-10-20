@@ -20,22 +20,22 @@
 
 #include "Akela/HW/Model01.h"
 
-M01::M01 (AkelaKeyEventHandler *eh,
-          AkelaAbstractScanner *scanner)
-  : AkelaKeyboard (scanner, eh) {
+M01::Model01::Model01 (Akela::AbstractScanner *scanner,
+              Akela::KeyEventHandler *eh)
+  : Akela::Keyboard (scanner, eh) {
   prevState.left.all = prevState.right.all = 0;
   currState.left.all = currState.right.all = 0;
 }
 
 void
-M01::setup ()
+M01::Model01::setup ()
 {
   wdt_disable ();
-  AkelaKeyboard::setup ();
+  Akela::Keyboard::setup ();
 }
 
 void
-M01::handleKey (byte side, byte row, byte col) {
+M01::Model01::handleKey (byte side, byte row, byte col) {
   keydata_t p, c;
   uint8_t keynum = (row * 8) + col;
 
@@ -60,10 +60,10 @@ M01::handleKey (byte side, byte row, byte col) {
 }
 
 void
-M01::loop ()
+M01::Model01::loop ()
 {
   prevState = currState;
-  currState = *((M01Scanner::MatrixState *)scanner->scan ());
+  currState = *((M01::Scanner::MatrixState *)scanner->scan ());
 
   for (uint8_t row = 0; row < 4; row++) {
     for (uint8_t col = 0; col < 8; col++) {
@@ -72,5 +72,5 @@ M01::loop ()
     }
   }
 
-  AkelaKeyboard::loop ();
+  Akela::Keyboard::loop ();
 }

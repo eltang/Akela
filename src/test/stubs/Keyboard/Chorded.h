@@ -18,7 +18,7 @@
 
 #pragma once
 
-class ChordedKeyboard : public AkelaKeyboard {
+class ChordedKeyboard : public Akela::Keyboard {
  public:
   void test () {
     press (0);
@@ -42,8 +42,8 @@ class ChordedKeyboard : public AkelaKeyboard {
     }
   }
 
-  ChordedKeyboard (AkelaAbstractScanner *s,
-                   AkelaKeyEventHandler *eh)
-    : AkelaKeyboard (s, eh) {
+  ChordedKeyboard (Akela::AbstractScanner *s,
+                   Akela::KeyEventHandler *eh)
+    : Akela::Keyboard (s, eh) {
   };
 };

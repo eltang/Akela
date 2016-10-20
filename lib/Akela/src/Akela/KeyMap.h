@@ -18,13 +18,15 @@
 
 #pragma once
 
-class AkelaKeyMap {
- protected:
-  uint16_t *keymap;
+namespace Akela {
+  class KeyMap {
+  protected:
+    uint16_t *keymap;
 
- public:
-  AkelaKeyMap (uint16_t *keymap);
-  virtual ~AkelaKeyMap ();
+  public:
+    KeyMap (uint16_t *keymap);
+    virtual ~KeyMap ();
 
-  virtual uint16_t lookup (uint8_t index);
+    virtual uint16_t lookup (uint8_t index);
+  };
 };

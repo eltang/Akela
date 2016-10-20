@@ -20,18 +20,20 @@
 
 #include "Akela.h"
 
-class AkelaKeyEventHandler {
- protected:
-  AkelaAbstractHID *HID;
-  AkelaKeyMap *keymap;
+namespace Akela {
+  class KeyEventHandler {
+  protected:
+    Akela::AbstractHID *HID;
+    Akela::KeyMap *keymap;
 
- public:
-  AkelaKeyEventHandler (AkelaAbstractHID *HID, AkelaKeyMap *keymap);
-  virtual ~AkelaKeyEventHandler ();
+  public:
+    KeyEventHandler (Akela::AbstractHID *HID, Akela::KeyMap *keymap);
+    virtual ~KeyEventHandler ();
 
-  virtual bool press (uint8_t index);
-  virtual bool release (uint8_t index);
+    virtual bool press (uint8_t index);
+    virtual bool release (uint8_t index);
 
-  virtual void setup ();
-  virtual void loop ();
+    virtual void setup ();
+    virtual void loop ();
+  };
 };

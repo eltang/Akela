@@ -18,8 +18,10 @@
 
 #pragma once
 
-class AkelaAbstractScanner {
- public:
-  virtual const void *scan () = 0;
-  virtual void setup () = 0;
+namespace Akela {
+  class AbstractScanner {
+  public:
+    virtual const void *scan () = 0;
+    virtual void setup () = 0;
+  };
 };

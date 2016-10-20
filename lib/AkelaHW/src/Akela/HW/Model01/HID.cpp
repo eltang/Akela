@@ -18,11 +18,11 @@
 
 #include "Akela/HW/Model01.h"
 
-M01HID::M01HID () {
+M01::HID::HID () {
 }
 
 void
-M01HID::press (M01HID::Page page, uint8_t code) {
+M01::HID::press (HID::Page page, uint8_t code) {
   switch (page) {
   case KEYBOARD:
     Keyboard.press (code);
@@ -37,7 +37,7 @@ M01HID::press (M01HID::Page page, uint8_t code) {
 }
 
 void
-M01HID::release (M01HID::Page page, uint8_t code) {
+M01::HID::release (HID::Page page, uint8_t code) {
   switch (page) {
   case KEYBOARD:
     Keyboard.release (code);
@@ -52,21 +52,21 @@ M01HID::release (M01HID::Page page, uint8_t code) {
 }
 
 void
-M01HID::press (uint8_t code) {
+M01::HID::press (uint8_t code) {
   press (KEYBOARD, code);
 }
 
 void
-M01HID::release (uint8_t code) {
+M01::HID::release (uint8_t code) {
   release (KEYBOARD, code);
 }
 
 void
-M01HID::setup () {
+M01::HID::setup () {
   Keyboard.begin ();
 }
 
 void
-M01HID::loop () {
+M01::HID::loop () {
   Keyboard.sendReport ();
 }

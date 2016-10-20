@@ -24,10 +24,12 @@
 
 #define L(n) FN(n | MOD_FN_LAYER)
 
-class AkelaLayerEventHandler : public AkelaKeyEventHandler {
- public:
-  AkelaLayerEventHandler (AkelaAbstractHID *HID, AkelaLayeredKeyMap *keymap);
+namespace Akela {
+  class LayerEventHandler : public Akela::KeyEventHandler {
+  public:
+    LayerEventHandler (Akela::AbstractHID *HID, Akela::LayeredKeyMap *keymap);
 
-  virtual bool press (uint8_t index);
-  virtual bool release (uint8_t index);
+    virtual bool press (uint8_t index);
+    virtual bool release (uint8_t index);
+  };
 };

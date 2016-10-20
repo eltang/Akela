@@ -21,20 +21,22 @@
 #include "Akela.h"
 #include "KeyboardioHID.h"
 
-class M01HID : public AkelaAbstractHID {
- public:
-  enum Page {
-    KEYBOARD,
-    CONSUMER,
-    SYSTEM
+namespace M01 {
+  class HID : public Akela::AbstractHID {
+  public:
+    enum Page {
+      KEYBOARD,
+      CONSUMER,
+      SYSTEM
+    };
+    HID ();
+
+    virtual void press (uint8_t code);
+    virtual void release (uint8_t code);
+    virtual void press (Page page, uint8_t code);
+    virtual void release (Page page, uint8_t code);
+
+    virtual void setup ();
+    virtual void loop ();
   };
-  M01HID ();
-
-  virtual void press (uint8_t code);
-  virtual void release (uint8_t code);
-  virtual void press (Page page, uint8_t code);
-  virtual void release (Page page, uint8_t code);
-
-  virtual void setup ();
-  virtual void loop ();
 };

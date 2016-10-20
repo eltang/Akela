@@ -21,15 +21,17 @@
 #include "Akela.h"
 #include "Akela/HW/Model01.h"
 
-class M01 : public AkelaKeyboard {
-protected:
-  M01Scanner::MatrixState prevState, currState;
+namespace M01 {
+  class Model01 : public Akela::Keyboard {
+  protected:
+    Scanner::MatrixState prevState, currState;
 
-  void handleKey (byte side, byte row, byte col);
+    void handleKey (byte side, byte row, byte col);
 
-public:
-  M01 (AkelaKeyEventHandler *eh, AkelaAbstractScanner *scanner);
+  public:
+    Model01 (Akela::AbstractScanner *scanner, Akela::KeyEventHandler *eh);
 
-  virtual void setup ();
-  virtual void loop ();
+    virtual void setup ();
+    virtual void loop ();
+  };
 };

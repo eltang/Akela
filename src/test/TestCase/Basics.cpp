@@ -20,7 +20,7 @@ int
 TestBasics () {
   PrinterHID hid = PrinterHID ();
   PrinterKeyMap keymap = PrinterKeyMap ((uint16_t *)empty_keymap);
-  AkelaKeyEventHandler EH = AkelaKeyEventHandler (&hid, &keymap);
+  Akela::KeyEventHandler EH = Akela::KeyEventHandler (&hid, &keymap);
   NoOpScanner scanner = NoOpScanner ();
   PressReleaseKeyboard keyboard = PressReleaseKeyboard (&scanner, &EH);
 
