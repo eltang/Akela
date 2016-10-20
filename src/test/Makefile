@@ -32,7 +32,6 @@ TEST_SOURCES = \
 	TestCase/Layers.cpp
 
 TEST_HEADERS = \
-	Tests.h \
 	stubs/HID/Printer.h \
 	stubs/KeyMap/Printer.h \
   stubs/KeyMap/LayerPrinter.h \
