@@ -80,8 +80,10 @@ AkelaKeyEventHandler::release (uint8_t index) {
 
 void
 AkelaKeyEventHandler::setup () {
+  HID->setup ();
 }
 
 void
 AkelaKeyEventHandler::loop () {
+  HID->loop ();
 }

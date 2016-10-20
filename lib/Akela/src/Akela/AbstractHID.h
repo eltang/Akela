@@ -22,4 +22,7 @@ class AkelaAbstractHID {
  public:
   virtual void press (uint8_t code) = 0;
   virtual void release (uint8_t code) = 0;
+
+  virtual void setup () {};
+  virtual void loop () {};
 };
