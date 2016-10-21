@@ -38,7 +38,7 @@ M01::EventHandler::press (uint8_t index) {
     page = HID::SYSTEM;
 
   ((::M01::HID *)HID)->press (page, KEYCODE (key));
-  return true;
+  return false;
 }
 
 bool
@@ -55,7 +55,7 @@ M01::EventHandler::release (uint8_t index) {
     page = HID::SYSTEM;
 
   ((::M01::HID *)HID)->release (page, KEYCODE (key));
-  return true;
+  return false;
 }
 
 void
