@@ -78,8 +78,8 @@ namespace M01 {
     EventHandler (Akela::AbstractHID *HID, Akela::LayeredKeyMap *keymap,
                   Scanner *scanner);
 
-    virtual bool press (uint8_t index);
-    virtual bool release (uint8_t index);
+    virtual void press (uint8_t index);
+    virtual void release (uint8_t index);
 
     virtual void setup ();
   };

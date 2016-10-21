@@ -23,7 +23,7 @@ class PrinterFnHandler : public Akela::KeyEventHandler {
   PrinterFnHandler (Akela::AbstractHID *HID, Akela::KeyMap *keymap)
     : Akela::KeyEventHandler (HID, keymap) {};
 
-  virtual bool press (uint8_t index) {
+  virtual void press (uint8_t index) {
     bool k;
     uint16_t key = keymap->lookup (index);
 
@@ -34,10 +34,10 @@ class PrinterFnHandler : public Akela::KeyEventHandler {
     std::cout << __PRETTY_FUNCTION__ << "(" << (int)index
               << std::hex << key << ") = " << (bool)k << std::endl;
 
-    return false;
+    return;
   };
 
-  virtual bool release (uint8_t index) {
+  virtual void release (uint8_t index) {
     bool k;
     uint16_t key = keymap->lookup (index);
 
@@ -47,7 +47,5 @@ class PrinterFnHandler : public Akela::KeyEventHandler {
     k = !!(CHECK_FN (key, USER));
     std::cout << __PRETTY_FUNCTION__ << "(" << (int)index
               << std::hex << key << ") = " << (bool)k << std::endl;
-
-    return false;
   };
 };

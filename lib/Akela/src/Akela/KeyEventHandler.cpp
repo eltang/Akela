@@ -27,12 +27,12 @@ Akela::KeyEventHandler::KeyEventHandler (Akela::AbstractHID *HID,
 Akela::KeyEventHandler::~KeyEventHandler () {
 }
 
-bool
+void
 Akela::KeyEventHandler::press (uint8_t index) {
   uint16_t key = keymap->lookup (index);
 
   if (IS_FN (key))
-    return false;
+    return;
 
   if (IS_LCTL (key))
     HID->press (KC_LCTL);
@@ -50,16 +50,14 @@ Akela::KeyEventHandler::press (uint8_t index) {
     HID->press (KC_RALT);
 
   HID->press (KEYCODE(key));
-
-  return true;
 }
 
-bool
+void
 Akela::KeyEventHandler::release (uint8_t index) {
   uint16_t key = keymap->lookup (index);
 
   if (IS_FN (key))
-    return false;
+    return;
 
   HID->release (KEYCODE (key));
 
@@ -77,8 +75,6 @@ Akela::KeyEventHandler::release (uint8_t index) {
     HID->release (KC_RSFT);
   if (IS_RALT (key))
     HID->release (KC_RALT);
-
-  return true;
 }
 
 void

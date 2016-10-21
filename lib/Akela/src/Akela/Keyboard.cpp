@@ -38,12 +38,12 @@ Akela::Keyboard::loop () {
   keyEvent->loop ();
 }
 
-bool
+void
 Akela::Keyboard::press (uint8_t index) {
-  return keyEvent->press (index);
+  keyEvent->press (index);
 }
 
-bool
+void
 Akela::Keyboard::release (uint8_t index) {
-  return keyEvent->release (index);
+  keyEvent->release (index);
 }

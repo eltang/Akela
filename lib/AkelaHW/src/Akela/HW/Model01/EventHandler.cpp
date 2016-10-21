@@ -24,7 +24,7 @@ M01::EventHandler::EventHandler (Akela::AbstractHID *HID,
   : Akela::LayerEventHandler (HID, keymap), M01::LedControl (scanner) {
 }
 
-bool
+void
 M01::EventHandler::press (uint8_t index) {
   uint16_t key = keymap->lookup (index);
   HID::Page page;
@@ -60,14 +60,13 @@ M01::EventHandler::press (uint8_t index) {
       if (key & _MOUSE_RIGHT)
         mc->move (1, 0);
     }
-    return false;
+    return;
   }
 
   ((::M01::HID *)HID)->press (page, KEYCODE (key));
-  return false;
 }
 
-bool
+void
 M01::EventHandler::release (uint8_t index) {
   uint16_t key = keymap->lookup (index);
   HID::Page page;
@@ -83,11 +82,10 @@ M01::EventHandler::release (uint8_t index) {
   else if (CHECK_USER (key, MB))
     page = HID::MOUSE;
   else {
-    return false;
+    return;
   }
 
   ((::M01::HID *)HID)->release (page, KEYCODE (key));
-  return false;
 }
 
 void

@@ -30,8 +30,8 @@ namespace Akela {
     KeyEventHandler (Akela::AbstractHID *HID, Akela::KeyMap *keymap);
     virtual ~KeyEventHandler ();
 
-    virtual bool press (uint8_t index);
-    virtual bool release (uint8_t index);
+    virtual void press (uint8_t index);
+    virtual void release (uint8_t index);
 
     virtual void setup ();
     virtual void loop ();
