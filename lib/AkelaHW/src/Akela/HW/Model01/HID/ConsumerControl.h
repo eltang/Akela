@@ -20,10 +20,16 @@
 
 #include "Akela.h"
 
-#include "Model01/HID.h"
-#include "Model01/Scanner.h"
-#include "Model01/LedControl.h"
-#include "Model01/EventHandler.h"
-#include "Model01/Keyboard.h"
-#include "Model01/Utils.h"
-#include "Model01/KeyCodes.h"
+namespace M01 {
+  namespace HID {
+    class ConsumerControl : public Skeleton {
+    public:
+      ConsumerControl ();
+
+      virtual void press (Page page, uint8_t code);
+      virtual void release (Page page, uint8_t code);
+
+      virtual void setup ();
+    };
+  };
+};

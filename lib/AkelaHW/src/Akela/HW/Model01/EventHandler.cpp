@@ -42,11 +42,11 @@ M01::EventHandler::press (uint8_t index) {
   else {
     if (key & _MOUSE_WARP) {
       uint8_t kc = KEYCODE (key);
-      ((::M01::HID *)HID)->warp
+      ((::M01::HID::Complete *)HID)->warp
         (
-         ((kc & _MOUSE_WARP_END) ? MouseControl::WarpDirection::WARP_END : 0) |
-         ((kc & _MOUSE_DOWN) ? MouseControl::WarpDirection::WARP_DOWN : 0) |
-         ((kc & _MOUSE_RIGHT) ? MouseControl::WarpDirection::WARP_RIGHT : 0)
+         ((kc & _MOUSE_WARP_END) ? HID::Mouse::WarpDirection::WARP_END : 0) |
+         ((kc & _MOUSE_DOWN) ? HID::Mouse::WarpDirection::WARP_DOWN : 0) |
+         ((kc & _MOUSE_RIGHT) ? HID::Mouse::WarpDirection::WARP_RIGHT : 0)
          );
     } else {
       mouseMove (key);
@@ -54,7 +54,7 @@ M01::EventHandler::press (uint8_t index) {
     return;
   }
 
-  ((::M01::HID *)HID)->press (page, KEYCODE (key));
+  ((::M01::HID::Base *)HID)->press (page, KEYCODE (key));
 }
 
 void
@@ -89,7 +89,7 @@ M01::EventHandler::release (uint8_t index) {
     return;
   }
 
-  ((::M01::HID *)HID)->release (page, KEYCODE (key));
+  ((::M01::HID::Base *)HID)->release (page, KEYCODE (key));
 }
 
 void
@@ -100,7 +100,7 @@ M01::EventHandler::setup () {
 
 void
 M01::EventHandler::mouseMove (uint16_t key) {
-  ::M01::HID *mc = (::M01::HID *) HID;
+  ::M01::HID::Complete *mc = (::M01::HID::Complete *) HID;
 
   if (key & _MOUSE_UP)
     mc->move (0, -1);

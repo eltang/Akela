@@ -16,14 +16,32 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#pragma once
+#include "Akela/HW/Model01.h"
 
-#include "Akela.h"
+namespace M01 {
+  namespace HID {
+    SystemControl::SystemControl () {
+    }
 
-#include "Model01/HID.h"
-#include "Model01/Scanner.h"
-#include "Model01/LedControl.h"
-#include "Model01/EventHandler.h"
-#include "Model01/Keyboard.h"
-#include "Model01/Utils.h"
-#include "Model01/KeyCodes.h"
+    void
+    SystemControl::press (Page page, uint8_t code) {
+      if (page != CONSUMER)
+        return;
+
+      ::SystemControl.press (code);
+    }
+
+    void
+    SystemControl::release (Page page, uint8_t) {
+      if (page != CONSUMER)
+        return;
+
+      ::SystemControl.release ();
+    }
+
+    void
+    SystemControl::setup () {
+      ::SystemControl.begin ();
+    }
+  }
+}

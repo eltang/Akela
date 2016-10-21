@@ -18,12 +18,14 @@
 
 #pragma once
 
-#include "Akela.h"
+namespace M01 {
+  namespace HID {
+    enum Page {
+      KEYBOARD,
+      CONSUMER,
+      SYSTEM,
+      MOUSE
+    };
+  };
+};
 
-#include "Model01/HID.h"
-#include "Model01/Scanner.h"
-#include "Model01/LedControl.h"
-#include "Model01/EventHandler.h"
-#include "Model01/Keyboard.h"
-#include "Model01/Utils.h"
-#include "Model01/KeyCodes.h"

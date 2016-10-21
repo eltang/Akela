@@ -20,10 +20,30 @@
 
 #include "Akela.h"
 
-#include "Model01/HID.h"
-#include "Model01/Scanner.h"
-#include "Model01/LedControl.h"
-#include "Model01/EventHandler.h"
-#include "Model01/Keyboard.h"
-#include "Model01/Utils.h"
-#include "Model01/KeyCodes.h"
+namespace M01 {
+  namespace HID {
+    class Skeleton {
+      virtual void press (Page page, uint8_t code) = 0;
+      virtual void release (Page page, uint8_t code) = 0;
+    };
+
+    class Base : public Akela::AbstractHID,
+                 public Skeleton,
+                 public AbstractMouseControl {
+    public:
+      Base ();
+
+      virtual void press (uint8_t code);
+      virtual void release (uint8_t code);
+
+      virtual void press (Page page, uint8_t code);
+      virtual void release (Page page, uint8_t code);
+
+      virtual void setup ();
+      virtual void loop ();
+
+      virtual void move (int8_t, int8_t) {};
+      virtual void warp (uint8_t) {};
+    };
+  };
+};

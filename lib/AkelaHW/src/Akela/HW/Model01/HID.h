@@ -21,24 +21,9 @@
 #include "Akela.h"
 #include "KeyboardioHID.h"
 
-namespace M01 {
-  class HID : public Akela::AbstractHID,
-              public M01::MouseControl {
-  public:
-    enum Page {
-      KEYBOARD,
-      CONSUMER,
-      SYSTEM,
-      MOUSE
-    };
-    HID ();
-
-    virtual void press (uint8_t code);
-    virtual void release (uint8_t code);
-    virtual void press (Page page, uint8_t code);
-    virtual void release (Page page, uint8_t code);
-
-    virtual void setup ();
-    virtual void loop ();
-  };
-};
+#include "HID/Pages.h"
+#include "HID/MouseControl.h"
+#include "HID/Base.h"
+#include "HID/ConsumerControl.h"
+#include "HID/SystemControl.h"
+#include "HID/Complete.h"

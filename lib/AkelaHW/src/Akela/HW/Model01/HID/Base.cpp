@@ -16,14 +16,48 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#pragma once
+#include "Akela/HW/Model01.h"
 
-#include "Akela.h"
+namespace M01 {
+  namespace HID {
+    Base::Base () {
+    }
 
-#include "Model01/HID.h"
-#include "Model01/Scanner.h"
-#include "Model01/LedControl.h"
-#include "Model01/EventHandler.h"
-#include "Model01/Keyboard.h"
-#include "Model01/Utils.h"
-#include "Model01/KeyCodes.h"
+    void
+    Base::press (Page page, uint8_t code) {
+      if (page != KEYBOARD)
+        return;
+
+      Keyboard.press (code);
+    }
+
+    void
+    Base::release (Page page, uint8_t code) {
+      if (page != KEYBOARD)
+        return;
+
+      Keyboard.release (code);
+    }
+
+    void
+    Base::press (uint8_t code) {
+      press (KEYBOARD, code);
+    }
+
+    void
+    Base::release (uint8_t code) {
+      release (KEYBOARD, code);
+    }
+
+    void
+    Base::setup () {
+      Keyboard.begin ();
+    }
+
+    void
+    Base::loop () {
+      Keyboard.sendReport ();
+      Keyboard.releaseAll ();
+    }
+  }
+}
