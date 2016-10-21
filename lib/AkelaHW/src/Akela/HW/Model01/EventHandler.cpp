@@ -49,21 +49,25 @@ M01::EventHandler::press (uint8_t index) {
          ((kc & _MOUSE_RIGHT) ? MouseControl::WarpDirection::WARP_RIGHT : 0)
          );
     } else {
-      ::M01::HID *mc = (::M01::HID *) HID;
-
-      if (key & _MOUSE_UP)
-        mc->move (0, -1);
-      if (key & _MOUSE_LEFT)
-        mc->move (-1, 0);
-      if (key & _MOUSE_DOWN)
-        mc->move (0, 1);
-      if (key & _MOUSE_RIGHT)
-        mc->move (1, 0);
+      mouseMove (key);
     }
     return;
   }
 
   ((::M01::HID *)HID)->press (page, KEYCODE (key));
+}
+
+void
+M01::EventHandler::hold (uint8_t index) {
+  uint16_t key = keymap->lookup (index);
+
+  if (!CHECK_USER (key, MC))
+    return;
+
+  if (key & _MOUSE_WARP)
+    return;
+
+  mouseMove (key);
 }
 
 void
@@ -92,4 +96,18 @@ void
 M01::EventHandler::setup () {
   Akela::LayerEventHandler::setup ();
   M01::LedControl::setup ();
+}
+
+void
+M01::EventHandler::mouseMove (uint16_t key) {
+  ::M01::HID *mc = (::M01::HID *) HID;
+
+  if (key & _MOUSE_UP)
+    mc->move (0, -1);
+  if (key & _MOUSE_LEFT)
+    mc->move (-1, 0);
+  if (key & _MOUSE_DOWN)
+    mc->move (0, 1);
+  if (key & _MOUSE_RIGHT)
+    mc->move (1, 0);
 }

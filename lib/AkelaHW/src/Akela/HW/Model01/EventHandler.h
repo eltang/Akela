@@ -74,12 +74,15 @@ enum {
 
 namespace M01 {
   class EventHandler : public Akela::LayerEventHandler, public LedControl {
+  private:
+    virtual void mouseMove (uint16_t key);
   public:
     EventHandler (Akela::AbstractHID *HID, Akela::LayeredKeyMap *keymap,
                   Scanner *scanner);
 
     virtual void press (uint8_t index);
     virtual void release (uint8_t index);
+    virtual void hold (uint8_t index);
 
     virtual void setup ();
   };

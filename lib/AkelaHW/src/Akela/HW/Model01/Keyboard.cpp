@@ -50,8 +50,10 @@ M01::Model01::handleKey (byte side, byte row, byte col) {
   bool pp = bitRead(p.all, keynum);
   bool cp = bitRead(c.all, keynum);
 
-  if (pp == cp)
-    return;
+  if (pp == cp) {
+    if (cp)
+      hold (keynum + (32 * side));
+  }
 
   if (cp)
     press (keynum + (32 * side));
