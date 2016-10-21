@@ -46,7 +46,7 @@ M01::EventHandler::release (uint8_t index) {
   uint16_t key = keymap->lookup (index);
   HID::Page page;
 
-  if (!CHECK_USER (key, CC))
+  if (!CHECK_USER (key, CC) && !CHECK_USER (key, SC))
     return Akela::LayerEventHandler::release (index);
 
   if (CHECK_USER (key, CC))
