@@ -22,12 +22,13 @@
 
 namespace M01 {
   namespace HID {
-    class Skeleton : public Akela::AbstractHID {
+    class Skeleton {
       virtual void press (Page page, uint8_t code) = 0;
       virtual void release (Page page, uint8_t code) = 0;
     };
 
-    class Base : public Skeleton,
+    class Base : public Akela::AbstractHID,
+                 public Skeleton,
                  public AbstractMouseControl {
     public:
       Base ();

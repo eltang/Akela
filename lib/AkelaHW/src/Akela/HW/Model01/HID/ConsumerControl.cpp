@@ -16,13 +16,32 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#pragma once
+#include "Akela/HW/Model01.h"
 
-#include "Akela.h"
-#include "KeyboardioHID.h"
+namespace M01 {
+  namespace HID {
+    ConsumerControl::ConsumerControl () {
+    }
 
-#include "HID/Pages.h"
-#include "HID/MouseControl.h"
-#include "HID/Base.h"
-#include "HID/ConsumerControl.h"
-#include "HID/Complete.h"
+    void
+    ConsumerControl::press (Page page, uint8_t code) {
+      if (page != CONSUMER)
+        return;
+
+      ::ConsumerControl.press (code);
+    }
+
+    void
+    ConsumerControl::release (Page page, uint8_t code) {
+      if (page != CONSUMER)
+        return;
+
+      ::ConsumerControl.release (code);
+    }
+
+    void
+    ConsumerControl::setup () {
+      ::ConsumerControl.begin ();
+    }
+  }
+}

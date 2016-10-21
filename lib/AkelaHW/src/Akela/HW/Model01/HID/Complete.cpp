@@ -21,7 +21,8 @@
 namespace M01 {
   namespace HID {
 
-    Complete::Complete () : M01::HID::MouseControl () {
+    Complete::Complete ()
+      : MouseControl (), ConsumerControl () {
     }
 
     void
@@ -31,10 +32,10 @@ namespace M01 {
         Base::press (page, code);
         break;
       case CONSUMER:
-        ConsumerControl.press (code);
+        ConsumerControl::press (page, code);
         break;
       case SYSTEM:
-        SystemControl.press (code);
+        ::SystemControl.press (code);
         break;
       case MOUSE:
         MouseControl::press (page, (Mouse::Button) code);
@@ -49,10 +50,10 @@ namespace M01 {
         Base::release (page, code);
         break;
       case CONSUMER:
-        ConsumerControl.release (code);
+        ConsumerControl::release (page, code);
         break;
       case SYSTEM:
-        SystemControl.release ();
+        ::SystemControl.release ();
         break;
       case MOUSE:
         MouseControl::release (page, (Mouse::Button) code);
@@ -63,6 +64,7 @@ namespace M01 {
     void
     Complete::setup () {
       Base::setup ();
+      ConsumerControl::setup ();
       MouseControl::setup ();
     }
 

@@ -22,8 +22,9 @@
 
 namespace M01 {
   namespace HID {
-    class Complete : public M01::HID::Base,
-                     public M01::HID::MouseControl {
+    class Complete : public Base,
+                     public MouseControl,
+                     public ConsumerControl {
     public:
       Complete ();
 

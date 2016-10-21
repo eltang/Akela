@@ -19,10 +19,17 @@
 #pragma once
 
 #include "Akela.h"
-#include "KeyboardioHID.h"
 
-#include "HID/Pages.h"
-#include "HID/MouseControl.h"
-#include "HID/Base.h"
-#include "HID/ConsumerControl.h"
-#include "HID/Complete.h"
+namespace M01 {
+  namespace HID {
+    class ConsumerControl : public Skeleton {
+    public:
+      ConsumerControl ();
+
+      virtual void press (Page page, uint8_t code);
+      virtual void release (Page page, uint8_t code);
+
+      virtual void setup ();
+    };
+  };
+};
