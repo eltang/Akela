@@ -27,38 +27,18 @@ namespace M01 {
 
     void
     Complete::press (Page page, uint8_t code) {
-      switch (page) {
-      case KEYBOARD:
-        Base::press (page, code);
-        break;
-      case CONSUMER:
-        ConsumerControl::press (page, code);
-        break;
-      case SYSTEM:
-        SystemControl::press (page, code);
-        break;
-      case MOUSE:
-        MouseControl::press (page, (Mouse::Button) code);
-        break;
-      }
+      Base::press (page, code);
+      ConsumerControl::press (page, code);
+      SystemControl::press (page, code);
+      MouseControl::press (page, (Mouse::Button) code);
     }
 
     void
     Complete::release (Page page, uint8_t code) {
-      switch (page) {
-      case KEYBOARD:
-        Base::release (page, code);
-        break;
-      case CONSUMER:
-        ConsumerControl::release (page, code);
-        break;
-      case SYSTEM:
-        SystemControl::release (page, code);
-        break;
-      case MOUSE:
-        MouseControl::release (page, (Mouse::Button) code);
-        break;
-      }
+      Base::release (page, code);
+      ConsumerControl::release (page, code);
+      SystemControl::release (page, code);
+      MouseControl::release (page, (Mouse::Button) code);
     }
 
     void
