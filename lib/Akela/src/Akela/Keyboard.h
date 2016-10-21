@@ -28,6 +28,7 @@ namespace Akela {
 
     virtual void press (uint8_t index);
     virtual void release (uint8_t index);
+    virtual void hold (uint8_t index);
   public:
     Keyboard (Akela::AbstractScanner *scanner,
               Akela::KeyEventHandler *eventHandler);

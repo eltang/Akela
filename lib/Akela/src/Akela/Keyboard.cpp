@@ -47,3 +47,8 @@ void
 Akela::Keyboard::release (uint8_t index) {
   keyEvent->release (index);
 }
+
+void
+Akela::Keyboard::hold (uint8_t index) {
+  keyEvent->hold (index);
+}

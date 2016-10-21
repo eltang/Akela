@@ -32,6 +32,7 @@ namespace Akela {
 
     virtual void press (uint8_t index);
     virtual void release (uint8_t index);
+    virtual void hold (uint8_t) {};
 
     virtual void setup ();
     virtual void loop ();
