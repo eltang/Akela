@@ -22,14 +22,8 @@
 
 namespace M01 {
   namespace HID {
-    enum Page {
-      KEYBOARD,
-      CONSUMER,
-      SYSTEM,
-      MOUSE
-    };
-
-    class Base : public Akela::AbstractHID {
+    class Base : public Akela::AbstractHID,
+                 public AbstractMouseControl {
     public:
       Base ();
 
@@ -40,6 +34,9 @@ namespace M01 {
 
       virtual void setup ();
       virtual void loop ();
+
+      virtual void move (int8_t, int8_t) {};
+      virtual void warp (uint8_t) {};
     };
   };
 };

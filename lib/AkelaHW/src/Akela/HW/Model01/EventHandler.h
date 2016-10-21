@@ -52,9 +52,9 @@ enum {
 
   SC_SLP  = SC(HID_SYSTEM_SLEEP),
 
-  MB_LFT  = MB(M01::MouseControl::Button::MB_LEFT),
-  MB_RGT  = MB(M01::MouseControl::Button::MB_RIGHT),
-  MB_MID  = MB(M01::MouseControl::Button::MB_MID),
+  MB_LFT  = MB(M01::HID::Mouse::Button::MB_LEFT),
+  MB_RGT  = MB(M01::HID::Mouse::Button::MB_RIGHT),
+  MB_MID  = MB(M01::HID::Mouse::Button::MB_MID),
 
   MM_UPL  = MC(_MOUSE_UP | _MOUSE_LEFT),
   MM_UP   = MC(_MOUSE_UP),

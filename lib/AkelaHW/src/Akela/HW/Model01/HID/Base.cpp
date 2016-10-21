@@ -24,7 +24,7 @@ namespace M01 {
     }
 
     void
-    Base::press (HID::Page page, uint8_t code) {
+    Base::press (Page page, uint8_t code) {
       if (page != KEYBOARD)
         return;
 
@@ -32,7 +32,7 @@ namespace M01 {
     }
 
     void
-    Base::release (HID::Page page, uint8_t code) {
+    Base::release (Page page, uint8_t code) {
       if (page != KEYBOARD)
         return;
 

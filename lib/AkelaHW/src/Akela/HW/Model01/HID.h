@@ -21,5 +21,7 @@
 #include "Akela.h"
 #include "KeyboardioHID.h"
 
+#include "HID/Pages.h"
+#include "HID/MouseControl.h"
 #include "HID/Base.h"
 #include "HID/Complete.h"

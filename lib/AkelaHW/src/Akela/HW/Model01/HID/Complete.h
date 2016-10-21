@@ -23,12 +23,15 @@
 namespace M01 {
   namespace HID {
     class Complete : public M01::HID::Base,
-                     public M01::MouseControl {
+                     public M01::HID::MouseControl {
     public:
       Complete ();
 
       virtual void press (Page page, uint8_t code);
       virtual void release (Page page, uint8_t code);
+
+      virtual void move (int8_t x, int8_t y);
+      virtual void warp (uint8_t warp_cmd);
 
       virtual void setup ();
     };

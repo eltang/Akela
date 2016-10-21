@@ -21,14 +21,14 @@
 namespace M01 {
   namespace HID {
 
-    Complete::Complete () : M01::MouseControl () {
+    Complete::Complete () : M01::HID::MouseControl () {
     }
 
     void
-    Complete::press (HID::Page page, uint8_t code) {
+    Complete::press (Page page, uint8_t code) {
       switch (page) {
       case KEYBOARD:
-        Base::press (code);
+        Base::press (page, code);
         break;
       case CONSUMER:
         ConsumerControl.press (code);
@@ -37,16 +37,16 @@ namespace M01 {
         SystemControl.press (code);
         break;
       case MOUSE:
-        M01::MouseControl::press ((M01::MouseControl::Button) code);
+        MouseControl::press (page, (Mouse::Button) code);
         break;
       }
     }
 
     void
-    Complete::release (HID::Page page, uint8_t code) {
+    Complete::release (Page page, uint8_t code) {
       switch (page) {
       case KEYBOARD:
-        Base::release (code);
+        Base::release (page, code);
         break;
       case CONSUMER:
         ConsumerControl.release (code);
@@ -55,7 +55,7 @@ namespace M01 {
         SystemControl.release ();
         break;
       case MOUSE:
-        M01::MouseControl::release ((M01::MouseControl::Button) code);
+        MouseControl::release (page, (Mouse::Button) code);
         break;
       }
     }
@@ -63,7 +63,18 @@ namespace M01 {
     void
     Complete::setup () {
       Base::setup ();
-      M01::MouseControl::setup ();
+      MouseControl::setup ();
     }
+
+    void
+    Complete::move (int8_t x, int8_t y) {
+      MouseControl::move (x, y);
+    }
+
+    void
+    Complete::warp (uint8_t warp_cmd) {
+      MouseControl::warp (warp_cmd);
+    }
+
   }
 }

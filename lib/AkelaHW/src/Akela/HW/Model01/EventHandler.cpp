@@ -44,9 +44,9 @@ M01::EventHandler::press (uint8_t index) {
       uint8_t kc = KEYCODE (key);
       ((::M01::HID::Complete *)HID)->warp
         (
-         ((kc & _MOUSE_WARP_END) ? MouseControl::WarpDirection::WARP_END : 0) |
-         ((kc & _MOUSE_DOWN) ? MouseControl::WarpDirection::WARP_DOWN : 0) |
-         ((kc & _MOUSE_RIGHT) ? MouseControl::WarpDirection::WARP_RIGHT : 0)
+         ((kc & _MOUSE_WARP_END) ? HID::Mouse::WarpDirection::WARP_END : 0) |
+         ((kc & _MOUSE_DOWN) ? HID::Mouse::WarpDirection::WARP_DOWN : 0) |
+         ((kc & _MOUSE_RIGHT) ? HID::Mouse::WarpDirection::WARP_RIGHT : 0)
          );
     } else {
       mouseMove (key);
