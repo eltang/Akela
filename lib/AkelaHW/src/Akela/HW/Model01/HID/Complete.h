@@ -19,7 +19,18 @@
 #pragma once
 
 #include "Akela.h"
-#include "KeyboardioHID.h"
 
-#include "HID/Base.h"
-#include "HID/Complete.h"
+namespace M01 {
+  namespace HID {
+    class Complete : public M01::HID::Base,
+                     public M01::MouseControl {
+    public:
+      Complete ();
+
+      virtual void press (Page page, uint8_t code);
+      virtual void release (Page page, uint8_t code);
+
+      virtual void setup ();
+    };
+  };
+};

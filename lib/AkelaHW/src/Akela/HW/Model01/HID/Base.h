@@ -19,7 +19,27 @@
 #pragma once
 
 #include "Akela.h"
-#include "KeyboardioHID.h"
 
-#include "HID/Base.h"
-#include "HID/Complete.h"
+namespace M01 {
+  namespace HID {
+    enum Page {
+      KEYBOARD,
+      CONSUMER,
+      SYSTEM,
+      MOUSE
+    };
+
+    class Base : public Akela::AbstractHID {
+    public:
+      Base ();
+
+      virtual void press (uint8_t code);
+      virtual void release (uint8_t code);
+      virtual void press (Page page, uint8_t code);
+      virtual void release (Page page, uint8_t code);
+
+      virtual void setup ();
+      virtual void loop ();
+    };
+  };
+};
