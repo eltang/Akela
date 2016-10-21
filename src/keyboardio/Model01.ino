@@ -51,11 +51,11 @@ static uint16_t keymap[][64] = {
   ),
   [FN] = KEYMAP (
    KC_NIY     ,KC_F1      ,KC_F2      ,KC_F3      ,KC_F4      ,KC_F5      ,KC_NO
-  ,KC_TAB     ,KC_NIY     ,KC_NIY     ,KC_NO      ,KC_NIY     ,KC_NIY
-  ,KC_HOME    ,KC_NIY     ,KC_NIY     ,KC_NIY     ,KC_NIY     ,KC_NIY     ,KC_NO
-  ,KC_END     ,KC_Z       ,KC_X       ,KC_C       ,KC_V       ,KC_NIY     ,CC_NXT
+  ,KC_TAB     ,MB_MID     ,MM_UP      ,KC_NO      ,MW_NW      ,MW_NE
+  ,KC_HOME    ,MM_L       ,MM_DN      ,MM_R       ,MW_SW      ,MW_SE      ,KC_NO
+  ,KC_END     ,KC_Z       ,KC_X       ,KC_C       ,KC_V       ,MW_END     ,CC_NXT
 
-  ,KC_LCTL    ,KC_NIY     ,KC_LGUI    ,KC_LSFT
+  ,KC_LCTL    ,MB_LFT     ,KC_LGUI    ,KC_LSFT
   ,L(0)
 
   ,KC_NO      ,KC_F6      ,KC_F7      ,KC_F8      ,KC_F9      ,L(0)       ,KC_NO
@@ -63,7 +63,7 @@ static uint16_t keymap[][64] = {
   ,KC_DEL     ,KC_LEFT    ,KC_DOWN    ,KC_UP      ,KC_RGHT    ,KC_F11     ,KC_F12
   ,KC_NO      ,CC_VDN     ,CC_VUP     ,KC_BLDN    ,KC_BLUP    ,KC_BSLS    ,KC_PIPE
 
-  ,KC_RSFT    ,KC_RALT    ,KC_NIY     ,KC_RCTL
+  ,KC_RSFT    ,KC_RALT    ,MB_RGT     ,KC_RCTL
   ,L(0)
 
   ),

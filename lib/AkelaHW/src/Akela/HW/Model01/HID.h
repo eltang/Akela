@@ -22,12 +22,14 @@
 #include "KeyboardioHID.h"
 
 namespace M01 {
-  class HID : public Akela::AbstractHID {
+  class HID : public Akela::AbstractHID,
+              public M01::MouseControl {
   public:
     enum Page {
       KEYBOARD,
       CONSUMER,
-      SYSTEM
+      SYSTEM,
+      MOUSE
     };
     HID ();
 

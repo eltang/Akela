@@ -20,6 +20,7 @@
 
 #include "Akela.h"
 
+#include "Model01/MouseControl.h"
 #include "Model01/HID.h"
 #include "Model01/Scanner.h"
 #include "Model01/LedControl.h"

@@ -22,11 +22,23 @@
 
 #define MOD_FN_USER_CC 0x2000
 #define MOD_FN_USER_SC 0x1000
+#define MOD_FN_USER_MC 0x0800
+#define MOD_FN_USER_MB 0x0400
 
 #define CC(n) FN(n | MOD_FN_USER | MOD_FN_USER_CC)
 #define SC(n) FN(n | MOD_FN_USER | MOD_FN_USER_SC)
+#define MC(n) FN(n | MOD_FN_USER | MOD_FN_USER_MC)
+#define MB(n) FN(n | MOD_FN_USER | MOD_FN_USER_MB)
 
 #define CHECK_USER(kc,u) (CHECK_FN (kc, USER) && (kc & MOD_FN_USER_ ## u))
+
+#define _MOUSE_UP            B0000001
+#define _MOUSE_DOWN          B0000010
+#define _MOUSE_LEFT          B0000100
+#define _MOUSE_RIGHT         B0001000
+#define _MOUSE_CENTER        B0010000
+#define _MOUSE_WARP          B0100000
+#define _MOUSE_WARP_END      B1000000
 
 enum {
   CC_MUTE = CC(HID_CONSUMER_MUTE),
@@ -38,7 +50,26 @@ enum {
   CC_NXT  = CC(HID_CONSUMER_SCAN_NEXT_TRACK),
   CC_EJT  = CC(HID_CONSUMER_EJECT),
 
-  SC_SLP  = SC(HID_SYSTEM_SLEEP)
+  SC_SLP  = SC(HID_SYSTEM_SLEEP),
+
+  MB_LFT  = MB(M01::MouseControl::Button::MB_LEFT),
+  MB_RGT  = MB(M01::MouseControl::Button::MB_RIGHT),
+  MB_MID  = MB(M01::MouseControl::Button::MB_MID),
+
+  MM_UPL  = MC(_MOUSE_UP | _MOUSE_LEFT),
+  MM_UP   = MC(_MOUSE_UP),
+  MM_UPR  = MC(_MOUSE_UP | _MOUSE_RIGHT),
+  MM_L    = MC(_MOUSE_LEFT),
+  MM_R    = MC(_MOUSE_RIGHT),
+  MM_DNL  = MC(_MOUSE_DOWN | _MOUSE_LEFT),
+  MM_DN   = MC(_MOUSE_DOWN),
+  MM_DNR  = MC(_MOUSE_DOWN | _MOUSE_RIGHT),
+
+  MW_NW   = MC(_MOUSE_WARP | _MOUSE_UP | _MOUSE_LEFT),
+  MW_NE   = MC(_MOUSE_WARP | _MOUSE_UP | _MOUSE_RIGHT),
+  MW_SW   = MC(_MOUSE_WARP | _MOUSE_DOWN | _MOUSE_LEFT),
+  MW_SE   = MC(_MOUSE_WARP | _MOUSE_DOWN | _MOUSE_RIGHT),
+  MW_END  = MC(_MOUSE_WARP | _MOUSE_WARP_END)
 };
 
 namespace M01 {

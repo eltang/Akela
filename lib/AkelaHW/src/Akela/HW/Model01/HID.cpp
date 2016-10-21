@@ -18,7 +18,7 @@
 
 #include "Akela/HW/Model01.h"
 
-M01::HID::HID () {
+M01::HID::HID () : M01::MouseControl () {
 }
 
 void
@@ -32,6 +32,9 @@ M01::HID::press (HID::Page page, uint8_t code) {
     break;
   case SYSTEM:
     SystemControl.press (code);
+    break;
+  case MOUSE:
+    M01::MouseControl::press ((M01::MouseControl::Button) code);
     break;
   }
 }
@@ -47,6 +50,9 @@ M01::HID::release (HID::Page page, uint8_t code) {
     break;
   case SYSTEM:
     SystemControl.release ();
+    break;
+  case MOUSE:
+    M01::MouseControl::release ((M01::MouseControl::Button) code);
     break;
   }
 }
@@ -64,6 +70,7 @@ M01::HID::release (uint8_t code) {
 void
 M01::HID::setup () {
   Keyboard.begin ();
+  M01::MouseControl::setup ();
 }
 
 void
