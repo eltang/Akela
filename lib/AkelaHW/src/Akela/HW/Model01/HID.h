@@ -25,4 +25,5 @@
 #include "HID/MouseControl.h"
 #include "HID/Base.h"
 #include "HID/ConsumerControl.h"
+#include "HID/SystemControl.h"
 #include "HID/Complete.h"

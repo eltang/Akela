@@ -16,26 +16,32 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#pragma once
-
-#include "Akela.h"
+#include "Akela/HW/Model01.h"
 
 namespace M01 {
   namespace HID {
-    class Complete : public Base,
-                     public MouseControl,
-                     public ConsumerControl,
-                     public SystemControl {
-    public:
-      Complete ();
+    SystemControl::SystemControl () {
+    }
 
-      virtual void press (Page page, uint8_t code);
-      virtual void release (Page page, uint8_t code);
+    void
+    SystemControl::press (Page page, uint8_t code) {
+      if (page != CONSUMER)
+        return;
 
-      virtual void move (int8_t x, int8_t y);
-      virtual void warp (uint8_t warp_cmd);
+      ::SystemControl.press (code);
+    }
 
-      virtual void setup ();
-    };
-  };
-};
+    void
+    SystemControl::release (Page page, uint8_t) {
+      if (page != CONSUMER)
+        return;
+
+      ::SystemControl.release ();
+    }
+
+    void
+    SystemControl::setup () {
+      ::SystemControl.begin ();
+    }
+  }
+}
