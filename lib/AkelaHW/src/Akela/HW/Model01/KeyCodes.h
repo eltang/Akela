@@ -18,12 +18,7 @@
 
 #pragma once
 
-#include "Akela.h"
-
-#include "Model01/HID.h"
-#include "Model01/Scanner.h"
-#include "Model01/LedControl.h"
-#include "Model01/EventHandler.h"
-#include "Model01/Keyboard.h"
-#include "Model01/Utils.h"
-#include "Model01/KeyCodes.h"
+enum {
+  KC_BLUP = 0xF1,
+  KC_BLDN = 0xF2
+};
