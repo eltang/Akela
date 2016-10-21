@@ -1,7 +1,9 @@
 all: keyboardio test
 
-keyboardio:
-	${MAKE} -C src/keyboardio
+keyboardio: keyboardio/Model01 keyboardio/stripped
+
+keyboardio/%:
+	${MAKE} -C src/keyboardio/$*
 
 test:
 	${MAKE} -C src/test

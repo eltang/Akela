@@ -5,9 +5,8 @@ ARDUINO_PATH				= ${HOME}/install/arduino
 ARDUINO_TOOLS_PATH	= $(ARDUINO_PATH)/hardware/tools
 FQBN								= keyboardio:avr:model01
 BUILD_PATH				 := $(shell mktemp -d 2>/dev/null || mktemp -d -t 'build')
-OUTPUT_PATH					= ./out
+OUTPUT_PATH					= ./firmware
 ARDUINO_IDE_VERSION	= 100607
-SKETCH							= Model01
 
 AVR_SIZE						= $(ARDUINO_TOOLS_PATH)/avr/bin/avr-size
 
@@ -26,16 +25,16 @@ ${OUTPUT_PATH}:
 compile: ${OUTPUT_PATH}
 	$(ARDUINO_PATH)/arduino-builder \
 		-hardware $(ARDUINO_PATH)/hardware \
-    -hardware ../../hardware \
+		-hardware ../../../hardware \
 		-tools $(ARDUINO_TOOLS_PATH) \
 		-tools $(ARDUINO_PATH)/tools-builder  \
 		-fqbn $(FQBN) \
-    -libraries ../../lib \
-		-libraries ../../hardware \
-    ${VERBOSE} \
+		-libraries ../../../lib \
+		-libraries ../../../hardware \
+		${VERBOSE} \
 		-build-path $(BUILD_PATH) \
 		-ide-version $(ARDUINO_IDE_VERSION) \
-    -warnings all \
+		-warnings all \
 		$(SKETCH).ino
 	@cp $(BUILD_PATH)/$(SKETCH).ino.hex $(HEX_FILE_PATH)
 	@cp $(BUILD_PATH)/$(SKETCH).ino.elf $(ELF_FILE_PATH)
