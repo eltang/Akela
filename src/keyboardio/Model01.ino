@@ -66,21 +66,21 @@ static uint16_t keymap[][64] = {
 
   ),
   [NUMPAD] = KEYMAP (
-   KC_NO      ,KC_NO      ,KC_NO      ,KC_NO      ,KC_NO      ,KC_NO      ,KC_NO
-  ,KC_NO      ,KC_NO      ,KC_NO      ,KC_NO      ,KC_NO      ,KC_NO
-  ,KC_NO      ,KC_NO      ,KC_NO      ,KC_NO      ,KC_NO      ,KC_NO      ,KC_NO
-  ,KC_NO      ,KC_NO      ,KC_NO      ,KC_NO      ,KC_NO      ,KC_NO      ,KC_NO
+   KC_NO      ,KC_1       ,KC_2       ,KC_3       ,KC_4       ,KC_5       ,KC_NO
+  ,KC_GRV     ,KC_Q       ,KC_W       ,KC_E       ,KC_R       ,KC_T
+  ,KC_PGUP    ,KC_A       ,KC_S       ,KC_D       ,KC_F       ,KC_G       ,KC_TAB
+  ,KC_PGDN    ,KC_Z       ,KC_X       ,KC_C       ,KC_V       ,KC_B       ,KC_ESC
 
-  ,KC_NO      ,KC_NO      ,KC_NO      ,KC_NO
-  ,KC_NO
+  ,KC_LCTL    ,KC_BSPC    ,KC_LGUI    ,KC_LSFT
+  ,ML(1)
 
-  ,KC_NO      ,KC_NO      ,KC_NO      ,KC_NO      ,KC_NO      ,KC_NO      ,KC_NO
-              ,KC_NO      ,KC_NO      ,KC_NO      ,KC_NO      ,KC_NO      ,KC_NO
-  ,KC_NO      ,KC_NO      ,KC_NO      ,KC_NO      ,KC_NO      ,KC_NO      ,KC_NO
-  ,KC_NO      ,KC_NO      ,KC_NO      ,KC_NO      ,KC_NO      ,KC_NO      ,KC_NO
+  ,KC_NO      ,KC_6       ,KC_KP7     ,KC_KP8     ,KC_KP9     ,KC_KPMINS  ,L(0)
+              ,KC_Y       ,KC_KP4     ,KC_KP5     ,KC_KP6     ,KC_KPPLUS  ,KC_EQL
+  ,KC_RET     ,KC_H       ,KC_KP1     ,KC_KP2     ,KC_KP3     ,KC_EQL     ,KC_QUOT
+  ,KC_NO      ,KC_N       ,KC_KP0     ,KC_KPDOT   ,KC_KPSTAR  ,KC_KPSLSH  ,KC_ENT
 
-  ,KC_NO      ,KC_NO      ,KC_NO      ,KC_NO
-  ,KC_NO
+  ,KC_RSFT    ,KC_RALT    ,KC_SPC     ,KC_RCTL
+  ,ML(1)
   ),
 };
 

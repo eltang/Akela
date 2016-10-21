@@ -105,8 +105,24 @@ enum {
   KC_DOWN,
   KC_UP,
 
-  KC_MPLY = 0xB0, // TODO
-  KC_MSTP = 0xB7, // TODO
+  KC_KPSLSH = 0x54,
+  KC_KPSTAR,
+  KC_KPMINS,
+  KC_KPPLUS,
+  KC_KPENT,
+  KC_KP1,
+  KC_KP2,
+  KC_KP3,
+  KC_KP4,
+  KC_KP5,
+  KC_KP6,
+  KC_KP7,
+  KC_KP8,
+  KC_KP9,
+  KC_KP0,
+  KC_KPDOT,
+
+  KC_RET = 0x9E,
 
   KC_LCTL = 0xE0,
   KC_LSFT,
