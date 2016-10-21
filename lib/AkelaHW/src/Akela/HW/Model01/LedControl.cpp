@@ -36,18 +36,24 @@ M01::LedControl::enable_high_power () {
 
 void
 M01::LedControl::set_color(uint8_t i, cRGB crgb) {
-  if(i<32) {
+  if (i < 32) {
     scanner->leftHand.ledData.leds[i] = crgb;
-  } else if (i<64) {
+  } else if (i < 64) {
     scanner->rightHand.ledData.leds[i - 32] = crgb;
-  }}
-
+  }
+}
 
 void
 M01::LedControl::set_color (cRGB color) {
   for (uint8_t i = 0; i < LED_COUNT; i++) {
     set_color (i, color);
   }
+}
+
+void
+M01::LedControl::set_color (uint8_t row, uint8_t col, cRGB crgb) {
+  uint8_t pos = map[row * 16 + col];
+  set_color (pos, crgb);
 }
 
 void
