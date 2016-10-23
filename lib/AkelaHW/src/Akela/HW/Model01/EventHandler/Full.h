@@ -18,12 +18,20 @@
 
 #pragma once
 
-#include "Akela.h"
+namespace M01 {
+  namespace EventHandler {
+    class Full : public Base,
+                 public LedControl,
+                 public MouseComponent {
+    public:
+      Full (Akela::AbstractHID *HID, Akela::LayeredKeyMap *keymap,
+            Scanner *scanner);
 
-#include "EventHandler/SysFn.h"
-#include "EventHandler/LedControl.h"
-#include "EventHandler/Components/ExtraKeys.h"
-#include "EventHandler/Components/Mouse.h"
+      virtual void press (uint8_t index);
+      virtual void release (uint8_t index);
+      virtual void hold (uint8_t index);
 
-#include "EventHandler/Base.h"
-#include "EventHandler/Full.h"
+      virtual void setup ();
+    };
+  };
+};
