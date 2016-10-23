@@ -37,17 +37,10 @@ namespace M01 {
       if (!IS_FNSYS (key))
         return Akela::EventHandler::Layered::press (index);
 
+      if (ExtraKeysComponent::press (HID, keymap, index, keymap->lookup (index)))
+        return;
+
       switch (key) {
-      case M01::SYSFN::CONSUMER ... M01::SYSFN::CONSUMER_MAX:
-        page = M01::HID::CONSUMER;
-        keycode = key - M01::SYSFN::CONSUMER;
-        break;
-
-      case M01::SYSFN::SYSTEM ... M01::SYSFN::SYSTEM_MAX:
-        page = M01::HID::SYSTEM;
-        keycode = key - M01::SYSFN::SYSTEM;
-        break;
-
       case M01::SYSFN::MOUSE_BUTTON ... M01::SYSFN::MOUSE_BUTTON_MAX:
         page = M01::HID::MOUSE;
         keycode = key - M01::SYSFN::MOUSE_BUTTON;
@@ -97,17 +90,10 @@ namespace M01 {
       if (!IS_FNSYS (key))
         return Akela::EventHandler::Layered::release (index);
 
+      if (ExtraKeysComponent::release (HID, keymap, index, keymap->lookup (index)))
+        return;
+
       switch (key) {
-      case M01::SYSFN::CONSUMER ... M01::SYSFN::CONSUMER_MAX:
-        page = M01::HID::CONSUMER;
-        keycode = key - M01::SYSFN::CONSUMER;
-        break;
-
-      case M01::SYSFN::SYSTEM ... M01::SYSFN::SYSTEM_MAX:
-        page = M01::HID::SYSTEM;
-        keycode = key - M01::SYSFN::SYSTEM;
-        break;
-
       case M01::SYSFN::MOUSE_BUTTON ... M01::SYSFN::MOUSE_BUTTON_MAX:
         page = M01::HID::MOUSE;
         keycode = key - M01::SYSFN::MOUSE_BUTTON;

@@ -22,9 +22,8 @@
 
 #include "EventHandler/SysFn.h"
 #include "EventHandler/LedControl.h"
+#include "EventHandler/Components/ExtraKeys.h"
 
-#define CC(n) (M01::SYSFN::CONSUMER + (n))
-#define SC(n) (M01::SYSFN::SYSTEM + (n))
 #define MC(n) (M01::SYSFN::MOUSE_CONTROL + (n))
 #define MB(n) (M01::SYSFN::MOUSE_BUTTON + (n))
 
@@ -37,17 +36,6 @@
 #define _MOUSE_WARP_END      B1000000
 
 enum {
-  CC_MUTE = CC(HID_CONSUMER_MUTE),
-  CC_VUP  = CC(HID_CONSUMER_VOLUME_INCREMENT),
-  CC_VDN  = CC(HID_CONSUMER_VOLUME_DECREMENT),
-  CC_PLPS = CC(HID_CONSUMER_PLAY_SLASH_PAUSE),
-  CC_STOP = CC(HID_CONSUMER_STOP),
-  CC_PRV  = CC(HID_CONSUMER_SCAN_PREVIOUS_TRACK),
-  CC_NXT  = CC(HID_CONSUMER_SCAN_NEXT_TRACK),
-  CC_EJT  = CC(HID_CONSUMER_EJECT),
-
-  SC_SLP  = SC(HID_SYSTEM_SLEEP),
-
   MB_LFT  = MB(M01::HID::Mouse::Button::MB_LEFT),
   MB_RGT  = MB(M01::HID::Mouse::Button::MB_RIGHT),
   MB_MID  = MB(M01::HID::Mouse::Button::MB_MID),
@@ -70,7 +58,9 @@ enum {
 
 namespace M01 {
   namespace EventHandler {
-    class Complete : public Akela::EventHandler::Layered, public LedControl {
+    class Complete : public Akela::EventHandler::Layered,
+                     public LedControl,
+                     public ExtraKeysComponent {
     private:
       virtual void mouseMove (uint8_t key);
     public:
