@@ -20,7 +20,8 @@ int
 TestFn () {
   PrinterHID hid = PrinterHID ();
   PrinterKeyMap keymap = PrinterKeyMap ((uint16_t *)fn_keymap);
-  Akela::KeyEventHandler EH = Akela::KeyEventHandler (&hid, &keymap);
+  Akela::EventHandler::Base
+    EH = Akela::EventHandler::Base (&hid, &keymap);
   NoOpScanner scanner = NoOpScanner ();
   PressReleaseKeyboard keyboard = PressReleaseKeyboard (&scanner, &EH);
 

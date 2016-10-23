@@ -16,25 +16,28 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#pragma once
+
 #include "Akela.h"
 
 namespace Akela {
   namespace EventHandler {
+    class Component {
+    protected:
+      virtual void press (Akela::AbstractHID *,
+                          Akela::KeyMap *,
+                          uint8_t,
+                          uint16_t) = 0;
 
-    Layered::Layered (Akela::AbstractHID *HID, Akela::LayeredKeyMap *keymap)
-      : Akela::EventHandler::Base (HID, keymap) {
-    }
+      virtual void release (Akela::AbstractHID *,
+                            Akela::KeyMap *,
+                            uint8_t,
+                            uint16_t) = 0;
 
-    void
-    Layered::press (uint8_t index) {
-      LayerComponent::press (HID, keymap, index, keymap->lookup (index));
-      Akela::EventHandler::Base::press (index);
-    }
-
-    void
-    Layered::release (uint8_t index) {
-      LayerComponent::release (HID, keymap, index, keymap->lookup (index));
-      Akela::EventHandler::Base::release (index);
-    }
+      virtual void hold (Akela::AbstractHID *,
+                         Akela::KeyMap *,
+                         uint8_t,
+                         uint16_t) {};
+    };
   };
 };

@@ -20,7 +20,8 @@ int
 TestLayers () {
   PrinterHID hid = PrinterHID ();
   LayerPrinterKeyMap keymap = LayerPrinterKeyMap ((uint16_t **)layered_keymap, 64);
-  Akela::KeyEventHandler EH = Akela::KeyEventHandler (&hid, &keymap);
+  Akela::EventHandler::Base EH =
+    Akela::EventHandler::Base (&hid, &keymap);
   NoOpScanner scanner = NoOpScanner ();
   PressReleaseLayeredKeyboard keyboard = PressReleaseLayeredKeyboard (&scanner, &EH, &keymap);
 
@@ -36,7 +37,8 @@ int
 TestLayerKeys () {
   PrinterHID hid = PrinterHID ();
   LayerPrinterKeyMap keymap = LayerPrinterKeyMap ((uint16_t **)layer_key_keymap, 64);
-  Akela::LayerEventHandler EH = Akela::LayerEventHandler (&hid, &keymap);
+  Akela::EventHandler::Layered EH =
+    Akela::EventHandler::Layered (&hid, &keymap);
   NoOpScanner scanner = NoOpScanner ();
   ChordedKeyboard keyboard = ChordedKeyboard (&scanner, &EH);
 

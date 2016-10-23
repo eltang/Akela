@@ -19,4 +19,5 @@
 #pragma once
 
 #include "EventHandler/Base.h"
+#include "EventHandler/Component.h"
 #include "EventHandler/Layered.h"

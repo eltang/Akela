@@ -20,7 +20,8 @@ int
 TestMods () {
   PrinterHID hid = PrinterHID ();
   PrinterKeyMap keymap = PrinterKeyMap ((uint16_t *)modful_keymap);
-  Akela::KeyEventHandler EH = Akela::KeyEventHandler (&hid, &keymap);
+  Akela::EventHandler::Base EH =
+    Akela::EventHandler::Base (&hid, &keymap);
   NoOpScanner scanner = NoOpScanner ();
   PressReleaseKeyboard keyboard = PressReleaseKeyboard (&scanner, &EH);
 

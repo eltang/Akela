@@ -36,7 +36,7 @@ public:
   }
 
   PressReleaseLayeredKeyboard (Akela::AbstractScanner *s,
-                               Akela::KeyEventHandler *eh,
+                               Akela::EventHandler::Base *eh,
                                Akela::LayeredKeyMap *km)
     : Akela::Keyboard (s, eh) {
     keymap = km;

@@ -18,17 +18,17 @@
 
 #pragma once
 
-class PrinterFnHandler : public Akela::KeyEventHandler {
+class PrinterFnHandler : public Akela::EventHandler::Base {
  public:
   PrinterFnHandler (Akela::AbstractHID *HID, Akela::KeyMap *keymap)
-    : Akela::KeyEventHandler (HID, keymap) {};
+    : Akela::EventHandler::Base (HID, keymap) {};
 
   virtual void press (uint8_t index) {
     bool k;
     uint16_t key = keymap->lookup (index);
 
     if (!IS_FN (key))
-      return Akela::KeyEventHandler::press (index);
+      return Akela::EventHandler::Base::press (index);
 
     k = IS_FNSYS (key);
     std::cout << __PRETTY_FUNCTION__ << "(" << (int)index
@@ -42,7 +42,7 @@ class PrinterFnHandler : public Akela::KeyEventHandler {
     uint16_t key = keymap->lookup (index);
 
     if (!IS_FN (key))
-      return Akela::KeyEventHandler::release (index);
+      return Akela::EventHandler::Base::release (index);
 
     k = IS_FNSYS (key);
     std::cout << __PRETTY_FUNCTION__ << "(" << (int)index
