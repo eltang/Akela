@@ -86,12 +86,11 @@ static uint16_t keymap[][64] = {
   ),
 };
 
-static M01::HID::Base hid = M01::HID::Base ();
-static Akela::LayeredKeyMap keyMap = Akela::LayeredKeyMap ((uint16_t **)keymap, 64);
-static M01::Scanner scanner = M01::Scanner ();
-static M01::EventHandler::Full eventHandler =
-  M01::EventHandler::Full (&hid, &keyMap, &scanner);
-static M01::Model01 keyboard = M01::Model01 (&scanner, &eventHandler);
+static M01::HID::Base          hid;
+static Akela::LayeredKeyMap    keyMap ((uint16_t **)keymap, 64);
+static M01::Scanner            scanner;
+static M01::EventHandler::Full eventHandler (&hid, &keyMap, &scanner);
+static M01::Model01            keyboard (&scanner, &eventHandler);
 
 void setup () {
   keyboard.setup ();
