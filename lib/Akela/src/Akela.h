@@ -29,6 +29,7 @@
 #include "Akela/KeyMap.h"
 #include "Akela/LayeredKeyMap.h"
 #include "Akela/KeyCodes.h"
+#include "Akela/SysFn.h"
 #include "Akela/KeyEventHandler.h"
 #include "Akela/LayerEventHandler.h"
 #include "Akela/Keyboard.h"

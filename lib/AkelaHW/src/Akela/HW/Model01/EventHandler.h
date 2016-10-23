@@ -20,17 +20,37 @@
 
 #include "Akela.h"
 
-#define MOD_FN_USER_CC 0x2000
-#define MOD_FN_USER_SC 0x1000
-#define MOD_FN_USER_MC 0x0800
-#define MOD_FN_USER_MB 0x0400
+namespace M01 {
+  enum {
+    SYSFN_CONSUMER     = Akela::SYSFN_SAFE,
+    SYSFN_CONSUMER_MAX = Akela::SYSFN_SAFE + 256
+  };
 
-#define CC(n) FN(n | MOD_FN_USER | MOD_FN_USER_CC)
-#define SC(n) FN(n | MOD_FN_USER | MOD_FN_USER_SC)
-#define MC(n) FN(n | MOD_FN_USER | MOD_FN_USER_MC)
-#define MB(n) FN(n | MOD_FN_USER | MOD_FN_USER_MB)
+  enum {
+    SYSFN_SYSTEM       = SYSFN_CONSUMER_MAX + 1,
+    SYSFN_SYSTEM_MAX   = SYSFN_CONSUMER_MAX + 257
+  };
 
-#define CHECK_USER(kc,u) (CHECK_FN (kc, USER) && (kc & MOD_FN_USER_ ## u))
+  enum {
+    SYSFN_MOUSE_BUTTON     = SYSFN_SYSTEM_MAX + 1,
+    SYSFN_MOUSE_BUTTON_MAX = SYSFN_SYSTEM_MAX + 9,
+  };
+
+  enum {
+    SYSFN_MOUSE_CONTROL     = SYSFN_MOUSE_BUTTON_MAX + 1,
+    SYSFN_MOUSE_CONTROL_MAX = SYSFN_MOUSE_BUTTON_MAX + 256
+  };
+
+  enum {
+    SYSFN_MODEL01      = Akela::SYSFN_SAFE,
+    SYSFN_MODEL01_SAFE = SYSFN_MOUSE_CONTROL_MAX + 1,
+  };
+};
+
+#define CC(n) (M01::SYSFN_CONSUMER + (n))
+#define SC(n) (M01::SYSFN_SYSTEM + (n))
+#define MC(n) (M01::SYSFN_MOUSE_CONTROL + (n))
+#define MB(n) (M01::SYSFN_MOUSE_BUTTON + (n))
 
 #define _MOUSE_UP            B0000001
 #define _MOUSE_DOWN          B0000010
@@ -75,7 +95,7 @@ enum {
 namespace M01 {
   class EventHandler : public Akela::LayerEventHandler, public LedControl {
   private:
-    virtual void mouseMove (uint16_t key);
+    virtual void mouseMove (uint8_t key);
   public:
     EventHandler (Akela::AbstractHID *HID, Akela::LayeredKeyMap *keymap,
                   Scanner *scanner);
