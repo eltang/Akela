@@ -21,12 +21,12 @@
 namespace M01 {
   namespace HID {
 
-    Complete::Complete ()
+    Full::Full ()
       : MouseControl (), ConsumerControl (), SystemControl () {
     }
 
     void
-    Complete::press (Page page, uint8_t code) {
+    Full::press (Page page, uint8_t code) {
       Base::press (page, code);
       ConsumerControl::press (page, code);
       SystemControl::press (page, code);
@@ -34,7 +34,7 @@ namespace M01 {
     }
 
     void
-    Complete::release (Page page, uint8_t code) {
+    Full::release (Page page, uint8_t code) {
       Base::release (page, code);
       ConsumerControl::release (page, code);
       SystemControl::release (page, code);
@@ -42,7 +42,7 @@ namespace M01 {
     }
 
     void
-    Complete::setup () {
+    Full::setup () {
       Base::setup ();
       ConsumerControl::setup ();
       SystemControl::setup ();
@@ -50,12 +50,12 @@ namespace M01 {
     }
 
     void
-    Complete::move (int8_t x, int8_t y) {
+    Full::move (int8_t x, int8_t y) {
       MouseControl::move (x, y);
     }
 
     void
-    Complete::warp (uint8_t warp_cmd) {
+    Full::warp (uint8_t warp_cmd) {
       MouseControl::warp (warp_cmd);
     }
 

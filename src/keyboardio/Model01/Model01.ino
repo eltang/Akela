@@ -86,7 +86,7 @@ static uint16_t keymap[][64] = {
   ),
 };
 
-static M01::HID::Complete      hid;
+static M01::HID::Full          hid;
 static Akela::LayeredKeyMap    keyMap ((uint16_t **)keymap, 64);
 static M01::Scanner            scanner;
 static M01::EventHandler::Full eventHandler (&hid, &keyMap, &scanner);

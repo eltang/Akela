@@ -22,12 +22,12 @@
 
 namespace M01 {
   namespace HID {
-    class Complete : public Base,
-                     public MouseControl,
-                     public ConsumerControl,
-                     public SystemControl {
+    class Full : public Base,
+                 public MouseControl,
+                 public ConsumerControl,
+                 public SystemControl {
     public:
-      Complete ();
+      Full ();
 
       virtual void press (Page page, uint8_t code);
       virtual void release (Page page, uint8_t code);
