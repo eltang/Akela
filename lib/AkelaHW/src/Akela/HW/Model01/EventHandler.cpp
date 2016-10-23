@@ -34,23 +34,23 @@ M01::EventHandler::press (uint8_t index) {
     return Akela::LayerEventHandler::press (index);
 
   switch (key) {
-  case M01::SYSFN_CONSUMER ... M01::SYSFN_CONSUMER_MAX:
+  case M01::SYSFN::CONSUMER ... M01::SYSFN::CONSUMER_MAX:
     page = HID::CONSUMER;
-    keycode = key - M01::SYSFN_CONSUMER;
+    keycode = key - M01::SYSFN::CONSUMER;
     break;
 
-  case M01::SYSFN_SYSTEM ... M01::SYSFN_SYSTEM_MAX:
+  case M01::SYSFN::SYSTEM ... M01::SYSFN::SYSTEM_MAX:
     page = HID::SYSTEM;
-    keycode = key - M01::SYSFN_SYSTEM;
+    keycode = key - M01::SYSFN::SYSTEM;
     break;
 
-  case M01::SYSFN_MOUSE_BUTTON ... M01::SYSFN_MOUSE_BUTTON_MAX:
+  case M01::SYSFN::MOUSE_BUTTON ... M01::SYSFN::MOUSE_BUTTON_MAX:
     page = HID::MOUSE;
-    keycode = key - M01::SYSFN_MOUSE_BUTTON;
+    keycode = key - M01::SYSFN::MOUSE_BUTTON;
     break;
 
-  case M01::SYSFN_MOUSE_CONTROL ... M01::SYSFN_MOUSE_CONTROL_MAX:
-    keycode = key - M01::SYSFN_MOUSE_CONTROL;
+  case M01::SYSFN::MOUSE_CONTROL ... M01::SYSFN::MOUSE_CONTROL_MAX:
+    keycode = key - M01::SYSFN::MOUSE_CONTROL;
 
     if (keycode & _MOUSE_WARP) {
       ((::M01::HID::Complete *)HID)->warp
@@ -76,8 +76,8 @@ M01::EventHandler::hold (uint8_t index) {
   uint16_t key = keymap->lookup (index);
 
   switch (key) {
-  case SYSFN_MOUSE_CONTROL ... SYSFN_MOUSE_CONTROL_MAX:
-    mouseMove (key - SYSFN_MOUSE_CONTROL);
+  case M01::SYSFN::MOUSE_CONTROL ... M01::SYSFN::MOUSE_CONTROL_MAX:
+    mouseMove (key - SYSFN::MOUSE_CONTROL);
     break;
   default:
     return Akela::LayerEventHandler::hold (index);
@@ -94,22 +94,22 @@ M01::EventHandler::release (uint8_t index) {
     return Akela::LayerEventHandler::press (index);
 
   switch (key) {
-  case M01::SYSFN_CONSUMER ... M01::SYSFN_CONSUMER_MAX:
+  case M01::SYSFN::CONSUMER ... M01::SYSFN::CONSUMER_MAX:
     page = HID::CONSUMER;
-    keycode = key - M01::SYSFN_CONSUMER;
+    keycode = key - M01::SYSFN::CONSUMER;
     break;
 
-  case M01::SYSFN_SYSTEM ... M01::SYSFN_SYSTEM_MAX:
+  case M01::SYSFN::SYSTEM ... M01::SYSFN::SYSTEM_MAX:
     page = HID::SYSTEM;
-    keycode = key - M01::SYSFN_SYSTEM;
+    keycode = key - M01::SYSFN::SYSTEM;
     break;
 
-  case M01::SYSFN_MOUSE_BUTTON ... M01::SYSFN_MOUSE_BUTTON_MAX:
+  case M01::SYSFN::MOUSE_BUTTON ... M01::SYSFN::MOUSE_BUTTON_MAX:
     page = HID::MOUSE;
-    keycode = key - M01::SYSFN_MOUSE_BUTTON;
+    keycode = key - M01::SYSFN::MOUSE_BUTTON;
     break;
 
-  case M01::SYSFN_MOUSE_CONTROL ... M01::SYSFN_MOUSE_CONTROL_MAX:
+  case M01::SYSFN::MOUSE_CONTROL ... M01::SYSFN::MOUSE_CONTROL_MAX:
    return;
 
   default:

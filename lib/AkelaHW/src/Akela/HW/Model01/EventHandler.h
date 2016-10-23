@@ -20,37 +20,12 @@
 
 #include "Akela.h"
 
-namespace M01 {
-  enum {
-    SYSFN_CONSUMER     = Akela::SYSFN_SAFE,
-    SYSFN_CONSUMER_MAX = Akela::SYSFN_SAFE + 256
-  };
+#include "EventHandler/SysFn.h"
 
-  enum {
-    SYSFN_SYSTEM       = SYSFN_CONSUMER_MAX + 1,
-    SYSFN_SYSTEM_MAX   = SYSFN_CONSUMER_MAX + 257
-  };
-
-  enum {
-    SYSFN_MOUSE_BUTTON     = SYSFN_SYSTEM_MAX + 1,
-    SYSFN_MOUSE_BUTTON_MAX = SYSFN_SYSTEM_MAX + 9,
-  };
-
-  enum {
-    SYSFN_MOUSE_CONTROL     = SYSFN_MOUSE_BUTTON_MAX + 1,
-    SYSFN_MOUSE_CONTROL_MAX = SYSFN_MOUSE_BUTTON_MAX + 256
-  };
-
-  enum {
-    SYSFN_MODEL01      = Akela::SYSFN_SAFE,
-    SYSFN_MODEL01_SAFE = SYSFN_MOUSE_CONTROL_MAX + 1,
-  };
-};
-
-#define CC(n) (M01::SYSFN_CONSUMER + (n))
-#define SC(n) (M01::SYSFN_SYSTEM + (n))
-#define MC(n) (M01::SYSFN_MOUSE_CONTROL + (n))
-#define MB(n) (M01::SYSFN_MOUSE_BUTTON + (n))
+#define CC(n) (M01::SYSFN::CONSUMER + (n))
+#define SC(n) (M01::SYSFN::SYSTEM + (n))
+#define MC(n) (M01::SYSFN::MOUSE_CONTROL + (n))
+#define MB(n) (M01::SYSFN::MOUSE_BUTTON + (n))
 
 #define _MOUSE_UP            B0000001
 #define _MOUSE_DOWN          B0000010
