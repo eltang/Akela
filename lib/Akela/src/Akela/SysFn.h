@@ -27,6 +27,6 @@ namespace Akela {
     SYSFN_LAYER_MOVE          = SYSFN(0x0010),
     SYSFN_LAYER_MOVE_MAX      = SYSFN(0x001f),
 
-    SYSFN_MAX
+    SYSFN_SAFE,
   };
 };
