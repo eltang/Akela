@@ -1,6 +1,6 @@
 CXXFLAGS = -I../../lib/Akela/src -I. -O0 -ggdb3 -Wall -Wno-unused-variable
 
-ifeq (${VERBOSE},1)
+ifeq (${VERBOSE},2)
 _r =
 else
 _r = >/dev/null

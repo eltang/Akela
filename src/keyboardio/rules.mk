@@ -23,7 +23,8 @@ ${OUTPUT_PATH}:
 	install -d $@
 
 compile: ${OUTPUT_PATH}
-	$(ARDUINO_PATH)/arduino-builder \
+	${SS} echo Building keyboardio/${SKETCH} ...
+	${SC} $(ARDUINO_PATH)/arduino-builder \
 		-hardware $(ARDUINO_PATH)/hardware \
 		-hardware ../../../hardware \
 		-tools $(ARDUINO_TOOLS_PATH) \
@@ -31,7 +32,6 @@ compile: ${OUTPUT_PATH}
 		-fqbn $(FQBN) \
 		-libraries ../../../lib \
 		-libraries ../../../hardware \
-		${VERBOSE} \
 		-build-path $(BUILD_PATH) \
 		-ide-version $(ARDUINO_IDE_VERSION) \
 		-warnings all \
@@ -41,7 +41,8 @@ compile: ${OUTPUT_PATH}
 	@rm -rf "${BUILD_PATH}"
 
 size: compile
-	$(AVR_SIZE) -C --mcu=$(MCU) $(ELF_FILE_PATH)
+	${SS} echo "- Size:"
+	${SC} $(AVR_SIZE) -C --mcu=$(MCU) $(ELF_FILE_PATH) ${SR}
 
 clean:
 	rm -rf ${OUTPUT_PATH}
