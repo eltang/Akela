@@ -1,4 +1,4 @@
-CXXFLAGS = -I../../lib/Akela/src -I. -O0 -ggdb3 -Wall -Wno-unused-variable
+CXXFLAGS = -I../../lib/Akela/src -I. -O0 -ggdb3 -Wall -Wno-unused-variable -std=c++11
 
 ifeq (${VERBOSE},2)
 _r =
