@@ -16,8 +16,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#define AKELA_HARDWARE Model01
-
 #include <Akela.h>
 #include <AkelaHW.h>
 
