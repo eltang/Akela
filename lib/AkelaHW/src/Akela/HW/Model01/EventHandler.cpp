@@ -28,68 +28,95 @@ void
 M01::EventHandler::press (uint8_t index) {
   uint16_t key = keymap->lookup (index);
   HID::Page page;
+  uint8_t keycode;
 
-  if (!CHECK_USER (key, CC) && !CHECK_USER (key, SC) &&
-      !CHECK_USER (key, MB) && !CHECK_USER (key, MC))
+  if (!IS_FNSYS (key))
     return Akela::LayerEventHandler::press (index);
 
-  if (CHECK_USER (key, CC))
+  switch (key) {
+  case M01::SYSFN_CONSUMER ... M01::SYSFN_CONSUMER_MAX:
     page = HID::CONSUMER;
-  else if (CHECK_USER (key, SC))
+    keycode = key - M01::SYSFN_CONSUMER;
+    break;
+
+  case M01::SYSFN_SYSTEM ... M01::SYSFN_SYSTEM_MAX:
     page = HID::SYSTEM;
-  else if (CHECK_USER (key, MB))
+    keycode = key - M01::SYSFN_SYSTEM;
+    break;
+
+  case M01::SYSFN_MOUSE_BUTTON ... M01::SYSFN_MOUSE_BUTTON_MAX:
     page = HID::MOUSE;
-  else {
-    if (key & _MOUSE_WARP) {
-      uint8_t kc = KEYCODE (key);
+    keycode = key - M01::SYSFN_MOUSE_BUTTON;
+    break;
+
+  case M01::SYSFN_MOUSE_CONTROL ... M01::SYSFN_MOUSE_CONTROL_MAX:
+    keycode = key - M01::SYSFN_MOUSE_CONTROL;
+
+    if (keycode & _MOUSE_WARP) {
       ((::M01::HID::Complete *)HID)->warp
         (
-         ((kc & _MOUSE_WARP_END) ? HID::Mouse::WarpDirection::WARP_END : 0) |
-         ((kc & _MOUSE_DOWN) ? HID::Mouse::WarpDirection::WARP_DOWN : 0) |
-         ((kc & _MOUSE_RIGHT) ? HID::Mouse::WarpDirection::WARP_RIGHT : 0)
+         ((keycode & _MOUSE_WARP_END) ? HID::Mouse::WarpDirection::WARP_END : 0) |
+         ((keycode & _MOUSE_DOWN) ? HID::Mouse::WarpDirection::WARP_DOWN : 0) |
+         ((keycode & _MOUSE_RIGHT) ? HID::Mouse::WarpDirection::WARP_RIGHT : 0)
          );
     } else {
-      mouseMove (key);
+      mouseMove (keycode);
     }
     return;
+
+  default:
+    return Akela::LayerEventHandler::press (index);
   }
 
-  ((::M01::HID::Base *)HID)->press (page, KEYCODE (key));
+  ((::M01::HID::Base *)HID)->press (page, keycode);
 }
 
 void
 M01::EventHandler::hold (uint8_t index) {
   uint16_t key = keymap->lookup (index);
 
-  if (!CHECK_USER (key, MC))
-    return;
-
-  if (key & _MOUSE_WARP)
-    return;
-
-  mouseMove (key);
+  switch (key) {
+  case SYSFN_MOUSE_CONTROL ... SYSFN_MOUSE_CONTROL_MAX:
+    mouseMove (key - SYSFN_MOUSE_CONTROL);
+    break;
+  default:
+    return Akela::LayerEventHandler::hold (index);
+  }
 }
 
 void
 M01::EventHandler::release (uint8_t index) {
   uint16_t key = keymap->lookup (index);
   HID::Page page;
+  uint8_t keycode;
 
-  if (!CHECK_USER (key, CC) && !CHECK_USER (key, SC) &&
-      !CHECK_USER (key, MB) && !CHECK_USER (key, MC))
-    return Akela::LayerEventHandler::release (index);
+  if (!IS_FNSYS (key))
+    return Akela::LayerEventHandler::press (index);
 
-  if (CHECK_USER (key, CC))
+  switch (key) {
+  case M01::SYSFN_CONSUMER ... M01::SYSFN_CONSUMER_MAX:
     page = HID::CONSUMER;
-  else if (CHECK_USER (key, SC))
+    keycode = key - M01::SYSFN_CONSUMER;
+    break;
+
+  case M01::SYSFN_SYSTEM ... M01::SYSFN_SYSTEM_MAX:
     page = HID::SYSTEM;
-  else if (CHECK_USER (key, MB))
+    keycode = key - M01::SYSFN_SYSTEM;
+    break;
+
+  case M01::SYSFN_MOUSE_BUTTON ... M01::SYSFN_MOUSE_BUTTON_MAX:
     page = HID::MOUSE;
-  else {
-    return;
+    keycode = key - M01::SYSFN_MOUSE_BUTTON;
+    break;
+
+  case M01::SYSFN_MOUSE_CONTROL ... M01::SYSFN_MOUSE_CONTROL_MAX:
+   return;
+
+  default:
+    return Akela::LayerEventHandler::press (index);
   }
 
-  ((::M01::HID::Base *)HID)->release (page, KEYCODE (key));
+  ((::M01::HID::Base *)HID)->release (page, keycode);
 }
 
 void
@@ -99,7 +126,7 @@ M01::EventHandler::setup () {
 }
 
 void
-M01::EventHandler::mouseMove (uint16_t key) {
+M01::EventHandler::mouseMove (uint8_t key) {
   ::M01::HID::Complete *mc = (::M01::HID::Complete *) HID;
 
   if (key & _MOUSE_UP)
