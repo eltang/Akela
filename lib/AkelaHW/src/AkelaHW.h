@@ -18,4 +18,6 @@
 
 #pragma once
 
+#if !defined(AKELA_HARDWARE) || AKELA_HARDWARE == Model01
 #include "Akela/HW/Model01.h"
+#endif
