@@ -45,7 +45,7 @@ M01::LedControl::set_color(uint8_t i, cRGB crgb) {
 
 void
 M01::LedControl::set_color (cRGB color) {
-  for (uint8_t i = 0; i < LED_COUNT; i++) {
+  for (uint8_t i = 0; i < sizeof (map); i++) {
     set_color (i, color);
   }
 }

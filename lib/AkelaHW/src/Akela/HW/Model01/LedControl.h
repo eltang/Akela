@@ -20,8 +20,6 @@
 
 #include "Akela.h"
 
-#define LED_COUNT 64
-
 namespace M01 {
   class LedControl {
   protected:
