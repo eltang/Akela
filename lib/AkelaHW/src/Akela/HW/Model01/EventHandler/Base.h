@@ -25,8 +25,13 @@ namespace M01 {
       Base (Akela::AbstractHID *HID, Akela::LayeredKeyMap *keymap)
         : Akela::EventHandler::Layered (HID, keymap) {};
 
+      using ExtraKeysComponent::press;
       virtual void press (uint8_t index);
+
+      using ExtraKeysComponent::release;
       virtual void release (uint8_t index);
+
+      using ExtraKeysComponent::hold;
       virtual void hold (uint8_t index);
     };
   };

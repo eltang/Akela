@@ -30,7 +30,16 @@ namespace M01 {
       Full ()
         : MouseControl (), ConsumerControl (), SystemControl () {};
 
+      using Base::press;
+      using MouseControl::press;
+      using ConsumerControl::press;
+      using SystemControl::press;
       virtual void press (Page page, uint8_t code);
+
+      using Base::release;
+      using MouseControl::release;
+      using ConsumerControl::release;
+      using SystemControl::release;
       virtual void release (Page page, uint8_t code);
 
       virtual void move (int8_t x, int8_t y);

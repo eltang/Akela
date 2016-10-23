@@ -30,8 +30,13 @@ namespace Akela {
       Layered (Akela::AbstractHID *HID, Akela::LayeredKeyMap *keymap)
         : Akela::EventHandler::Base (HID, keymap) {};
 
+      using LayerComponent::press;
       virtual void press (uint8_t index);
+
+      using LayerComponent::release;
       virtual void release (uint8_t index);
+
+      using LayerComponent::hold;
       virtual void hold (uint8_t) {};
     };
   };
