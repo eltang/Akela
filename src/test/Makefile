@@ -22,6 +22,7 @@ AKELA_HEADERS = \
 	../../lib/Akela/src/Akela.h \
 	../../lib/Akela/src/Akela/AbstractHID.h \
 	../../lib/Akela/src/Akela/KeyCodes.h \
+	../../lib/Akela/src/Akela/SysFn.h \
 	../../lib/Akela/src/Akela/AbstractScanner.h
 
 TEST_SOURCES = \

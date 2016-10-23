@@ -27,35 +27,46 @@ Akela::LayerEventHandler::LayerEventHandler (Akela::AbstractHID *HID,
 void
 Akela::LayerEventHandler::press (uint8_t index) {
   uint16_t key = keymap->lookup (index);
+  uint8_t layer;
 
-  if (!CHECK_FN (key, LAYER))
+  switch (key) {
+  case Akela::SYSFN_LAYER_MOVE ... Akela::SYSFN_LAYER_MOVE_MAX:
+    layer = key - Akela::SYSFN_LAYER_MOVE;
+    lastMoveIndex = index;
+    break;
+  case Akela::SYSFN_LAYER_MOMENTARY ... Akela::SYSFN_LAYER_MOMENTARY_MAX:
+    layer = key - Akela::SYSFN_LAYER_MOMENTARY;
+    lastMoveIndex = 0xff;
+    break;
+  default:
     return Akela::KeyEventHandler::press (index);
+  }
 
   Akela::LayeredKeyMap *km = (Akela::LayeredKeyMap *)keymap;
-  bool move = !!(key & 0x0010);
-  uint8_t layer = key & ~0xfffc;
-
-  if (move)
-    lastMoveIndex = index;
-  else
-    lastMoveIndex = 0xff;
-
   km->layer_move (layer);
 }
 
 void
 Akela::LayerEventHandler::release (uint8_t index) {
   uint16_t key = keymap->lookup (index);
+  uint8_t layer;
 
   if (lastMoveIndex == index) {
     lastMoveIndex = 0xff;
     return;
   }
 
-  if (!CHECK_FN (key, LAYER))
+  switch (key) {
+  case Akela::SYSFN_LAYER_MOVE ... Akela::SYSFN_LAYER_MOVE_MAX:
+    layer = key - Akela::SYSFN_LAYER_MOVE;
+    break;
+  case Akela::SYSFN_LAYER_MOMENTARY ... Akela::SYSFN_LAYER_MOMENTARY_MAX:
+    layer = key - Akela::SYSFN_LAYER_MOMENTARY;
+    break;
+  default:
     return Akela::KeyEventHandler::release (index);
+  }
 
   Akela::LayeredKeyMap *km = (Akela::LayeredKeyMap *)keymap;
-  uint8_t layer = key & ~0xfffc;
   km->layer_move (layer);
 }

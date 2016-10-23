@@ -18,19 +18,15 @@
 
 #pragma once
 
-#include "Akela.h"
-
-#define ML(n) (Akela::SYSFN_LAYER_MOMENTARY + n)
-#define L(n)  (Akela::SYSFN_LAYER_MOVE + n)
+#define SYSFN(n) (n + (MOD_FN | MOD_FN_SYS))
 
 namespace Akela {
-  class LayerEventHandler : public Akela::KeyEventHandler {
-  protected:
-    uint8_t lastMoveIndex;
-  public:
-    LayerEventHandler (Akela::AbstractHID *HID, Akela::LayeredKeyMap *keymap);
+  enum {
+    SYSFN_LAYER_MOMENTARY     = SYSFN(0x0000),
+    SYSFN_LAYER_MOMENTARY_MAX = SYSFN(0x000f),
+    SYSFN_LAYER_MOVE          = SYSFN(0x0010),
+    SYSFN_LAYER_MOVE_MAX      = SYSFN(0x001f),
 
-    virtual void press (uint8_t index);
-    virtual void release (uint8_t index);
+    SYSFN_MAX
   };
 };

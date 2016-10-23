@@ -135,20 +135,17 @@ enum {
 };
 
 enum {
-  MOD_LCTL = 0x0100,
-  MOD_LSFT = 0x0200,
-  MOD_LALT = 0x0400,
-  MOD_LGUI = 0x0800,
+  MOD_LCTL   = 0x0100,
+  MOD_LSFT   = 0x0200,
+  MOD_LALT   = 0x0400,
+  MOD_LGUI   = 0x0800,
 
-  MOD_RCTL = 0x1000,
-  MOD_RSFT = 0x2000,
-  MOD_RALT = 0x4000,
+  MOD_RCTL   = 0x1000,
+  MOD_RSFT   = 0x2000,
+  MOD_RALT   = 0x4000,
 
-  MOD_FN   = 0x8000
-};
-
-enum {
-  MOD_FN_USER = 0x4000,
+  MOD_FN     = 0x8000,
+  MOD_FN_SYS = 0x4000,
 };
 
 #define LCTL(kc) (kc | MOD_LCTL)
@@ -171,7 +168,7 @@ enum {
 #define IS_RALT(kc) (kc & MOD_RALT)
 #define IS_FN(kc)   (kc & MOD_FN)
 
-#define CHECK_FN(kc,fn) ((kc & MOD_FN) && (kc & MOD_FN_ ## fn))
+#define IS_FNSYS(kc) ((kc & MOD_FN) && (kc & MOD_FN_SYS))
 
 // ---------------
 #define KC_PIPE  LSFT(KC_BSLS)
