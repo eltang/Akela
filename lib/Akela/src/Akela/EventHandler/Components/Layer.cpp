@@ -21,7 +21,7 @@
 namespace Akela {
   namespace EventHandler {
 
-    void
+    bool
     LayerComponent::press (Akela::AbstractHID *,
                            Akela::KeyMap *keymap,
                            uint8_t index,
@@ -38,14 +38,16 @@ namespace Akela {
         lastMoveIndex = 0xff;
         break;
       default:
-        return;
+        return false;
       }
 
       Akela::LayeredKeyMap *km = (Akela::LayeredKeyMap *)keymap;
       km->layer_move (layer);
+
+      return true;
     }
 
-    void
+    bool
     LayerComponent::release (Akela::AbstractHID *,
                              Akela::KeyMap *keymap,
                              uint8_t index,
@@ -54,7 +56,7 @@ namespace Akela {
 
       if (lastMoveIndex == index) {
         lastMoveIndex = 0xff;
-        return;
+        return true;
       }
 
       switch (keycode) {
@@ -65,11 +67,13 @@ namespace Akela {
         layer = keycode - Akela::SYSFN_LAYER_MOMENTARY;
         break;
       default:
-        return;
+        return false;
       }
 
       Akela::LayeredKeyMap *km = (Akela::LayeredKeyMap *)keymap;
       km->layer_move (layer);
+
+      return true;
     }
   };
 };

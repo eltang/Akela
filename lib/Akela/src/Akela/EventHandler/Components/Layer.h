@@ -29,12 +29,12 @@ namespace Akela {
     protected:
       uint8_t lastMoveIndex = 0xff;
 
-      virtual void press (Akela::AbstractHID *HID,
+      virtual bool press (Akela::AbstractHID *HID,
                           Akela::KeyMap *keymap,
                           uint8_t index,
                           uint16_t keycode);
 
-      virtual void release (Akela::AbstractHID *HID,
+      virtual bool release (Akela::AbstractHID *HID,
                             Akela::KeyMap *keymap,
                             uint8_t index,
                             uint16_t keycode);

@@ -24,20 +24,22 @@ namespace Akela {
   namespace EventHandler {
     class Component {
     protected:
-      virtual void press (Akela::AbstractHID *,
+      virtual bool press (Akela::AbstractHID *,
                           Akela::KeyMap *,
                           uint8_t,
                           uint16_t) = 0;
 
-      virtual void release (Akela::AbstractHID *,
+      virtual bool release (Akela::AbstractHID *,
                             Akela::KeyMap *,
                             uint8_t,
                             uint16_t) = 0;
 
-      virtual void hold (Akela::AbstractHID *,
+      virtual bool hold (Akela::AbstractHID *,
                          Akela::KeyMap *,
                          uint8_t,
-                         uint16_t) {};
+                         uint16_t) {
+        return false;
+      };
     };
   };
 };

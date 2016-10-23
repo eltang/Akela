@@ -27,13 +27,15 @@ namespace Akela {
 
     void
     Layered::press (uint8_t index) {
-      LayerComponent::press (HID, keymap, index, keymap->lookup (index));
+      if (LayerComponent::press (HID, keymap, index, keymap->lookup (index)))
+        return;
       Akela::EventHandler::Base::press (index);
     }
 
     void
     Layered::release (uint8_t index) {
-      LayerComponent::release (HID, keymap, index, keymap->lookup (index));
+      if (LayerComponent::release (HID, keymap, index, keymap->lookup (index)))
+        return;
       Akela::EventHandler::Base::release (index);
     }
   };
