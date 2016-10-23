@@ -31,102 +31,48 @@ namespace M01 {
     void
     Complete::press (uint8_t index) {
       uint16_t key = keymap->lookup (index);
-      M01::HID::Page page;
-      uint8_t keycode;
 
       if (!IS_FNSYS (key))
         return Akela::EventHandler::Layered::press (index);
 
-      if (ExtraKeysComponent::press (HID, keymap, index, keymap->lookup (index)))
+      if (ExtraKeysComponent::press (HID, keymap, index, key))
+        return;
+      if (MouseComponent::press (HID, keymap, index, key))
         return;
 
-      switch (key) {
-      case M01::SYSFN::MOUSE_BUTTON ... M01::SYSFN::MOUSE_BUTTON_MAX:
-        page = M01::HID::MOUSE;
-        keycode = key - M01::SYSFN::MOUSE_BUTTON;
-        break;
-
-      case M01::SYSFN::MOUSE_CONTROL ... M01::SYSFN::MOUSE_CONTROL_MAX:
-        keycode = key - M01::SYSFN::MOUSE_CONTROL;
-
-        if (keycode & _MOUSE_WARP) {
-          ((::M01::HID::Complete *)HID)->warp
-            (
-             ((keycode & _MOUSE_WARP_END) ? HID::Mouse::WarpDirection::WARP_END : 0) |
-             ((keycode & _MOUSE_DOWN) ? HID::Mouse::WarpDirection::WARP_DOWN : 0) |
-             ((keycode & _MOUSE_RIGHT) ? HID::Mouse::WarpDirection::WARP_RIGHT : 0)
-             );
-        } else {
-          mouseMove (keycode);
-        }
-        return;
-
-      default:
-        return Akela::EventHandler::Layered::press (index);
-      }
-
-      ((::M01::HID::Base *)HID)->press (page, keycode);
+      return Akela::EventHandler::Layered::press (index);
     }
 
     void
     Complete::hold (uint8_t index) {
       uint16_t key = keymap->lookup (index);
 
-      switch (key) {
-      case M01::SYSFN::MOUSE_CONTROL ... M01::SYSFN::MOUSE_CONTROL_MAX:
-        mouseMove (key - SYSFN::MOUSE_CONTROL);
-        break;
-      default:
-        return Akela::EventHandler::Layered::hold (index);
-      }
+      if (MouseComponent::hold (HID, keymap, index, key))
+        return;
+
+      return Akela::EventHandler::Layered::hold (index);
     }
 
     void
     Complete::release (uint8_t index) {
       uint16_t key = keymap->lookup (index);
-      M01::HID::Page page;
-      uint8_t keycode;
 
       if (!IS_FNSYS (key))
         return Akela::EventHandler::Layered::release (index);
 
-      if (ExtraKeysComponent::release (HID, keymap, index, keymap->lookup (index)))
+      if (ExtraKeysComponent::release (HID, keymap, index, key))
         return;
 
-      switch (key) {
-      case M01::SYSFN::MOUSE_BUTTON ... M01::SYSFN::MOUSE_BUTTON_MAX:
-        page = M01::HID::MOUSE;
-        keycode = key - M01::SYSFN::MOUSE_BUTTON;
-        break;
-
-      case M01::SYSFN::MOUSE_CONTROL ... M01::SYSFN::MOUSE_CONTROL_MAX:
+      if (MouseComponent::release (HID, keymap, index, key))
         return;
 
-      default:
-        return Akela::EventHandler::Layered::release (index);
-      }
-
-      ((::M01::HID::Base *)HID)->release (page, keycode);
+      return Akela::EventHandler::Layered::release (index);
     }
 
     void
     Complete::setup () {
       Akela::EventHandler::Layered::setup ();
       LedControl::setup ();
-    }
-
-    void
-    Complete::mouseMove (uint8_t key) {
-      ::M01::HID::Complete *mc = (::M01::HID::Complete *) HID;
-
-      if (key & _MOUSE_UP)
-        mc->move (0, -1);
-      if (key & _MOUSE_LEFT)
-        mc->move (-1, 0);
-      if (key & _MOUSE_DOWN)
-        mc->move (0, 1);
-      if (key & _MOUSE_RIGHT)
-        mc->move (1, 0);
     }
   };
 };

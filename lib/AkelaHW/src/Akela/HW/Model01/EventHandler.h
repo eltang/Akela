@@ -23,46 +23,14 @@
 #include "EventHandler/SysFn.h"
 #include "EventHandler/LedControl.h"
 #include "EventHandler/Components/ExtraKeys.h"
-
-#define MC(n) (M01::SYSFN::MOUSE_CONTROL + (n))
-#define MB(n) (M01::SYSFN::MOUSE_BUTTON + (n))
-
-#define _MOUSE_UP            B0000001
-#define _MOUSE_DOWN          B0000010
-#define _MOUSE_LEFT          B0000100
-#define _MOUSE_RIGHT         B0001000
-#define _MOUSE_CENTER        B0010000
-#define _MOUSE_WARP          B0100000
-#define _MOUSE_WARP_END      B1000000
-
-enum {
-  MB_LFT  = MB(M01::HID::Mouse::Button::MB_LEFT),
-  MB_RGT  = MB(M01::HID::Mouse::Button::MB_RIGHT),
-  MB_MID  = MB(M01::HID::Mouse::Button::MB_MID),
-
-  MM_UPL  = MC(_MOUSE_UP | _MOUSE_LEFT),
-  MM_UP   = MC(_MOUSE_UP),
-  MM_UPR  = MC(_MOUSE_UP | _MOUSE_RIGHT),
-  MM_L    = MC(_MOUSE_LEFT),
-  MM_R    = MC(_MOUSE_RIGHT),
-  MM_DNL  = MC(_MOUSE_DOWN | _MOUSE_LEFT),
-  MM_DN   = MC(_MOUSE_DOWN),
-  MM_DNR  = MC(_MOUSE_DOWN | _MOUSE_RIGHT),
-
-  MW_NW   = MC(_MOUSE_WARP | _MOUSE_UP | _MOUSE_LEFT),
-  MW_NE   = MC(_MOUSE_WARP | _MOUSE_UP | _MOUSE_RIGHT),
-  MW_SW   = MC(_MOUSE_WARP | _MOUSE_DOWN | _MOUSE_LEFT),
-  MW_SE   = MC(_MOUSE_WARP | _MOUSE_DOWN | _MOUSE_RIGHT),
-  MW_END  = MC(_MOUSE_WARP | _MOUSE_WARP_END)
-};
+#include "EventHandler/Components/Mouse.h"
 
 namespace M01 {
   namespace EventHandler {
     class Complete : public Akela::EventHandler::Layered,
                      public LedControl,
-                     public ExtraKeysComponent {
-    private:
-      virtual void mouseMove (uint8_t key);
+                     public ExtraKeysComponent,
+                     public MouseComponent {
     public:
       Complete (Akela::AbstractHID *HID, Akela::LayeredKeyMap *keymap,
                 Scanner *scanner);
