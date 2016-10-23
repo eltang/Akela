@@ -23,7 +23,7 @@
 namespace Akela {
   class Keyboard {
   protected:
-    Akela::KeyEventHandler *keyEvent;
+    Akela::EventHandler::Base *keyEvent;
     Akela::AbstractScanner *scanner;
 
     virtual void press (uint8_t index);
@@ -31,7 +31,7 @@ namespace Akela {
     virtual void hold (uint8_t index);
   public:
     Keyboard (Akela::AbstractScanner *scanner,
-              Akela::KeyEventHandler *eventHandler);
+              Akela::EventHandler::Base *eventHandler);
     virtual ~Keyboard ();
 
     void setup ();

@@ -16,39 +16,28 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#pragma once
+
 #include "Akela.h"
 
-Akela::Keyboard::Keyboard (Akela::AbstractScanner *scanner,
-                           Akela::EventHandler::Base *eventHandler) {
-  this->scanner = scanner;
-  this->keyEvent = eventHandler;
-}
+#define ML(n) (Akela::SYSFN_LAYER_MOMENTARY + n)
+#define L(n)  (Akela::SYSFN_LAYER_MOVE + n)
 
-Akela::Keyboard::~Keyboard () {
-}
+namespace Akela {
+  namespace EventHandler {
+    class LayerComponent : public Component {
+    protected:
+      uint8_t lastMoveIndex = 0xff;
 
-void
-Akela::Keyboard::setup () {
-  scanner->setup ();
-  keyEvent->setup ();
-}
+      virtual bool press (Akela::AbstractHID *HID,
+                          Akela::KeyMap *keymap,
+                          uint8_t index,
+                          uint16_t keycode);
 
-void
-Akela::Keyboard::loop () {
-  keyEvent->loop ();
-}
-
-void
-Akela::Keyboard::press (uint8_t index) {
-  keyEvent->press (index);
-}
-
-void
-Akela::Keyboard::release (uint8_t index) {
-  keyEvent->release (index);
-}
-
-void
-Akela::Keyboard::hold (uint8_t index) {
-  keyEvent->hold (index);
-}
+      virtual bool release (Akela::AbstractHID *HID,
+                            Akela::KeyMap *keymap,
+                            uint8_t index,
+                            uint16_t keycode);
+    };
+  };
+};

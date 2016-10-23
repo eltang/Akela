@@ -16,39 +16,32 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "Akela.h"
+#pragma once
 
-Akela::Keyboard::Keyboard (Akela::AbstractScanner *scanner,
-                           Akela::EventHandler::Base *eventHandler) {
-  this->scanner = scanner;
-  this->keyEvent = eventHandler;
-}
+namespace M01 {
+  namespace SYSFN {
+    enum {
+      CONSUMER     = Akela::SYSFN_SAFE,
+      CONSUMER_MAX = Akela::SYSFN_SAFE + 256
+    };
 
-Akela::Keyboard::~Keyboard () {
-}
+    enum {
+      SYSTEM       = CONSUMER_MAX + 1,
+      SYSTEM_MAX   = CONSUMER_MAX + 257
+    };
 
-void
-Akela::Keyboard::setup () {
-  scanner->setup ();
-  keyEvent->setup ();
-}
+    enum {
+      MOUSE_BUTTON     = SYSTEM_MAX + 1,
+      MOUSE_BUTTON_MAX = SYSTEM_MAX + 9,
+    };
 
-void
-Akela::Keyboard::loop () {
-  keyEvent->loop ();
-}
+    enum {
+      MOUSE_CONTROL     = MOUSE_BUTTON_MAX + 1,
+      MOUSE_CONTROL_MAX = MOUSE_BUTTON_MAX + 256
+    };
 
-void
-Akela::Keyboard::press (uint8_t index) {
-  keyEvent->press (index);
-}
-
-void
-Akela::Keyboard::release (uint8_t index) {
-  keyEvent->release (index);
-}
-
-void
-Akela::Keyboard::hold (uint8_t index) {
-  keyEvent->hold (index);
-}
+    enum {
+      MODEL01_SAFE = MOUSE_CONTROL_MAX + 1,
+    };
+  };
+};

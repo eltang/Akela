@@ -73,7 +73,7 @@ class ChordedKeyboard : public Akela::Keyboard {
   }
 
   ChordedKeyboard (Akela::AbstractScanner *s,
-                   Akela::KeyEventHandler *eh)
+                   Akela::EventHandler::Base *eh)
     : Akela::Keyboard (s, eh) {
   };
 };

@@ -16,39 +16,27 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#pragma once
+
 #include "Akela.h"
 
-Akela::Keyboard::Keyboard (Akela::AbstractScanner *scanner,
-                           Akela::EventHandler::Base *eventHandler) {
-  this->scanner = scanner;
-  this->keyEvent = eventHandler;
-}
+namespace Akela {
+  namespace EventHandler {
+    class Base {
+    protected:
+      Akela::AbstractHID *HID;
+      Akela::KeyMap *keymap;
 
-Akela::Keyboard::~Keyboard () {
-}
+    public:
+      Base (Akela::AbstractHID *HID, Akela::KeyMap *keymap);
+      virtual ~Base ();
 
-void
-Akela::Keyboard::setup () {
-  scanner->setup ();
-  keyEvent->setup ();
-}
+      virtual void press (uint8_t index);
+      virtual void release (uint8_t index);
+      virtual void hold (uint8_t) {};
 
-void
-Akela::Keyboard::loop () {
-  keyEvent->loop ();
-}
-
-void
-Akela::Keyboard::press (uint8_t index) {
-  keyEvent->press (index);
-}
-
-void
-Akela::Keyboard::release (uint8_t index) {
-  keyEvent->release (index);
-}
-
-void
-Akela::Keyboard::hold (uint8_t index) {
-  keyEvent->hold (index);
-}
+      virtual void setup ();
+      virtual void loop ();
+    };
+  };
+};

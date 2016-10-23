@@ -1,4 +1,4 @@
-/*
+/* -*- mode: c++ -*-
  * Akela -- Animated Keyboard Extension Library for Arduino
  * Copyright (C) 2016  Gergely Nagy
  *
@@ -20,21 +20,22 @@
 
 #include "Akela.h"
 
-namespace Akela {
-  class KeyEventHandler {
-  protected:
-    Akela::AbstractHID *HID;
-    Akela::KeyMap *keymap;
+namespace M01 {
+  namespace HID {
+    class Full : public Base,
+                 public MouseControl,
+                 public ConsumerControl,
+                 public SystemControl {
+    public:
+      Full ();
 
-  public:
-    KeyEventHandler (Akela::AbstractHID *HID, Akela::KeyMap *keymap);
-    virtual ~KeyEventHandler ();
+      virtual void press (Page page, uint8_t code);
+      virtual void release (Page page, uint8_t code);
 
-    virtual void press (uint8_t index);
-    virtual void release (uint8_t index);
-    virtual void hold (uint8_t) {};
+      virtual void move (int8_t x, int8_t y);
+      virtual void warp (uint8_t warp_cmd);
 
-    virtual void setup ();
-    virtual void loop ();
+      virtual void setup ();
+    };
   };
 };

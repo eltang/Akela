@@ -31,8 +31,8 @@ check: test
 	${MAKE} -C src/test $@
 
 clean:
-	${SS} echo Cleaning in src/keyboardio ...
-	${SC} find src/keyboardio -name firmware -type d | xargs rm -rf
+	${SS} echo Cleaning in the firmwares ...
+	${SC} rm -rf firmware
 	${SS} echo Cleaning in src/tets ...
 	${SC} ${MAKE} -C src/test clean
 

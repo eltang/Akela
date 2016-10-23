@@ -30,7 +30,7 @@ class PressReleaseKeyboard : public Akela::Keyboard {
   }
 
   PressReleaseKeyboard (Akela::AbstractScanner *s,
-                        Akela::KeyEventHandler *eh)
+                        Akela::EventHandler::Base *eh)
     : Akela::Keyboard (s, eh) {
   };
 };

@@ -21,7 +21,7 @@
 #include "Akela/HW/Model01.h"
 
 M01::Model01::Model01 (Akela::AbstractScanner *scanner,
-              Akela::KeyEventHandler *eh)
+                       Akela::EventHandler::Base *eh)
   : Akela::Keyboard (scanner, eh) {
   prevState.left.all = prevState.right.all = 0;
   currState.left.all = currState.right.all = 0;

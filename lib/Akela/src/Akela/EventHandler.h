@@ -16,39 +16,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "Akela.h"
+#pragma once
 
-Akela::Keyboard::Keyboard (Akela::AbstractScanner *scanner,
-                           Akela::EventHandler::Base *eventHandler) {
-  this->scanner = scanner;
-  this->keyEvent = eventHandler;
-}
-
-Akela::Keyboard::~Keyboard () {
-}
-
-void
-Akela::Keyboard::setup () {
-  scanner->setup ();
-  keyEvent->setup ();
-}
-
-void
-Akela::Keyboard::loop () {
-  keyEvent->loop ();
-}
-
-void
-Akela::Keyboard::press (uint8_t index) {
-  keyEvent->press (index);
-}
-
-void
-Akela::Keyboard::release (uint8_t index) {
-  keyEvent->release (index);
-}
-
-void
-Akela::Keyboard::hold (uint8_t index) {
-  keyEvent->hold (index);
-}
+#include "EventHandler/Base.h"
+#include "EventHandler/Component.h"
+#include "EventHandler/Layered.h"

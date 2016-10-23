@@ -18,37 +18,25 @@
 
 #include "Akela.h"
 
-Akela::Keyboard::Keyboard (Akela::AbstractScanner *scanner,
-                           Akela::EventHandler::Base *eventHandler) {
-  this->scanner = scanner;
-  this->keyEvent = eventHandler;
-}
+namespace Akela {
+  namespace EventHandler {
 
-Akela::Keyboard::~Keyboard () {
-}
+    Layered::Layered (Akela::AbstractHID *HID, Akela::LayeredKeyMap *keymap)
+      : Akela::EventHandler::Base (HID, keymap) {
+    }
 
-void
-Akela::Keyboard::setup () {
-  scanner->setup ();
-  keyEvent->setup ();
-}
+    void
+    Layered::press (uint8_t index) {
+      if (LayerComponent::press (HID, keymap, index, keymap->lookup (index)))
+        return;
+      Akela::EventHandler::Base::press (index);
+    }
 
-void
-Akela::Keyboard::loop () {
-  keyEvent->loop ();
-}
-
-void
-Akela::Keyboard::press (uint8_t index) {
-  keyEvent->press (index);
-}
-
-void
-Akela::Keyboard::release (uint8_t index) {
-  keyEvent->release (index);
-}
-
-void
-Akela::Keyboard::hold (uint8_t index) {
-  keyEvent->hold (index);
-}
+    void
+    Layered::release (uint8_t index) {
+      if (LayerComponent::release (HID, keymap, index, keymap->lookup (index)))
+        return;
+      Akela::EventHandler::Base::release (index);
+    }
+  };
+};
