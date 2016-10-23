@@ -21,7 +21,7 @@
 namespace M01 {
   namespace EventHandler {
 
-    Complete::Complete (Akela::AbstractHID *HID,
+    Full::Full (Akela::AbstractHID *HID,
                         Akela::LayeredKeyMap *keymap,
                         M01::Scanner *scanner)
       : Akela::EventHandler::Layered (HID, keymap),
@@ -29,7 +29,7 @@ namespace M01 {
     }
 
     void
-    Complete::press (uint8_t index) {
+    Full::press (uint8_t index) {
       uint16_t key = keymap->lookup (index);
 
       if (!IS_FNSYS (key))
@@ -44,7 +44,7 @@ namespace M01 {
     }
 
     void
-    Complete::hold (uint8_t index) {
+    Full::hold (uint8_t index) {
       uint16_t key = keymap->lookup (index);
 
       if (MouseComponent::hold (HID, keymap, index, key))
@@ -54,7 +54,7 @@ namespace M01 {
     }
 
     void
-    Complete::release (uint8_t index) {
+    Full::release (uint8_t index) {
       uint16_t key = keymap->lookup (index);
 
       if (!IS_FNSYS (key))
@@ -70,7 +70,7 @@ namespace M01 {
     }
 
     void
-    Complete::setup () {
+    Full::setup () {
       Akela::EventHandler::Layered::setup ();
       LedControl::setup ();
     }
