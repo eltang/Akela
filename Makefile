@@ -1,6 +1,6 @@
-VERBOSE							?=
+VERBOSE							?= 0
 
-ifeq (${VERBOSE}, 1)
+ifneq (${VERBOSE}, 0)
 SC									=
 SS									= @ true ||
 SR                  =
@@ -23,11 +23,11 @@ keyboardio/%:
 	${MAKE} -C src/keyboardio/$*
 
 test:
-	${SC} echo Building the test suite...
+	${SS} echo Building the test suite...
 	${MAKE} -C src/test
 
 check: test
-	${SC} echo Running the test suite...
+	${SS} echo Running the test suite...
 	${MAKE} -C src/test $@
 
 clean:

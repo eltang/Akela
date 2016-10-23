@@ -16,6 +16,10 @@ OUTPUT_FILE_PREFIX	= $(SKETCH)-$(GIT_VERSION)
 HEX_FILE_PATH				= $(OUTPUT_PATH)/$(OUTPUT_FILE_PREFIX).hex
 ELF_FILE_PATH				= $(OUTPUT_PATH)/$(OUTPUT_FILE_PREFIX).elf
 
+ifeq (${VERBOSE},2)
+VERBOSE_BUILD				= -verbose
+endif
+
 all: build
 build: compile size
 
@@ -35,6 +39,7 @@ compile: ${OUTPUT_PATH}
 		-build-path $(BUILD_PATH) \
 		-ide-version $(ARDUINO_IDE_VERSION) \
 		-warnings all \
+		${VERBOSE_BUILD} \
 		$(SKETCH).ino
 	@cp $(BUILD_PATH)/$(SKETCH).ino.hex $(HEX_FILE_PATH)
 	@cp $(BUILD_PATH)/$(SKETCH).ino.elf $(ELF_FILE_PATH)
