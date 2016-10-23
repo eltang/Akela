@@ -1,0 +1,95 @@
+/* -*- mode: c++ -*-
+ * Akela -- Animated Keyboard Extension Library for Arduino
+ * Copyright (C) 2016  Gergely Nagy
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#include "Akela/HW/Model01.h"
+
+namespace M01 {
+  namespace EventHandler {
+
+    LedControl::LedControl (Scanner *scanner) {
+      this->scanner = scanner;
+    }
+
+    void
+    LedControl::setup () {
+      enable_high_power ();
+      boot_animation ();
+    }
+
+    void
+    LedControl::enable_high_power () {
+      pinMode(7, OUTPUT);
+      digitalWrite(7, LOW);
+    }
+
+    void
+    LedControl::set_color(uint8_t i, cRGB crgb) {
+      if (i < 32) {
+        scanner->leftHand.ledData.leds[i] = crgb;
+      } else if (i < 64) {
+        scanner->rightHand.ledData.leds[i - 32] = crgb;
+      }
+    }
+
+    void
+    LedControl::set_color (cRGB color) {
+      for (uint8_t i = 0; i < sizeof (map); i++) {
+        set_color (i, color);
+      }
+    }
+
+    void
+    LedControl::set_color (uint8_t row, uint8_t col, cRGB crgb) {
+      uint8_t pos = map[row * 16 + col];
+      set_color (pos, crgb);
+    }
+
+    void
+    LedControl::boot_animation () {
+      // keyboardio 0.9
+      static uint8_t idxs[] = {49, 13, 42, 23, 53, 6, 18, 14, 50, 53,
+                               34, 59, 55, 52};
+
+      set_color ({0, 0, 0});
+
+      for (uint8_t i = 0; i < sizeof (idxs); i++) {
+        set_color (i, {255, 0, 0});
+        sync ();
+        delay (250);
+        set_color (i, {0, 0, 0});
+        sync ();
+        delay (10);
+      }
+    }
+
+    void
+    LedControl::sync() {
+      scanner->leftHand.sendLEDData();
+      scanner->rightHand.sendLEDData();
+
+      scanner->leftHand.sendLEDData();
+      scanner->rightHand.sendLEDData();
+
+      scanner->leftHand.sendLEDData();
+      scanner->rightHand.sendLEDData();
+
+      scanner->leftHand.sendLEDData();
+      scanner->rightHand.sendLEDData();
+    }
+  };
+};

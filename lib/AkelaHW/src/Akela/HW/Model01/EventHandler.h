@@ -21,6 +21,7 @@
 #include "Akela.h"
 
 #include "EventHandler/SysFn.h"
+#include "EventHandler/LedControl.h"
 
 #define CC(n) (M01::SYSFN::CONSUMER + (n))
 #define SC(n) (M01::SYSFN::SYSTEM + (n))
@@ -68,17 +69,19 @@ enum {
 };
 
 namespace M01 {
-  class EventHandler : public Akela::LayerEventHandler, public LedControl {
-  private:
-    virtual void mouseMove (uint8_t key);
-  public:
-    EventHandler (Akela::AbstractHID *HID, Akela::LayeredKeyMap *keymap,
-                  Scanner *scanner);
+  namespace EventHandler {
+    class Complete : public Akela::LayerEventHandler, public LedControl {
+    private:
+      virtual void mouseMove (uint8_t key);
+    public:
+      Complete (Akela::AbstractHID *HID, Akela::LayeredKeyMap *keymap,
+                Scanner *scanner);
 
-    virtual void press (uint8_t index);
-    virtual void release (uint8_t index);
-    virtual void hold (uint8_t index);
+      virtual void press (uint8_t index);
+      virtual void release (uint8_t index);
+      virtual void hold (uint8_t index);
 
-    virtual void setup ();
+      virtual void setup ();
+    };
   };
 };
