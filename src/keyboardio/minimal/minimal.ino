@@ -47,7 +47,8 @@ static uint16_t keymap[] =
 static M01::HID::Base hid = M01::HID::Base ();
 static Akela::KeyMap keyMap = Akela::KeyMap ((uint16_t *)keymap);
 static M01::Scanner scanner = M01::Scanner ();
-static Akela::KeyEventHandler eventHandler = Akela::KeyEventHandler (&hid, &keyMap);
+static Akela::EventHandler::Base eventHandler =
+  Akela::EventHandler::Base (&hid, &keyMap);
 static M01::Model01 keyboard = M01::Model01 (&scanner, &eventHandler);
 
 void setup () {

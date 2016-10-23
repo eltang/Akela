@@ -70,7 +70,7 @@ enum {
 
 namespace M01 {
   namespace EventHandler {
-    class Complete : public Akela::LayerEventHandler, public LedControl {
+    class Complete : public Akela::EventHandler::Layered, public LedControl {
     private:
       virtual void mouseMove (uint8_t key);
     public:

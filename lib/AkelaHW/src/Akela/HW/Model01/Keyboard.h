@@ -29,7 +29,7 @@ namespace M01 {
     void handleKey (byte side, byte row, byte col);
 
   public:
-    Model01 (Akela::AbstractScanner *scanner, Akela::KeyEventHandler *eh);
+    Model01 (Akela::AbstractScanner *scanner, Akela::EventHandler::Base *eh);
 
     virtual void setup ();
     virtual void loop ();

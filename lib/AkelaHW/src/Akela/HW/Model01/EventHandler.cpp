@@ -24,7 +24,7 @@ namespace M01 {
     Complete::Complete (Akela::AbstractHID *HID,
                         Akela::LayeredKeyMap *keymap,
                         M01::Scanner *scanner)
-      : Akela::LayerEventHandler (HID, keymap),
+      : Akela::EventHandler::Layered (HID, keymap),
         LedControl (scanner) {
     }
 
@@ -35,7 +35,7 @@ namespace M01 {
       uint8_t keycode;
 
       if (!IS_FNSYS (key))
-        return Akela::LayerEventHandler::press (index);
+        return Akela::EventHandler::Layered::press (index);
 
       switch (key) {
       case M01::SYSFN::CONSUMER ... M01::SYSFN::CONSUMER_MAX:
@@ -69,7 +69,7 @@ namespace M01 {
         return;
 
       default:
-        return Akela::LayerEventHandler::press (index);
+        return Akela::EventHandler::Layered::press (index);
       }
 
       ((::M01::HID::Base *)HID)->press (page, keycode);
@@ -84,7 +84,7 @@ namespace M01 {
         mouseMove (key - SYSFN::MOUSE_CONTROL);
         break;
       default:
-        return Akela::LayerEventHandler::hold (index);
+        return Akela::EventHandler::Layered::hold (index);
       }
     }
 
@@ -95,7 +95,7 @@ namespace M01 {
       uint8_t keycode;
 
       if (!IS_FNSYS (key))
-        return Akela::LayerEventHandler::press (index);
+        return Akela::EventHandler::Layered::release (index);
 
       switch (key) {
       case M01::SYSFN::CONSUMER ... M01::SYSFN::CONSUMER_MAX:
@@ -117,7 +117,7 @@ namespace M01 {
         return;
 
       default:
-        return Akela::LayerEventHandler::press (index);
+        return Akela::EventHandler::Layered::release (index);
       }
 
       ((::M01::HID::Base *)HID)->release (page, keycode);
@@ -125,7 +125,7 @@ namespace M01 {
 
     void
     Complete::setup () {
-      Akela::LayerEventHandler::setup ();
+      Akela::EventHandler::Layered::setup ();
       LedControl::setup ();
     }
 

@@ -20,21 +20,19 @@
 
 #include "Akela.h"
 
+#define ML(n) (Akela::SYSFN_LAYER_MOMENTARY + n)
+#define L(n)  (Akela::SYSFN_LAYER_MOVE + n)
+
 namespace Akela {
-  class KeyEventHandler {
-  protected:
-    Akela::AbstractHID *HID;
-    Akela::KeyMap *keymap;
+  namespace EventHandler {
+    class Layered : public Akela::EventHandler::Base {
+    protected:
+      uint8_t lastMoveIndex;
+    public:
+      Layered (Akela::AbstractHID *HID, Akela::LayeredKeyMap *keymap);
 
-  public:
-    KeyEventHandler (Akela::AbstractHID *HID, Akela::KeyMap *keymap);
-    virtual ~KeyEventHandler ();
-
-    virtual void press (uint8_t index);
-    virtual void release (uint8_t index);
-    virtual void hold (uint8_t) {};
-
-    virtual void setup ();
-    virtual void loop ();
+      virtual void press (uint8_t index);
+      virtual void release (uint8_t index);
+    };
   };
 };
