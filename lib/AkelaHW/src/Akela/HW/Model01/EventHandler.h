@@ -27,9 +27,17 @@
 
 namespace M01 {
   namespace EventHandler {
-    class Full : public Akela::EventHandler::Layered,
+    class Base : public Akela::EventHandler::Layered, public ExtraKeysComponent {
+    public:
+      Base (Akela::AbstractHID *HID, Akela::LayeredKeyMap *keymap);
+
+      virtual void press (uint8_t index);
+      virtual void release (uint8_t index);
+      virtual void hold (uint8_t index);
+    };
+
+    class Full : public Base,
                  public LedControl,
-                 public ExtraKeysComponent,
                  public MouseComponent {
     public:
       Full (Akela::AbstractHID *HID, Akela::LayeredKeyMap *keymap,

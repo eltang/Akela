@@ -21,10 +21,42 @@
 namespace M01 {
   namespace EventHandler {
 
+    Base::Base (Akela::AbstractHID *HID,
+                Akela::LayeredKeyMap *keymap)
+      : Akela::EventHandler::Layered (HID, keymap) {
+    }
+
+    void
+    Base::press (uint8_t index) {
+      uint16_t key = keymap->lookup (index);
+
+      if (ExtraKeysComponent::press (HID, keymap, index, key))
+        return;
+
+      return Akela::EventHandler::Layered::press (index);
+    }
+
+    void
+    Base::hold (uint8_t index) {
+      return Akela::EventHandler::Layered::hold (index);
+    }
+
+    void
+    Base::release (uint8_t index) {
+      uint16_t key = keymap->lookup (index);
+
+      if (ExtraKeysComponent::release (HID, keymap, index, key))
+        return;
+
+      return Akela::EventHandler::Layered::release (index);
+    }
+
+    // -----------
+
     Full::Full (Akela::AbstractHID *HID,
-                        Akela::LayeredKeyMap *keymap,
-                        M01::Scanner *scanner)
-      : Akela::EventHandler::Layered (HID, keymap),
+                Akela::LayeredKeyMap *keymap,
+                M01::Scanner *scanner)
+      : Base (HID, keymap),
         LedControl (scanner) {
     }
 
@@ -32,15 +64,10 @@ namespace M01 {
     Full::press (uint8_t index) {
       uint16_t key = keymap->lookup (index);
 
-      if (!IS_FNSYS (key))
-        return Akela::EventHandler::Layered::press (index);
-
-      if (ExtraKeysComponent::press (HID, keymap, index, key))
-        return;
       if (MouseComponent::press (HID, keymap, index, key))
         return;
 
-      return Akela::EventHandler::Layered::press (index);
+      return Base::press (index);
     }
 
     void
@@ -50,28 +77,22 @@ namespace M01 {
       if (MouseComponent::hold (HID, keymap, index, key))
         return;
 
-      return Akela::EventHandler::Layered::hold (index);
+      return Base::hold (index);
     }
 
     void
     Full::release (uint8_t index) {
       uint16_t key = keymap->lookup (index);
 
-      if (!IS_FNSYS (key))
-        return Akela::EventHandler::Layered::release (index);
-
-      if (ExtraKeysComponent::release (HID, keymap, index, key))
-        return;
-
       if (MouseComponent::release (HID, keymap, index, key))
         return;
 
-      return Akela::EventHandler::Layered::release (index);
+      return Base::release (index);
     }
 
     void
     Full::setup () {
-      Akela::EventHandler::Layered::setup ();
+      Base::setup ();
       LedControl::setup ();
     }
   };
