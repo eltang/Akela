@@ -20,9 +20,6 @@
 
 namespace M01 {
   namespace HID {
-    Base::Base () {
-    }
-
     void
     Base::press (Page page, uint8_t code) {
       if (page != KEYBOARD)

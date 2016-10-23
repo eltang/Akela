@@ -20,7 +20,6 @@
 
 Akela::LayeredKeyMap::LayeredKeyMap (uint16_t **keymap, uint8_t layerSize)
   : Akela::KeyMap ((uint16_t *)keymap) {
-  Layer = 0;
   LayerSize = layerSize;
 }
 

@@ -32,7 +32,7 @@ namespace M01 {
       keydata_t right;
     } MatrixState;
 
-    Scanner ();
+    Scanner () {};
 
     virtual const void *scan ();
     virtual void setup ();

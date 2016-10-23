@@ -21,11 +21,6 @@
 namespace M01 {
   namespace EventHandler {
 
-    Base::Base (Akela::AbstractHID *HID,
-                Akela::LayeredKeyMap *keymap)
-      : Akela::EventHandler::Layered (HID, keymap) {
-    }
-
     void
     Base::press (uint8_t index) {
       uint16_t key = keymap->lookup (index);
@@ -52,13 +47,6 @@ namespace M01 {
     }
 
     // -----------
-
-    Full::Full (Akela::AbstractHID *HID,
-                Akela::LayeredKeyMap *keymap,
-                M01::Scanner *scanner)
-      : Base (HID, keymap),
-        LedControl (scanner) {
-    }
 
     void
     Full::press (uint8_t index) {

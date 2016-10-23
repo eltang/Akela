@@ -27,7 +27,8 @@ namespace M01 {
                  public ConsumerControl,
                  public SystemControl {
     public:
-      Full ();
+      Full ()
+        : MouseControl (), ConsumerControl (), SystemControl () {};
 
       virtual void press (Page page, uint8_t code);
       virtual void release (Page page, uint8_t code);

@@ -24,8 +24,6 @@ namespace M01 {
   namespace HID {
     class SystemControl : public Skeleton {
     public:
-      SystemControl ();
-
       virtual void press (Page page, uint8_t code);
       virtual void release (Page page, uint8_t code);
 

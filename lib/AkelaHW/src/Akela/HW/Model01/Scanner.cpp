@@ -23,9 +23,6 @@
 KeyboardioScanner M01::Scanner::leftHand(0);
 KeyboardioScanner M01::Scanner::rightHand(3);
 
-M01::Scanner::Scanner () {
-}
-
 void
 M01::Scanner::enable_power () {
   pinMode (13, OUTPUT);

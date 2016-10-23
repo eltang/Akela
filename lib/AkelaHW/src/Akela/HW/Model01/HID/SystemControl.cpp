@@ -20,9 +20,6 @@
 
 namespace M01 {
   namespace HID {
-    SystemControl::SystemControl () {
-    }
-
     void
     SystemControl::press (Page page, uint8_t code) {
       if (page != CONSUMER)

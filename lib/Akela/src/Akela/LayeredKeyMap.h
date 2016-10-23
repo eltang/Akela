@@ -21,7 +21,7 @@
 namespace Akela {
   class LayeredKeyMap : public Akela::KeyMap {
   protected:
-    uint8_t Layer, LayerSize;
+    uint8_t Layer = 0, LayerSize;
 
   public:
     LayeredKeyMap (uint16_t **keymap, uint8_t layerSize);

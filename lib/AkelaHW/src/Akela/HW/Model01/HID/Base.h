@@ -31,7 +31,7 @@ namespace M01 {
                  public Skeleton,
                  public AbstractMouseControl {
     public:
-      Base ();
+      Base () {};
 
       virtual void press (uint8_t code);
       virtual void release (uint8_t code);

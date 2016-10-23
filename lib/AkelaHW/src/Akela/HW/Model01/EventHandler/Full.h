@@ -25,7 +25,8 @@ namespace M01 {
                  public MouseComponent {
     public:
       Full (Akela::AbstractHID *HID, Akela::LayeredKeyMap *keymap,
-            Scanner *scanner);
+            Scanner *scanner)
+        : Base (HID, keymap), LedControl (scanner) {};
 
       virtual void press (uint8_t index);
       virtual void release (uint8_t index);

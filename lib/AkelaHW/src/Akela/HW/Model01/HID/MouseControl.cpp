@@ -53,9 +53,6 @@
 namespace M01 {
   namespace HID {
 
-    MouseControl::MouseControl () {
-    }
-
     void
     MouseControl::setup () {
       ::Mouse.begin ();

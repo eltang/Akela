@@ -20,9 +20,6 @@
 
 namespace M01 {
   namespace HID {
-    ConsumerControl::ConsumerControl () {
-    }
-
     void
     ConsumerControl::press (Page page, uint8_t code) {
       if (page != CONSUMER)

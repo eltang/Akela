@@ -53,8 +53,6 @@ namespace M01 {
 
     class MouseControl : public AbstractMouseControl {
     public:
-      MouseControl ();
-
       virtual void setup ();
 
       virtual void press (Page page, Mouse::Button button);

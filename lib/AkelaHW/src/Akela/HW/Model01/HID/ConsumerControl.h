@@ -24,8 +24,6 @@ namespace M01 {
   namespace HID {
     class ConsumerControl : public Skeleton {
     public:
-      ConsumerControl ();
-
       virtual void press (Page page, uint8_t code);
       virtual void release (Page page, uint8_t code);
 

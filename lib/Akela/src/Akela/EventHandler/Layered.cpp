@@ -20,11 +20,6 @@
 
 namespace Akela {
   namespace EventHandler {
-
-    Layered::Layered (Akela::AbstractHID *HID, Akela::LayeredKeyMap *keymap)
-      : Akela::EventHandler::Base (HID, keymap) {
-    }
-
     void
     Layered::press (uint8_t index) {
       if (LayerComponent::press (HID, keymap, index, keymap->lookup (index)))

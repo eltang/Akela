@@ -21,10 +21,6 @@
 namespace M01 {
   namespace HID {
 
-    Full::Full ()
-      : MouseControl (), ConsumerControl (), SystemControl () {
-    }
-
     void
     Full::press (Page page, uint8_t code) {
       Base::press (page, code);
