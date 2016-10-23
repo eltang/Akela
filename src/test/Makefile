@@ -9,7 +9,7 @@ endif
 all: AkelaTest
 check: all
 	./AkelaTest | tee test.out ${_r}
-	diff -u test.out test.expected
+	diff -u test.expected test.out
 
 AKELA_SOURCES = \
 	../../lib/Akela/src/Akela/Keyboard.cpp \
