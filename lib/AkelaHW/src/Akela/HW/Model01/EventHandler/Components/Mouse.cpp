@@ -35,7 +35,7 @@ namespace M01 {
         uint8_t key = keycode - M01::SYSFN::MOUSE_CONTROL;
 
         if (key & _MOUSE_WARP) {
-          ((::M01::HID::Complete *)HID)->warp
+          ((::M01::HID::Base *)HID)->warp
             (
              ((key & _MOUSE_WARP_END) ? HID::Mouse::WarpDirection::WARP_END : 0) |
              ((key & _MOUSE_DOWN) ? HID::Mouse::WarpDirection::WARP_DOWN : 0) |
