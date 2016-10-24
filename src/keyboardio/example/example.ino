@@ -67,6 +67,41 @@ namespace Example {
     }
 
     M01::EventHandler::Full::set_color (index, color);
+
+    // If any layer is active...
+    Akela::LayeredKeyMap *km = (Akela::LayeredKeyMap *)keymap;
+
+    if (km->layer () != 0) {
+      for (uint8_t i = 0; i < 64; i++) {
+        uint16_t base_kc = km->lookup (0, i);
+        uint16_t curr_kc = km->lookup (i);
+
+        // If the key did not change, not touching the color
+        if (base_kc == curr_kc)
+          continue;
+
+        cRGB color = {0, 0, 0};
+        switch (curr_kc) {
+        case M01::SYSFN::CONSUMER ... M01::SYSFN::SYSTEM_MAX:
+          // ExtraKeys are green
+          color = {0, 0xff, 0};
+          break;
+
+        case M01::SYSFN::MOUSE_BUTTON ... M01::SYSFN::MOUSE_BUTTON_MAX:
+          // Mouse buttons are yellow
+          color = {0xff, 0xff, 0};
+          break;
+
+        case M01::SYSFN::MOUSE_CONTROL ... M01::SYSFN::MOUSE_CONTROL_MAX:
+          // Mouse controls are white
+          color = {0xff, 0xff, 0xff};
+          break;
+        }
+
+        M01::EventHandler::Full::set_color (i, color);
+      }
+    }
+
     M01::EventHandler::Full::press (index);
   }
 
