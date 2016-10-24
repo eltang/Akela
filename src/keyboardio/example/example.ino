@@ -45,9 +45,26 @@ namespace Example {
   void
   EventHandler::press (uint8_t index) {
     cRGB color = {0, 0, 0};
+    uint16_t keycode = keymap->lookup (index);
 
     // When a key is pressed, highlight it for the duration
     color = {0x80, 0x80, 0x80};
+
+    // When a modifier is pressed, highlight the modifier, but only if the
+    // modifier is pressed directly!
+    if (!IS_FN (keycode)) {
+      switch (KEYCODE (keycode)) {
+      case KC_LCTL:
+      case KC_LSFT:
+      case KC_LALT:
+      case KC_LGUI:
+      case KC_RCTL:
+      case KC_RSFT:
+      case KC_RALT:
+        color = {0x00, 0x55, 0x80};
+        break;
+      }
+    }
 
     M01::EventHandler::Full::set_color (index, color);
     M01::EventHandler::Full::press (index);
