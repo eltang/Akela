@@ -96,6 +96,11 @@ namespace Example {
           // Mouse controls are white
           color = {0xff, 0xff, 0xff};
           break;
+
+        case Akela::SYSFN_LAYER_MOMENTARY ... Akela::SYSFN_LAYER_MOVE_MAX:
+          // Layer switchers are red
+          color = {0xff, 0, 0};
+          break:
         }
 
         M01::EventHandler::Full::set_color (i, color);
