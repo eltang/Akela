@@ -24,8 +24,13 @@ Akela::LayeredKeyMap::LayeredKeyMap (uint16_t **keymap, uint8_t layerSize)
 }
 
 uint16_t
+Akela::LayeredKeyMap::lookup (uint8_t layer, uint8_t index) {
+  return Akela::KeyMap::lookup (index + (LayerSize * layer));
+}
+
+uint16_t
 Akela::LayeredKeyMap::lookup (uint8_t index) {
-  return Akela::KeyMap::lookup (index + (LayerSize * Layer));
+  return lookup (Layer, index);
 }
 
 void
