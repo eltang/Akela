@@ -100,7 +100,21 @@ namespace Example {
         case Akela::SYSFN_LAYER_MOMENTARY ... Akela::SYSFN_LAYER_MOVE_MAX:
           // Layer switchers are red
           color = {0xff, 0, 0};
-          break:
+          break;
+        }
+
+        if (!IS_FN(curr_kc)) {
+          switch (KEYCODE (curr_kc)) {
+          case KC_KP1 ... KC_KP0:
+            // Keypad numbers are light green
+            color = {0, 0xff, 0x55};
+            break;
+          case KC_KPSLSH ... KC_KPENT:
+          case KC_KPDOT:
+            // non-number keypad stuff are cyan
+            color = {0, 0xff, 0xff};
+            break;
+          }
         }
 
         M01::EventHandler::Full::set_color (i, color);
