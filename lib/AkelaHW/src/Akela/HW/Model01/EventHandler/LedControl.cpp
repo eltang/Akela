@@ -38,7 +38,7 @@ namespace M01 {
     }
 
     void
-    LedControl::set_color(uint8_t i, cRGB crgb) {
+    LedControl::set_color_at_led (uint8_t i, cRGB crgb) {
       if (i < 32) {
         scanner->leftHand.ledData.leds[i] = crgb;
       } else if (i < 64) {
@@ -60,6 +60,11 @@ namespace M01 {
     }
 
     void
+    LedControl::set_color (uint8_t i, cRGB crgb) {
+      set_color_at_led (map[i], crgb);
+    }
+
+    void
     LedControl::boot_animation () {
       // keyboardio 0.9
       static uint8_t idxs[] = {49, 13, 42, 23, 53, 6, 18, 14, 50, 53,
@@ -68,10 +73,10 @@ namespace M01 {
       set_color ({0, 0, 0});
 
       for (uint8_t i = 0; i < sizeof (idxs); i++) {
-        set_color (i, {255, 0, 0});
+        set_color_at_led (i, {255, 0, 0});
         sync ();
         delay (250);
-        set_color (i, {0, 0, 0});
+        set_color_at_led (i, {0, 0, 0});
         sync ();
         delay (10);
       }
