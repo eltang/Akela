@@ -30,10 +30,17 @@ namespace Example {
 
     virtual void press (uint8_t index);
     virtual void release (uint8_t index);
+    virtual void loop ();
   private:
     using M01::EventHandler::MouseComponent::press;
     using M01::EventHandler::MouseComponent::release;
   };
+
+  void
+  EventHandler::loop () {
+    M01::EventHandler::Full::loop ();
+    M01::EventHandler::Full::sync ();
+  }
 
   void
   EventHandler::press (uint8_t index) {
