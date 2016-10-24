@@ -17,7 +17,7 @@ export SR
 
 all: keyboardio test
 
-keyboardio: keyboardio/Model01 keyboardio/stripped keyboardio/minimal
+keyboardio: keyboardio/Model01 keyboardio/stripped keyboardio/minimal keyboardio/example
 
 keyboardio/%:
 	${MAKE} -C src/keyboardio/$*
