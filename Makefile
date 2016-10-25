@@ -15,9 +15,13 @@ export SC
 export SS
 export SR
 
-all: keyboardio test
+all: keyboardio tapdance test
 
 keyboardio: keyboardio/Model01 keyboardio/stripped keyboardio/minimal keyboardio/example
+tapdance: tapdance/TapDanceKeyboard
+
+tapdance/%:
+	${MAKE} -C lib/Akela-TapDance/examples/$*
 
 keyboardio/%:
 	${MAKE} -C lib/Akela-Model01/examples/$*
