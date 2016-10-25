@@ -1,4 +1,4 @@
-/* -*- mode: c++ -*-
+/*
  * Akela -- Animated Keyboard Extension Library for Arduino
  * Copyright (C) 2016  Gergely Nagy
  *
@@ -18,12 +18,10 @@
 
 #pragma once
 
-#include "Akela.h"
-
-#include "Model01/HID.h"
-#include "Model01/Scanner.h"
-#include "Model01/KeyMap.h"
-#include "Model01/EventHandler.h"
-#include "Model01/Keyboard.h"
-#include "Model01/Utils.h"
-#include "Model01/KeyCodes.h"
+namespace M01 {
+  class KeyMap : public Akela::LayeredKeyMap {
+  public:
+    KeyMap (uint16_t keymap[][64])
+      : Akela::LayeredKeyMap ((uint16_t **)keymap, 64) {};
+  };
+};

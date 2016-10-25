@@ -135,7 +135,7 @@ namespace Example {
 };
 
 static M01::HID::Full          hid;
-static Akela::LayeredKeyMap    keyMap ((uint16_t **)keymap, 64);
+static M01::KeyMap             keyMap ((uint16_t **)keymap);
 static M01::Scanner            scanner;
 static Example::EventHandler   eventHandler (&hid, &keyMap, &scanner);
 static M01::Model01            keyboard (&scanner, &eventHandler);
