@@ -70,6 +70,9 @@ namespace Akela {
           return false;
         }
 
+        if (Timer > TimeOut)
+          oneShotShouldCancel = true;
+
         return true;
       }
 
