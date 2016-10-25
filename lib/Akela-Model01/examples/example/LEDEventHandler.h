@@ -19,21 +19,18 @@
 #include <Akela.h>
 #include <Akela-Model01.h>
 
-#include "layout.h"
-#include "LEDEventHandler.h"
+namespace Example {
+  class EventHandler: public M01::EventHandler::Full {
+  public:
+    EventHandler (M01::HID::Full *hid, Akela::LayeredKeyMap *keymap,
+                  M01::Scanner *scanner)
+      : M01::EventHandler::Full (hid, keymap, scanner) {};
 
-static M01::HID::Full          hid;
-static M01::KeyMap             keyMap (keymap);
-static M01::Scanner            scanner;
-static Example::EventHandler   eventHandler (&hid, &keyMap, &scanner);
-static M01::Model01            keyboard (&scanner, &eventHandler);
-
-void
-setup () {
-  keyboard.setup ();
-}
-
-void
-loop () {
-  keyboard.loop ();
-}
+    virtual void press (uint8_t index);
+    virtual void release (uint8_t index);
+    virtual void loop ();
+  private:
+    using M01::EventHandler::MouseComponent::press;
+    using M01::EventHandler::MouseComponent::release;
+  };
+};
