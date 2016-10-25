@@ -1,4 +1,4 @@
-CXXFLAGS = -I../../lib/Akela/src -I. -O0 -ggdb3 -Wall -Wno-unused-variable -std=c++11 -Woverloaded-virtual
+CXXFLAGS = -I../lib/Akela/src -I. -O0 -ggdb3 -Wall -Wno-unused-variable -std=c++11 -Woverloaded-virtual
 
 ifeq (${VERBOSE},2)
 _r =
@@ -12,20 +12,20 @@ check: all
 	diff -u test.expected test.out
 
 AKELA_SOURCES = \
-	../../lib/Akela/src/Akela/Keyboard.cpp \
-	../../lib/Akela/src/Akela/KeyMap.cpp \
-	../../lib/Akela/src/Akela/LayeredKeyMap.cpp \
-	../../lib/Akela/src/Akela/EventHandler/Base.cpp \
-	../../lib/Akela/src/Akela/EventHandler/Components/Layer.cpp \
-	../../lib/Akela/src/Akela/EventHandler/Layered.cpp
+	../lib/Akela/src/Akela/Keyboard.cpp \
+	../lib/Akela/src/Akela/KeyMap.cpp \
+	../lib/Akela/src/Akela/LayeredKeyMap.cpp \
+	../lib/Akela/src/Akela/EventHandler/Base.cpp \
+	../lib/Akela/src/Akela/EventHandler/Components/Layer.cpp \
+	../lib/Akela/src/Akela/EventHandler/Layered.cpp
 AKELA_HEADERS = \
 	${AKELA_SOURCES:.cpp=.h} \
-	../../lib/Akela/src/Akela.h \
-	../../lib/Akela/src/Akela/AbstractHID.h \
-	../../lib/Akela/src/Akela/KeyCodes.h \
-	../../lib/Akela/src/Akela/SysFn.h \
-	../../lib/Akela/src/Akela/AbstractScanner.h \
-	../../lib/Akela/src/Akela/EventHandler/Component.h
+	../lib/Akela/src/Akela.h \
+	../lib/Akela/src/Akela/AbstractHID.h \
+	../lib/Akela/src/Akela/KeyCodes.h \
+	../lib/Akela/src/Akela/SysFn.h \
+	../lib/Akela/src/Akela/AbstractScanner.h \
+	../lib/Akela/src/Akela/EventHandler/Component.h
 
 TEST_SOURCES = \
 	AkelaTest.cpp \

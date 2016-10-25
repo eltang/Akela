@@ -1,6 +1,6 @@
 .#*
 *~
 core
-/src/test/AkelaTest
-/src/test/test.out
+/test/AkelaTest
+/test/test.out
 firmware/

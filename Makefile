@@ -20,20 +20,20 @@ all: keyboardio test
 keyboardio: keyboardio/Model01 keyboardio/stripped keyboardio/minimal keyboardio/example
 
 keyboardio/%:
-	${MAKE} -C src/keyboardio/$*
+	${MAKE} -C lib/AkelaHW/src/examples/$*
 
 test:
 	${SS} echo Building the test suite...
-	${MAKE} -C src/test
+	${MAKE} -C test
 
 check: test
 	${SS} echo Running the test suite...
-	${MAKE} -C src/test $@
+	${MAKE} -C test $@
 
 clean:
 	${SS} echo Cleaning in the firmwares ...
 	${SC} rm -rf firmware
-	${SS} echo Cleaning in src/test ...
-	${SC} ${MAKE} -C src/test clean
+	${SS} echo Cleaning in test ...
+	${SC} ${MAKE} -C test clean
 
 .PHONY: all keyboardio test check clean
