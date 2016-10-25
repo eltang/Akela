@@ -31,4 +31,6 @@ class LayerPrinterKeyMap : public Akela::LayeredKeyMap {
                 << (int)index << ") = " << std::hex << (int)k << std::endl;
     return k;
   }
+
+  using Akela::LayeredKeyMap::lookup;
 };
