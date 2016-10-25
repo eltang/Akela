@@ -17,7 +17,7 @@
  */
 
 #include <Akela.h>
-#include <AkelaHW.h>
+#include <Akela-Model01.h>
 
 #include "layout.h"
 

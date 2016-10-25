@@ -17,14 +17,14 @@
  */
 
 #include <Akela.h>
-#include <AkelaHW.h>
+#include <Akela-Model01.h>
 
 #include "layout.h"
 
-static M01::HID::Full          hid;
+static M01::HID::Base          hid;
 static Akela::LayeredKeyMap    keyMap ((uint16_t **)keymap, 64);
 static M01::Scanner            scanner;
-static M01::EventHandler::Full eventHandler (&hid, &keyMap, &scanner);
+static M01::EventHandler::Base eventHandler (&hid, &keyMap);
 static M01::Model01            keyboard (&scanner, &eventHandler);
 
 void

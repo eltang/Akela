@@ -18,6 +18,4 @@
 
 #pragma once
 
-#ifdef ARDUINO_AVR_MODEL01
 #include "Akela/HW/Model01.h"
-#endif

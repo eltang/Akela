@@ -20,7 +20,7 @@ all: keyboardio test
 keyboardio: keyboardio/Model01 keyboardio/stripped keyboardio/minimal keyboardio/example
 
 keyboardio/%:
-	${MAKE} -C lib/AkelaHW/src/examples/$*
+	${MAKE} -C lib/Akela-Model01/src/examples/$*
 
 test:
 	${SS} echo Building the test suite...
