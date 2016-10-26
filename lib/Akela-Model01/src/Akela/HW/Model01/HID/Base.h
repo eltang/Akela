@@ -44,6 +44,8 @@ namespace M01 {
 
       virtual void move (int8_t, int8_t) {};
       virtual void warp (uint8_t) {};
+
+      virtual void sendReport ();
     };
   };
 };

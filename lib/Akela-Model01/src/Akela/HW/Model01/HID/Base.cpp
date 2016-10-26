@@ -52,8 +52,13 @@ namespace M01 {
     }
 
     void
-    Base::loop () {
+    Base::sendReport () {
       Keyboard.sendReport ();
+    }
+
+    void
+    Base::loop () {
+      sendReport ();
       Keyboard.releaseAll ();
     }
   }

@@ -32,5 +32,8 @@ class PrinterHID : public virtual Akela::AbstractHID {
     std::cout << __PRETTY_FUNCTION__ << "(0x" << std::hex << (int)code << ")" << std::endl;
   };
 
+  virtual void sendReport () {
+  };
+
   PrinterHID () : Akela::AbstractHID () {};
 };
