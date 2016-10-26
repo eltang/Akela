@@ -27,7 +27,7 @@ ${OUTPUT_PATH}:
 	install -d $@
 
 compile: ${OUTPUT_PATH}
-	${SS} echo "Building keyboardio/${SKETCH} (${GIT_VERSION}) ..."
+	${SS} echo "Building tapdance/${SKETCH} (${GIT_VERSION}) ..."
 	${SC} $(ARDUINO_PATH)/arduino-builder \
 		-hardware $(ARDUINO_PATH)/hardware \
 		-hardware ../../../../hardware \
