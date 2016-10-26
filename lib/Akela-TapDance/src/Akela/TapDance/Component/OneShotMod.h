@@ -38,10 +38,10 @@ namespace Akela {
       protected:
         virtual void activate (Akela::AbstractHID *hid,
                                Akela::KeyMap *keymap,
-                               uint8_t oneShotIndex);
+                               uint8_t keycode);
         virtual void deactivate (Akela::AbstractHID *hid,
                                  Akela::KeyMap *keymap,
-                                 uint8_t oneShotIndex);
+                                 uint8_t keycode);
       };
     };
   };

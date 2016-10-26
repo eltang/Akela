@@ -43,7 +43,7 @@ namespace Akela {
           if (bitRead(stickyState, oneShotIndex)) {
             bitWrite(oneShotState, oneShotIndex, 0);
             bitWrite(stickyState, oneShotIndex, 0);
-            deactivate (hid, keymap, oneShotIndex);
+            deactivate (hid, keymap, keycode);
             return true;
           } else {
             bitWrite(stickyState, oneShotIndex, 1);
@@ -51,7 +51,7 @@ namespace Akela {
         }
         bitWrite(oneShotState, oneShotIndex, 1);
 
-        activate (hid, keymap, oneShotIndex);
+        activate (hid, keymap, keycode);
 
         return true;
       }
@@ -86,7 +86,7 @@ namespace Akela {
           for (uint8_t i = 0; i < 32; i++) {
             if (bitRead(oneShotState, i) && !bitRead(stickyState, i)) {
               bitWrite(oneShotState, i, 0);
-              deactivate (hid, keymap, i);
+              deactivate (hid, keymap, i + FN_ONESHOT);
             }
           }
           Timer = 0;
