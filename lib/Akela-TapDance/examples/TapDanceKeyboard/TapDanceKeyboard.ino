@@ -62,7 +62,7 @@ TapDanceEventHandler::release (uint8_t index) {
 
 void
 TapDanceEventHandler::loop () {
-  Akela::TapDance::Component::OneShotMod::loop (HID);
+  Akela::TapDance::Component::OneShotMod::loop (HID, keymap);
   Akela::EventHandler::Base::loop ();
 }
 

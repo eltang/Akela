@@ -41,7 +41,8 @@ namespace Akela {
                               uint8_t index,
                               uint16_t keycode);
 
-        virtual void loop (Akela::AbstractHID *hid);
+        virtual void loop (Akela::AbstractHID *hid,
+                           Akela::KeyMap *keymap);
 
       protected:
         uint16_t Timer = 0;
@@ -51,8 +52,10 @@ namespace Akela {
         bool oneShotShouldCancel = false;
 
         virtual void activate (Akela::AbstractHID *hid,
+                               Akela::KeyMap *keymap,
                                uint8_t oneShotIndex) = 0;
         virtual void deactivate (Akela::AbstractHID *hid,
+                                 Akela::KeyMap *keymap,
                                  uint8_t oneShotIndex) = 0;
       };
 

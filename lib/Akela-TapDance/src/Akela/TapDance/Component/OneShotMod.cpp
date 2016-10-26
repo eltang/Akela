@@ -23,12 +23,14 @@ namespace Akela {
     namespace Component {
 
       void OneShotMod::activate (Akela::AbstractHID *hid,
+                                 Akela::KeyMap *,
                                  uint8_t oneShotIndex) {
         hid->press (oneShotIndex + KC_LCTL);
         hid->sendReport ();
       }
 
       void OneShotMod::deactivate (Akela::AbstractHID *hid,
+                                   Akela::KeyMap *,
                                    uint8_t oneShotIndex) {
         hid->release (oneShotIndex + KC_LCTL);
         hid->sendReport ();

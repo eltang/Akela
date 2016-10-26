@@ -24,7 +24,7 @@ namespace Akela {
 
       bool
       OneShot::press (Akela::AbstractHID *hid,
-                      Akela::KeyMap *,
+                      Akela::KeyMap *keymap,
                       uint8_t,
                       uint16_t keycode) {
         switch (keycode) {
@@ -43,7 +43,7 @@ namespace Akela {
           if (bitRead(stickyState, oneShotIndex)) {
             bitWrite(oneShotState, oneShotIndex, 0);
             bitWrite(stickyState, oneShotIndex, 0);
-            deactivate (hid, oneShotIndex);
+            deactivate (hid, keymap, oneShotIndex);
             return true;
           } else {
             bitWrite(stickyState, oneShotIndex, 1);
@@ -51,7 +51,7 @@ namespace Akela {
         }
         bitWrite(oneShotState, oneShotIndex, 1);
 
-        activate (hid, oneShotIndex);
+        activate (hid, keymap, oneShotIndex);
 
         return true;
       }
@@ -77,7 +77,8 @@ namespace Akela {
       }
 
       void
-      OneShot::loop (Akela::AbstractHID *hid) {
+      OneShot::loop (Akela::AbstractHID *hid,
+                     Akela::KeyMap *keymap) {
         if (Timer)
           Timer++;
 
@@ -85,7 +86,7 @@ namespace Akela {
           for (uint8_t i = 0; i < 32; i++) {
             if (bitRead(oneShotState, i) && !bitRead(stickyState, i)) {
               bitWrite(oneShotState, i, 0);
-              deactivate (hid, i);
+              deactivate (hid, keymap, i);
             }
           }
           Timer = 0;
