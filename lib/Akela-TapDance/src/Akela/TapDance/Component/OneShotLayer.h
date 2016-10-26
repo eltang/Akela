@@ -18,6 +18,32 @@
 
 #pragma once
 
-#include "Akela/TapDance/Component/OneShot.h"
-#include "Akela/TapDance/Component/OneShotMod.h"
-#include "Akela/TapDance/Component/OneShotLayer.h"
+#include <Akela.h>
+
+#include "OneShot.h"
+#include "OneShotMod.h"
+
+#define OSL(layer) (Akela::TapDance::FN_ONESHOT_OSL + layer)
+
+namespace Akela {
+  namespace TapDance {
+    enum {
+      FN_ONESHOT_OSL     = FN_ONESHOT_OSM_MAX + 1,
+      FN_ONESHOT_OSL_MAX = FN_ONESHOT_MAX
+    };
+
+    namespace Component {
+      class OneShotLayer : public OneShot {
+      protected:
+        uint8_t prev_layer = 0;
+
+        virtual void activate (Akela::AbstractHID *hid,
+                               Akela::KeyMap *keymap,
+                               uint8_t oneShotIndex);
+        virtual void deactivate (Akela::AbstractHID *hid,
+                                 Akela::KeyMap *keymap,
+                                 uint8_t oneShotIndex);
+      };
+    };
+  };
+};

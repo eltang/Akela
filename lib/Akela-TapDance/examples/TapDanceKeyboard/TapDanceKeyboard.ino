@@ -22,16 +22,19 @@
 
 #include "layout.h"
 
-class TapDanceEventHandler : public Akela::EventHandler::Base,
-                             public Akela::TapDance::Component::OneShotMod {
+class TapDanceEventHandler : public Akela::EventHandler::Layered,
+                             public Akela::TapDance::Component::OneShotMod,
+                             public Akela::TapDance::Component::OneShotLayer {
 public:
-  TapDanceEventHandler (Akela::AbstractHID *hid, Akela::KeyMap *keymap)
-    : Akela::EventHandler::Base (hid, keymap) {};
+  TapDanceEventHandler (Akela::AbstractHID *hid, Akela::LayeredKeyMap *keymap)
+    : Akela::EventHandler::Layered (hid, keymap) {};
 
   using Akela::TapDance::Component::OneShotMod::press;
+  using Akela::TapDance::Component::OneShotLayer::press;
   virtual void press (uint8_t index);
 
   using Akela::TapDance::Component::OneShotMod::release;
+  using Akela::TapDance::Component::OneShotLayer::release;
   virtual void release (uint8_t index);
 
   virtual void loop ();
@@ -46,8 +49,10 @@ TapDanceEventHandler::press (uint8_t index) {
 
   if (Akela::TapDance::Component::OneShotMod::press (HID, keymap, index, keycode))
     return;
+  if (Akela::TapDance::Component::OneShotLayer::press (HID, keymap, index, keycode))
+    return;
 
-  Akela::EventHandler::Base::press (index);
+  Akela::EventHandler::Layered::press (index);
 };
 
 void
@@ -56,18 +61,20 @@ TapDanceEventHandler::release (uint8_t index) {
 
   if (Akela::TapDance::Component::OneShotMod::release (HID, keymap, index, keycode))
     return;
+  if (Akela::TapDance::Component::OneShotLayer::release (HID, keymap, index, keycode))
+    return;
 
-  Akela::EventHandler::Base::release (index);
+  Akela::EventHandler::Layered::release (index);
 }
 
 void
 TapDanceEventHandler::loop () {
   Akela::TapDance::Component::OneShotMod::loop (HID, keymap);
-  Akela::EventHandler::Base::loop ();
+  Akela::EventHandler::Layered::loop ();
 }
 
 static M01::HID::Base            hid;
-static Akela::KeyMap             keyMap ((uint16_t *)keymap);
+static M01::KeyMap               keyMap (keymap);
 static M01::Scanner              scanner;
 static TapDanceEventHandler      eventHandler (&hid, &keyMap);
 static M01::Model01              keyboard (&scanner, &eventHandler);

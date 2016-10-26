@@ -20,8 +20,13 @@
 
 #define KC_NIY KC_NO
 
-static uint16_t keymap[] =
-  KEYMAP (
+enum {
+  _BASE,
+  _FN,
+};
+
+static uint16_t keymap[][64] = {
+  [_BASE] = KEYMAP (
   // left hand
 
    KC_NIY     ,KC_1       ,KC_2       ,KC_3       ,KC_4       ,KC_5       ,KC_NO
@@ -30,7 +35,7 @@ static uint16_t keymap[] =
   ,KC_PGDN    ,KC_Z       ,KC_X       ,KC_C       ,KC_V       ,KC_B       ,KC_ESC
 
                    ,OSM(LCTL)  ,KC_BSPC    ,OSM(LGUI)  ,OSM(LSFT)
-                               ,KC_NO
+                               ,OSL(_FN)
 
    // right hand
 
@@ -40,5 +45,23 @@ static uint16_t keymap[] =
    ,KC_NO      ,KC_N       ,KC_M       ,KC_COMM    ,KC_DOT     ,KC_SLSH    ,KC_MINS
 
                    ,OSM(RSFT)  ,OSM(RALT)  ,KC_SPC     ,OSM(RCTL)
-                               ,KC_NO
-);
+                               ,OSL(_FN)
+  ),
+  [_FN] = KEYMAP (
+    KC_NIY     ,KC_F1      ,KC_F2      ,KC_F3      ,KC_F4      ,KC_F5      ,KC_NO
+   ,KC_TAB     ,MB_MID     ,MM_UP      ,KC_NO      ,MW_NW      ,MW_NE
+   ,KC_HOME    ,MM_L       ,MM_DN      ,MM_R       ,MW_SW      ,MW_SE      ,KC_NO
+   ,KC_END     ,KC_Z       ,KC_X       ,KC_C       ,KC_V       ,MW_END     ,CC_NXT
+
+   ,KC_LCTL    ,MB_LFT     ,KC_LGUI    ,KC_LSFT
+   ,L(0)
+
+   ,KC_NO      ,KC_F6      ,KC_F7      ,KC_F8      ,KC_F9      ,L(0)       ,KC_NO
+               ,CC_PLPS    ,KC_LCBRC   ,KC_RCBRC   ,KC_LBRC    ,KC_RBRC    ,SC_SLP
+   ,KC_DEL     ,KC_LEFT    ,KC_DOWN    ,KC_UP      ,KC_RGHT    ,KC_F11     ,KC_F12
+   ,KC_NO      ,CC_VDN     ,CC_VUP     ,KC_BLDN    ,KC_BLUP    ,KC_BSLS    ,KC_PIPE
+
+   ,KC_RSFT    ,KC_RALT    ,MB_RGT     ,KC_RCTL
+   ,L(0)
+  ),
+};

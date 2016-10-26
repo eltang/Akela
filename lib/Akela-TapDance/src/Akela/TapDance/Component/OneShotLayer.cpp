@@ -16,8 +16,31 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#pragma once
+#include <Akela-TapDance.h>
 
-#include "Akela/TapDance/Component/OneShot.h"
-#include "Akela/TapDance/Component/OneShotMod.h"
-#include "Akela/TapDance/Component/OneShotLayer.h"
+namespace Akela {
+  namespace TapDance {
+    namespace Component {
+
+      void
+      OneShotLayer::activate (Akela::AbstractHID *,
+                              Akela::KeyMap *keymap,
+                              uint8_t keycode) {
+        Akela::LayeredKeyMap *km = (Akela::LayeredKeyMap *)keymap;
+        uint8_t layer = keycode - FN_ONESHOT_OSL;
+        prev_layer = km->layer ();
+
+        km->layer_move (layer);
+      }
+
+      void
+      OneShotLayer::deactivate (Akela::AbstractHID *,
+                                Akela::KeyMap *keymap,
+                                uint8_t) {
+        Akela::LayeredKeyMap *km = (Akela::LayeredKeyMap *)keymap;
+        km->layer_move (prev_layer);
+        prev_layer = 0;
+      }
+    };
+  };
+};
