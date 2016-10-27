@@ -25,7 +25,7 @@ public:
   void test () {
     for (int i = 0; i < LAYOUT_SIZE; i++) {
       for (int j = 0; j < 2; j++) {
-        keymap->layer_move (j);
+        keymap->layer (j);
 
         press (i);
         loop ();

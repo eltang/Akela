@@ -29,7 +29,7 @@ namespace Akela {
     virtual uint16_t lookup (uint8_t index);
     virtual uint16_t lookup (uint8_t layer, uint8_t index);
 
-    virtual void layer_move (uint8_t index);
+    virtual void layer (uint8_t index);
     virtual uint8_t layer ();
   };
 };

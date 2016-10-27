@@ -42,7 +42,7 @@ namespace Akela {
       }
 
       Akela::LayeredKeyMap *km = (Akela::LayeredKeyMap *)keymap;
-      km->layer_move (layer);
+      km->layer (layer);
 
       return true;
     }
@@ -71,7 +71,7 @@ namespace Akela {
       }
 
       Akela::LayeredKeyMap *km = (Akela::LayeredKeyMap *)keymap;
-      km->layer_move (layer);
+      km->layer (layer);
 
       return true;
     }

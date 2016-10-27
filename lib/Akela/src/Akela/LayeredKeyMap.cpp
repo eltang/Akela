@@ -34,7 +34,7 @@ Akela::LayeredKeyMap::lookup (uint8_t index) {
 }
 
 void
-Akela::LayeredKeyMap::layer_move (uint8_t index) {
+Akela::LayeredKeyMap::layer (uint8_t index) {
   Layer = index;
 }
 

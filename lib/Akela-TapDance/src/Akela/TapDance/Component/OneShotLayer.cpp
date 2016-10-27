@@ -30,7 +30,7 @@ namespace Akela {
         uint8_t layer = keycode - FN_ONESHOT_OSL;
         prev_layer = km->layer ();
 
-        km->layer_move (layer);
+        km->layer (layer);
       }
 
       void
@@ -38,7 +38,7 @@ namespace Akela {
                                 Akela::KeyMap *keymap,
                                 uint8_t) {
         Akela::LayeredKeyMap *km = (Akela::LayeredKeyMap *)keymap;
-        km->layer_move (prev_layer);
+        km->layer (prev_layer);
         prev_layer = 0;
       }
     };
