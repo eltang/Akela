@@ -3,4 +3,6 @@
 core
 /test/AkelaTest
 /test/test.out
+/t/AkelaTest
+/t/test.out
 firmware/

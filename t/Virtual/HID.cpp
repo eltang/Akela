@@ -16,12 +16,29 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#pragma once
+namespace Virtual {
+  class HID : public Akela::AbstractHID {
+  public:
+    virtual void press (uint8_t code) {
+      std::cout << "\t\t" << __PRETTY_FUNCTION__ << "(0x" << std::hex << (int)code << ")" << std::endl;
+    };
 
-class NoOpScanner : public Akela::AbstractScanner {
- public:
-  NoOpScanner () {};
+    virtual void release (uint8_t code) {
+      std::cout << "\t\t" << __PRETTY_FUNCTION__ << "(0x" << std::hex << (int)code << ")" << std::endl;
+    };
 
-  virtual const void *scan () { return NULL; };
-  virtual void setup () {};
+    virtual void hold (uint8_t code) {
+      std::cout << "\t\t" << __PRETTY_FUNCTION__ << "(0x" << std::hex << (int)code << ")" << std::endl;
+    };
+
+    virtual void sendReport () {
+      std::cout << "    " << __PRETTY_FUNCTION__ << std::endl;
+    };
+
+    virtual void loop () {
+      sendReport ();
+    }
+
+    HID () : Akela::AbstractHID () {};
+  };
 };

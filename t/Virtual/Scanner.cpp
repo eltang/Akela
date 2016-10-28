@@ -16,21 +16,35 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#pragma once
+namespace Virtual {
+  typedef uint8_t (*ScannerFunction) (uint16_t cycle, uint8_t state, bool *quit);
 
-class LayerPrinterKeyMap : public Akela::LayeredKeyMap {
- public:
-  LayerPrinterKeyMap (uint16_t **keymap, uint8_t layoutSize)
-    : Akela::LayeredKeyMap (keymap, layoutSize) {};
+  class Scanner : public Akela::AbstractScanner {
+  protected:
+    uint8_t state = 0;
+    ScannerFunction Scan;
 
-  virtual uint16_t lookup (uint8_t index) {
-    uint16_t k = Akela::LayeredKeyMap::lookup (index);
+  public:
+    bool quit = false;
+    uint16_t cycle = 0;
 
-    if (k != 0)
-      std::cout << __PRETTY_FUNCTION__ << "(" << (int)Layer << ", "
-                << (int)index << ") = " << std::hex << (int)k << std::endl;
-    return k;
-  }
+    Scanner (ScannerFunction f) {
+      Scan = f;
+    }
 
-  using Akela::LayeredKeyMap::lookup;
+    virtual const void *scan () {
+      state = Scan (cycle++, state, &quit);
+      return (void *)&state;
+    }
+
+    virtual void setup () {}
+    void reset () {
+      cycle = state = 0;
+      quit = false;
+    }
+
+    void set_function (ScannerFunction f) {
+      Scan = f;
+    }
+  };
 };

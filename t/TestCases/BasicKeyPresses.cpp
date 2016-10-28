@@ -16,19 +16,30 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-int
-TestMods () {
-  PrinterHID hid = PrinterHID ();
-  PrinterKeyMap keymap = PrinterKeyMap ((uint16_t *)modful_keymap);
-  Akela::EventHandler::Base EH =
-    Akela::EventHandler::Base (&hid, &keymap);
-  NoOpScanner scanner = NoOpScanner ();
-  PressReleaseKeyboard keyboard = PressReleaseKeyboard (&scanner, &EH);
+static void
+TestBasicKeyPresses () {
+  Virtual::HID                hid;
+  Virtual::KeyMap             keymap (seq_keymap);
+  Virtual::EventHandler::Base EH (&hid, &keymap);
+  Virtual::Scanner            scanner (_scan_dummy);
+  Virtual::Keyboard           keyboard (&scanner, &EH);
 
   std::cout << __func__ << std::endl;
 
   keyboard.setup ();
-  keyboard.test ();
 
-  return 0;
+  TESTCASE ("Pressing one key at a time", seq_keymap, _scan_one_at_a_time);
+
+  TESTCASE ("Chording all", seq_keymap, _scan_chord_all);
+
+  TESTCASE ("Modifiers", mod_keymap, _scan_one_at_a_time);
+
+  TESTCASE_STEPS("Holding", seq_keymap, ,
+    {
+      0b00000000, // clear state
+      0b00000001, // first pressed
+      0b00000001, // first held
+      0b00000011, // second pressed, first held
+      0b00000000, // both released
+    });
 }

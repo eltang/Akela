@@ -16,36 +16,34 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "Akela.h"
+static uint16_t seq_keymap[] = {
+  0, 1, 2,
+  3, 4, 5,
+};
 
-#define LAYOUT_SIZE 64
+static uint16_t mod_keymap[] = {
+  LCTL(KC_C), LSFT(LCTL(KC_S)), LALT(LSFT(LCTL(KC_I))),
+  LALT(RALT(LCTL(RCTL(LSFT(RSFT(LGUI(KC_L))))))), KC_L, KC_A
+};
 
-#include <iostream>
-#include <iomanip>
+static uint16_t layered_keymap[][6] = {
+  [0] = {
+    KC_A, KC_A, L(1),
+    KC_A, KC_A, KC_A,
+  },
+  [1] = {
+    KC_B, KC_B, L(1),
+    KC_B, KC_B, L(0)
+  }
+};
 
-#include "stubs/HID/Printer.h"
-#include "stubs/KeyMap/Printer.h"
-#include "stubs/KeyMap/LayerPrinter.h"
-#include "stubs/keymaps.h"
-#include "stubs/Keyboard/PressRelease.h"
-#include "stubs/Keyboard/PressReleaseLayered.h"
-#include "stubs/Keyboard/Chorded.h"
-#include "stubs/EventHandler/FnPrinter.h"
-#include "stubs/Scanner/NoOp.h"
-
-#include "TestCase/Basics.cpp"
-#include "TestCase/Mods.cpp"
-#include "TestCase/Fn.cpp"
-#include "TestCase/Layers.cpp"
-
-int
-main (void) {
-  TestBasics ();
-  TestMods ();
-  TestFn ();
-  TestFnHandler ();
-  TestLayers ();
-  TestLayerKeys ();
-
-  return 0;
-}
+static uint16_t ml_keymap[][6] = {
+  [0] = {
+    ML(1), KC_A, KC_A,
+    KC_A, KC_A, KC_A,
+  },
+  [1] = {
+    ML(0), KC_B, KC_B,
+    KC_B, KC_B, KC_B
+  }
+};

@@ -15,7 +15,7 @@ export SC
 export SS
 export SR
 
-all: keyboardio tapdance test
+all: keyboardio tapdance t
 
 keyboardio: keyboardio/Model01 keyboardio/stripped keyboardio/minimal keyboardio/example
 tapdance: tapdance/TapDanceKeyboard
@@ -26,18 +26,18 @@ tapdance/%:
 keyboardio/%:
 	${MAKE} -C lib/Akela-Model01/examples/$*
 
-test:
+t:
 	${SS} echo Building the test suite...
-	${MAKE} -C test
+	${MAKE} -C t
 
-check: test
+check: t
 	${SS} echo Running the test suite...
-	${MAKE} -C test $@
+	${MAKE} -C t $@
 
 clean:
 	${SS} echo Cleaning in the firmwares ...
 	${SC} rm -rf firmware
-	${SS} echo Cleaning in test ...
-	${SC} ${MAKE} -C test clean
+	${SS} echo Cleaning in t ...
+	${SC} ${MAKE} -C t clean
 
-.PHONY: all keyboardio test check clean
+.PHONY: all keyboardio t check clean
