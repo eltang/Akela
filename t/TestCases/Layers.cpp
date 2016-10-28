@@ -16,6 +16,28 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+static uint16_t layered_keymap[][6] = {
+  [0] = {
+    KC_A, KC_A, L(1),
+    KC_A, KC_A, KC_A,
+  },
+  [1] = {
+    KC_B, KC_B, L(1),
+    KC_B, KC_B, L(0)
+  }
+};
+
+static uint16_t ml_keymap[][6] = {
+  [0] = {
+    ML(1), KC_A, KC_A,
+    KC_A, KC_A, KC_A,
+  },
+  [1] = {
+    ML(0), KC_B, KC_B,
+    KC_B, KC_B, KC_B
+  }
+};
+
 static void
 TestLayers () {
   Virtual::HID                   hid;

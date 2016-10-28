@@ -49,7 +49,7 @@ TEST_SOURCES = \
 	Virtual/Scanner.cpp
 
 TEST_HEADERS = \
-	util/layouts.h
+	util/Arduino-compat.h
 
 AkelaTest: ${TEST_SOURCES} ${AKELA_SOURCES} ${AKELA_HEADERS} ${TEST_HEADERS}
 	${CXX} ${CXXFLAGS} ${AKELA_SOURCES} AkelaTest.cpp -o $@

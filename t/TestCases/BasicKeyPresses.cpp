@@ -16,6 +16,16 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+static uint16_t seq_keymap[] = {
+  0, 1, 2,
+  3, 4, 5,
+};
+
+static uint16_t mod_keymap[] = {
+  LCTL(KC_C), LSFT(LCTL(KC_S)), LALT(LSFT(LCTL(KC_I))),
+  LALT(RALT(LCTL(RCTL(LSFT(RSFT(LGUI(KC_L))))))), KC_L, KC_A
+};
+
 static void
 TestBasicKeyPresses () {
   Virtual::HID                hid;

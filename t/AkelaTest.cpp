@@ -51,7 +51,6 @@
 #include "Virtual/EventHandler.cpp"
 #include "Virtual/Keyboard.cpp"
 
-#include "util/layouts.h"
 #include "util/scanners.cpp"
 
 #include "TestCases/BasicKeyPresses.cpp"
