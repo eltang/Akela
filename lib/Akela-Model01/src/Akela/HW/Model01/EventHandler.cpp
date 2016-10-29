@@ -25,6 +25,8 @@ namespace M01 {
     Base::press (uint8_t index) {
       uint16_t key = keymap->lookup (index);
 
+      if (Akela::EventHandler::FnMacroComponent::press (HID, keymap, index, key))
+        return;
       if (ExtraKeysComponent::press (HID, keymap, index, key))
         return;
 
@@ -40,6 +42,8 @@ namespace M01 {
     Base::release (uint8_t index) {
       uint16_t key = keymap->lookup (index);
 
+      if (Akela::EventHandler::FnMacroComponent::release (HID, keymap, index, key))
+        return;
       if (ExtraKeysComponent::release (HID, keymap, index, key))
         return;
 

@@ -20,10 +20,12 @@
 
 namespace M01 {
   namespace EventHandler {
-    class Base : public Akela::EventHandler::Layered, public ExtraKeysComponent {
+    class Base : public Akela::EventHandler::Layered, public ExtraKeysComponent,
+      public Akela::EventHandler::FnMacroComponent {
     public:
       Base (Akela::AbstractHID *HID, Akela::LayeredKeyMap *keymap)
-        : Akela::EventHandler::Layered (HID, keymap) {};
+        : Akela::EventHandler::Layered (HID, keymap),
+          Akela::EventHandler::FnMacroComponent () {};
 
       using ExtraKeysComponent::press;
       virtual void press (uint8_t index);
@@ -33,6 +35,10 @@ namespace M01 {
 
       using ExtraKeysComponent::hold;
       virtual void hold (uint8_t index);
+
+    private:
+      using Akela::EventHandler::FnMacroComponent::press;
+      using Akela::EventHandler::FnMacroComponent::release;
     };
   };
 };
