@@ -27,10 +27,7 @@ namespace Akela {
                       Akela::KeyMap *keymap,
                       uint8_t,
                       uint16_t keycode) {
-        switch (keycode) {
-        case FN_ONESHOT ... FN_ONESHOT_MAX:
-          break;
-        default:
+        if (keycode < FN_ONESHOT || keycode > FN_ONESHOT_MAX) {
           if (oneShotState)
             oneShotShouldCancel = true;
           return false;
@@ -61,10 +58,7 @@ namespace Akela {
                         Akela::KeyMap *,
                         uint8_t,
                         uint16_t keycode) {
-        switch (keycode) {
-        case FN_ONESHOT ... FN_ONESHOT_MAX:
-          break;
-        default:
+        if (keycode < FN_ONESHOT || keycode > FN_ONESHOT_MAX) {
           if (oneShotState)
             oneShotShouldCancel = true;
           return false;

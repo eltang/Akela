@@ -25,6 +25,9 @@ namespace M01 {
       if (page != KEYBOARD)
         return;
 
+      if (code >= KC_LCTL && code <= KC_RGUI)
+        bitWrite (modifierState, code - KC_LCTL, 1);
+
       Keyboard.press (code);
     }
 
@@ -33,27 +36,19 @@ namespace M01 {
       if (page != KEYBOARD)
         return;
 
+      if (code >= KC_LCTL && code <= KC_RGUI)
+        bitWrite (modifierState, code - KC_LCTL, 0);
+
       Keyboard.release (code);
     }
 
     void
     Base::press (uint8_t code) {
-      switch (code) {
-      case KC_LCTL ... KC_RGUI:
-        bitWrite (modifierState, code - KC_LCTL, 1);
-        break;
-      }
       press (KEYBOARD, code);
     }
 
     void
     Base::release (uint8_t code) {
-      switch (code) {
-      case KC_LCTL ... KC_RGUI:
-        bitWrite (modifierState, code - KC_LCTL, 0);
-        break;
-      }
-
       release (KEYBOARD, code);
     }
 
@@ -69,12 +64,8 @@ namespace M01 {
 
     bool
     Base::isModifierActive (uint8_t code) {
-      switch (code) {
-      case KC_LCTL ... KC_RGUI:
-        break;
-      default:
+      if (code < KC_LCTL || code > KC_RGUI)
         return false;
-      }
 
       uint8_t n = code - KC_LCTL;
       return bitRead (modifierState, n);
