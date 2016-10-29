@@ -25,7 +25,7 @@ enum {
   _FN,
 };
 
-static uint16_t keymap[][64] = {
+static const uint16_t keymap[][64] PROGMEM = {
   [_BASE] = KEYMAP (
   // left hand
 

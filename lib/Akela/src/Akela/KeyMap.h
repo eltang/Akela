@@ -21,10 +21,10 @@
 namespace Akela {
   class KeyMap {
   protected:
-    uint16_t *keymap;
+    const uint16_t *keymap;
 
   public:
-    KeyMap (uint16_t *keymap);
+    KeyMap (const uint16_t *keymap);
     virtual ~KeyMap ();
 
     virtual uint16_t lookup (uint8_t index);

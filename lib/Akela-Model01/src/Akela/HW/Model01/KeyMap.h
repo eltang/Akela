@@ -21,7 +21,7 @@
 namespace M01 {
   class KeyMap : public Akela::LayeredKeyMap {
   public:
-    KeyMap (uint16_t keymap[][64])
-      : Akela::LayeredKeyMap ((uint16_t **)keymap, 64) {};
+    KeyMap (const uint16_t keymap[][64])
+      : Akela::LayeredKeyMap ((const uint16_t **)keymap, 64) {};
   };
 };

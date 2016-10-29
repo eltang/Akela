@@ -24,7 +24,7 @@ namespace Akela {
     uint8_t Layer = 0, LayerSize;
 
   public:
-    LayeredKeyMap (uint16_t **keymap, uint8_t layerSize);
+    LayeredKeyMap (const uint16_t **keymap, uint8_t layerSize);
 
     virtual uint16_t lookup (uint8_t index);
     virtual uint16_t lookup (uint8_t layer, uint8_t index);

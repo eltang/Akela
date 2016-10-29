@@ -18,8 +18,8 @@
 
 #include "Akela.h"
 
-Akela::LayeredKeyMap::LayeredKeyMap (uint16_t **keymap, uint8_t layerSize)
-  : Akela::KeyMap ((uint16_t *)keymap) {
+Akela::LayeredKeyMap::LayeredKeyMap (const uint16_t **keymap, uint8_t layerSize)
+  : Akela::KeyMap ((const uint16_t *)keymap) {
   LayerSize = layerSize;
 }
 

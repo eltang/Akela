@@ -26,7 +26,7 @@ enum {
 
 #define KC_NIY KC_NO
 
-static uint16_t keymap[][64] = {
+static const uint16_t keymap[][64] PROGMEM = {
   [BASE] = KEYMAP (
   // left hand
 

@@ -20,7 +20,7 @@
 
 #define KC_NIY KC_NO
 
-static uint16_t keymap[] =
+static const uint16_t keymap[] PROGMEM =
   KEYMAP (
   // left hand
 
