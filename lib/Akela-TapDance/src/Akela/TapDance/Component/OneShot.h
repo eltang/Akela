@@ -44,6 +44,9 @@ namespace Akela {
         virtual void loop (Akela::AbstractHID *hid,
                            Akela::KeyMap *keymap);
 
+        virtual void cancelOneShot (Akela::AbstractHID *hid,
+                                    Akela::KeyMap *keymap);
+
       protected:
         uint16_t Timer = 0;
         uint16_t TimeOut = 40;

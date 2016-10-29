@@ -77,14 +77,20 @@ namespace Akela {
           Timer++;
 
         if (oneShotShouldCancel || Timer > TimeOut) {
-          for (uint8_t i = 0; i < 32; i++) {
-            if (bitRead(oneShotState, i) && !bitRead(stickyState, i)) {
-              bitWrite(oneShotState, i, 0);
-              deactivate (hid, keymap, i + FN_ONESHOT);
-            }
-          }
-          Timer = 0;
+          cancelOneShot (hid, keymap);
         }
+      }
+
+      void
+      OneShot::cancelOneShot (Akela::AbstractHID *hid,
+                              Akela::KeyMap *keymap) {
+        for (uint8_t i = 0; i < 32; i++) {
+          if (bitRead(oneShotState, i) && !bitRead(stickyState, i)) {
+            bitWrite(oneShotState, i, 0);
+            deactivate (hid, keymap, i + FN_ONESHOT);
+          }
+        }
+        Timer = 0;
       }
 
     };
