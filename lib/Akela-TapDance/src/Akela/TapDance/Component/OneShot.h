@@ -44,6 +44,7 @@ namespace Akela {
         virtual void loop (Akela::AbstractHID *hid,
                            Akela::KeyMap *keymap);
 
+        bool isOneShotActive ();
         virtual void cancelOneShot (Akela::AbstractHID *hid,
                                     Akela::KeyMap *keymap);
 

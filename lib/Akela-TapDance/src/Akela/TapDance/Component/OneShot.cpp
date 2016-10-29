@@ -70,13 +70,18 @@ namespace Akela {
         return true;
       }
 
+      bool
+      OneShot::isOneShotActive () {
+        return !(oneShotShouldCancel || (Timer > TimeOut));
+      }
+
       void
       OneShot::loop (Akela::AbstractHID *hid,
                      Akela::KeyMap *keymap) {
         if (Timer)
           Timer++;
 
-        if (oneShotShouldCancel || Timer > TimeOut) {
+        if (!isOneShotActive ()) {
           cancelOneShot (hid, keymap);
         }
       }
