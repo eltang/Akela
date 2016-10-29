@@ -42,6 +42,8 @@ namespace Akela {
         virtual void deactivate (Akela::AbstractHID *hid,
                                  Akela::KeyMap *keymap,
                                  uint8_t keycode);
+
+        virtual bool isOneShotModifierActive (uint8_t keycode);
       };
     };
   };

@@ -35,6 +35,14 @@ namespace Akela {
         hid->release (keycode - FN_ONESHOT_OSM + KC_LCTL);
         hid->sendReport ();
       }
+
+      bool
+      OneShotMod::isOneShotModifierActive (uint8_t keycode) {
+        uint8_t n = keycode - KC_LCTL;
+        bool active = !!(oneShotState & (1 << n));
+
+        return active && (Timer < TimeOut);
+      }
     };
   };
 };
