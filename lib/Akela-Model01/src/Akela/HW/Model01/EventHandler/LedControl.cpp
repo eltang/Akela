@@ -18,6 +18,15 @@
 
 #include "Akela/HW/Model01.h"
 
+#include <avr/pgmspace.h>
+
+static const uint8_t _LedControlMap[64] PROGMEM = {
+  3,4,11,12,19,20,26,27,     36,37,43,44,51,52,59,60,
+  2,5,10,13,18,21,31,28,     35,32,42,45,50,53,58,61,
+  1,6, 9,14,17,22,25,29,     34,38,41,46,49,54,57,62,
+  0,7, 8,15,16,23,24,30,     33,39,40,47,48,55,56,63,
+};
+
 namespace M01 {
   namespace EventHandler {
 
@@ -48,20 +57,23 @@ namespace M01 {
 
     void
     LedControl::set_color (cRGB color) {
-      for (uint8_t i = 0; i < sizeof (map); i++) {
+      for (uint8_t i = 0; i < sizeof (_LedControlMap); i++) {
         set_color (i, color);
       }
     }
 
     void
     LedControl::set_color (uint8_t row, uint8_t col, cRGB crgb) {
-      uint8_t pos = map[row * 16 + col];
+      uint8_t mapPos = row * 16 + col;
+      uint8_t pos = pgm_read_byte_near (_LedControlMap + mapPos);
       set_color (pos, crgb);
     }
 
     void
     LedControl::set_color (uint8_t i, cRGB crgb) {
-      set_color_at_led (map[i], crgb);
+      uint8_t pos = pgm_read_byte_near (_LedControlMap + i);
+
+      set_color_at_led (pos, crgb);
     }
 
     void
