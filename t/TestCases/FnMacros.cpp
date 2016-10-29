@@ -1,4 +1,4 @@
-/*
+/* -*- mode: c++ -*-
  * Akela -- Animated Keyboard Extension Library for Arduino
  * Copyright (C) 2016  Gergely Nagy
  *
@@ -16,20 +16,23 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#pragma once
-
-#define SYSFN(n) (n + (MOD_FN | MOD_FN_SYS))
-
-namespace Akela {
-  enum {
-    SYSFN_LAYER_MOMENTARY     = SYSFN(0x0000),
-    SYSFN_LAYER_MOMENTARY_MAX = SYSFN(0x000f),
-    SYSFN_LAYER_MOVE          = SYSFN(0x0010),
-    SYSFN_LAYER_MOVE_MAX      = SYSFN(0x001f),
-
-    SYSFN_FNMACRO             = SYSFN(0x0020),
-    SYSFN_FNMACRO_MAX         = SYSFN(0x0050),
-
-    SYSFN_SAFE,
-  };
+static uint16_t macro_keymap[] = {
+  FM(0), FM(1), KC_NO,
+  KC_NO, KC_NO, FM(2)
 };
+
+static void
+TestFnMacros () {
+  Virtual::HID                   hid;
+  Virtual::KeyMap                keymap ((uint16_t *)macro_keymap);
+  Virtual::EventHandler::Macros  EH (&hid, &keymap);
+  Virtual::Scanner               scanner (_scan_dummy);
+  Virtual::Keyboard              keyboard (&scanner, &EH);
+
+  std::cout << __func__ << std::endl;
+
+  keyboard.setup ();
+
+  TESTCASE("Pressing one key at a time", (uint16_t *)macro_keymap,
+           _scan_one_at_a_time);
+}

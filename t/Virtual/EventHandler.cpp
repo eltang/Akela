@@ -33,6 +33,39 @@ namespace Virtual {
       }
     };
 
+    class Macros : public Akela::EventHandler::Base,
+                   public Akela::EventHandler::FnMacroComponent {
+    public:
+      Macros (Akela::AbstractHID *hid, Akela::KeyMap *keymap)
+        : Akela::EventHandler::Base (hid, keymap) {};
+
+      virtual void press (uint8_t index) {
+        if (Akela::EventHandler::FnMacroComponent::press (HID, keymap, index, keymap->lookup (index)))
+          return;
+
+        Akela::EventHandler::Base::press (index);
+      }
+
+      virtual void release (uint8_t index) {
+        if (Akela::EventHandler::FnMacroComponent::release (HID, keymap, index, keymap->lookup (index)))
+          return;
+
+        Akela::EventHandler::Base::release (index);
+      }
+
+      virtual void macroAction (Akela::AbstractHID *,
+                                Akela::KeyMap *,
+                                uint8_t index,
+                                bool pressed) {
+        std::cout << "  " << __PRETTY_FUNCTION__ << "(macroIndex=" << std::hex << (int) index
+                  << ", pressed=" << (bool) pressed << ")" << std::endl;
+      }
+
+    private:
+      using Akela::EventHandler::FnMacroComponent::press;
+      using Akela::EventHandler::FnMacroComponent::release;
+    };
+
     class Layered : public Akela::EventHandler::Layered {
     public:
       Layered (Akela::AbstractHID *hid, Akela::LayeredKeyMap *keymap)

@@ -23,6 +23,7 @@ AKELA_SOURCES = \
 	../lib/Akela/src/Akela/LayeredKeyMap.cpp \
 	../lib/Akela/src/Akela/EventHandler/Base.cpp \
 	../lib/Akela/src/Akela/EventHandler/Components/Layer.cpp \
+	../lib/Akela/src/Akela/EventHandler/Components/FnMacro.cpp \
 	../lib/Akela/src/Akela/EventHandler/Layered.cpp \
 	../lib/Akela-TapDance/src/Akela/TapDance/Component/OneShot.cpp \
 	../lib/Akela-TapDance/src/Akela/TapDance/Component/OneShotMod.cpp \
@@ -41,6 +42,7 @@ TEST_SOURCES = \
 	AkelaTest.cpp \
 	TestCases/BasicKeyPresses.cpp \
 	TestCases/Layers.cpp \
+	TestCases/FnMacros.cpp \
 	util/scanners.cpp \
 	Virtual/HID.cpp \
 	Virtual/Keyboard.cpp \

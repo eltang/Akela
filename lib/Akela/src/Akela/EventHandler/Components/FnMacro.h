@@ -18,18 +18,28 @@
 
 #pragma once
 
-#define SYSFN(n) (n + (MOD_FN | MOD_FN_SYS))
+#include "Akela.h"
+
+#define FM(n) (Akela::SYSFN_FNMACRO + n)
 
 namespace Akela {
-  enum {
-    SYSFN_LAYER_MOMENTARY     = SYSFN(0x0000),
-    SYSFN_LAYER_MOMENTARY_MAX = SYSFN(0x000f),
-    SYSFN_LAYER_MOVE          = SYSFN(0x0010),
-    SYSFN_LAYER_MOVE_MAX      = SYSFN(0x001f),
+  namespace EventHandler {
+    class FnMacroComponent : public Component {
+    protected:
+      virtual bool press (Akela::AbstractHID *HID,
+                          Akela::KeyMap *keymap,
+                          uint8_t index,
+                          uint16_t keycode);
 
-    SYSFN_FNMACRO             = SYSFN(0x0020),
-    SYSFN_FNMACRO_MAX         = SYSFN(0x0050),
+      virtual bool release (Akela::AbstractHID *HID,
+                            Akela::KeyMap *keymap,
+                            uint8_t index,
+                            uint16_t keycode);
 
-    SYSFN_SAFE,
+      virtual void macroAction (Akela::AbstractHID *HID,
+                                Akela::KeyMap *keymap,
+                                uint8_t macroIndex,
+                                bool pressed);
+    };
   };
 };

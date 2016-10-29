@@ -55,11 +55,13 @@
 
 #include "TestCases/BasicKeyPresses.cpp"
 #include "TestCases/Layers.cpp"
+#include "TestCases/FnMacros.cpp"
 
 int
 main (void) {
   TestBasicKeyPresses ();
   TestLayers ();
+  TestFnMacros ();
 
   return 0;
 }
