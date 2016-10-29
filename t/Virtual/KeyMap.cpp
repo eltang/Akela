@@ -19,7 +19,7 @@
 namespace Virtual {
   class KeyMap : public Akela::KeyMap {
   public:
-    KeyMap (uint16_t *keymap) : Akela::KeyMap (keymap) {};
+    KeyMap (const uint16_t *keymap) : Akela::KeyMap (keymap) {};
 
     virtual uint16_t lookup (uint8_t index) {
       uint16_t k = Akela::KeyMap::lookup (index);
@@ -29,14 +29,14 @@ namespace Virtual {
       return k;
     }
 
-    void set_keymap (uint16_t *keymap) {
+    void set_keymap (const uint16_t *keymap) {
       this->keymap = keymap;
     }
   };
 
   class LayeredKeyMap : public Akela::LayeredKeyMap {
   public:
-    LayeredKeyMap (uint16_t **keymap, uint8_t layoutSize)
+    LayeredKeyMap (const uint16_t **keymap, uint8_t layoutSize)
       : Akela::LayeredKeyMap (keymap, layoutSize) {};
 
     virtual uint16_t lookup (uint8_t index) {
@@ -47,7 +47,7 @@ namespace Virtual {
       return k;
     }
 
-    void set_keymap (uint16_t *keymap) {
+    void set_keymap (const uint16_t *keymap) {
       this->keymap = keymap;
     }
 

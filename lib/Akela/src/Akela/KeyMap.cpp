@@ -18,7 +18,9 @@
 
 #include "Akela.h"
 
+#ifdef ARDUINO_ARCH_AVR
 #include <avr/pgmspace.h>
+#endif
 
 Akela::KeyMap::KeyMap (const uint16_t *keymap) {
   this->keymap = keymap;
@@ -29,6 +31,10 @@ Akela::KeyMap::~KeyMap () {
 
 uint16_t
 Akela::KeyMap::lookup (uint8_t index) {
+#ifdef ARDUINO_ARCH_AVR
   uint16_t keycode = pgm_read_word (this->keymap + index);
   return keycode;
+#else
+  return this->keymap[index];
+#endif
 }

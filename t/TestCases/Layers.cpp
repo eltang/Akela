@@ -41,7 +41,7 @@ static uint16_t ml_keymap[][6] = {
 static void
 TestLayers () {
   Virtual::HID                   hid;
-  Virtual::LayeredKeyMap         keymap ((uint16_t **)layered_keymap, KEYBOARD_ROWS * KEYBOARD_COLS);
+  Virtual::LayeredKeyMap         keymap ((const uint16_t **)layered_keymap, KEYBOARD_ROWS * KEYBOARD_COLS);
   Virtual::EventHandler::Layered EH (&hid, &keymap);
   Virtual::Scanner               scanner (_scan_dummy);
   Virtual::Keyboard              keyboard (&scanner, &EH);
@@ -50,10 +50,10 @@ TestLayers () {
 
   keyboard.setup ();
 
-  TESTCASE("Pressing one key at a time", (uint16_t *)layered_keymap,
+  TESTCASE("Pressing one key at a time", (const uint16_t *)layered_keymap,
            _scan_one_at_a_time);
 
-  TESTCASE_STEPS("Tapping the momentary layer key", (uint16_t *)ml_keymap, keymap.layer (0),
+  TESTCASE_STEPS("Tapping the momentary layer key", (const uint16_t *)ml_keymap, keymap.layer (0),
     {
       0b00000000, // clear state
       0b00000001, // first (ML) pressed
@@ -62,7 +62,7 @@ TestLayers () {
       0b00000000, // second released
     });
 
-  TESTCASE_STEPS("Holding the momentary layer key", (uint16_t *)ml_keymap, keymap.layer (0),
+  TESTCASE_STEPS("Holding the momentary layer key", (const uint16_t *)ml_keymap, keymap.layer (0),
     {
       0b00000000, // clear state
       0b00000001, // first (ML) pressed
