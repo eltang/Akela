@@ -18,13 +18,20 @@
 
 namespace Virtual {
   class HID : public Akela::AbstractHID {
+  protected:
+    uint8_t modifierState;
+
   public:
     virtual void press (uint8_t code) {
       std::cout << "\t\t" << __PRETTY_FUNCTION__ << "(0x" << std::hex << (int)code << ")" << std::endl;
+      if (code >= KC_LCTL && code <= KC_RGUI)
+        modifierState |= (1 << (code - KC_LCTL));
     };
 
     virtual void release (uint8_t code) {
       std::cout << "\t\t" << __PRETTY_FUNCTION__ << "(0x" << std::hex << (int)code << ")" << std::endl;
+      if (code >= KC_LCTL && code <= KC_RGUI)
+        modifierState &= ~(1 << (code - KC_LCTL));
     };
 
     virtual void hold (uint8_t code) {
@@ -34,6 +41,12 @@ namespace Virtual {
     virtual void sendReport () {
       std::cout << "    " << __PRETTY_FUNCTION__ << std::endl;
     };
+
+    virtual bool isModifierActive (uint8_t code) {
+      if (code >= KC_LCTL && code <= KC_RGUI)
+        return !!(modifierState & (1 << (code - KC_LCTL)));
+      return false;
+    }
 
     virtual void loop () {
       sendReport ();

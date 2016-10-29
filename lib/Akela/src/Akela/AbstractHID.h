@@ -26,6 +26,7 @@ namespace Akela {
     virtual void press (uint8_t code) = 0;
     virtual void release (uint8_t code) = 0;
     virtual void sendReport () = 0;
+    virtual bool isModifierActive (uint8_t code) = 0;
 
     virtual void setup () {};
     virtual void loop () {};

@@ -38,11 +38,22 @@ namespace M01 {
 
     void
     Base::press (uint8_t code) {
+      switch (code) {
+      case KC_LCTL ... KC_RGUI:
+        bitWrite (modifierState, code - KC_LCTL, 1);
+        break;
+      }
       press (KEYBOARD, code);
     }
 
     void
     Base::release (uint8_t code) {
+      switch (code) {
+      case KC_LCTL ... KC_RGUI:
+        bitWrite (modifierState, code - KC_LCTL, 0);
+        break;
+      }
+
       release (KEYBOARD, code);
     }
 
@@ -54,6 +65,19 @@ namespace M01 {
     void
     Base::sendReport () {
       Keyboard.sendReport ();
+    }
+
+    bool
+    Base::isModifierActive (uint8_t code) {
+      switch (code) {
+      case KC_LCTL ... KC_RGUI:
+        break;
+      default:
+        return false;
+      }
+
+      uint8_t n = code - KC_LCTL;
+      return bitRead (modifierState, n);
     }
 
     void
