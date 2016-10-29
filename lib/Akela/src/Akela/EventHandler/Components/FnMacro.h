@@ -25,6 +25,8 @@
 namespace Akela {
   namespace EventHandler {
     class FnMacroComponent : public Component {
+    public:
+      FnMacroComponent ();
     protected:
       virtual bool press (Akela::AbstractHID *HID,
                           Akela::KeyMap *keymap,
