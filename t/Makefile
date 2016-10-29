@@ -14,7 +14,7 @@ endif
 
 all: AkelaTest
 check: all
-	./AkelaTest | tee test.out ${_r}
+	./AkelaTest | sed -e 's# \*, #\*, #g' | tee test.out ${_r}
 	diff -u test.expected test.out
 
 AKELA_SOURCES = \
