@@ -22,16 +22,16 @@ namespace Akela {
   namespace TapDance {
     namespace Component {
 
-      void OneShotMod::activate (Akela::AbstractHID *hid,
-                                 Akela::KeyMap *,
-                                 uint8_t keycode) {
+      void OneShotMod::oneShotActivate (Akela::AbstractHID *hid,
+                                        Akela::KeyMap *,
+                                        uint8_t keycode) {
         hid->press (keycode - FN_ONESHOT_OSM + KC_LCTL);
         hid->sendReport ();
       }
 
-      void OneShotMod::deactivate (Akela::AbstractHID *hid,
-                                   Akela::KeyMap *,
-                                   uint8_t keycode) {
+      void OneShotMod::oneShotDeactivate (Akela::AbstractHID *hid,
+                                          Akela::KeyMap *,
+                                          uint8_t keycode) {
         hid->release (keycode - FN_ONESHOT_OSM + KC_LCTL);
         hid->sendReport ();
       }
@@ -41,7 +41,7 @@ namespace Akela {
         uint8_t n = keycode - KC_LCTL;
         bool active = !!(oneShotState & (1 << n));
 
-        return active && (Timer < TimeOut);
+        return active && isOneShotActive ();
       }
     };
   };

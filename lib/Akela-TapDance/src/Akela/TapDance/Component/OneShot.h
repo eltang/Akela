@@ -49,18 +49,18 @@ namespace Akela {
                                     Akela::KeyMap *keymap);
 
       protected:
-        uint16_t Timer = 0;
-        uint16_t TimeOut = 40;
+        uint16_t oneShotTimer = 0;
+        uint16_t oneShotTimeOut = 40;
         uint32_t oneShotState = 0;
         uint32_t stickyState = 0;
         bool oneShotShouldCancel = false;
 
-        virtual void activate (Akela::AbstractHID *hid,
-                               Akela::KeyMap *keymap,
-                               uint8_t keycode) = 0;
-        virtual void deactivate (Akela::AbstractHID *hid,
-                                 Akela::KeyMap *keymap,
-                                 uint8_t keycode) = 0;
+        virtual void oneShotActivate (Akela::AbstractHID *hid,
+                                      Akela::KeyMap *keymap,
+                                      uint8_t keycode) = 0;
+        virtual void oneShotDeactivate (Akela::AbstractHID *hid,
+                                        Akela::KeyMap *keymap,
+                                        uint8_t keycode) = 0;
       };
 
     };

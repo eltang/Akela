@@ -34,13 +34,13 @@ namespace Akela {
         }
 
         uint8_t oneShotIndex = keycode - FN_ONESHOT;
-        Timer = 1;
+        oneShotTimer = 1;
 
         if (bitRead(oneShotState, oneShotIndex)) {
           if (bitRead(stickyState, oneShotIndex)) {
             bitWrite(oneShotState, oneShotIndex, 0);
             bitWrite(stickyState, oneShotIndex, 0);
-            deactivate (hid, keymap, keycode);
+            oneShotDeactivate (hid, keymap, keycode);
             return true;
           } else {
             bitWrite(stickyState, oneShotIndex, 1);
@@ -48,7 +48,7 @@ namespace Akela {
         }
         bitWrite(oneShotState, oneShotIndex, 1);
 
-        activate (hid, keymap, keycode);
+        oneShotActivate (hid, keymap, keycode);
 
         return true;
       }
@@ -64,7 +64,7 @@ namespace Akela {
           return false;
         }
 
-        if (Timer > TimeOut)
+        if (oneShotTimer > oneShotTimeOut)
           oneShotShouldCancel = true;
 
         return true;
@@ -72,14 +72,14 @@ namespace Akela {
 
       bool
       OneShot::isOneShotActive () {
-        return !(oneShotShouldCancel || (Timer > TimeOut));
+        return !(oneShotShouldCancel || (oneShotTimer > oneShotTimeOut));
       }
 
       void
       OneShot::loop (Akela::AbstractHID *hid,
                      Akela::KeyMap *keymap) {
-        if (Timer)
-          Timer++;
+        if (oneShotTimer)
+          oneShotTimer++;
 
         if (!isOneShotActive ()) {
           cancelOneShot (hid, keymap);
@@ -92,10 +92,10 @@ namespace Akela {
         for (uint8_t i = 0; i < 32; i++) {
           if (bitRead(oneShotState, i) && !bitRead(stickyState, i)) {
             bitWrite(oneShotState, i, 0);
-            deactivate (hid, keymap, i + FN_ONESHOT);
+            oneShotDeactivate (hid, keymap, i + FN_ONESHOT);
           }
         }
-        Timer = 0;
+        oneShotTimer = 0;
       }
 
     };

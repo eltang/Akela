@@ -37,12 +37,12 @@ namespace Akela {
       protected:
         uint8_t prev_layer = 0;
 
-        virtual void activate (Akela::AbstractHID *hid,
-                               Akela::KeyMap *keymap,
-                               uint8_t oneShotIndex);
-        virtual void deactivate (Akela::AbstractHID *hid,
-                                 Akela::KeyMap *keymap,
-                                 uint8_t oneShotIndex);
+        virtual void oneShotActivate (Akela::AbstractHID *hid,
+                                      Akela::KeyMap *keymap,
+                                      uint8_t oneShotIndex);
+        virtual void oneShotDeactivate (Akela::AbstractHID *hid,
+                                        Akela::KeyMap *keymap,
+                                        uint8_t oneShotIndex);
       };
     };
   };
