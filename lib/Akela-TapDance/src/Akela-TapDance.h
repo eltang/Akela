@@ -21,3 +21,4 @@
 #include "Akela/TapDance/Component/OneShot.h"
 #include "Akela/TapDance/Component/OneShotMod.h"
 #include "Akela/TapDance/Component/OneShotLayer.h"
+#include "Akela/TapDance/Component/TapDance.h"

@@ -27,7 +27,8 @@ AKELA_SOURCES = \
 	../lib/Akela/src/Akela/EventHandler/Layered.cpp \
 	../lib/Akela-TapDance/src/Akela/TapDance/Component/OneShot.cpp \
 	../lib/Akela-TapDance/src/Akela/TapDance/Component/OneShotMod.cpp \
-	../lib/Akela-TapDance/src/Akela/TapDance/Component/OneShotLayer.cpp
+	../lib/Akela-TapDance/src/Akela/TapDance/Component/OneShotLayer.cpp \
+	../lib/Akela-TapDance/src/Akela/TapDance/Component/TapDance.cpp
 AKELA_HEADERS = \
 	${AKELA_SOURCES:.cpp=.h} \
 	../lib/Akela/src/Akela.h \

@@ -29,7 +29,7 @@ static const uint16_t keymap[][64] PROGMEM = {
   [_BASE] = KEYMAP (
   // left hand
 
-   KC_NIY     ,KC_1       ,KC_2       ,KC_3       ,KC_4       ,KC_5       ,KC_NO
+   KC_NIY     ,KC_1       ,KC_2       ,KC_3       ,KC_4       ,KC_5       ,TD(0)
   ,KC_GRV     ,KC_Q       ,KC_W       ,KC_E       ,KC_R       ,KC_T
   ,KC_PGUP    ,KC_A       ,KC_S       ,KC_D       ,KC_F       ,KC_G       ,KC_TAB
   ,KC_PGDN    ,KC_Z       ,KC_X       ,KC_C       ,KC_V       ,KC_B       ,KC_ESC
