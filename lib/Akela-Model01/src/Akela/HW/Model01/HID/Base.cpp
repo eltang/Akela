@@ -74,7 +74,6 @@ namespace M01 {
     void
     Base::loop () {
       sendReport ();
-      Keyboard.releaseAll ();
     }
   }
 }
