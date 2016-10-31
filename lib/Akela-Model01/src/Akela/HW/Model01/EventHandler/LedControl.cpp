@@ -27,6 +27,22 @@ static const uint8_t _LedControlMap[64] PROGMEM = {
   0,7, 8,15,16,23,24,30,     33,39,40,47,48,55,56,63,
 };
 
+static const uint8_t _KeyIndexMap[] PROGMEM = {
+   0,  1,  2,  3,  4,  5,  6,
+  16, 17, 18, 19, 20, 21, 99,
+  32, 33, 34, 35, 36, 37, 38,
+  48, 49, 50, 51, 52, 53, 22,
+  07, 23, 39, 55, 99, 99, 99,
+  54, 99, 99, 99, 99, 99, 99,
+
+   9, 10, 11, 12, 13, 14, 15,
+  99, 26, 27, 28, 29, 30, 31,
+  41, 42, 43, 44, 45, 46, 47,
+  57, 58, 59, 60, 61, 62, 63,
+  56, 40, 24,  8, 99, 99, 99,
+  25, 99, 99, 99, 99, 99, 99,
+};
+
 namespace M01 {
   namespace EventHandler {
 
@@ -64,7 +80,17 @@ namespace M01 {
 
     void
     LedControl::set_color (uint8_t row, uint8_t col, cRGB crgb) {
-      uint8_t mapPos = row * 16 + col;
+      uint8_t keyIndex;
+
+      if (col < 8)
+        keyIndex = row * 7 + col;
+      else
+        keyIndex = row * 7 + col - 8 + 6 * 8;
+
+      if (keyIndex == 99)
+        return;
+
+      uint8_t mapPos = pgm_read_byte (_KeyIndexMap + keyIndex);
       uint8_t pos = pgm_read_byte_near (_LedControlMap + mapPos);
       set_color (pos, crgb);
     }
