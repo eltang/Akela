@@ -25,7 +25,6 @@ namespace Akela {
 
   public:
     KeyMap (const uint16_t *keymap);
-    virtual ~KeyMap ();
 
     virtual uint16_t lookup (uint8_t index);
   };

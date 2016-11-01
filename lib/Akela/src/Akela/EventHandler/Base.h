@@ -29,7 +29,6 @@ namespace Akela {
 
     public:
       Base (Akela::AbstractHID *HID, Akela::KeyMap *keymap);
-      virtual ~Base ();
 
       virtual void press (uint8_t index);
       virtual void register_code (uint16_t keycode);

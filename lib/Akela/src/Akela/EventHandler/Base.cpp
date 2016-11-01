@@ -27,9 +27,6 @@ namespace Akela {
       this->keymap = keymap;
     }
 
-    Base::~Base () {
-    }
-
     void
     Base::press (uint8_t index) {
       register_code (keymap->lookup (index));
