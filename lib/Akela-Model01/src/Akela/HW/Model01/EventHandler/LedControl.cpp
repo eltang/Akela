@@ -79,18 +79,17 @@ namespace M01 {
     }
 
     void
-    LedControl::set_color (uint8_t row, uint8_t col, cRGB crgb) {
+    LedControl::set_color (Hand hand, uint8_t row, uint8_t col, cRGB crgb) {
       uint8_t keyIndex;
 
-      if (col < 8)
-        keyIndex = row * 7 + col;
-      else
-        keyIndex = row * 7 + col - 8 + 6 * 8;
-
-      if (keyIndex == 99)
-        return;
+      keyIndex = row * 7 + col;
+      if (hand == RIGHT)
+        keyIndex += 6 * 8;
 
       uint8_t mapPos = pgm_read_byte (_KeyIndexMap + keyIndex);
+      if (mapPos == 99)
+        return;
+
       uint8_t pos = pgm_read_byte_near (_LedControlMap + mapPos);
       set_color (pos, crgb);
     }
