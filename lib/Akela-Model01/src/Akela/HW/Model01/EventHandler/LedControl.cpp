@@ -52,18 +52,18 @@ namespace M01 {
 
     void
     LedControl::setup () {
-      enable_high_power ();
-      boot_animation ();
+      enableHighPower ();
+      playBootAnimation ();
     }
 
     void
-    LedControl::enable_high_power () {
+    LedControl::enableHighPower () {
       pinMode(7, OUTPUT);
       digitalWrite(7, LOW);
     }
 
     void
-    LedControl::set_color_at_led (uint8_t i, cRGB crgb) {
+    LedControl::setColorAtLED (uint8_t i, cRGB crgb) {
       if (i < 32) {
         scanner->leftHand.ledData.leds[i] = crgb;
       } else if (i < 64) {
@@ -72,14 +72,14 @@ namespace M01 {
     }
 
     void
-    LedControl::set_color (cRGB color) {
+    LedControl::setColor (cRGB color) {
       for (uint8_t i = 0; i < sizeof (_LedControlMap); i++) {
-        set_color (i, color);
+        setColor (i, color);
       }
     }
 
     void
-    LedControl::set_color (Hand hand, uint8_t row, uint8_t col, cRGB crgb) {
+    LedControl::setColor (Hand hand, uint8_t row, uint8_t col, cRGB crgb) {
       uint8_t keyIndex;
 
       keyIndex = row * 7 + col;
@@ -90,30 +90,29 @@ namespace M01 {
       if (mapPos == 99)
         return;
 
-      uint8_t pos = pgm_read_byte_near (_LedControlMap + mapPos);
-      set_color (pos, crgb);
+      setColor (mapPos, crgb);
     }
 
     void
-    LedControl::set_color (uint8_t i, cRGB crgb) {
+    LedControl::setColor (uint8_t i, cRGB crgb) {
       uint8_t pos = pgm_read_byte_near (_LedControlMap + i);
 
-      set_color_at_led (pos, crgb);
+      setColorAtLED (pos, crgb);
     }
 
     void
-    LedControl::boot_animation () {
+    LedControl::playBootAnimation () {
       // keyboardio 0.9
       static uint8_t idxs[] = {49, 13, 42, 23, 53, 6, 18, 14, 50, 53,
                                34, 59, 55, 52};
 
-      set_color ({0, 0, 0});
+      setColor ({0, 0, 0});
 
       for (uint8_t i = 0; i < sizeof (idxs); i++) {
-        set_color_at_led (i, {255, 0, 0});
+        setColorAtLED (i, {255, 0, 0});
         sync ();
         delay (250);
-        set_color_at_led (i, {0, 0, 0});
+        setColorAtLED (i, {0, 0, 0});
         sync ();
         delay (10);
       }

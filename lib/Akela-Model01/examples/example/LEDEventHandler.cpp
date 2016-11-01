@@ -50,7 +50,7 @@ namespace Example {
       }
     }
 
-    M01::EventHandler::Full::set_color (index, color);
+    M01::EventHandler::Full::setColor (index, color);
 
     // If any layer is active...
     Akela::LayeredKeyMap *km = (Akela::LayeredKeyMap *)keymap;
@@ -101,7 +101,7 @@ namespace Example {
           }
         }
 
-        M01::EventHandler::Full::set_color (i, color);
+        M01::EventHandler::Full::setColor (i, color);
       }
     }
 
@@ -114,6 +114,6 @@ namespace Example {
 
     M01::EventHandler::Full::release (index);
 
-    M01::EventHandler::Full::set_color (index, color);
+    M01::EventHandler::Full::setColor (index, color);
   }
 };

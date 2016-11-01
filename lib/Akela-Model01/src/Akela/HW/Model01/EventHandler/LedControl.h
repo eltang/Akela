@@ -26,8 +26,8 @@ namespace M01 {
     protected:
       Scanner *scanner;
 
-      void enable_high_power ();
-      void boot_animation ();
+      void enableHighPower ();
+      void playBootAnimation ();
 
     public:
       enum Hand {
@@ -38,10 +38,10 @@ namespace M01 {
 
       virtual void setup ();
 
-      void set_color_at_led (uint8_t i, cRGB crgb);
-      void set_color (cRGB crgb);
-      void set_color (Hand hand, uint8_t row, uint8_t col, cRGB crgb);
-      void set_color (uint8_t i, cRGB crgb);
+      void setColorAtLED (uint8_t i, cRGB crgb);
+      void setColor (cRGB crgb);
+      void setColor (Hand hand, uint8_t row, uint8_t col, cRGB crgb);
+      void setColor (uint8_t i, cRGB crgb);
       void sync ();
     };
   };
