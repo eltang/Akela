@@ -33,15 +33,13 @@ namespace Akela {
 
       class TapDance : public Akela::EventHandler::Component {
       public:
-        virtual bool press (Akela::AbstractHID *hid,
-                            Akela::KeyMap *keymap,
-                            uint8_t index,
-                            uint16_t keycode);
+        virtual bool register_code (Akela::AbstractHID *hid,
+                                    Akela::KeyMap *keymap,
+                                    uint16_t keycode);
 
-        virtual bool release (Akela::AbstractHID *hid,
-                              Akela::KeyMap *keymap,
-                              uint8_t index,
-                              uint16_t keycode);
+        virtual bool unregister_code (Akela::AbstractHID *hid,
+                                      Akela::KeyMap *keymap,
+                                      uint16_t keycode);
 
         virtual void loop (Akela::AbstractHID *hid,
                            Akela::KeyMap *keymap);

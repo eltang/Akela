@@ -25,7 +25,7 @@ namespace Akela {
       void
       OneShotLayer::oneShotActivate (Akela::AbstractHID *,
                                      Akela::KeyMap *keymap,
-                                     uint8_t keycode) {
+                                     uint16_t keycode) {
         Akela::LayeredKeyMap *km = (Akela::LayeredKeyMap *)keymap;
         uint8_t layer = keycode - FN_ONESHOT_OSL;
         prev_layer = km->layer ();
@@ -36,7 +36,7 @@ namespace Akela {
       void
       OneShotLayer::oneShotDeactivate (Akela::AbstractHID *,
                                        Akela::KeyMap *keymap,
-                                       uint8_t) {
+                                       uint16_t) {
         Akela::LayeredKeyMap *km = (Akela::LayeredKeyMap *)keymap;
         km->layer (prev_layer);
         prev_layer = 0;

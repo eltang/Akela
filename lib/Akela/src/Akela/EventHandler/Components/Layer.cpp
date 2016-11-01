@@ -22,20 +22,19 @@ namespace Akela {
   namespace EventHandler {
 
     bool
-    LayerComponent::press (Akela::AbstractHID *,
-                           Akela::KeyMap *keymap,
-                           uint8_t index,
-                           uint16_t keycode) {
+    LayerComponent::register_code (Akela::AbstractHID *,
+                                   Akela::KeyMap *keymap,
+                                   uint16_t keycode) {
       uint8_t layer;
 
       switch (keycode) {
       case Akela::SYSFN_LAYER_MOVE ... Akela::SYSFN_LAYER_MOVE_MAX:
         layer = keycode - Akela::SYSFN_LAYER_MOVE;
-        lastMoveIndex = index;
+        lastMoveCode = keycode;
         break;
       case Akela::SYSFN_LAYER_MOMENTARY ... Akela::SYSFN_LAYER_MOMENTARY_MAX:
         layer = keycode - Akela::SYSFN_LAYER_MOMENTARY;
-        lastMoveIndex = 0xff;
+        lastMoveCode = 0;
         break;
       default:
         return false;
@@ -48,14 +47,13 @@ namespace Akela {
     }
 
     bool
-    LayerComponent::release (Akela::AbstractHID *,
-                             Akela::KeyMap *keymap,
-                             uint8_t index,
-                             uint16_t keycode) {
+    LayerComponent::unregister_code (Akela::AbstractHID *,
+                                     Akela::KeyMap *keymap,
+                                     uint16_t keycode) {
       uint8_t layer;
 
-      if (lastMoveIndex == index) {
-        lastMoveIndex = 0xff;
+      if (lastMoveCode == keycode) {
+        lastMoveCode = 0;
         return true;
       }
 

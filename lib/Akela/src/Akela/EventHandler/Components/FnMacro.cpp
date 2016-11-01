@@ -23,12 +23,10 @@ namespace Akela {
 
     FnMacroComponent::FnMacroComponent () {}
 
-
     bool
-    FnMacroComponent::press (Akela::AbstractHID *HID,
-                             Akela::KeyMap *keymap,
-                             uint8_t,
-                             uint16_t keycode) {
+    FnMacroComponent::register_code (Akela::AbstractHID *HID,
+                                     Akela::KeyMap *keymap,
+                                     uint16_t keycode) {
       if (keycode < Akela::SYSFN_FNMACRO || keycode > Akela::SYSFN_FNMACRO_MAX)
         return false;
 
@@ -37,10 +35,9 @@ namespace Akela {
     }
 
     bool
-    FnMacroComponent::release (Akela::AbstractHID *HID,
-                               Akela::KeyMap *keymap,
-                               uint8_t,
-                               uint16_t keycode) {
+    FnMacroComponent::unregister_code (Akela::AbstractHID *HID,
+                                       Akela::KeyMap *keymap,
+                                       uint16_t keycode) {
       if (keycode < Akela::SYSFN_FNMACRO || keycode > Akela::SYSFN_FNMACRO_MAX)
         return false;
 

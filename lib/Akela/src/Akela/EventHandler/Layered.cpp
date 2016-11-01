@@ -20,18 +20,24 @@
 
 namespace Akela {
   namespace EventHandler {
+
     void
-    Layered::press (uint8_t index) {
-      if (LayerComponent::press (HID, keymap, index, keymap->lookup (index)))
+    Layered::register_code (uint16_t keycode) {
+      if (LayerComponent::register_code (HID, keymap, keycode))
         return;
-      Akela::EventHandler::Base::press (index);
+      Akela::EventHandler::Base::register_code (keycode);
     }
 
     void
-    Layered::release (uint8_t index) {
-      if (LayerComponent::release (HID, keymap, index, keymap->lookup (index)))
+    Layered::unregister_code (uint16_t keycode) {
+      if (LayerComponent::unregister_code (HID, keymap, keycode))
         return;
-      Akela::EventHandler::Base::release (index);
+      Akela::EventHandler::Base::unregister_code (keycode);
+    }
+
+    void
+    Layered::hold_code (uint16_t keycode) {
+      Akela::EventHandler::Base::hold_code (keycode);
     }
   };
 };

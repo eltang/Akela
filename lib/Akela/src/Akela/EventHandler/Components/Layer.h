@@ -27,17 +27,16 @@ namespace Akela {
   namespace EventHandler {
     class LayerComponent : public Component {
     protected:
-      uint8_t lastMoveIndex = 0xff;
+      uint16_t lastMoveCode = 0;
 
-      virtual bool press (Akela::AbstractHID *HID,
-                          Akela::KeyMap *keymap,
-                          uint8_t index,
-                          uint16_t keycode);
+      virtual bool register_code (Akela::AbstractHID *HID,
+                                  Akela::KeyMap *keymap,
+                                  uint16_t keycode);
 
-      virtual bool release (Akela::AbstractHID *HID,
-                            Akela::KeyMap *keymap,
-                            uint8_t index,
-                            uint16_t keycode);
+      virtual bool unregister_code (Akela::AbstractHID *HID,
+                                    Akela::KeyMap *keymap,
+                                    uint16_t keycode);
+      using Component::hold_code;
     };
   };
 };

@@ -22,10 +22,9 @@ namespace M01 {
   namespace EventHandler {
 
     bool
-    ExtraKeysComponent::press (Akela::AbstractHID *HID,
-                               Akela::KeyMap *,
-                               uint8_t,
-                               uint16_t keycode) {
+    ExtraKeysComponent::register_code (Akela::AbstractHID *HID,
+                                       Akela::KeyMap *,
+                                       uint16_t keycode) {
       M01::HID::Page page;
       uint8_t key;
 
@@ -49,10 +48,9 @@ namespace M01 {
     }
 
     bool
-    ExtraKeysComponent::release (Akela::AbstractHID *HID,
-                                 Akela::KeyMap *,
-                                 uint8_t,
-                                 uint16_t keycode) {
+    ExtraKeysComponent::unregister_code (Akela::AbstractHID *HID,
+                                         Akela::KeyMap *,
+                                         uint16_t keycode) {
       M01::HID::Page page;
       uint8_t key;
 

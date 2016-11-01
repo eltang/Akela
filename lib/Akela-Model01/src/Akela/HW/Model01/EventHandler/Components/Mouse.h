@@ -57,20 +57,17 @@ namespace M01 {
       virtual void move (M01::HID::Base *HID, uint8_t key);
 
     protected:
-      virtual bool press (Akela::AbstractHID *HID,
-                          Akela::KeyMap *keymap,
-                          uint8_t index,
-                          uint16_t keycode);
+      virtual bool register_code (Akela::AbstractHID *HID,
+                                  Akela::KeyMap *keymap,
+                                  uint16_t keycode);
 
-      virtual bool release (Akela::AbstractHID *HID,
-                            Akela::KeyMap *keymap,
-                            uint8_t index,
+      virtual bool unregister_code (Akela::AbstractHID *HID,
+                                    Akela::KeyMap *keymap,
                             uint16_t keycode);
 
-      virtual bool hold (Akela::AbstractHID *HID,
-                         Akela::KeyMap *keymap,
-                         uint8_t index,
-                         uint16_t keycode);
+      virtual bool hold_code (Akela::AbstractHID *HID,
+                              Akela::KeyMap *keymap,
+                              uint16_t keycode);
     };
   };
 };

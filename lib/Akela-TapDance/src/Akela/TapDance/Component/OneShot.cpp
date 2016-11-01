@@ -23,10 +23,9 @@ namespace Akela {
     namespace Component {
 
       bool
-      OneShot::press (Akela::AbstractHID *hid,
-                      Akela::KeyMap *keymap,
-                      uint8_t,
-                      uint16_t keycode) {
+      OneShot::register_code (Akela::AbstractHID *hid,
+                              Akela::KeyMap *keymap,
+                              uint16_t keycode) {
         if (keycode < FN_ONESHOT || keycode > FN_ONESHOT_MAX) {
           if (oneShotState)
             oneShotShouldCancel = true;
@@ -54,10 +53,9 @@ namespace Akela {
       }
 
       bool
-      OneShot::release (Akela::AbstractHID *,
-                        Akela::KeyMap *,
-                        uint8_t,
-                        uint16_t keycode) {
+      OneShot::unregister_code (Akela::AbstractHID *,
+                                Akela::KeyMap *,
+                                uint16_t keycode) {
         if (keycode < FN_ONESHOT || keycode > FN_ONESHOT_MAX) {
           if (oneShotState)
             oneShotShouldCancel = true;

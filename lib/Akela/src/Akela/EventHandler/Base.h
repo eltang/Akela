@@ -32,8 +32,11 @@ namespace Akela {
       virtual ~Base ();
 
       virtual void press (uint8_t index);
+      virtual void register_code (uint16_t keycode);
       virtual void release (uint8_t index);
-      virtual void hold (uint8_t) {};
+      virtual void unregister_code (uint16_t keycode);
+      virtual void hold (uint8_t index);
+      virtual void hold_code (uint16_t) {};
 
       virtual void setup ();
       virtual void loop ();

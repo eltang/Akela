@@ -28,16 +28,16 @@ namespace M01 {
             Scanner *scanner)
         : Base (HID, keymap), LedControl (scanner) {};
 
-      using MouseComponent::press;
-      virtual void press (uint8_t index);
-
-      using MouseComponent::release;
-      virtual void release (uint8_t index);
-
-      using MouseComponent::hold;
-      virtual void hold (uint8_t index);
+      virtual void register_code (uint16_t keycode);
+      virtual void unregister_code (uint16_t keycode);
+      virtual void hold_code (uint16_t keycode);
 
       virtual void setup ();
+
+    private:
+      using MouseComponent::register_code;
+      using MouseComponent::unregister_code;
+      using MouseComponent::hold_code;
     };
   };
 };

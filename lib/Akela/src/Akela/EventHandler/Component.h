@@ -24,20 +24,17 @@ namespace Akela {
   namespace EventHandler {
     class Component {
     protected:
-      virtual bool press (Akela::AbstractHID *,
-                          Akela::KeyMap *,
-                          uint8_t,
-                          uint16_t) = 0;
+      virtual bool register_code (Akela::AbstractHID *HID,
+                                  Akela::KeyMap *keymap,
+                                  uint16_t keycode) = 0;
 
-      virtual bool release (Akela::AbstractHID *,
-                            Akela::KeyMap *,
-                            uint8_t,
-                            uint16_t) = 0;
+      virtual bool unregister_code (Akela::AbstractHID *HID,
+                                    Akela::KeyMap *keymap,
+                                    uint16_t keycode) = 0;
 
-      virtual bool hold (Akela::AbstractHID *,
-                         Akela::KeyMap *,
-                         uint8_t,
-                         uint16_t) {
+      virtual bool hold_code (Akela::AbstractHID *,
+                              Akela::KeyMap *,
+                              uint16_t) {
         return false;
       };
     };

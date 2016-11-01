@@ -27,18 +27,18 @@ namespace M01 {
         : Akela::EventHandler::Layered (HID, keymap),
           Akela::EventHandler::FnMacroComponent () {};
 
-      using ExtraKeysComponent::press;
-      virtual void press (uint8_t index);
-
-      using ExtraKeysComponent::release;
-      virtual void release (uint8_t index);
-
-      using ExtraKeysComponent::hold;
-      virtual void hold (uint8_t index);
+    protected:
+      virtual void register_code (uint16_t keycode);
+      virtual void unregister_code (uint16_t keycode);
+      virtual void hold_code (uint16_t keycode);
 
     private:
-      using Akela::EventHandler::FnMacroComponent::press;
-      using Akela::EventHandler::FnMacroComponent::release;
+      using Akela::EventHandler::Component::hold_code;
+
+      using ExtraKeysComponent::register_code;
+      using ExtraKeysComponent::unregister_code;
+      using Akela::EventHandler::FnMacroComponent::register_code;
+      using Akela::EventHandler::FnMacroComponent::unregister_code;
     };
   };
 };

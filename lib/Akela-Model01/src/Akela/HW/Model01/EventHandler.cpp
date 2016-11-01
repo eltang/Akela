@@ -22,64 +22,54 @@ namespace M01 {
   namespace EventHandler {
 
     void
-    Base::press (uint8_t index) {
-      uint16_t key = keymap->lookup (index);
-
-      if (Akela::EventHandler::FnMacroComponent::press (HID, keymap, index, key))
+    Base::register_code (uint16_t keycode) {
+      if (Akela::EventHandler::FnMacroComponent::register_code (HID, keymap, keycode))
         return;
-      if (ExtraKeysComponent::press (HID, keymap, index, key))
+      if (ExtraKeysComponent::register_code (HID, keymap, keycode))
         return;
 
-      return Akela::EventHandler::Layered::press (index);
+      return Akela::EventHandler::Layered::register_code (keycode);
     }
 
     void
-    Base::hold (uint8_t index) {
-      return Akela::EventHandler::Layered::hold (index);
+    Base::unregister_code (uint16_t keycode) {
+      if (Akela::EventHandler::FnMacroComponent::unregister_code (HID, keymap, keycode))
+        return;
+      if (ExtraKeysComponent::unregister_code (HID, keymap, keycode))
+        return;
+
+      return Akela::EventHandler::Layered::unregister_code (keycode);
     }
 
     void
-    Base::release (uint8_t index) {
-      uint16_t key = keymap->lookup (index);
-
-      if (Akela::EventHandler::FnMacroComponent::release (HID, keymap, index, key))
-        return;
-      if (ExtraKeysComponent::release (HID, keymap, index, key))
-        return;
-
-      return Akela::EventHandler::Layered::release (index);
+    Base::hold_code (uint16_t keycode) {
+      return Akela::EventHandler::Layered::hold_code (keycode);
     }
 
     // -----------
 
     void
-    Full::press (uint8_t index) {
-      uint16_t key = keymap->lookup (index);
-
-      if (MouseComponent::press (HID, keymap, index, key))
+    Full::register_code (uint16_t keycode) {
+      if (MouseComponent::register_code (HID, keymap, keycode))
         return;
 
-      return Base::press (index);
+      return Base::register_code (keycode);
     }
 
     void
-    Full::hold (uint8_t index) {
-      uint16_t key = keymap->lookup (index);
-
-      if (MouseComponent::hold (HID, keymap, index, key))
+    Full::hold_code (uint16_t keycode) {
+      if (MouseComponent::hold_code (HID, keymap, keycode))
         return;
 
-      return Base::hold (index);
+      return Base::hold_code (keycode);
     }
 
     void
-    Full::release (uint8_t index) {
-      uint16_t key = keymap->lookup (index);
-
-      if (MouseComponent::release (HID, keymap, index, key))
+    Full::unregister_code (uint16_t keycode) {
+      if (MouseComponent::unregister_code (HID, keymap, keycode))
         return;
 
-      return Base::release (index);
+      return Base::unregister_code (keycode);
     }
 
     void

@@ -24,14 +24,14 @@ namespace Akela {
 
       void OneShotMod::oneShotActivate (Akela::AbstractHID *hid,
                                         Akela::KeyMap *,
-                                        uint8_t keycode) {
+                                        uint16_t keycode) {
         hid->press (keycode - FN_ONESHOT_OSM + KC_LCTL);
         hid->sendReport ();
       }
 
       void OneShotMod::oneShotDeactivate (Akela::AbstractHID *hid,
                                           Akela::KeyMap *,
-                                          uint8_t keycode) {
+                                          uint16_t keycode) {
         hid->release (keycode - FN_ONESHOT_OSM + KC_LCTL);
         hid->sendReport ();
       }

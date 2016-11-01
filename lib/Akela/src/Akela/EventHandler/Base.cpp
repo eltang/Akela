@@ -32,8 +32,11 @@ namespace Akela {
 
     void
     Base::press (uint8_t index) {
-      uint16_t key = keymap->lookup (index);
+      register_code (keymap->lookup (index));
+    }
 
+    void
+    Base::register_code (uint16_t key) {
       if (IS_FN (key))
         return;
 
@@ -57,8 +60,11 @@ namespace Akela {
 
     void
     Base::release (uint8_t index) {
-      uint16_t key = keymap->lookup (index);
+      unregister_code (keymap->lookup (index));
+    }
 
+    void
+    Base::unregister_code (uint16_t key) {
       if (IS_FN (key))
         return;
 
@@ -78,6 +84,11 @@ namespace Akela {
         HID->release (KC_RSFT);
       if (IS_RALT (key))
         HID->release (KC_RALT);
+    }
+
+    void
+    Base::hold (uint8_t index) {
+      hold_code (keymap->lookup (index));
     }
 
     void

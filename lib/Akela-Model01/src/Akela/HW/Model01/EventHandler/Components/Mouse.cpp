@@ -22,10 +22,9 @@ namespace M01 {
   namespace EventHandler {
 
     bool
-    MouseComponent::press (Akela::AbstractHID *HID,
-                           Akela::KeyMap *,
-                           uint8_t,
-                           uint16_t keycode) {
+    MouseComponent::register_code (Akela::AbstractHID *HID,
+                                   Akela::KeyMap *,
+                                   uint16_t keycode) {
       switch (keycode) {
       case M01::SYSFN::MOUSE_BUTTON ... M01::SYSFN::MOUSE_BUTTON_MAX:
         ((::M01::HID::Base *)HID)->press (M01::HID::MOUSE, keycode - M01::SYSFN::MOUSE_BUTTON);
@@ -51,10 +50,9 @@ namespace M01 {
     }
 
     bool
-    MouseComponent::release (Akela::AbstractHID *HID,
-                             Akela::KeyMap *,
-                             uint8_t,
-                             uint16_t keycode) {
+    MouseComponent::unregister_code (Akela::AbstractHID *HID,
+                                     Akela::KeyMap *,
+                                     uint16_t keycode) {
       switch (keycode) {
       case M01::SYSFN::MOUSE_BUTTON ... M01::SYSFN::MOUSE_BUTTON_MAX:
         ((::M01::HID::Base *)HID)->release (M01::HID::MOUSE, keycode - M01::SYSFN::MOUSE_BUTTON);
@@ -68,10 +66,9 @@ namespace M01 {
     }
 
     bool
-    MouseComponent::hold (Akela::AbstractHID *HID,
-                          Akela::KeyMap *,
-                          uint8_t,
-                          uint16_t keycode) {
+    MouseComponent::hold_code (Akela::AbstractHID *HID,
+                               Akela::KeyMap *,
+                               uint16_t keycode) {
       switch (keycode) {
       case M01::SYSFN::MOUSE_CONTROL ... M01::SYSFN::MOUSE_CONTROL_MAX:
         move ((M01::HID::Base *)HID, keycode - SYSFN::MOUSE_CONTROL);

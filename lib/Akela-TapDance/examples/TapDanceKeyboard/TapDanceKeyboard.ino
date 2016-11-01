@@ -30,19 +30,12 @@ public:
   TapDanceEventHandler (Akela::AbstractHID *hid, Akela::LayeredKeyMap *keymap)
     : Akela::EventHandler::Layered (hid, keymap) {};
 
-  using Akela::TapDance::Component::OneShotMod::press;
-  using Akela::TapDance::Component::OneShotLayer::press;
-  using Akela::TapDance::Component::TapDance::press;
-  virtual void press (uint8_t index);
-
-  using Akela::TapDance::Component::OneShotMod::release;
-  using Akela::TapDance::Component::OneShotLayer::release;
-  using Akela::TapDance::Component::TapDance::release;
-  virtual void release (uint8_t index);
+protected:
+  virtual void register_code (uint16_t keycode);
+  virtual void unregister_code (uint16_t keycode);
 
   virtual void loop ();
 
-protected:
   virtual void tapDanceCycle (Akela::AbstractHID *hid,
                               Akela::KeyMap *keymap,
                               uint8_t tapIndex,
@@ -57,36 +50,34 @@ protected:
                                 uint8_t counter);
 
 private:
+  using Akela::EventHandler::LayerComponent::register_code;
+  using Akela::EventHandler::LayerComponent::unregister_code;
   using Akela::TapDance::Component::OneShotMod::loop;
   using Akela::TapDance::Component::TapDance::loop;
 };
 
 void
-TapDanceEventHandler::press (uint8_t index) {
-  uint16_t keycode = keymap->lookup (index);
-
-  if (Akela::TapDance::Component::TapDance::press (HID, keymap, index, keycode))
+TapDanceEventHandler::register_code (uint16_t keycode) {
+  if (Akela::TapDance::Component::TapDance::register_code (HID, keymap, keycode))
     return;
-  if (Akela::TapDance::Component::OneShotMod::press (HID, keymap, index, keycode))
+  if (Akela::TapDance::Component::OneShotMod::register_code (HID, keymap, keycode))
     return;
-  if (Akela::TapDance::Component::OneShotLayer::press (HID, keymap, index, keycode))
+  if (Akela::TapDance::Component::OneShotLayer::register_code (HID, keymap, keycode))
     return;
 
-  Akela::EventHandler::Layered::press (index);
+  Akela::EventHandler::Layered::register_code (keycode);
 };
 
 void
-TapDanceEventHandler::release (uint8_t index) {
-  uint16_t keycode = keymap->lookup (index);
-
-  if (Akela::TapDance::Component::TapDance::release (HID, keymap, index, keycode))
+TapDanceEventHandler::unregister_code (uint16_t keycode) {
+  if (Akela::TapDance::Component::TapDance::unregister_code (HID, keymap, keycode))
     return;
-  if (Akela::TapDance::Component::OneShotMod::release (HID, keymap, index, keycode))
+  if (Akela::TapDance::Component::OneShotMod::unregister_code (HID, keymap, keycode))
     return;
-  if (Akela::TapDance::Component::OneShotLayer::release (HID, keymap, index, keycode))
+  if (Akela::TapDance::Component::OneShotLayer::unregister_code (HID, keymap, keycode))
     return;
 
-  Akela::EventHandler::Layered::release (index);
+  Akela::EventHandler::Layered::unregister_code (keycode);
 }
 
 void

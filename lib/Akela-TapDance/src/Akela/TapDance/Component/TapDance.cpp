@@ -39,10 +39,9 @@ namespace Akela {
       }
 
       bool
-      TapDance::press (Akela::AbstractHID *hid,
-                       Akela::KeyMap *keymap,
-                       uint8_t,
-                       uint16_t keycode) {
+      TapDance::register_code (Akela::AbstractHID *hid,
+                               Akela::KeyMap *keymap,
+                               uint16_t keycode) {
         if (keycode < FN_TAPDANCE || keycode > FN_TAPDANCE_MAX) {
           if (tapDanceCounter) {
             tapDanceInterrupted = true;
@@ -69,10 +68,9 @@ namespace Akela {
       }
 
       bool
-      TapDance::release (Akela::AbstractHID *hid,
-                         Akela::KeyMap *keymap,
-                         uint8_t,
-                         uint16_t keycode) {
+      TapDance::unregister_code (Akela::AbstractHID *hid,
+                                 Akela::KeyMap *keymap,
+                                 uint16_t keycode) {
         if (keycode < FN_TAPDANCE || keycode > FN_TAPDANCE_MAX) {
           return false;
         }

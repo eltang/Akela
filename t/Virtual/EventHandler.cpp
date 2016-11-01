@@ -23,9 +23,7 @@ namespace Virtual {
       Base (Akela::AbstractHID *hid, Akela::KeyMap *keymap)
         : Akela::EventHandler::Base (hid, keymap) {};
 
-      virtual void hold (uint8_t index) {
-        uint16_t keycode = keymap->lookup (index);
-
+      virtual void hold_code (uint16_t keycode) {
         if (IS_FN (keycode))
           return;
 
@@ -39,18 +37,18 @@ namespace Virtual {
       Macros (Akela::AbstractHID *hid, Akela::KeyMap *keymap)
         : Akela::EventHandler::Base (hid, keymap) {};
 
-      virtual void press (uint8_t index) {
-        if (Akela::EventHandler::FnMacroComponent::press (HID, keymap, index, keymap->lookup (index)))
+      virtual void register_code (uint16_t keycode) {
+        if (Akela::EventHandler::FnMacroComponent::register_code (HID, keymap, keycode))
           return;
 
-        Akela::EventHandler::Base::press (index);
+        Akela::EventHandler::Base::register_code (keycode);
       }
 
-      virtual void release (uint8_t index) {
-        if (Akela::EventHandler::FnMacroComponent::release (HID, keymap, index, keymap->lookup (index)))
+      virtual void unregister_code (uint16_t keycode) {
+        if (Akela::EventHandler::FnMacroComponent::unregister_code (HID, keymap, keycode))
           return;
 
-        Akela::EventHandler::Base::release (index);
+        Akela::EventHandler::Base::unregister_code (keycode);
       }
 
       virtual void macroAction (Akela::AbstractHID *,
@@ -62,8 +60,8 @@ namespace Virtual {
       }
 
     private:
-      using Akela::EventHandler::FnMacroComponent::press;
-      using Akela::EventHandler::FnMacroComponent::release;
+      using Akela::EventHandler::FnMacroComponent::register_code;
+      using Akela::EventHandler::FnMacroComponent::unregister_code;
     };
 
     class Layered : public Akela::EventHandler::Layered {
@@ -71,16 +69,14 @@ namespace Virtual {
       Layered (Akela::AbstractHID *hid, Akela::LayeredKeyMap *keymap)
         : Akela::EventHandler::Layered (hid, keymap) {};
 
-      virtual void hold (uint8_t index) {
-        uint16_t keycode = keymap->lookup (index);
-
+      virtual void hold_code (uint16_t keycode) {
         if (IS_FN (keycode))
           return;
 
         ((::Virtual::HID *)HID)->hold (keycode);
       }
 
-      using Akela::EventHandler::Component::hold;
+      using Akela::EventHandler::Component::hold_code;
     };
 
   };

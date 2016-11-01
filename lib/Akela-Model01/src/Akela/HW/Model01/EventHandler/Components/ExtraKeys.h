@@ -38,15 +38,13 @@ namespace M01 {
   namespace EventHandler {
     class ExtraKeysComponent : public Akela::EventHandler::Component {
     protected:
-      virtual bool press (Akela::AbstractHID *HID,
-                          Akela::KeyMap *keymap,
-                          uint8_t index,
-                          uint16_t keycode);
+      virtual bool register_code (Akela::AbstractHID *HID,
+                                  Akela::KeyMap *keymap,
+                                  uint16_t keycode);
 
-      virtual bool release (Akela::AbstractHID *HID,
-                            Akela::KeyMap *keymap,
-                            uint8_t index,
-                            uint16_t keycode);
+      virtual bool unregister_code (Akela::AbstractHID *HID,
+                                    Akela::KeyMap *keymap,
+                                    uint16_t keycode);
     };
   };
 };
