@@ -50,6 +50,7 @@ protected:
                                 uint8_t counter);
 
 private:
+  using Akela::EventHandler::LayerComponent::loop;
   using Akela::EventHandler::LayerComponent::register_code;
   using Akela::EventHandler::LayerComponent::unregister_code;
   using Akela::TapDance::Component::OneShotMod::loop;

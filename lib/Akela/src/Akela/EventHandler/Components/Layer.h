@@ -29,6 +29,7 @@ namespace Akela {
     protected:
       uint8_t lastLayer = 0;
       bool isTemporary = false;
+      bool shouldCancel = false;
 
       virtual bool register_code (Akela::AbstractHID *HID,
                                   Akela::KeyMap *keymap,
@@ -38,6 +39,8 @@ namespace Akela {
                                     Akela::KeyMap *keymap,
                                     uint16_t keycode);
       using Component::hold_code;
+
+      virtual void loop (Akela::KeyMap *keymap);
     };
   };
 };

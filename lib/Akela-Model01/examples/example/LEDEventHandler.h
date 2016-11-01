@@ -29,6 +29,8 @@ namespace Example {
     virtual void press (uint8_t index);
     virtual void release (uint8_t index);
     virtual void loop ();
-  private:
+
+  protected:
+    using Akela::EventHandler::LayerComponent::loop;
   };
 };

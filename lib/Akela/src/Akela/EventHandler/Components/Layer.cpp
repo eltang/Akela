@@ -49,21 +49,27 @@ namespace Akela {
 
     bool
     LayerComponent::unregister_code (Akela::AbstractHID *,
-                                     Akela::KeyMap *keymap,
+                                     Akela::KeyMap *,
                                      uint16_t keycode) {
       if (keycode != KC_TRNS) {
         return false;
       }
 
-      if (!isTemporary)
-        return true;
+      if (isTemporary)
+        shouldCancel = true;
+
+      return true;
+    }
+
+    void
+    LayerComponent::loop (Akela::KeyMap *keymap) {
+      if (!shouldCancel)
+        return;
 
       Akela::LayeredKeyMap *km = (Akela::LayeredKeyMap *)keymap;
       km->layer (lastLayer);
 
-      lastLayer = 0;
-
-      return true;
+      shouldCancel = false;
     }
   };
 };

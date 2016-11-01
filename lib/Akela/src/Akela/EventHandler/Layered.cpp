@@ -39,5 +39,11 @@ namespace Akela {
     Layered::hold_code (uint16_t keycode) {
       Akela::EventHandler::Base::hold_code (keycode);
     }
+
+    void
+    Layered::loop () {
+      LayerComponent::loop (keymap);
+      Base::loop ();
+    }
   };
 };

@@ -33,8 +33,10 @@ namespace Akela {
     protected:
       virtual void register_code (uint16_t keycode);
       virtual void unregister_code (uint16_t keycode);
-
       virtual void hold_code (uint16_t keycode);
+
+      virtual void loop ();
+      using LayerComponent::loop;
 
       using LayerComponent::hold_code;
       using LayerComponent::register_code;

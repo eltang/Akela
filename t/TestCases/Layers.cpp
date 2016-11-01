@@ -52,6 +52,7 @@ TestLayers () {
 
   TESTCASE("Pressing one key at a time", (const uint16_t *)layered_keymap,
            _scan_one_at_a_time);
+  keymap.layer (0);
 
   TESTCASE_STEPS("Tapping the momentary layer key", (const uint16_t *)ml_keymap, keymap.layer (0),
     {
