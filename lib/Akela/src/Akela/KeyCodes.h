@@ -131,7 +131,9 @@ enum {
   KC_RCTL,
   KC_RSFT,
   KC_RALT,
-  KC_RGUI
+  KC_RGUI,
+
+  KC_TRNS = 0xffff
 };
 
 enum {

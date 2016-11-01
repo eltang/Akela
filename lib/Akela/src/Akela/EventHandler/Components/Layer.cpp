@@ -30,17 +30,18 @@ namespace Akela {
       switch (keycode) {
       case Akela::SYSFN_LAYER_MOVE ... Akela::SYSFN_LAYER_MOVE_MAX:
         layer = keycode - Akela::SYSFN_LAYER_MOVE;
-        lastMoveCode = keycode;
+        isTemporary = false;
         break;
       case Akela::SYSFN_LAYER_MOMENTARY ... Akela::SYSFN_LAYER_MOMENTARY_MAX:
         layer = keycode - Akela::SYSFN_LAYER_MOMENTARY;
-        lastMoveCode = 0;
+        isTemporary = true;
         break;
       default:
         return false;
       }
 
       Akela::LayeredKeyMap *km = (Akela::LayeredKeyMap *)keymap;
+      lastLayer = km->layer ();
       km->layer (layer);
 
       return true;
@@ -50,26 +51,17 @@ namespace Akela {
     LayerComponent::unregister_code (Akela::AbstractHID *,
                                      Akela::KeyMap *keymap,
                                      uint16_t keycode) {
-      uint8_t layer;
-
-      if (lastMoveCode == keycode) {
-        lastMoveCode = 0;
-        return true;
-      }
-
-      switch (keycode) {
-      case Akela::SYSFN_LAYER_MOVE ... Akela::SYSFN_LAYER_MOVE_MAX:
-        layer = keycode - Akela::SYSFN_LAYER_MOVE;
-        break;
-      case Akela::SYSFN_LAYER_MOMENTARY ... Akela::SYSFN_LAYER_MOMENTARY_MAX:
-        layer = keycode - Akela::SYSFN_LAYER_MOMENTARY;
-        break;
-      default:
+      if (keycode != KC_TRNS) {
         return false;
       }
 
+      if (!isTemporary)
+        return true;
+
       Akela::LayeredKeyMap *km = (Akela::LayeredKeyMap *)keymap;
-      km->layer (layer);
+      km->layer (lastLayer);
+
+      lastLayer = 0;
 
       return true;
     }

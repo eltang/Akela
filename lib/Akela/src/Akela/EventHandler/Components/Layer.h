@@ -27,7 +27,8 @@ namespace Akela {
   namespace EventHandler {
     class LayerComponent : public Component {
     protected:
-      uint16_t lastMoveCode = 0;
+      uint8_t lastLayer = 0;
+      bool isTemporary = false;
 
       virtual bool register_code (Akela::AbstractHID *HID,
                                   Akela::KeyMap *keymap,

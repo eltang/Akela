@@ -159,47 +159,41 @@ TestLayers
  Pressing one key at a time
     virtual void Virtual::Keyboard::loop()(1) = 00000001
 	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(0, 0) = 4
-	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(0, 0) = 4
 		virtual void Virtual::HID::press(uint8_t)(0x4)
     virtual void Virtual::HID::sendReport()
     virtual void Virtual::Keyboard::loop()(2) = 00000010
 	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(0, 0) = 4
-	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(0, 0) = 4
 		virtual void Virtual::HID::release(uint8_t)(0x4)
-	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(0, 1) = 4
 	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(0, 1) = 4
 		virtual void Virtual::HID::press(uint8_t)(0x4)
     virtual void Virtual::HID::sendReport()
     virtual void Virtual::Keyboard::loop()(3) = 00000100
-	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(0, 1) = 4
 	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(0, 1) = 4
 		virtual void Virtual::HID::release(uint8_t)(0x4)
 	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(0, 2) = c011
 	virtual void Virtual::LayeredKeyMap::layer(uint8_t)(1)
     virtual void Virtual::HID::sendReport()
     virtual void Virtual::Keyboard::loop()(4) = 00001000
-	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(1, 2) = c011
-	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(1, 3) = 5
-	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(1, 3) = 5
-		virtual void Virtual::HID::press(uint8_t)(0x5)
+	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(1, 2) = ffff
+	virtual void Virtual::LayeredKeyMap::layer(uint8_t)(0)
+	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(0, 3) = 4
+		virtual void Virtual::HID::press(uint8_t)(0x4)
     virtual void Virtual::HID::sendReport()
     virtual void Virtual::Keyboard::loop()(5) = 00010000
-	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(1, 3) = 5
-	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(1, 3) = 5
-		virtual void Virtual::HID::release(uint8_t)(0x5)
-	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(1, 4) = 5
-	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(1, 4) = 5
-		virtual void Virtual::HID::press(uint8_t)(0x5)
+	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(0, 3) = 4
+		virtual void Virtual::HID::release(uint8_t)(0x4)
+	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(0, 4) = 4
+		virtual void Virtual::HID::press(uint8_t)(0x4)
     virtual void Virtual::HID::sendReport()
     virtual void Virtual::Keyboard::loop()(6) = 00100000
-	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(1, 4) = 5
-	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(1, 4) = 5
-		virtual void Virtual::HID::release(uint8_t)(0x5)
-	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(1, 5) = c010
-	virtual void Virtual::LayeredKeyMap::layer(uint8_t)(0)
+	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(0, 4) = 4
+		virtual void Virtual::HID::release(uint8_t)(0x4)
+	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(0, 5) = 4
+		virtual void Virtual::HID::press(uint8_t)(0x4)
     virtual void Virtual::HID::sendReport()
     virtual void Virtual::Keyboard::loop()(7) = 01000000
 	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(0, 5) = 4
+		virtual void Virtual::HID::release(uint8_t)(0x4)
     virtual void Virtual::HID::sendReport()
  Tapping the momentary layer key
     virtual void Virtual::Keyboard::loop()(1) = 00000000
@@ -209,18 +203,15 @@ TestLayers
 	virtual void Virtual::LayeredKeyMap::layer(uint8_t)(1)
     virtual void Virtual::HID::sendReport()
     virtual void Virtual::Keyboard::loop()(3) = 00000000
-	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(1, 0) = c000
-	virtual void Virtual::LayeredKeyMap::layer(uint8_t)(0)
+	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(1, 0) = ffff
     virtual void Virtual::HID::sendReport()
     virtual void Virtual::Keyboard::loop()(4) = 00000010
-	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(0, 1) = 4
-	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(0, 1) = 4
-		virtual void Virtual::HID::press(uint8_t)(0x4)
+	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(1, 1) = 5
+		virtual void Virtual::HID::press(uint8_t)(0x5)
     virtual void Virtual::HID::sendReport()
     virtual void Virtual::Keyboard::loop()(5) = 00000000
-	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(0, 1) = 4
-	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(0, 1) = 4
-		virtual void Virtual::HID::release(uint8_t)(0x4)
+	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(1, 1) = 5
+		virtual void Virtual::HID::release(uint8_t)(0x5)
     virtual void Virtual::HID::sendReport()
 	virtual void Virtual::LayeredKeyMap::layer(uint8_t)(0)
  Holding the momentary layer key
@@ -231,37 +222,30 @@ TestLayers
 	virtual void Virtual::LayeredKeyMap::layer(uint8_t)(1)
     virtual void Virtual::HID::sendReport()
     virtual void Virtual::Keyboard::loop()(3) = 00000011
-	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(1, 0) = c000
-	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(1, 1) = 5
+	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(1, 0) = ffff
 	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(1, 1) = 5
 		virtual void Virtual::HID::press(uint8_t)(0x5)
     virtual void Virtual::HID::sendReport()
     virtual void Virtual::Keyboard::loop()(4) = 00000001
-	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(1, 0) = c000
-	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(1, 1) = 5
+	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(1, 0) = ffff
 	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(1, 1) = 5
 		virtual void Virtual::HID::release(uint8_t)(0x5)
     virtual void Virtual::HID::sendReport()
     virtual void Virtual::Keyboard::loop()(5) = 00000000
-	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(1, 0) = c000
-	virtual void Virtual::LayeredKeyMap::layer(uint8_t)(0)
+	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(1, 0) = ffff
     virtual void Virtual::HID::sendReport()
     virtual void Virtual::Keyboard::loop()(6) = 00000001
-	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(0, 0) = c001
-	virtual void Virtual::LayeredKeyMap::layer(uint8_t)(1)
+	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(1, 0) = ffff
     virtual void Virtual::HID::sendReport()
     virtual void Virtual::Keyboard::loop()(7) = 00000011
-	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(1, 0) = c000
-	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(1, 1) = 5
+	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(1, 0) = ffff
 	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(1, 1) = 5
 		virtual void Virtual::HID::press(uint8_t)(0x5)
     virtual void Virtual::HID::sendReport()
     virtual void Virtual::Keyboard::loop()(8) = 00000000
-	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(1, 0) = c000
-	virtual void Virtual::LayeredKeyMap::layer(uint8_t)(0)
-	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(0, 1) = 4
-	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(0, 1) = 4
-		virtual void Virtual::HID::release(uint8_t)(0x4)
+	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(1, 0) = ffff
+	virtual uint16_t Virtual::LayeredKeyMap::lookup(uint8_t)(1, 1) = 5
+		virtual void Virtual::HID::release(uint8_t)(0x5)
     virtual void Virtual::HID::sendReport()
 	virtual void Virtual::LayeredKeyMap::layer(uint8_t)(0)
 TestFnMacros
@@ -280,27 +264,21 @@ TestFnMacros
 	virtual uint16_t Virtual::KeyMap::lookup(uint8_t)(0, 1) = c021
   virtual void Virtual::EventHandler::Macros::macroAction(Akela::AbstractHID*, Akela::KeyMap*, uint8_t, bool)(macroIndex=1, pressed=0)
 	virtual uint16_t Virtual::KeyMap::lookup(uint8_t)(0, 2) = 0
-	virtual uint16_t Virtual::KeyMap::lookup(uint8_t)(0, 2) = 0
 		virtual void Virtual::HID::press(uint8_t)(0x0)
     virtual void Virtual::HID::sendReport()
     virtual void Virtual::Keyboard::loop()(4) = 00001000
 	virtual uint16_t Virtual::KeyMap::lookup(uint8_t)(0, 2) = 0
-	virtual uint16_t Virtual::KeyMap::lookup(uint8_t)(0, 2) = 0
 		virtual void Virtual::HID::release(uint8_t)(0x0)
-	virtual uint16_t Virtual::KeyMap::lookup(uint8_t)(0, 3) = 0
 	virtual uint16_t Virtual::KeyMap::lookup(uint8_t)(0, 3) = 0
 		virtual void Virtual::HID::press(uint8_t)(0x0)
     virtual void Virtual::HID::sendReport()
     virtual void Virtual::Keyboard::loop()(5) = 00010000
 	virtual uint16_t Virtual::KeyMap::lookup(uint8_t)(0, 3) = 0
-	virtual uint16_t Virtual::KeyMap::lookup(uint8_t)(0, 3) = 0
 		virtual void Virtual::HID::release(uint8_t)(0x0)
-	virtual uint16_t Virtual::KeyMap::lookup(uint8_t)(0, 4) = 0
 	virtual uint16_t Virtual::KeyMap::lookup(uint8_t)(0, 4) = 0
 		virtual void Virtual::HID::press(uint8_t)(0x0)
     virtual void Virtual::HID::sendReport()
     virtual void Virtual::Keyboard::loop()(6) = 00100000
-	virtual uint16_t Virtual::KeyMap::lookup(uint8_t)(0, 4) = 0
 	virtual uint16_t Virtual::KeyMap::lookup(uint8_t)(0, 4) = 0
 		virtual void Virtual::HID::release(uint8_t)(0x0)
 	virtual uint16_t Virtual::KeyMap::lookup(uint8_t)(0, 5) = c022
