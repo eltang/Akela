@@ -30,18 +30,14 @@ namespace M01 {
       void playBootAnimation ();
 
     public:
-      enum Hand {
-        LEFT,
-        RIGHT
-      };
       LedControl (Scanner *scanner);
 
       virtual void setup ();
 
       void setColorAtLED (uint8_t i, cRGB crgb);
       void setColor (cRGB crgb);
-      void setColor (Hand hand, uint8_t row, uint8_t col, cRGB crgb);
       void setColor (uint8_t i, cRGB crgb);
+
       void sync ();
     };
   };

@@ -18,6 +18,22 @@
 
 #include "Akela/HW/Model01.h"
 
+static const uint8_t _KeyToMatrixMap[] PROGMEM = {
+  0,  1,  2,  3,  4,  5,  6,
+  16, 17, 18, 19, 20, 21, 99,
+  32, 33, 34, 35, 36, 37, 38,
+  48, 49, 50, 51, 52, 53, 22,
+  07, 23, 39, 55, 99, 99, 99,
+  54, 99, 99, 99, 99, 99, 99,
+
+  9, 10, 11, 12, 13, 14, 15,
+  26, 27, 28, 29, 30, 31, 99,
+  41, 42, 43, 44, 45, 46, 47,
+  57, 58, 59, 60, 61, 62, 63,
+  56, 40, 24,  8, 99, 99, 99,
+  25, 99, 99, 99, 99, 99, 99,
+};
+
 namespace M01 {
   namespace EventHandler {
 
@@ -44,6 +60,17 @@ namespace M01 {
     void
     Base::hold_code (uint16_t keycode) {
       return Akela::EventHandler::Layered::hold_code (keycode);
+    }
+
+    uint8_t
+    Base::keyToMatrix (Hand hand, uint8_t row, uint8_t col) {
+      uint8_t keyIndex;
+
+      keyIndex = row * 7 + col;
+      if (hand == RIGHT)
+        keyIndex += 6 * 8;
+
+      return pgm_read_byte (_KeyToMatrixMap + keyIndex);
     }
 
     // -----------
@@ -77,5 +104,15 @@ namespace M01 {
       Base::setup ();
       LedControl::setup ();
     }
+
+    void
+    Full::setColor (Base::Hand hand, uint8_t row, uint8_t col, cRGB crgb) {
+      uint8_t mapPos = keyToMatrix (hand, row, col);
+      if (mapPos == 99)
+        return;
+
+      LedControl::setColor (mapPos, crgb);
+    }
+
   };
 };

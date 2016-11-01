@@ -28,9 +28,16 @@ namespace M01 {
           Akela::EventHandler::FnMacroComponent () {};
 
     protected:
+      enum Hand {
+        LEFT,
+        RIGHT
+      };
+
       virtual void register_code (uint16_t keycode);
       virtual void unregister_code (uint16_t keycode);
       virtual void hold_code (uint16_t keycode);
+
+      uint8_t keyToMatrix (Hand hand, uint8_t row, uint8_t col);
 
     private:
       using Akela::EventHandler::Component::hold_code;
