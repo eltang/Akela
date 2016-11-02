@@ -60,6 +60,10 @@ INLINE_GROUPED_CLASSES = NO
 EXTRACT_ALL            = YES
 EXTRACT_PRIVATE        = NO
 
+JAVADOC_AUTOBRIEF      = YES
+
+SHOW_NAMESPACES        = NO
+
 #---------------------------------------------------------------------------
 # Configuration options related to warning and progress messages
 #---------------------------------------------------------------------------

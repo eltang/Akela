@@ -16,6 +16,21 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/**
+ * @mainpage Animated Keyboard Extension Library for Arduino
+ *
+ * Akela is a library, primarily developed for the <a
+ * href="https://keyboard.io/">Keyboard.io Model01</a>, but built in a way to
+ * allow reuse by any keyboard powered by an Arduino. It is a heavy work in
+ * progress at this stage.
+ *
+ * Primary aims are:
+ *
+ * - Composability.
+ * - Extensibility.
+ * - Hardware-specific parts in separate libraries.
+ */
+
 #pragma once
 
 #ifdef ARDUINO
