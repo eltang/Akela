@@ -1,11 +1,9 @@
-A.K.E.L.A.
-==========
+# A.K.E.L.A. <a href="https://travis-ci.org/algernon/Akela"><img align="right" src="https://travis-ci.org/algernon/Akela.svg?branch=master"></a>
+
 <p align="right">
 <strong>A</strong>nimated <strong>K</strong>eyboard <strong>E</strong>xtension
 <strong>L</strong>ibrary for <strong>A</strong>rduino
 </p>
-
-[![Build Status](https://travis-ci.org/algernon/Akela.svg?branch=master)](https://travis-ci.org/algernon/Akela)
 
 Primarily aimed at the [Keyboardio Model 01][kbdio], but likely usable by any
 other keyboard built with an Arduino at heart. This is very much a work in
