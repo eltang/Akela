@@ -54,7 +54,7 @@ namespace M01 {
   namespace EventHandler {
     class MouseComponent : public Akela::EventHandler::Component {
     private:
-      virtual void move (M01::HID::Base *HID, uint8_t key);
+      void move (M01::HID::Base *HID, uint8_t key);
 
     protected:
       virtual bool register_code (Akela::AbstractHID *HID,
