@@ -37,13 +37,13 @@ namespace Akela {
 
         virtual void typeUnicode (Akela::AbstractHID *HID,
                                   uint32_t code);
-        virtual void unicodeMode (Mode mode);
+        void unicodeMode (Mode mode);
 
         virtual void unicodeStart (Akela::AbstractHID *HID);
         virtual void unicodeEnd (Akela::AbstractHID *HID);
 
       private:
-        virtual uint8_t hexToKeycode (uint8_t hex);
+        uint8_t hexToKeycode (uint8_t hex);
       };
 
     };
