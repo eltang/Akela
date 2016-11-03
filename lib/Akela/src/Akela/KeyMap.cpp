@@ -22,16 +22,22 @@
 #include <avr/pgmspace.h>
 #endif
 
-Akela::KeyMap::KeyMap (const uint16_t *keymap) {
-  this->keymap = keymap;
-}
+namespace Akela {
+  namespace KeyMap {
 
-uint16_t
-Akela::KeyMap::lookup (uint8_t index) {
+    Basic::Basic (const uint16_t *keymap) {
+      this->keymap = keymap;
+    }
+
+    uint16_t
+    Basic::lookup (uint8_t index) {
 #ifdef ARDUINO_ARCH_AVR
-  uint16_t keycode = pgm_read_word (this->keymap + index);
-  return keycode;
+      uint16_t keycode = pgm_read_word (this->keymap + index);
+      return keycode;
 #else
-  return this->keymap[index];
+      return this->keymap[index];
 #endif
+    }
+
+  }
 }

@@ -19,9 +19,9 @@
 #pragma once
 
 namespace M01 {
-  class KeyMap : public Akela::LayeredKeyMap {
+  class KeyMap : public Akela::KeyMap::Layered {
   public:
     KeyMap (const uint16_t keymap[][64])
-      : Akela::LayeredKeyMap ((const uint16_t **)keymap, 64) {};
+      : Akela::KeyMap::Layered ((const uint16_t **)keymap, 64) {};
   };
 };

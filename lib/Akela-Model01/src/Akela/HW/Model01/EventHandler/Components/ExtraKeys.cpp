@@ -23,7 +23,7 @@ namespace M01 {
 
     bool
     ExtraKeysComponent::register_code (Akela::AbstractHID *HID,
-                                       Akela::KeyMap *,
+                                       Akela::KeyMap::Basic *,
                                        uint16_t keycode) {
       M01::HID::Page page;
       uint8_t key;
@@ -49,7 +49,7 @@ namespace M01 {
 
     bool
     ExtraKeysComponent::unregister_code (Akela::AbstractHID *HID,
-                                         Akela::KeyMap *,
+                                         Akela::KeyMap::Basic *,
                                          uint16_t keycode) {
       M01::HID::Page page;
       uint8_t key;

@@ -19,17 +19,19 @@
 #pragma once
 
 namespace Akela {
-  class LayeredKeyMap : public Akela::KeyMap {
-  protected:
-    uint8_t Layer = 0, LayerSize;
+  namespace KeyMap {
+    class Layered : public Akela::KeyMap::Basic {
+    protected:
+      uint8_t Layer = 0, LayerSize;
 
-  public:
-    LayeredKeyMap (const uint16_t **keymap, uint8_t layerSize);
+    public:
+      Layered (const uint16_t **keymap, uint8_t layerSize);
 
-    virtual uint16_t lookup (uint8_t index);
-    virtual uint16_t lookup (uint8_t layer, uint8_t index);
+      virtual uint16_t lookup (uint8_t index);
+      virtual uint16_t lookup (uint8_t layer, uint8_t index);
 
-    virtual void layer (uint8_t index);
-    virtual uint8_t layer ();
+      virtual void layer (uint8_t index);
+      virtual uint8_t layer ();
+    };
   };
 };

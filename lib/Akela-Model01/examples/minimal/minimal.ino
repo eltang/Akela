@@ -22,7 +22,7 @@
 #include "layout.h"
 
 static M01::HID::Base            hid;
-static Akela::KeyMap             keyMap ((uint16_t *)keymap);
+static Akela::KeyMap::Basic      keyMap ((uint16_t *)keymap);
 static M01::Scanner              scanner;
 static Akela::EventHandler::Base eventHandler (&hid, &keyMap);
 static M01::Model01              keyboard (&scanner, &eventHandler);

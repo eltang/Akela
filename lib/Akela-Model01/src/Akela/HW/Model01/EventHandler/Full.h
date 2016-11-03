@@ -24,7 +24,7 @@ namespace M01 {
                  public LedControl,
                  public MouseComponent {
     public:
-      Full (Akela::AbstractHID *HID, Akela::LayeredKeyMap *keymap,
+      Full (Akela::AbstractHID *HID, Akela::KeyMap::Layered *keymap,
             Scanner *scanner)
         : Base (HID, keymap), LedControl (scanner) {};
 

@@ -32,19 +32,19 @@ namespace Akela {
       class OneShot : public Akela::EventHandler::Component {
       public:
         virtual bool register_code (Akela::AbstractHID *hid,
-                                    Akela::KeyMap *keymap,
+                                    Akela::KeyMap::Basic *keymap,
                                     uint16_t keycode);
 
         virtual bool unregister_code (Akela::AbstractHID *hid,
-                                      Akela::KeyMap *keymap,
+                                      Akela::KeyMap::Basic *keymap,
                                       uint16_t keycode);
 
         virtual void loop (Akela::AbstractHID *hid,
-                           Akela::KeyMap *keymap);
+                           Akela::KeyMap::Basic *keymap);
 
         bool isOneShotActive ();
         virtual void cancelOneShot (Akela::AbstractHID *hid,
-                                    Akela::KeyMap *keymap);
+                                    Akela::KeyMap::Basic *keymap);
 
       protected:
         uint16_t oneShotTimer = 0;
@@ -54,10 +54,10 @@ namespace Akela {
         bool oneShotShouldCancel = false;
 
         virtual void oneShotActivate (Akela::AbstractHID *hid,
-                                      Akela::KeyMap *keymap,
+                                      Akela::KeyMap::Basic *keymap,
                                       uint16_t keycode) = 0;
         virtual void oneShotDeactivate (Akela::AbstractHID *hid,
-                                        Akela::KeyMap *keymap,
+                                        Akela::KeyMap::Basic *keymap,
                                         uint16_t keycode) = 0;
       };
 

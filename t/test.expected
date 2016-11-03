@@ -256,17 +256,17 @@ TestFnMacros
  Pressing one key at a time
     virtual void Virtual::Keyboard::loop()(1) = 00000001
 	virtual uint16_t Virtual::KeyMap::lookup(uint8_t)(0, 0) = c020
-  virtual void Virtual::EventHandler::Macros::macroAction(Akela::AbstractHID*, Akela::KeyMap*, uint8_t, bool)(macroIndex=0, pressed=1)
+  virtual void Virtual::EventHandler::Macros::macroAction(Akela::AbstractHID*, Akela::KeyMap::Basic*, uint8_t, bool)(macroIndex=0, pressed=1)
     virtual void Virtual::HID::sendReport()
     virtual void Virtual::Keyboard::loop()(2) = 00000010
 	virtual uint16_t Virtual::KeyMap::lookup(uint8_t)(0, 0) = c020
-  virtual void Virtual::EventHandler::Macros::macroAction(Akela::AbstractHID*, Akela::KeyMap*, uint8_t, bool)(macroIndex=0, pressed=0)
+  virtual void Virtual::EventHandler::Macros::macroAction(Akela::AbstractHID*, Akela::KeyMap::Basic*, uint8_t, bool)(macroIndex=0, pressed=0)
 	virtual uint16_t Virtual::KeyMap::lookup(uint8_t)(0, 1) = c021
-  virtual void Virtual::EventHandler::Macros::macroAction(Akela::AbstractHID*, Akela::KeyMap*, uint8_t, bool)(macroIndex=1, pressed=1)
+  virtual void Virtual::EventHandler::Macros::macroAction(Akela::AbstractHID*, Akela::KeyMap::Basic*, uint8_t, bool)(macroIndex=1, pressed=1)
     virtual void Virtual::HID::sendReport()
     virtual void Virtual::Keyboard::loop()(3) = 00000100
 	virtual uint16_t Virtual::KeyMap::lookup(uint8_t)(0, 1) = c021
-  virtual void Virtual::EventHandler::Macros::macroAction(Akela::AbstractHID*, Akela::KeyMap*, uint8_t, bool)(macroIndex=1, pressed=0)
+  virtual void Virtual::EventHandler::Macros::macroAction(Akela::AbstractHID*, Akela::KeyMap::Basic*, uint8_t, bool)(macroIndex=1, pressed=0)
 	virtual uint16_t Virtual::KeyMap::lookup(uint8_t)(0, 2) = 0
 		virtual void Virtual::HID::press(uint8_t)(0x0)
     virtual void Virtual::HID::sendReport()
@@ -286,9 +286,9 @@ TestFnMacros
 	virtual uint16_t Virtual::KeyMap::lookup(uint8_t)(0, 4) = 0
 		virtual void Virtual::HID::release(uint8_t)(0x0)
 	virtual uint16_t Virtual::KeyMap::lookup(uint8_t)(0, 5) = c022
-  virtual void Virtual::EventHandler::Macros::macroAction(Akela::AbstractHID*, Akela::KeyMap*, uint8_t, bool)(macroIndex=2, pressed=1)
+  virtual void Virtual::EventHandler::Macros::macroAction(Akela::AbstractHID*, Akela::KeyMap::Basic*, uint8_t, bool)(macroIndex=2, pressed=1)
     virtual void Virtual::HID::sendReport()
     virtual void Virtual::Keyboard::loop()(7) = 01000000
 	virtual uint16_t Virtual::KeyMap::lookup(uint8_t)(0, 5) = c022
-  virtual void Virtual::EventHandler::Macros::macroAction(Akela::AbstractHID*, Akela::KeyMap*, uint8_t, bool)(macroIndex=2, pressed=0)
+  virtual void Virtual::EventHandler::Macros::macroAction(Akela::AbstractHID*, Akela::KeyMap::Basic*, uint8_t, bool)(macroIndex=2, pressed=0)
     virtual void Virtual::HID::sendReport()

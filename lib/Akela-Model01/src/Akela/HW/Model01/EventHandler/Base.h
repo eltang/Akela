@@ -23,7 +23,7 @@ namespace M01 {
     class Base : public Akela::EventHandler::Layered, public ExtraKeysComponent,
       public Akela::EventHandler::FnMacroComponent {
     public:
-      Base (Akela::AbstractHID *HID, Akela::LayeredKeyMap *keymap)
+      Base (Akela::AbstractHID *HID, Akela::KeyMap::Layered *keymap)
         : Akela::EventHandler::Layered (HID, keymap),
           Akela::EventHandler::FnMacroComponent () {};
 

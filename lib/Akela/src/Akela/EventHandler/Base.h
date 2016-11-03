@@ -25,10 +25,10 @@ namespace Akela {
     class Base {
     protected:
       Akela::AbstractHID *HID;
-      Akela::KeyMap *keymap;
+      Akela::KeyMap::Basic *keymap;
 
     public:
-      Base (Akela::AbstractHID *HID, Akela::KeyMap *keymap);
+      Base (Akela::AbstractHID *HID, Akela::KeyMap::Basic *keymap);
 
       virtual void press (uint8_t index);
       virtual void register_code (uint16_t keycode);

@@ -22,7 +22,7 @@
 namespace Example {
   class EventHandler: public M01::EventHandler::Full {
   public:
-    EventHandler (M01::HID::Full *hid, Akela::LayeredKeyMap *keymap,
+    EventHandler (M01::HID::Full *hid, Akela::KeyMap::Layered *keymap,
                   M01::Scanner *scanner)
       : M01::EventHandler::Full (hid, keymap, scanner) {};
 

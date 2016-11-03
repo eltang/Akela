@@ -27,7 +27,7 @@ class TapDanceEventHandler : public Akela::EventHandler::Layered,
                              public Akela::TapDance::Component::OneShotLayer,
                              public Akela::TapDance::Component::TapDance {
 public:
-  TapDanceEventHandler (Akela::AbstractHID *hid, Akela::LayeredKeyMap *keymap)
+  TapDanceEventHandler (Akela::AbstractHID *hid, Akela::KeyMap::Layered *keymap)
     : Akela::EventHandler::Layered (hid, keymap) {};
 
 protected:
@@ -37,15 +37,15 @@ protected:
   virtual void loop ();
 
   virtual void tapDanceCycle (Akela::AbstractHID *hid,
-                              Akela::KeyMap *keymap,
+                              Akela::KeyMap::Basic *keymap,
                               uint8_t tapIndex,
                               uint8_t counter);
   virtual void tapDanceFinish (Akela::AbstractHID *hid,
-                               Akela::KeyMap *keymap,
+                               Akela::KeyMap::Basic *keymap,
                                uint8_t tapIndex,
                                uint8_t counter);
   virtual void tapDanceRelease (Akela::AbstractHID *hid,
-                                Akela::KeyMap *keymap,
+                                Akela::KeyMap::Basic *keymap,
                                 uint8_t tapIndex,
                                 uint8_t counter);
 
@@ -90,14 +90,14 @@ TapDanceEventHandler::loop () {
 
 void
 TapDanceEventHandler::tapDanceCycle (Akela::AbstractHID *,
-                                     Akela::KeyMap *,
+                                     Akela::KeyMap::Basic *,
                                      uint8_t,
                                      uint8_t) {
 }
 
 void
 TapDanceEventHandler::tapDanceFinish (Akela::AbstractHID *hid,
-                                      Akela::KeyMap *,
+                                      Akela::KeyMap::Basic *,
                                       uint8_t tapIndex,
                                       uint8_t counter) {
   switch (tapIndex) {
@@ -113,7 +113,7 @@ TapDanceEventHandler::tapDanceFinish (Akela::AbstractHID *hid,
 
 void
 TapDanceEventHandler::tapDanceRelease (Akela::AbstractHID *hid,
-                                       Akela::KeyMap *,
+                                       Akela::KeyMap::Basic *,
                                        uint8_t tapIndex,
                                        uint8_t counter) {
   switch (tapIndex) {

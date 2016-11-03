@@ -23,7 +23,7 @@ namespace Akela {
 
     bool
     LayerComponent::register_code (Akela::AbstractHID *,
-                                   Akela::KeyMap *keymap,
+                                   Akela::KeyMap::Basic *keymap,
                                    uint16_t keycode) {
       uint8_t layer;
 
@@ -40,7 +40,7 @@ namespace Akela {
         return false;
       }
 
-      Akela::LayeredKeyMap *km = (Akela::LayeredKeyMap *)keymap;
+      Akela::KeyMap::Layered *km = (Akela::KeyMap::Layered *)keymap;
       lastLayer = km->layer ();
       km->layer (layer);
 
@@ -49,7 +49,7 @@ namespace Akela {
 
     bool
     LayerComponent::unregister_code (Akela::AbstractHID *,
-                                     Akela::KeyMap *,
+                                     Akela::KeyMap::Basic *,
                                      uint16_t keycode) {
       if (keycode != KC_TRNS) {
         return false;
@@ -62,11 +62,11 @@ namespace Akela {
     }
 
     void
-    LayerComponent::loop (Akela::KeyMap *keymap) {
+    LayerComponent::loop (Akela::KeyMap::Basic *keymap) {
       if (!shouldCancel)
         return;
 
-      Akela::LayeredKeyMap *km = (Akela::LayeredKeyMap *)keymap;
+      Akela::KeyMap::Layered *km = (Akela::KeyMap::Layered *)keymap;
       km->layer (lastLayer);
 
       shouldCancel = false;

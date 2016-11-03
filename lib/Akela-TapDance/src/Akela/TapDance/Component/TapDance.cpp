@@ -24,7 +24,7 @@ namespace Akela {
 
       void
       TapDance::finish (Akela::AbstractHID *hid,
-                        Akela::KeyMap *keymap,
+                        Akela::KeyMap::Basic *keymap,
                         uint8_t tapIndex,
                         uint8_t tapCounter) {
         tapDanceFinish (hid, keymap, tapIndex, tapCounter);
@@ -40,7 +40,7 @@ namespace Akela {
 
       bool
       TapDance::register_code (Akela::AbstractHID *hid,
-                               Akela::KeyMap *keymap,
+                               Akela::KeyMap::Basic *keymap,
                                uint16_t keycode) {
         if (keycode < FN_TAPDANCE || keycode > FN_TAPDANCE_MAX) {
           if (tapDanceCounter) {
@@ -69,7 +69,7 @@ namespace Akela {
 
       bool
       TapDance::unregister_code (Akela::AbstractHID *hid,
-                                 Akela::KeyMap *keymap,
+                                 Akela::KeyMap::Basic *keymap,
                                  uint16_t keycode) {
         if (keycode < FN_TAPDANCE || keycode > FN_TAPDANCE_MAX) {
           return false;
@@ -93,7 +93,7 @@ namespace Akela {
 
       void
       TapDance::loop (Akela::AbstractHID *hid,
-                      Akela::KeyMap *keymap) {
+                      Akela::KeyMap::Basic *keymap) {
         if (tapDanceCounter)
           tapDanceTimer++;
 

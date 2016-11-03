@@ -17,12 +17,12 @@
  */
 
 namespace Virtual {
-  class KeyMap : public Akela::KeyMap {
+  class KeyMap : public Akela::KeyMap::Basic {
   public:
-    KeyMap (const uint16_t *keymap) : Akela::KeyMap (keymap) {};
+    KeyMap (const uint16_t *keymap) : Akela::KeyMap::Basic (keymap) {};
 
     virtual uint16_t lookup (uint8_t index) {
-      uint16_t k = Akela::KeyMap::lookup (index);
+      uint16_t k = Akela::KeyMap::Basic::lookup (index);
 
       std::cout << "\t" << __PRETTY_FUNCTION__ << "(" << (int)0 << ", "
                 << (int)index << ") = " << std::hex << (int)k << std::endl;
@@ -34,13 +34,13 @@ namespace Virtual {
     }
   };
 
-  class LayeredKeyMap : public Akela::LayeredKeyMap {
+  class LayeredKeyMap : public Akela::KeyMap::Layered {
   public:
     LayeredKeyMap (const uint16_t **keymap, uint8_t layoutSize)
-      : Akela::LayeredKeyMap (keymap, layoutSize) {};
+      : Akela::KeyMap::Layered (keymap, layoutSize) {};
 
     virtual uint16_t lookup (uint8_t index) {
-      uint16_t k = Akela::LayeredKeyMap::lookup (index);
+      uint16_t k = Akela::KeyMap::Layered::lookup (index);
 
       std::cout << "\t" << __PRETTY_FUNCTION__ << "(" << (int)Layer << ", "
                 << (int)index << ") = " << std::hex << (int)k << std::endl;
@@ -53,11 +53,11 @@ namespace Virtual {
 
     virtual void layer (uint8_t l) {
       std::cout << "\t" << __PRETTY_FUNCTION__ << "(" << (int)l << ")" << std::endl;
-      Akela::LayeredKeyMap::layer (l);
+      Akela::KeyMap::Layered::layer (l);
     }
 
-    using Akela::LayeredKeyMap::lookup;
-    using Akela::LayeredKeyMap::layer;
+    using Akela::KeyMap::Layered::lookup;
+    using Akela::KeyMap::Layered::layer;
   };
 
 };

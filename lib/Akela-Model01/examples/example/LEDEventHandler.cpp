@@ -53,7 +53,7 @@ namespace Example {
     M01::EventHandler::Full::setColor (index, color);
 
     // If any layer is active...
-    Akela::LayeredKeyMap *km = (Akela::LayeredKeyMap *)keymap;
+    Akela::KeyMap::Layered *km = (Akela::KeyMap::Layered *)keymap;
 
     if (km->layer () != 0) {
       for (uint8_t i = 0; i < 64; i++) {

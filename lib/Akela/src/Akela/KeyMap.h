@@ -19,13 +19,15 @@
 #pragma once
 
 namespace Akela {
-  class KeyMap {
-  protected:
-    const uint16_t *keymap;
+  namespace KeyMap {
+    class Basic {
+    protected:
+      const uint16_t *keymap;
 
-  public:
-    KeyMap (const uint16_t *keymap);
+    public:
+      Basic (const uint16_t *keymap);
 
-    virtual uint16_t lookup (uint8_t index);
+      virtual uint16_t lookup (uint8_t index);
+    };
   };
 };

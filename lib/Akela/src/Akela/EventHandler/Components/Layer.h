@@ -32,15 +32,15 @@ namespace Akela {
       bool shouldCancel = false;
 
       virtual bool register_code (Akela::AbstractHID *HID,
-                                  Akela::KeyMap *keymap,
+                                  Akela::KeyMap::Basic *keymap,
                                   uint16_t keycode);
 
       virtual bool unregister_code (Akela::AbstractHID *HID,
-                                    Akela::KeyMap *keymap,
+                                    Akela::KeyMap::Basic *keymap,
                                     uint16_t keycode);
       using Component::hold_code;
 
-      virtual void loop (Akela::KeyMap *keymap);
+      virtual void loop (Akela::KeyMap::Basic *keymap);
     };
   };
 };

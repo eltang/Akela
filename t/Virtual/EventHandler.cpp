@@ -20,7 +20,7 @@ namespace Virtual {
   namespace EventHandler {
     class Base : public Akela::EventHandler::Base {
     public:
-      Base (Akela::AbstractHID *hid, Akela::KeyMap *keymap)
+      Base (Akela::AbstractHID *hid, Akela::KeyMap::Basic *keymap)
         : Akela::EventHandler::Base (hid, keymap) {};
 
       virtual void hold_code (uint16_t keycode) {
@@ -34,7 +34,7 @@ namespace Virtual {
     class Macros : public Akela::EventHandler::Base,
                    public Akela::EventHandler::FnMacroComponent {
     public:
-      Macros (Akela::AbstractHID *hid, Akela::KeyMap *keymap)
+      Macros (Akela::AbstractHID *hid, Akela::KeyMap::Basic *keymap)
         : Akela::EventHandler::Base (hid, keymap) {};
 
       virtual void register_code (uint16_t keycode) {
@@ -52,7 +52,7 @@ namespace Virtual {
       }
 
       virtual void macroAction (Akela::AbstractHID *,
-                                Akela::KeyMap *,
+                                Akela::KeyMap::Basic *,
                                 uint8_t index,
                                 bool pressed) {
         std::cout << "  " << __PRETTY_FUNCTION__ << "(macroIndex=" << std::hex << (int) index
@@ -66,7 +66,7 @@ namespace Virtual {
 
     class Layered : public Akela::EventHandler::Layered {
     public:
-      Layered (Akela::AbstractHID *hid, Akela::LayeredKeyMap *keymap)
+      Layered (Akela::AbstractHID *hid, Akela::KeyMap::Layered *keymap)
         : Akela::EventHandler::Layered (hid, keymap) {};
 
       virtual void hold_code (uint16_t keycode) {
