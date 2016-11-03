@@ -18,16 +18,16 @@
 
 #pragma once
 
-#ifdef ARDUINO
-# include <Arduino.h>
-#else
-# include <stdint.h>
-#endif
+namespace Akela {
+  namespace KeyMap {
+    class Basic {
+    protected:
+      const uint16_t *keymap;
 
-#include "Akela/AbstractHID.h"
-#include "Akela/AbstractScanner.h"
-#include "Akela/KeyMap.h"
-#include "Akela/KeyCodes.h"
-#include "Akela/SysFn.h"
-#include "Akela/EventHandler.h"
-#include "Akela/Keyboard.h"
+    public:
+      Basic (const uint16_t *keymap);
+
+      virtual uint16_t lookup (uint8_t index);
+    };
+  };
+};

@@ -18,16 +18,5 @@
 
 #pragma once
 
-namespace Akela {
-  namespace KeyMap {
-    class Basic {
-    protected:
-      const uint16_t *keymap;
-
-    public:
-      Basic (const uint16_t *keymap);
-
-      virtual uint16_t lookup (uint8_t index);
-    };
-  };
-};
+#include "KeyMap/Basic.h"
+#include "KeyMap/Layered.h"

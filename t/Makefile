@@ -19,8 +19,8 @@ check: all
 
 AKELA_SOURCES = \
 	../lib/Akela/src/Akela/Keyboard.cpp \
-	../lib/Akela/src/Akela/KeyMap.cpp \
-	../lib/Akela/src/Akela/LayeredKeyMap.cpp \
+	../lib/Akela/src/Akela/KeyMap/Basic.cpp \
+	../lib/Akela/src/Akela/KeyMap/Layered.cpp \
 	../lib/Akela/src/Akela/EventHandler/Base.cpp \
 	../lib/Akela/src/Akela/EventHandler/Components/Layer.cpp \
 	../lib/Akela/src/Akela/EventHandler/Components/FnMacro.cpp \
