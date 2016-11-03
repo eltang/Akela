@@ -25,15 +25,13 @@ namespace Akela {
       void OneShotMod::oneShotActivate (Akela::AbstractHID *hid,
                                         Akela::KeyMap::Basic *,
                                         uint16_t keycode) {
-        hid->press (keycode - FN_ONESHOT_OSM + KC_LCTL);
-        hid->sendReport ();
+        hid->register_code (keycode - FN_ONESHOT_OSM + KC_LCTL);
       }
 
       void OneShotMod::oneShotDeactivate (Akela::AbstractHID *hid,
                                           Akela::KeyMap::Basic *,
                                           uint16_t keycode) {
-        hid->release (keycode - FN_ONESHOT_OSM + KC_LCTL);
-        hid->sendReport ();
+        hid->unregister_code (keycode - FN_ONESHOT_OSM + KC_LCTL);
       }
 
       bool

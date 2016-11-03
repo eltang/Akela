@@ -22,7 +22,17 @@ namespace Akela {
   class AbstractHID {
   public:
     virtual void press (uint8_t code) = 0;
+    virtual void register_code (uint8_t code) {
+      press (code);
+      sendReport ();
+    }
+
     virtual void release (uint8_t code) = 0;
+    virtual void unregister_code (uint8_t code) {
+      release (code);
+      sendReport ();
+    }
+
     virtual void sendReport () = 0;
     virtual bool isModifierActive (uint8_t code) = 0;
 

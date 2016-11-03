@@ -55,16 +55,12 @@ namespace Akela {
           uint8_t digit = ((code >> (i * 4)) & 0xF);
           if (digit == 0) {
             if (onZeroStart == false) {
-              HID->press (hexToKeycode (digit));
-              HID->sendReport ();
-              HID->release (hexToKeycode (digit));
-              HID->sendReport ();
+              HID->register_code (hexToKeycode (digit));
+              HID->unregister_code (hexToKeycode (digit));
             }
           } else {
-            HID->press (hexToKeycode (digit));
-            HID->sendReport ();
-            HID->release (hexToKeycode (digit));
-            HID->sendReport ();
+            HID->register_code (hexToKeycode (digit));
+            HID->unregister_code (hexToKeycode (digit));
             onZeroStart = false;
           }
         }
@@ -78,12 +74,10 @@ namespace Akela {
         case LINUX:
           HID->press (KC_LCTL);
           HID->press (KC_LSFT);
-          HID->press (KC_U);
-          HID->sendReport ();
+          HID->register_code (KC_U);
           HID->release (KC_LCTL);
           HID->release (KC_LSFT);
-          HID->release (KC_U);
-          HID->sendReport ();
+          HID->unregister_code (KC_U);
           break;
         case OSX:
           break;
@@ -96,10 +90,8 @@ namespace Akela {
       Unicode::unicodeEnd (Akela::AbstractHID *HID) {
         switch (_unicodeMode) {
         case LINUX:
-          HID->press (KC_SPC);
-          HID->sendReport ();
-          HID->release (KC_SPC);
-          HID->sendReport ();
+          HID->register_code (KC_SPC);
+          HID->unregister_code (KC_SPC);
           break;
         case OSX:
           break;
