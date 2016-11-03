@@ -43,8 +43,8 @@ namespace Akela {
                            Akela::KeyMap::Basic *keymap);
 
         bool isOneShotActive ();
-        virtual void cancelOneShot (Akela::AbstractHID *hid,
-                                    Akela::KeyMap::Basic *keymap);
+        void cancelOneShot (Akela::AbstractHID *hid,
+                            Akela::KeyMap::Basic *keymap);
 
       protected:
         uint16_t oneShotTimer = 0;

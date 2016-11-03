@@ -43,7 +43,7 @@ namespace Akela {
                                         Akela::KeyMap::Basic *keymap,
                                         uint16_t keycode);
 
-        virtual bool isOneShotModifierActive (uint8_t keycode);
+        bool isOneShotModifierActive (uint8_t keycode);
       };
     };
   };
