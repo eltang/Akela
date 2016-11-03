@@ -15,16 +15,20 @@ export SC
 export SS
 export SR
 
-all: keyboardio tapdance t
+all: keyboardio tapdance unicode t
 
 keyboardio: keyboardio/Model01 keyboardio/stripped keyboardio/minimal keyboardio/example
 tapdance: tapdance/TapDanceKeyboard
+unicode: unicode/unicode
 
 tapdance/%:
 	${MAKE} -C lib/Akela-TapDance/examples/$*
 
 keyboardio/%:
 	${MAKE} -C lib/Akela-Model01/examples/$*
+
+unicode/%:
+	${MAKE} -C lib/Akela-Unicode/examples/$*
 
 t:
 	${SS} echo Building the test suite...
