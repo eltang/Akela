@@ -25,8 +25,6 @@
 namespace Akela {
   namespace EventHandler {
     class FnMacroComponent : public Component {
-    public:
-      FnMacroComponent ();
     protected:
       virtual bool register_code (Akela::AbstractHID *HID,
                                   Akela::KeyMap::Basic *keymap,

@@ -24,9 +24,6 @@ Akela::Keyboard::Keyboard (Akela::AbstractScanner *scanner,
   this->keyEvent = eventHandler;
 }
 
-Akela::Keyboard::~Keyboard () {
-}
-
 void
 Akela::Keyboard::setup () {
   scanner->setup ();

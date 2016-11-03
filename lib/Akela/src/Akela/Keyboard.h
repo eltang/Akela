@@ -32,7 +32,6 @@ namespace Akela {
   public:
     Keyboard (Akela::AbstractScanner *scanner,
               Akela::EventHandler::Base *eventHandler);
-    virtual ~Keyboard ();
 
     void setup ();
     void loop ();
