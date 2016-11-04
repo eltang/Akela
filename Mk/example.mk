@@ -5,13 +5,13 @@ ARDUINO_PATH				= ${HOME}/install/arduino
 ARDUINO_TOOLS_PATH	= $(ARDUINO_PATH)/hardware/tools
 FQBN								= keyboardio:avr:model01
 BUILD_PATH				 := $(shell mktemp -d 2>/dev/null || mktemp -d -t 'build')
-OUTPUT_PATH					= ../../../../firmware
+OUTPUT_PATH					= $(PWD)/firmware
 ARDUINO_IDE_VERSION	= 100607
 
 AVR_SIZE						= $(ARDUINO_TOOLS_PATH)/avr/bin/avr-size
 
 GIT_VERSION				 := $(shell git describe --abbrev=4 --dirty --always)
-OUTPUT_FILE_PREFIX	= $(SKETCH)-$(GIT_VERSION)
+OUTPUT_FILE_PREFIX	= ${LIBRARY}-$(SKETCH)-$(GIT_VERSION)
 
 HEX_FILE_PATH				= $(OUTPUT_PATH)/$(OUTPUT_FILE_PREFIX).hex
 ELF_FILE_PATH				= $(OUTPUT_PATH)/$(OUTPUT_FILE_PREFIX).elf
@@ -33,12 +33,12 @@ compile: ${OUTPUT_PATH}
 	${SS} echo "Building ${LIBRARY}/${SKETCH} (${GIT_VERSION}) ..."
 	${SC} $(ARDUINO_PATH)/arduino-builder \
 		-hardware $(ARDUINO_PATH)/hardware \
-		-hardware ../../../../hardware \
+		-hardware $(PWD)/hardware \
 		-tools $(ARDUINO_TOOLS_PATH) \
 		-tools $(ARDUINO_PATH)/tools-builder  \
 		-fqbn $(FQBN) \
-		-libraries ../../../../lib \
-		-libraries ../../../../hardware \
+		-libraries $(PWD)/lib \
+		-libraries $(PWD)/hardware \
 		-build-path $(BUILD_PATH) \
 		-ide-version $(ARDUINO_IDE_VERSION) \
 		-warnings all \
@@ -47,8 +47,8 @@ compile: ${OUTPUT_PATH}
 		$(SKETCH).ino
 	@cp $(BUILD_PATH)/$(SKETCH).ino.hex $(HEX_FILE_PATH)
 	@cp $(BUILD_PATH)/$(SKETCH).ino.elf $(ELF_FILE_PATH)
-	@ln -sf $(OUTPUT_FILE_PREFIX).hex $(OUTPUT_PATH)/${SKETCH}-latest.hex
-	@ln -sf $(OUTPUT_FILE_PREFIX).elf $(OUTPUT_PATH)/${SKETCH}-latest.elf
+	@ln -sf $(OUTPUT_FILE_PREFIX).hex $(OUTPUT_PATH)/${LIBRARY}-${SKETCH}-latest.hex
+	@ln -sf $(OUTPUT_FILE_PREFIX).elf $(OUTPUT_PATH)/${LIBRARY}-${SKETCH}-latest.elf
 	@rm -rf "${BUILD_PATH}"
 
 size: compile
