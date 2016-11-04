@@ -20,6 +20,9 @@ ifeq (${VERBOSE},2)
 VERBOSE_BUILD				= -verbose
 endif
 
+# SKETCH
+# LIBRARY
+
 all: build
 build: compile size
 
@@ -27,7 +30,7 @@ ${OUTPUT_PATH}:
 	install -d $@
 
 compile: ${OUTPUT_PATH}
-	${SS} echo "Building unicode/${SKETCH} (${GIT_VERSION}) ..."
+	${SS} echo "Building ${LIBRARY}/${SKETCH} (${GIT_VERSION}) ..."
 	${SC} $(ARDUINO_PATH)/arduino-builder \
 		-hardware $(ARDUINO_PATH)/hardware \
 		-hardware ../../../../hardware \

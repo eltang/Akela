@@ -22,13 +22,13 @@ tapdance: tapdance/TapDanceKeyboard
 unicode: unicode/unicode
 
 tapdance/%:
-	${MAKE} -C lib/Akela-TapDance/examples/$*
+	${MAKE} -C lib/Akela-TapDance/examples/$* -f ${PWD}/Mk/example.mk LIBRARY=tapdance SKETCH=$*
 
 keyboardio/%:
-	${MAKE} -C lib/Akela-Model01/examples/$*
+	${MAKE} -C lib/Akela-Model01/examples/$* -f ${PWD}/Mk/example.mk LIBRARY=keyboardio SKETCH=$*
 
 unicode/%:
-	${MAKE} -C lib/Akela-Unicode/examples/$*
+	${MAKE} -C lib/Akela-Unicode/examples/$* -f ${PWD}/Mk/example.mk LIBRARY=unicode SKETCH=$*
 
 t:
 	${SS} echo Building the test suite...
