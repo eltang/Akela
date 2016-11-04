@@ -7,11 +7,12 @@ modified: 2016-11-04T12:00:00+01:00
 
 {% include toc %}
 
-Akela is a library, and comes with a number of examples. In this guide, we'll
-see how to get started, by setting up the environment, cloning the repository,
-and building the examples on both the command line, and from
+[Akela][akela] is a library, and comes with a number of examples. In this guide,
+we'll see how to get started, by setting up the environment, cloning the
+repository, and building the examples on both the command line, and from
 the [Arduino IDE][arduino:ide].
 
+[akela]: https://github.com/algernon/Akela
 [arduino:ide]: https://www.arduino.cc/en/Main/Software
 
 For now, this guide will assume the reader is using a GNU/Linux operating
