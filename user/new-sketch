@@ -1,0 +1,28 @@
+#! /bin/sh
+
+set -e
+
+ROOTDIR="$(dirname $0)"
+SKETCH="$1"
+
+print_help () {
+    cat <<EOF
+Usage: $0 [SKETCH_NAME]
+EOF
+}
+
+if [ -z "${SKETCH}" ]; then
+    print_help >&2
+    exit 1
+fi
+
+if [ -e "${ROOTDIR}/examples/${SKETCH}" ]; then
+    echo "Sketch '${SKETCH}' already exists!" >&2
+    exit 1
+fi
+
+install -d "${ROOTDIR}/examples/"
+cp -pr "${ROOTDIR}/template" "${ROOTDIR}/examples/${SKETCH}"
+mv "${ROOTDIR}/examples/${SKETCH}/template.ino" "${ROOTDIR}/examples/${SKETCH}/${SKETCH}.ino"
+
+echo "New Sketch created at ${ROOTDIR}/examples/${SKETCH}/"

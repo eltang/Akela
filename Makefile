@@ -30,6 +30,9 @@ keyboardio/%:
 unicode/%:
 	${MAKE} -C lib/Akela-Unicode/examples/$* -f ${PWD}/Mk/example.mk LIBRARY=unicode SKETCH=$*
 
+user/%:
+	${MAKE} -C user/examples/$* -f ${PWD}/Mk/example.mk LIBRARY=user SKETCH=$*
+
 t:
 	${SS} echo Building the test suite...
 	${MAKE} -C t
