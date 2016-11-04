@@ -1,0 +1,14 @@
+# main links links
+main:
+  - title: "Getting started"
+    url: /getting-started/
+
+  - title: "About"
+    url: /
+
+# documentation links
+guides:
+  - title: Guides
+    children:
+      - title: "Getting started"
+        url: /getting-started/
