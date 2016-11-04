@@ -97,6 +97,7 @@ Sketchbook location, all we need is a couple of symbolic links:
 
 ```
 $ ln -s $(pwd)/lib/Akela-* ~/Arduino/libraries/
+$ ln -s $(pwd)/user ~/Arduino/libraries/Akela-User
 $ ln -s $(pwd)/hardware ~/Arduino/
 ```
 
