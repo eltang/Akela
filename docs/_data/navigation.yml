@@ -12,3 +12,5 @@ guides:
     children:
       - title: "Getting started"
         url: /getting-started/
+      - title: "Building your own layout"
+        url: /building-your-own-layout/
