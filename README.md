@@ -11,6 +11,14 @@ progress, has not been tested on real hardware, and may go away at any point.
 This is mostly a proof of concept at this stage.
 
  [kbdio]: https://shop.keyboard.io/
+ 
+Documentation
+=============
+
+Documentation can be found on the [project page][gh:page], and in the `docs/`
+directory in source form.
+
+ [gh:page]: https://algernon.github.io/Akela/
 
 License
 =======
