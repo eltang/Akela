@@ -1,6 +1,6 @@
 ---
 title: "One shot in the dark"
-permalink: /one-shot-in-the-dark/
+permalink: /guide/one-shot-in-the-dark/
 excerpt: "The purpose and use of one-shot modifiers"
 modified: 2016-11-05T14:00:00+01:00
 ---

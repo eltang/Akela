@@ -1,6 +1,6 @@
 ---
 title: "Building your own layout"
-permalink: /building-your-own-layout/
+permalink: /guide/building-your-own-layout/
 excerpt: "How to build a custom layout from scratch?"
 modified: 2016-11-04T14:00:00+01:00
 ---

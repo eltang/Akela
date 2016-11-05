@@ -1,6 +1,6 @@
 ---
 title: "Getting started"
-permalink: /getting-started/
+permalink: /guide/getting-started/
 excerpt: "Getting started with Akela"
 modified: 2016-11-04T12:00:00+01:00
 ---
