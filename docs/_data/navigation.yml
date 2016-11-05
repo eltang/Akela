@@ -23,3 +23,5 @@ guides:
   - title: Deep Dive
     url: /deep-dive/
     children:
+      - title: "High-level architecture"
+        url: /deep-dive/high-level-architecture/
