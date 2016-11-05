@@ -17,3 +17,6 @@ guides:
         url: /guide/building-your-own-layout/
       - title: "One shot in the dark"
         url: /guide/one-shot-in-the-dark/
+  - title: Deep Dive
+    url: /deep-dive/
+    children:
