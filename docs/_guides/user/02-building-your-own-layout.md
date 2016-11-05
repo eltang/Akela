@@ -21,8 +21,16 @@ less complicated than it sounds!
 
 ## Starting a new Sketch
 
-For educational purposes, we will start from scratch. We can use the
-`user/new-sketch` tool to start with a complete, but not very functional base:
+For educational purposes, we will start from scratch. We can use either the
+command-line, or the [Arduino IDE][arduino:ide]. The two should not be mixed,
+though.
+
+[arduino:ide]: https://www.arduino.cc/en/Main/Software
+
+### From the command line
+
+We can use the `user/new-sketch` tool to start with a complete, but not very
+functional base:
 
 ```
 $ user/new-sketch my-own-layout
@@ -37,14 +45,12 @@ latest version. In this case, this will be
 This can be flashed onto the keyboard, but it will not do anything useful yet,
 because the layout is completely empty.
 
-With the [Arduino IDE][arduino:ide], we should be able to find the newly created
-sketch in the `File/Examples` menu, in an `Akela-User` submenu. You may need to
-restart the IDE, if it has been running before creating the new sketch, so that
-it picks up the new example.
+### From the Arduino IDE
 
-[arduino:ide]: https://www.arduino.cc/en/Main/Software
-
-Compiling and uploading the firmware from the IDE can be done as usual.
+With the [Arduino IDE][arduino:ide], we can find the template in the
+`File/Examples` menu, in an `Akela-User` submenu. Load the example, and save it
+to your Sketchbook. Compiling and uploading the firmware from the IDE can be
+done as usual.
 
 ## Editing the layout
 
