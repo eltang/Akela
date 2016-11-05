@@ -41,5 +41,6 @@
         {% endif %}
       </li>
     {% endfor %}
+      <li><a href="#top"><span class="nav__sub-title">Top <i class='fa fa-angle-double-up'></i></span></a></li>
   </ul>
 </nav>
