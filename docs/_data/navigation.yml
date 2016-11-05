@@ -14,3 +14,5 @@ guides:
         url: /getting-started/
       - title: "Building your own layout"
         url: /building-your-own-layout/
+      - title: "One shot in the dark"
+        url: /one-shot-in-the-dark/
