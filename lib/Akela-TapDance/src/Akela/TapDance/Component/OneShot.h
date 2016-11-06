@@ -59,6 +59,7 @@ namespace Akela {
         virtual void oneShotDeactivate (Akela::AbstractHID *hid,
                                         Akela::KeyMap::Basic *keymap,
                                         uint16_t keycode) = 0;
+        virtual bool oneShotShouldInterrupt (uint16_t keycode);
       };
 
     };

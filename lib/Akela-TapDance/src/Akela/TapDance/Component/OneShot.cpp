@@ -26,9 +26,10 @@ namespace Akela {
       OneShot::register_code (Akela::AbstractHID *hid,
                               Akela::KeyMap::Basic *keymap,
                               uint16_t keycode) {
+        if (oneShotState && oneShotShouldInterrupt (keycode))
+          oneShotShouldCancel = true;
+
         if (keycode < FN_ONESHOT || keycode > FN_ONESHOT_MAX) {
-          if (oneShotState)
-            oneShotShouldCancel = true;
           return false;
         }
 
@@ -56,9 +57,10 @@ namespace Akela {
       OneShot::unregister_code (Akela::AbstractHID *,
                                 Akela::KeyMap::Basic *,
                                 uint16_t keycode) {
+        if (oneShotState && oneShotShouldInterrupt (keycode))
+          oneShotShouldCancel = true;
+
         if (keycode < FN_ONESHOT || keycode > FN_ONESHOT_MAX) {
-          if (oneShotState)
-            oneShotShouldCancel = true;
           return false;
         }
 
@@ -96,6 +98,12 @@ namespace Akela {
         oneShotTimer = 0;
       }
 
+      bool
+      OneShot::oneShotShouldInterrupt (uint16_t keycode) {
+        if (keycode < FN_ONESHOT || keycode > FN_ONESHOT_MAX)
+          return true;
+        return false;
+      }
     };
   };
 };

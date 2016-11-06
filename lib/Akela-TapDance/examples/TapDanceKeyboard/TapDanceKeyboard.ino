@@ -48,6 +48,7 @@ protected:
                                 Akela::KeyMap::Basic *keymap,
                                 uint8_t tapIndex,
                                 uint8_t counter);
+  virtual bool oneShotShouldInterrupt (uint16_t keycode);
 
 private:
   using Akela::EventHandler::LayerComponent::loop;
@@ -56,6 +57,14 @@ private:
   using Akela::TapDance::Component::OneShotMod::loop;
   using Akela::TapDance::Component::TapDance::loop;
 };
+
+bool
+TapDanceEventHandler::oneShotShouldInterrupt (uint16_t keycode) {
+  if (keycode < Akela::TapDance::FN_TAPDANCE || keycode > Akela::TapDance::FN_TAPDANCE_MAX) {
+    return Akela::TapDance::Component::OneShotLayer::oneShotShouldInterrupt (keycode);
+  }
+  return false;
+}
 
 void
 TapDanceEventHandler::register_code (uint16_t keycode) {
@@ -113,7 +122,7 @@ TapDanceEventHandler::tapDanceFinish (Akela::AbstractHID *hid,
 
 void
 TapDanceEventHandler::tapDanceRelease (Akela::AbstractHID *hid,
-                                       Akela::KeyMap::Basic *,
+                                       Akela::KeyMap::Basic *keymap,
                                        uint8_t tapIndex,
                                        uint8_t counter) {
   switch (tapIndex) {
@@ -124,6 +133,8 @@ TapDanceEventHandler::tapDanceRelease (Akela::AbstractHID *hid,
       hid->release (KC_B);
     }
   }
+  Akela::TapDance::Component::OneShotLayer::cancelOneShot (hid, keymap);
+  Akela::TapDance::Component::OneShotMod::cancelOneShot (hid, keymap);
 }
 
 static M01::HID::Base            hid;
