@@ -25,3 +25,5 @@ guides:
     children:
       - title: "High-level architecture"
         url: /deep-dive/high-level-architecture/
+      - title: "Who talks to who, why, and how?"
+        url: /deep-dive/who-talks-to-who-why-and-how/
