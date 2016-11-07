@@ -37,10 +37,10 @@ $ user/new-sketch my-own-layout
 ```
 
 We can immediately compile it from the command-line with the `make
-user/my-own-layout` command, and the result will be under the `firmware/`
+user/my-own-layout` command, and the result will be under the `firmware/user/`
 directory. For convenience, the system always creates a symbolic link to the
 latest version. In this case, this will be
-`firmware/user-my-own-layout-latest.hex`.
+`firmware/user/my-own-layout-latest.hex`.
 
 This can be flashed onto the keyboard, but it will not do anything useful yet,
 because the layout is completely empty.
