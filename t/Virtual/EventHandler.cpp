@@ -52,7 +52,7 @@ namespace Virtual {
       }
 
       virtual void macroAction (Akela::AbstractHID *,
-                                Akela::KeyMap::Basic *,
+                                Akela::KeyMap::Abstract *,
                                 uint8_t index,
                                 bool pressed) {
         std::cout << "  " << __PRETTY_FUNCTION__ << "(macroIndex=" << std::hex << (int) index
