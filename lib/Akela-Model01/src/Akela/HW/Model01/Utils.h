@@ -18,24 +18,23 @@
 
 #pragma once
 
-#define KEYMAP(                                     \
-  k00, k01, k02, k03, k04, k05, k06,                \
-  k10, k11, k12, k13, k14, k15,                     \
-  k20, k21, k22, k23, k24, k25, k26,                \
-  k30, k31, k32, k33, k34, k35, k36,                \
-  k40, k41, k42, k43,                               \
-  k50,                                              \
-                                                    \
-  k60, k61, k62, k63, k64, k65, k66,                \
-  k70, k71, k72, k73, k74, k75,                     \
-  k80, k81, k82, k83, k84, k85, k86,                \
-  k90, k91, k92, k93, k94, k95, k96,                \
-  ka0, ka1, ka2, ka3,                               \
-  kb0)                                              \
-                                                    \
-  {                                                                     \
-    k00, k01, k02, k03, k04, k05, k06,  k40, ka3,  k60, k61, k62, k63, k64, k65, k66, \
-    k10, k11, k12, k13, k14, k15, k26,  k41, ka2,  kb0, k70, k71, k72, k73, k74, k75, \
-    k20, k21, k22, k23, k24, k25, k36,  k42, ka1,  k80, k81, k82, k83, k84, k85, k86, \
-    k30, k31, k32, k33, k34, k35, k50,  k43, ka0,  k90, k91, k92, k93, k94, k95, k96, \
+#define KEYMAP(                                               \
+               r0c0, r0c1, r0c2, r0c3, r0c4, r0c5, r0c6,      \
+               r1c0, r1c1, r1c2, r1c3, r1c4, r1c5, r1c6,      \
+               r2c0, r2c1, r2c2, r2c3, r2c4, r2c5, /* r1c6 */ \
+               r3c0, r3c1, r3c2, r3c3, r3c4, r3c5, r2c6,      \
+               r0c7, r1c7, r2c7, r3c7,                        \
+               r3c6,                                          \
+                                                              \
+               r0c9, r0ca, r0cb, r0cc, r0cd, r0ce, r0cf,      \
+               r1c9, r1ca, r1cb, r1cc, r1cd, r1ce, r1cf,      \
+                     r2ca, r2cb, r2cc, r2cd, r2ce, r2cf,      \
+               r2c9, r3ca, r3cb, r3cc, r3cd, r3ce, r3cf,      \
+               r3c8, r2c8, r1c8, r0c8,                        \
+               r3c9)                                          \
+  {                                                           \
+    r0c0, r0c1, r0c2, r0c3, r0c4, r0c5, r0c6, r0c7, r0c8, r0c9, r0ca, r0cb, r0cc, r0cd, r0ce, r0cf, \
+    r1c0, r1c1, r1c2, r1c3, r1c4, r1c5, r1c6, r1c7, r1c8, r1c9, r1ca, r1cb, r1cc, r1cd, r1ce, r1cf, \
+    r2c0, r2c1, r2c2, r2c3, r2c4, r2c5, r2c6, r2c7, r2c8, r2c9, r2ca, r2cb, r2cc, r2cd, r2ce, r2cf, \
+    r3c0, r3c1, r3c2, r3c3, r3c4, r3c5, r3c6, r3c7, r3c8, r3c9, r3ca, r3cb, r3cc, r3cd, r3ce, r3cf, \
   }
