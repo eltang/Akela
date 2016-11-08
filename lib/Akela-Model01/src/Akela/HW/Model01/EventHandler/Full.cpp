@@ -51,14 +51,5 @@ namespace M01 {
       LedControl::setup ();
     }
 
-    void
-    Full::setColor (Base::Hand hand, uint8_t row, uint8_t col, cRGB crgb) {
-      uint8_t mapPos = keyToMatrix (hand, row, col);
-      if (mapPos == 99)
-        return;
-
-      LedControl::setColor (mapPos, crgb);
-    }
-
   };
 };

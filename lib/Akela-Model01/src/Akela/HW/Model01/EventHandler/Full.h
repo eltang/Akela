@@ -36,7 +36,6 @@ namespace M01 {
 
     protected:
       using LedControl::setColor;
-      void setColor (Base::Hand hand, uint8_t row, uint8_t col, cRGB crgb);
 
     private:
       using MouseComponent::register_code;
