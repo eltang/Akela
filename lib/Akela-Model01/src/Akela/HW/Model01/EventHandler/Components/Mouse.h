@@ -58,15 +58,15 @@ namespace M01 {
 
     protected:
       virtual bool register_code (Akela::AbstractHID *HID,
-                                  Akela::KeyMap::Basic *keymap,
+                                  Akela::KeyMap::Abstract *keymap,
                                   uint16_t keycode);
 
       virtual bool unregister_code (Akela::AbstractHID *HID,
-                                    Akela::KeyMap::Basic *keymap,
+                                    Akela::KeyMap::Abstract *keymap,
                             uint16_t keycode);
 
       virtual bool hold_code (Akela::AbstractHID *HID,
-                              Akela::KeyMap::Basic *keymap,
+                              Akela::KeyMap::Abstract *keymap,
                               uint16_t keycode);
     };
   };

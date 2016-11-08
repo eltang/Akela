@@ -34,15 +34,15 @@ namespace Akela {
       class TapDance : public Akela::EventHandler::Component {
       public:
         virtual bool register_code (Akela::AbstractHID *hid,
-                                    Akela::KeyMap::Basic *keymap,
+                                    Akela::KeyMap::Abstract *keymap,
                                     uint16_t keycode);
 
         virtual bool unregister_code (Akela::AbstractHID *hid,
-                                      Akela::KeyMap::Basic *keymap,
+                                      Akela::KeyMap::Abstract *keymap,
                                       uint16_t keycode);
 
         virtual void loop (Akela::AbstractHID *hid,
-                           Akela::KeyMap::Basic *keymap);
+                           Akela::KeyMap::Abstract *keymap);
 
       protected:
         uint16_t tapDanceTimer = 0;
@@ -53,21 +53,21 @@ namespace Akela {
         bool tapDanceInterrupted = false;
 
         virtual void tapDanceCycle (Akela::AbstractHID *hid,
-                                    Akela::KeyMap::Basic *keymap,
+                                    Akela::KeyMap::Abstract *keymap,
                                     uint8_t tapIndex,
                                     uint8_t counter) = 0;
         virtual void tapDanceFinish (Akela::AbstractHID *hid,
-                                     Akela::KeyMap::Basic *keymap,
+                                     Akela::KeyMap::Abstract *keymap,
                                      uint8_t tapIndex,
                                      uint8_t counter) = 0;
         virtual void tapDanceRelease (Akela::AbstractHID *hid,
-                                      Akela::KeyMap::Basic *keymap,
+                                      Akela::KeyMap::Abstract *keymap,
                                       uint8_t tapIndex,
                                       uint8_t counter) = 0;
 
       private:
         void finish (Akela::AbstractHID *hid,
-                     Akela::KeyMap::Basic *keymap,
+                     Akela::KeyMap::Abstract *keymap,
                      uint8_t tapIndex,
                      uint8_t tapCounter);
       };

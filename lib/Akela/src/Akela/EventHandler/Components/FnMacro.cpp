@@ -23,7 +23,7 @@ namespace Akela {
 
     bool
     FnMacroComponent::register_code (Akela::AbstractHID *HID,
-                                     Akela::KeyMap::Basic *keymap,
+                                     Akela::KeyMap::Abstract *keymap,
                                      uint16_t keycode) {
       if (keycode < Akela::SYSFN_FNMACRO || keycode > Akela::SYSFN_FNMACRO_MAX)
         return false;
@@ -34,7 +34,7 @@ namespace Akela {
 
     bool
     FnMacroComponent::unregister_code (Akela::AbstractHID *HID,
-                                       Akela::KeyMap::Basic *keymap,
+                                       Akela::KeyMap::Abstract *keymap,
                                        uint16_t keycode) {
       if (keycode < Akela::SYSFN_FNMACRO || keycode > Akela::SYSFN_FNMACRO_MAX)
         return false;
@@ -45,7 +45,7 @@ namespace Akela {
 
     void
     FnMacroComponent::macroAction (Akela::AbstractHID *,
-                                   Akela::KeyMap::Basic *,
+                                   Akela::KeyMap::Abstract *,
                                    uint8_t,
                                    bool) {
     }

@@ -37,15 +37,15 @@ protected:
   virtual void loop ();
 
   virtual void tapDanceCycle (Akela::AbstractHID *hid,
-                              Akela::KeyMap::Basic *keymap,
+                              Akela::KeyMap::Abstract *keymap,
                               uint8_t tapIndex,
                               uint8_t counter);
   virtual void tapDanceFinish (Akela::AbstractHID *hid,
-                               Akela::KeyMap::Basic *keymap,
+                               Akela::KeyMap::Abstract *keymap,
                                uint8_t tapIndex,
                                uint8_t counter);
   virtual void tapDanceRelease (Akela::AbstractHID *hid,
-                                Akela::KeyMap::Basic *keymap,
+                                Akela::KeyMap::Abstract *keymap,
                                 uint8_t tapIndex,
                                 uint8_t counter);
   virtual bool oneShotShouldInterrupt (uint16_t keycode);
@@ -99,14 +99,14 @@ TapDanceEventHandler::loop () {
 
 void
 TapDanceEventHandler::tapDanceCycle (Akela::AbstractHID *,
-                                     Akela::KeyMap::Basic *,
+                                     Akela::KeyMap::Abstract *,
                                      uint8_t,
                                      uint8_t) {
 }
 
 void
 TapDanceEventHandler::tapDanceFinish (Akela::AbstractHID *hid,
-                                      Akela::KeyMap::Basic *,
+                                      Akela::KeyMap::Abstract *,
                                       uint8_t tapIndex,
                                       uint8_t counter) {
   switch (tapIndex) {
@@ -122,7 +122,7 @@ TapDanceEventHandler::tapDanceFinish (Akela::AbstractHID *hid,
 
 void
 TapDanceEventHandler::tapDanceRelease (Akela::AbstractHID *hid,
-                                       Akela::KeyMap::Basic *keymap,
+                                       Akela::KeyMap::Abstract *keymap,
                                        uint8_t tapIndex,
                                        uint8_t counter) {
   switch (tapIndex) {

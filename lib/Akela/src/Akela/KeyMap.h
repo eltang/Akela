@@ -18,5 +18,6 @@
 
 #pragma once
 
+#include "KeyMap/Abstract.h"
 #include "KeyMap/Basic.h"
 #include "KeyMap/Layered.h"

@@ -24,7 +24,7 @@ namespace Akela {
 
       bool
       OneShot::register_code (Akela::AbstractHID *hid,
-                              Akela::KeyMap::Basic *keymap,
+                              Akela::KeyMap::Abstract *keymap,
                               uint16_t keycode) {
         if (oneShotState && oneShotShouldInterrupt (keycode))
           oneShotShouldCancel = true;
@@ -55,7 +55,7 @@ namespace Akela {
 
       bool
       OneShot::unregister_code (Akela::AbstractHID *,
-                                Akela::KeyMap::Basic *,
+                                Akela::KeyMap::Abstract *,
                                 uint16_t keycode) {
         if (oneShotState && oneShotShouldInterrupt (keycode))
           oneShotShouldCancel = true;
@@ -77,7 +77,7 @@ namespace Akela {
 
       void
       OneShot::loop (Akela::AbstractHID *hid,
-                     Akela::KeyMap::Basic *keymap) {
+                     Akela::KeyMap::Abstract *keymap) {
         if (oneShotTimer)
           oneShotTimer++;
 
@@ -88,7 +88,7 @@ namespace Akela {
 
       void
       OneShot::cancelOneShot (Akela::AbstractHID *hid,
-                              Akela::KeyMap::Basic *keymap) {
+                              Akela::KeyMap::Abstract *keymap) {
         for (uint8_t i = 0; i < 32; i++) {
           if (bitRead(oneShotState, i) && !bitRead(stickyState, i)) {
             bitWrite(oneShotState, i, 0);

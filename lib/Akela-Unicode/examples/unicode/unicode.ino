@@ -27,7 +27,7 @@ namespace Unicode {
                          public Akela::EventHandler::FnMacroComponent,
                          public Akela::Unicode::Component::Unicode {
     public:
-      EventHandler (Akela::AbstractHID *hid, Akela::KeyMap::Basic *keymap)
+      EventHandler (Akela::AbstractHID *hid, Akela::KeyMap::Abstract *keymap)
         : Akela::EventHandler::Base (hid, keymap) {};
 
       virtual void register_code (uint16_t keycode) {
@@ -45,7 +45,7 @@ namespace Unicode {
       }
 
       virtual void macroAction (Akela::AbstractHID *HID,
-                                Akela::KeyMap::Basic *,
+                                Akela::KeyMap::Abstract *,
                                 uint8_t index,
                                 bool pressed) {
         if (!pressed)

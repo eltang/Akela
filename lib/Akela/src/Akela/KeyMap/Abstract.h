@@ -20,14 +20,9 @@
 
 namespace Akela {
   namespace KeyMap {
-    class Basic : public Abstract {
-    protected:
-      const uint16_t *keymap;
-
+    class Abstract {
     public:
-      Basic (const uint16_t *keymap);
-
-      virtual uint16_t lookup (uint8_t index);
+      virtual uint16_t lookup (uint8_t index) = 0;
     };
   };
 };

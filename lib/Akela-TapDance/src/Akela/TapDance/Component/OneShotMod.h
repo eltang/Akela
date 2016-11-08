@@ -37,10 +37,10 @@ namespace Akela {
       class OneShotMod : public OneShot {
       protected:
         virtual void oneShotActivate (Akela::AbstractHID *hid,
-                                      Akela::KeyMap::Basic *keymap,
+                                      Akela::KeyMap::Abstract *keymap,
                                       uint16_t keycode);
         virtual void oneShotDeactivate (Akela::AbstractHID *hid,
-                                        Akela::KeyMap::Basic *keymap,
+                                        Akela::KeyMap::Abstract *keymap,
                                         uint16_t keycode);
 
         bool isOneShotModifierActive (uint8_t keycode);

@@ -25,15 +25,15 @@ namespace Akela {
     class Component {
     protected:
       virtual bool register_code (Akela::AbstractHID *HID,
-                                  Akela::KeyMap::Basic *keymap,
+                                  Akela::KeyMap::Abstract *keymap,
                                   uint16_t keycode) = 0;
 
       virtual bool unregister_code (Akela::AbstractHID *HID,
-                                    Akela::KeyMap::Basic *keymap,
+                                    Akela::KeyMap::Abstract *keymap,
                                     uint16_t keycode) = 0;
 
       virtual bool hold_code (Akela::AbstractHID *,
-                              Akela::KeyMap::Basic *,
+                              Akela::KeyMap::Abstract *,
                               uint16_t) {
         return false;
       };

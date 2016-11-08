@@ -22,7 +22,7 @@ namespace Akela {
   namespace EventHandler {
 
     Base::Base(Akela::AbstractHID *HID,
-               Akela::KeyMap::Basic *keymap) {
+               Akela::KeyMap::Abstract *keymap) {
       this->HID = HID;
       this->keymap = keymap;
     }

@@ -23,13 +23,13 @@ namespace Akela {
     namespace Component {
 
       void OneShotMod::oneShotActivate (Akela::AbstractHID *hid,
-                                        Akela::KeyMap::Basic *,
+                                        Akela::KeyMap::Abstract *,
                                         uint16_t keycode) {
         hid->register_code (keycode - FN_ONESHOT_OSM + KC_LCTL);
       }
 
       void OneShotMod::oneShotDeactivate (Akela::AbstractHID *hid,
-                                          Akela::KeyMap::Basic *,
+                                          Akela::KeyMap::Abstract *,
                                           uint16_t keycode) {
         hid->unregister_code (keycode - FN_ONESHOT_OSM + KC_LCTL);
       }

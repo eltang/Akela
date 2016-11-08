@@ -23,7 +23,7 @@ namespace M01 {
 
     bool
     MouseComponent::register_code (Akela::AbstractHID *HID,
-                                   Akela::KeyMap::Basic *,
+                                   Akela::KeyMap::Abstract *,
                                    uint16_t keycode) {
       switch (keycode) {
       case M01::SYSFN::MOUSE_BUTTON ... M01::SYSFN::MOUSE_BUTTON_MAX:
@@ -51,7 +51,7 @@ namespace M01 {
 
     bool
     MouseComponent::unregister_code (Akela::AbstractHID *HID,
-                                     Akela::KeyMap::Basic *,
+                                     Akela::KeyMap::Abstract *,
                                      uint16_t keycode) {
       switch (keycode) {
       case M01::SYSFN::MOUSE_BUTTON ... M01::SYSFN::MOUSE_BUTTON_MAX:
@@ -67,7 +67,7 @@ namespace M01 {
 
     bool
     MouseComponent::hold_code (Akela::AbstractHID *HID,
-                               Akela::KeyMap::Basic *,
+                               Akela::KeyMap::Abstract *,
                                uint16_t keycode) {
       switch (keycode) {
       case M01::SYSFN::MOUSE_CONTROL ... M01::SYSFN::MOUSE_CONTROL_MAX:
