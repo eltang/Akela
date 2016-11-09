@@ -2,7 +2,7 @@
 title: "Getting started"
 permalink: /guide/getting-started/
 excerpt: "Getting started with Akela"
-modified: 2016-11-04T12:00:00+01:00
+modified: 2016-11-09T09:00:00+01:00
 ---
 
 {% include toc %}
@@ -38,6 +38,11 @@ As for installing the Arduino IDE, please see
 their [getting started][arduino:getting-started] page for instructions.
 
 [arduino:getting-started]: https://www.arduino.cc/en/Guide/HomePage
+
+Note down where you installed the Arduino IDE, you will need it later. For the
+purpose of these guides, we will assume that the IDE is installed to
+`~/install/arduino`. Exporting an `ARDUINO_PATH` environment variable tells the
+command-line build system where to find the IDE and its libraries.
 
 ## Cloning the repository
 
@@ -84,11 +89,21 @@ To build the `Model01` example of the `keyboardio` module, simply use the
 following command:
 
 ```
-$ make keyboardio/Model01
+$ make keyboardio/Model01 ARDUINO_PATH=/path/to/arduino
 ```
 
 Running `make` without any other arguments will build all the examples, and the
 test suite too. This latter one can be run with the `make check` command.
+
+The `ARDUINO_PATH` variable should contain the path leading up to the `arduino`
+and `arduino-builder` binaries. Usually, this is the same path you installed the
+Arduino IDE under. We can either specify it on the `make` command-line every
+time we invoke it, or export it as an environment variable:
+
+```
+$ export ARDUINO_PATH=/path/to/arduino
+$ make keyboardio/Model01
+```
 
 ### Building with the Arduino IDE
 
